@@ -1,0 +1,235 @@
+{
+  "source": "http://localhost:5176",
+  "capturedAt": "2026-10-08T06:53:11.991Z",
+  "browser": "Playwright Chromium; software WebGL, touch/viewport emulation; not physical iPhone or Safari",
+  "results": [
+    {
+      "name": "Homepage mist initializes once, is noninteractive and low-resolution",
+      "passed": true
+    },
+    {
+      "name": "Homepage text, navigation, image and central pixels remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "Scrolling, keyboard navigation and search are unaffected",
+      "passed": true
+    },
+    {
+      "name": "Atlas is fog-free and actual map controls and pan still work",
+      "passed": true
+    },
+    {
+      "name": "Homepage axe scan introduces no accessibility violations",
+      "passed": true
+    },
+    {
+      "name": "Runtime reduced-motion change stops mist without a new context",
+      "passed": true
+    },
+    {
+      "name": "Visibility lifecycle pauses and resumes scheduling",
+      "passed": true
+    },
+    {
+      "name": "Sustained 5s animation stays bounded and drifts",
+      "passed": true
+    },
+    {
+      "name": "A lost GPU context fails closed without affecting content",
+      "passed": true
+    },
+    {
+      "name": "375×667 touch layout protects content and resizes cleanly",
+      "passed": true
+    },
+    {
+      "name": "390×844 touch layout protects content and resizes cleanly",
+      "passed": true
+    },
+    {
+      "name": "430×932 touch layout protects content and resizes cleanly",
+      "passed": true
+    },
+    {
+      "name": "844×390 touch layout protects content and resizes cleanly",
+      "passed": true
+    },
+    {
+      "name": "Initial reduced-motion visit never creates a fog WebGL context",
+      "passed": true
+    },
+    {
+      "name": "No-WebGL fallback keeps homepage usable without animation",
+      "passed": true
+    },
+    {
+      "name": "data-saver device hint avoids fog GPU work",
+      "passed": true
+    },
+    {
+      "name": "low-memory device hint avoids fog GPU work",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "metrics": [
+    {
+      "initial": {
+        "status": "running",
+        "frame": 14,
+        "resolution": "720x500",
+        "width": 720,
+        "height": 500,
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "memory": 15200000,
+        "contextRequests": 2,
+        "longTasks": 4
+      }
+    },
+    {
+      "comparison": "desktop-top",
+      "protectedPixels": 1123604,
+      "changedProtectedPixels": 0,
+      "changedPixels": 13331,
+      "maxDifference": 0
+    },
+    {
+      "comparison": "desktop-featured",
+      "protectedPixels": 1027736,
+      "changedProtectedPixels": 0,
+      "changedPixels": 27953,
+      "maxDifference": 0
+    },
+    {
+      "stability": {
+        "requestedMs": 5000,
+        "samples": [
+          {
+            "elapsedMs": 5,
+            "status": "running",
+            "frame": 17,
+            "resolution": "720x500",
+            "width": 720,
+            "height": 500,
+            "rootRect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "memory": 15200000,
+            "contextRequests": 3,
+            "longTasks": 3
+          },
+          {
+            "elapsedMs": 5004,
+            "status": "running",
+            "frame": 105,
+            "resolution": "720x500",
+            "width": 720,
+            "height": 500,
+            "rootRect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "memory": 15200000,
+            "contextRequests": 3,
+            "longTasks": 3
+          }
+        ],
+        "averageFPS": 17.585931254996005,
+        "emulatedSoftwareGPU": true
+      }
+    },
+    {
+      "comparison": "mobile-narrow-top",
+      "protectedPixels": 200303,
+      "changedProtectedPixels": 0,
+      "changedPixels": 1543,
+      "maxDifference": 0
+    },
+    {
+      "comparison": "mobile-narrow-scrolled",
+      "protectedPixels": 215707,
+      "changedProtectedPixels": 0,
+      "changedPixels": 171,
+      "maxDifference": 0
+    },
+    {
+      "comparison": "mobile-iphone-top",
+      "protectedPixels": 251162,
+      "changedProtectedPixels": 0,
+      "changedPixels": 2014,
+      "maxDifference": 0
+    },
+    {
+      "comparison": "mobile-iphone-scrolled",
+      "protectedPixels": 282028,
+      "changedProtectedPixels": 0,
+      "changedPixels": 2182,
+      "maxDifference": 0
+    },
+    {
+      "comparison": "mobile-tall-top",
+      "protectedPixels": 298723,
+      "changedProtectedPixels": 0,
+      "changedPixels": 2471,
+      "maxDifference": 0
+    },
+    {
+      "comparison": "mobile-tall-scrolled",
+      "protectedPixels": 314579,
+      "changedProtectedPixels": 0,
+      "changedPixels": 2555,
+      "maxDifference": 0
+    },
+    {
+      "comparison": "mobile-landscape-top",
+      "protectedPixels": 312960,
+      "changedProtectedPixels": 0,
+      "changedPixels": 0,
+      "maxDifference": 0
+    },
+    {
+      "comparison": "mobile-landscape-scrolled",
+      "protectedPixels": 284672,
+      "changedProtectedPixels": 0,
+      "changedPixels": 2530,
+      "maxDifference": 0
+    }
+  ],
+  "accessibility": [
+    {
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
+      "viewport": "mobile-reduced-motion",
+      "violations": []
+    }
+  ]
+}

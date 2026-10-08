@@ -2,7 +2,9 @@
 
 A cinematic field guide to haunted places, documented history, and attributed folklore. Phase 1 delivers a working Haunted Atlas, reusable location profiles, and a private editorial API on React, TypeScript, Vite, Cloudflare Workers, and D1.
 
-Current visual refinement: **`dev/phasm-phase-1-3` — Midnight Séance**, based on preserved Phase 1.1 commit `cf915ba` and Phase 1 commit `9da8948`. The latest review restores the original charcoal-green and antique-brass palette and removes photo filters and tint overlays. Historical spirit photography with verified Getty CC0 rights, cartography, and location dossiers preserve the existing database, records, APIs, editorial tools and original Cloudflare configuration.
+Current refinement: **`dev/phasm-atmospheric-fog` — homepage edge mist**, based on preserved Phase 1.3 commit `d3c7a21`, Phase 1.1 commit `cf915ba`, and Phase 1 commit `9da8948`. A lightweight procedural atmosphere adds barely visible rising wisps at the outer edges of the homepage. The restored charcoal-green and antique-brass palette, unfiltered photography, typography, layout, database, APIs, editorial tools, and atlas remain unchanged. The map and location profiles have no fog.
+
+[Atmospheric fog implementation](docs/fog/README.md) · [Fog screenshots, recording, and QA](docs/fog/QA.md)
 
 [Phase 1.3 visual review](docs/phase-1-3/README.md) · [Design system](docs/phase-1-3/DESIGN-SYSTEM.md) · [Before/after screenshots](docs/phase-1-3/screenshots.md) · [Isolated Cloudflare preview](https://phasm-phase-1-3-preview.wj7djnw2j2.workers.dev) · [Preview deployment instructions](deploy/midnight-preview/README.md)
 
@@ -13,7 +15,7 @@ The preview is separate from production. Administrative and development routes a
 Use Node.js **22.13+ or 24** and npm. Tests use Node's built-in SQLite module. No Cloudflare account, map API key, or paid service is needed for local development.
 
 ```bash
-cd /workspace/phasm-phase-1-3
+cd /workspace/phasm-fog
 npm ci
 npm run setup
 npm run dev
@@ -90,7 +92,7 @@ npm run deploy:check
 
 Initial Phase 1 results: **8 backend tests, 16 browser checks, and 7 automated accessibility scans passed**. The production build and Cloudflare deployment dry run passed. Both runtime-only and full dependency audits reported zero known vulnerabilities on 8 October 2026. See [the QA record](docs/QA.md) for evidence and remaining manual/device coverage.
 
-Current refinement results and reproducible commands are in [Phase 1.3 verification](docs/phase-1-3/TEST-RESULTS.md).
+Current refinement results and reproducible commands are in [fog verification](docs/fog/QA.md). Earlier results remain in [Phase 1.3 verification](docs/phase-1-3/TEST-RESULTS.md).
 
 For browser checks, start the development server, run `npx playwright install chromium`, then `npm run test:browser`.
 

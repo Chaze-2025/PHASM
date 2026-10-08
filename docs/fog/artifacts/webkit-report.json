@@ -1,0 +1,153 @@
+{
+  "engine": "Playwright WebKit",
+  "version": "27.2",
+  "environment": "Linux Debian 13; mobile/touch emulation, not physical iPhone or Safari",
+  "runtime": "Scratch-local Debian libraries; no application or system dependency modifications",
+  "baseURL": "http://localhost:5176",
+  "checkedAt": "2026-10-08T06:40:28.599Z",
+  "results": [
+    {
+      "name": "WebKit mobile renders one running noninteractive fog canvas",
+      "passed": true,
+      "detail": {
+        "status": "running",
+        "frame": "31",
+        "resolution": "281x608",
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "canvasCount": 1,
+        "pointerEvents": "none",
+        "dvh": true,
+        "webKitMask": true
+      }
+    },
+    {
+      "name": "Motion advances gradually on WebKit",
+      "passed": true,
+      "detail": {
+        "before": 31,
+        "after": 124
+      }
+    },
+    {
+      "name": "Menu taps remain available and close cleanly",
+      "passed": true,
+      "detail": {
+        "status": "running",
+        "frame": "128",
+        "resolution": "281x608",
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "canvasCount": 1,
+        "pointerEvents": "none",
+        "dvh": true,
+        "webKitMask": true
+      }
+    },
+    {
+      "name": "Scroll settles with fog restored and no overflow",
+      "passed": true,
+      "detail": {
+        "status": "running",
+        "frame": "139",
+        "resolution": "281x608",
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "canvasCount": 1,
+        "pointerEvents": "none",
+        "dvh": true,
+        "webKitMask": true
+      }
+    },
+    {
+      "name": "Narrow and tall viewport resize rebuilds cleanly",
+      "passed": true,
+      "detail": [
+        {
+          "status": "running",
+          "frame": "150",
+          "resolution": "270x480",
+          "width": 375,
+          "height": 667,
+          "overflow": 0,
+          "canvasCount": 1,
+          "pointerEvents": "none",
+          "dvh": true,
+          "webKitMask": true
+        },
+        {
+          "status": "running",
+          "frame": "158",
+          "resolution": "310x671",
+          "width": 430,
+          "height": 932,
+          "overflow": 0,
+          "canvasCount": 1,
+          "pointerEvents": "none",
+          "dvh": true,
+          "webKitMask": true
+        }
+      ]
+    },
+    {
+      "name": "Reduced motion disables rendering and resumes after preference change",
+      "passed": true,
+      "detail": {
+        "reduced": {
+          "status": "reduced-motion",
+          "width": 430,
+          "height": 932,
+          "overflow": 0,
+          "canvasCount": 1,
+          "pointerEvents": "none",
+          "dvh": true,
+          "webKitMask": true
+        },
+        "resumed": {
+          "status": "running",
+          "frame": "11",
+          "resolution": "310x671",
+          "width": 430,
+          "height": 932,
+          "overflow": 0,
+          "canvasCount": 1,
+          "pointerEvents": "none",
+          "dvh": true,
+          "webKitMask": true
+        }
+      }
+    },
+    {
+      "name": "Atlas navigation removes atmosphere and map loads",
+      "passed": true,
+      "detail": {
+        "mapCanvas": 1,
+        "fog": 0
+      }
+    },
+    {
+      "name": "Returning home mounts exactly one renderer",
+      "passed": true,
+      "detail": {
+        "status": "running",
+        "frame": "7",
+        "resolution": "310x671",
+        "width": 430,
+        "height": 932,
+        "overflow": 0,
+        "canvasCount": 1,
+        "pointerEvents": "none",
+        "dvh": true,
+        "webKitMask": true
+      }
+    },
+    {
+      "name": "No browser page errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

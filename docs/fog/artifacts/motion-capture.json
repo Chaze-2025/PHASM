@@ -1,0 +1,38 @@
+{
+  "source": "http://localhost:5176",
+  "capturedAt": "2026-10-08T06:52:32.834Z",
+  "durationSeconds": 25,
+  "playback": "real-time; no speed or contrast changes",
+  "viewport": {
+    "scrollY": 883,
+    "width": 1024,
+    "height": 768
+  },
+  "samples": [
+    {
+      "scrollY": 883,
+      "status": "running",
+      "frame": "139"
+    },
+    {
+      "scrollY": 883,
+      "status": "running",
+      "frame": "227"
+    },
+    {
+      "scrollY": 883,
+      "status": "running",
+      "frame": "317"
+    },
+    {
+      "scrollY": 883,
+      "status": "running",
+      "frame": "406"
+    },
+    {
+      "scrollY": 883,
+      "status": "running",
+      "frame": "496"
+    }
+  ]
+}

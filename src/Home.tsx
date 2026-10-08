@@ -16,6 +16,7 @@ import { useApi } from "./api";
 import archivalImages from "../content/archival-images.json";
 import type { Location, LocationPage } from "../shared/types";
 import { LocationCard, Eyebrow, Status, PlaceImage } from "./components";
+import { AtmosphericFog } from "./AtmosphericFog";
 
 const spiritPhotograph = archivalImages[0];
 
@@ -59,6 +60,7 @@ export function Home() {
 
   return (
     <main id="main" className="home-page">
+      <AtmosphericFog />
       <section className="home-hero" aria-labelledby="home-title">
         <img
           className="home-hero-image"

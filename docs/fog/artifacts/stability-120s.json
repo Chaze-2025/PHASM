@@ -1,0 +1,201 @@
+{
+  "source": "http://localhost:5176",
+  "capturedAt": "2026-10-08T06:50:21.263Z",
+  "browser": "Playwright Chromium; software WebGL, touch/viewport emulation; not physical iPhone or Safari",
+  "stability": {
+    "requestedMs": 120000,
+    "samples": [
+      {
+        "elapsedMs": 7,
+        "status": "running",
+        "frame": 16,
+        "resolution": "720x500",
+        "width": 720,
+        "height": 500,
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "memory": 14300000,
+        "contextRequests": 3,
+        "longTasks": 3
+      },
+      {
+        "elapsedMs": 15180,
+        "status": "running",
+        "frame": 275,
+        "resolution": "720x500",
+        "width": 720,
+        "height": 500,
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "memory": 14300000,
+        "contextRequests": 3,
+        "longTasks": 3
+      },
+      {
+        "elapsedMs": 30193,
+        "status": "running",
+        "frame": 532,
+        "resolution": "720x500",
+        "width": 720,
+        "height": 500,
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "memory": 14300000,
+        "contextRequests": 3,
+        "longTasks": 3
+      },
+      {
+        "elapsedMs": 45209,
+        "status": "running",
+        "frame": 788,
+        "resolution": "720x500",
+        "width": 720,
+        "height": 500,
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "memory": 14300000,
+        "contextRequests": 3,
+        "longTasks": 4
+      },
+      {
+        "elapsedMs": 60224,
+        "status": "running",
+        "frame": 1045,
+        "resolution": "720x500",
+        "width": 720,
+        "height": 500,
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "memory": 14300000,
+        "contextRequests": 3,
+        "longTasks": 4
+      },
+      {
+        "elapsedMs": 75244,
+        "status": "running",
+        "frame": 1301,
+        "resolution": "720x500",
+        "width": 720,
+        "height": 500,
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "memory": 14300000,
+        "contextRequests": 3,
+        "longTasks": 4
+      },
+      {
+        "elapsedMs": 90260,
+        "status": "running",
+        "frame": 1557,
+        "resolution": "720x500",
+        "width": 720,
+        "height": 500,
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "memory": 14300000,
+        "contextRequests": 3,
+        "longTasks": 4
+      },
+      {
+        "elapsedMs": 105275,
+        "status": "running",
+        "frame": 1814,
+        "resolution": "720x500",
+        "width": 720,
+        "height": 500,
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "memory": 14300000,
+        "contextRequests": 3,
+        "longTasks": 4
+      },
+      {
+        "elapsedMs": 120004,
+        "status": "running",
+        "frame": 2066,
+        "resolution": "720x500",
+        "width": 720,
+        "height": 500,
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "memory": 14300000,
+        "contextRequests": 3,
+        "longTasks": 4
+      }
+    ],
+    "averageFPS": 17.082763907869737,
+    "emulatedSoftwareGPU": true
+  }
+}
