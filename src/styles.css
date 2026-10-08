@@ -231,15 +231,15 @@ em {
   background:
     linear-gradient(
       90deg,
-      rgba(11, 17, 29, 0.89) 0%,
-      rgba(11, 17, 29, 0.64) 41%,
-      rgba(11, 17, 29, 0.14) 80%
+      rgba(17, 21, 19, 0.89) 0%,
+      rgba(17, 21, 19, 0.64) 41%,
+      rgba(17, 21, 19, 0.14) 80%
     ),
     linear-gradient(
       0deg,
       var(--bg) 0%,
       transparent 29%,
-      rgba(53, 70, 91, 0.08) 80%
+      rgba(53, 66, 56, 0.08) 80%
     );
   z-index: -2;
 }
@@ -467,7 +467,7 @@ em {
   pointer-events: none;
   position: absolute;
   inset: 45% 0 0;
-  background: linear-gradient(transparent, rgba(53, 70, 91, 0.5));
+  background: linear-gradient(transparent, rgba(53, 66, 56, 0.5));
 }
 .image-category {
   position: absolute;
@@ -565,7 +565,7 @@ em {
   background:
     radial-gradient(
       ellipse at 90% 55%,
-      rgba(53, 70, 91, 0.38),
+      rgba(53, 66, 56, 0.38),
       transparent 60%
     ),
     var(--surface-soft);
@@ -746,7 +746,7 @@ em {
   padding: 46px 24px 60px;
   background: radial-gradient(
     ellipse at 50% 0,
-    rgba(53, 70, 91, 0.31),
+    rgba(53, 66, 56, 0.31),
     transparent 75%
   );
 }
@@ -971,7 +971,7 @@ em {
 .profile-hero-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(transparent 15%, rgba(53, 70, 91, 0.88));
+  background: linear-gradient(transparent 15%, rgba(53, 66, 56, 0.88));
 }
 .profile-hero-copy {
   position: absolute;
@@ -1880,7 +1880,7 @@ em {
   }
   .hero-shade {
     background:
-      linear-gradient(90deg, rgba(53, 70, 91, 0.86), rgba(53, 70, 91, 0.27)),
+      linear-gradient(90deg, rgba(53, 66, 56, 0.86), rgba(53, 66, 56, 0.27)),
       linear-gradient(0deg, var(--bg), transparent 45%);
   }
   .hero-content > p {
@@ -2265,7 +2265,7 @@ em {
   }
   .hero-shade {
     background:
-      linear-gradient(90deg, rgba(53, 70, 91, 0.72), rgba(53, 70, 91, 0.13)),
+      linear-gradient(90deg, rgba(53, 66, 56, 0.72), rgba(53, 66, 56, 0.13)),
       linear-gradient(0deg, var(--bg) 3%, transparent 62%);
   }
   .hero-search {

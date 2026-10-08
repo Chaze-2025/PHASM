@@ -68,7 +68,6 @@ export function Home() {
           alt="The vaulted cellblock gallery of Eastern State Penitentiary, with empty corridors receding into the distance."
           fetchPriority="high"
         />
-        <div className="home-hero-shade" aria-hidden="true" />
         <div className="home-hero-registration" aria-hidden="true">
           <svg viewBox="0 0 100 100" fill="none">
             <circle cx="50" cy="50" r="35" />
@@ -152,7 +151,7 @@ export function Home() {
               target="_blank"
               rel="noreferrer"
             >
-              CC BY-SA 4.0 · cropped &amp; toned
+              CC BY-SA 4.0 · cropped
             </a>
           </span>
         </div>
@@ -231,7 +230,7 @@ export function Home() {
                 src="/images/atlas-preview.webp"
                 alt="Map preview showing sourced haunted locations in North America and Europe. Open the atlas to explore all regions."
                 width="1065"
-                height="821"
+                height="805"
                 loading="lazy"
               />
               <span className="home-map-preview-label">
@@ -312,9 +311,7 @@ export function Home() {
                   CC0
                 </a>
               </span>
-              <span>
-                Full archival photograph · monochrome display treatment.
-              </span>
+              <span>Full archival photograph · original scan colors.</span>
             </figcaption>
           </figure>
           <div className="home-archive-copy">

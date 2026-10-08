@@ -1,23 +1,25 @@
-# Midnight Séance — PHASM 1.3
+# PHASM design system — green palette refinement
 
-An atmospheric gateway to haunted places, using cold architecture, historical photographic objects, and restrained engraved details. The atlas remains the primary discovery tool. The identity must never imply that decoration or historical photographic illusion is paranormal evidence.
+An atmospheric gateway to haunted places, using historic architecture, historical photographic objects, and restrained engraved details. The atlas remains the primary discovery tool. The identity must never imply that decoration or historical photographic illusion is paranormal evidence.
 
 ## Color roles
 
 The source of truth is [`src/design-tokens.css`](../../src/design-tokens.css). Shared surfaces, typography, cards, navigation, profiles, and map controls consume semantic tokens. MapLibre reads these tokens for its WebGL paint properties when the style loads.
 
-| Foundation      | Value     | Role                                                                   |
-| --------------- | --------- | ---------------------------------------------------------------------- |
-| Midnight Black  | `#0B111D` | Dominant page background, photographic shadows, text on silver buttons |
-| Deep Storm Blue | `#172334` | Panels, dossier mounts, filters and controls                           |
-| Iron Slate      | `#35465B` | Selected controls, marker rings, structural accents                    |
-| Mist Silver     | `#AABBC8` | Supporting text, interactive accents, primary buttons, map markers     |
-| Ghost Ivory     | `#E3E8E9` | Headings, reading text and selected markers                            |
-| Tarnished Brass | `#B8A68F` | Sparse brand, archival registration and historical details             |
+| Foundation     | Value     | Role                                                   |
+| -------------- | --------- | ------------------------------------------------------ |
+| Charcoal Green | `#111513` | Page background and text on brass buttons              |
+| Forest Panel   | `#191E1B` | Cards, panels, filters and controls                    |
+| Moss Slate     | `#354238` | Structural borders, selected surfaces and marker rings |
+| Sage Gray      | `#A1A69E` | Supporting text                                        |
+| Warm Ivory     | `#ECE9DF` | Headings, body text and selected markers               |
+| Antique Brass  | `#C2AD7C` | Brand details, links, primary buttons and map markers  |
 
-Use `--bg`, `--panel`, `--panel2`, `--ivory`, `--muted`, `--accent`, `--border`, and `--focus` in components. `--surface-deep` and `--surface-soft` create depth without warm or green surfaces. Borders can be quiet when decorative; focus indicators and interactive state changes must remain apparent. Error text uses a restrained rose (`--danger`), accompanied by readable error messages.
+These restore the original green-and-brass direction at the owner's request. The archival compositions, mobile improvements and functional architecture from Phase 1.3 remain in place.
 
-Ghost Ivory and Mist Silver exceed WCAG AA text contrast against Midnight Black and Deep Storm Blue: respectively 15.27:1 / 9.58:1 on Midnight Black and 12.81:1 / 8.03:1 on Deep Storm Blue. The mist-filled primary button uses Midnight Black text. Do not use Iron Slate as small body text or rely on color alone to communicate a state. Automated rendered contrast checks are recorded with the test results; image-backed text also requires visual inspection.
+Use `--bg`, `--panel`, `--panel2`, `--ivory`, `--muted`, `--accent`, `--border`, and `--focus` in components. `--surface-deep` and `--surface-soft` create depth within the charcoal-green palette. Borders can be quiet when decorative; focus indicators and interactive state changes must remain apparent. Error text uses a restrained rose (`--danger`), accompanied by readable error messages.
+
+Warm Ivory and Sage Gray provide readable text on the dark surfaces. Brass primary buttons use Charcoal Green text. Do not use Moss Slate as small body text or rely on color alone to communicate state. Automated contrast checks and visual inspection cover desktop and mobile rendering.
 
 ## Typography and spacing
 
@@ -29,24 +31,26 @@ Ghost Ivory and Mist Silver exceed WCAG AA text contrast against Midnight Black 
 
 ## Photographic identity
 
-The homepage opens with real, licensed Eastern State Penitentiary photography, cooled and shaded through CSS. The photograph remains recognizable and credited. Featured cards retain the actual location's image; missing images use an explicitly labelled architectural illustration.
+The homepage opens with real, licensed Eastern State Penitentiary photography in its original color and brightness. The photograph remains recognizable and credited. Featured cards retain the actual location's image; missing images use an explicitly labelled architectural illustration.
 
-The spiritualist archive features William H. Mumler's historical portrait from Getty's CC0 collection, with its full original card visible. A restrained monochrome treatment and photographic mount supply atmosphere. The explanatory text identifies staged spirit photography as a cultural artifact, not verified evidence. Its sitters are not associated with any PHASM location. The separate Stanley excerpt uses the hotel's own location photograph and attributed existing folklore.
+The spiritualist archive features William H. Mumler's historical portrait from Getty's CC0 collection, with its full original card visible. The original scan colors and photographic mount supply atmosphere. The explanatory text identifies staged spirit photography as a cultural artifact, not verified evidence. Its sitters are not associated with any PHASM location. The separate Stanley excerpt uses the hotel's own location photograph and attributed existing folklore.
 
-Stanley's dossier labels its gallery as contemporary location photography with a cool monochrome presentation. No unrelated antique portrait is inserted into its gallery. Original source and license links remain available. See [image provenance](IMAGE-PROVENANCE.md) and the [machine-readable record](../../content/archival-images.json).
+Stanley's dossier labels its gallery as contemporary location photography in its original colors. No unrelated antique portrait is inserted into its gallery. Original source and license links remain available. See [image provenance](IMAGE-PROVENANCE.md) and the [machine-readable record](../../content/archival-images.json).
 
 The threshold brand mark, registration circles, mount corners and engraved rules are contemporary decorative graphics. They are not reproductions of authenticated occult artifacts. Avoid invented historical meanings, sigils, apparitions, heavy grain overlays or simulated damage.
+
+Photographs have `filter: none` and normal color blending. Full-image tint overlays, dimming gradients and card image shading are removed. The homepage separates copy from the clear image on desktop and places a compact photograph above the copy on mobile. Location titles use a solid caption area below the hero photograph. Small source and classification labels have their own backing; the photographs themselves are not darkened. Image cropping and responsive sizing remain, and original files and licensing records are unchanged.
 
 ## Compositions and interaction
 
 - **Homepage:** strong corridor hero and direct search; photographic featured cards; real-map teaser; a full-width archival feature; open local-lore composition; compact recent-record rows; region links; clearly marked planned case files and trails.
-- **Atlas:** cold land and water, readable mist labels with midnight halos, restrained rings, opaque controls and selected preview. Roads, place names, coordinates, clustering and geographic queries retain their meaning and behavior. The teaser is a screenshot of this real map, with provider attribution.
+- **Atlas:** dark green cartography, readable sage labels with charcoal halos, restrained rings, opaque controls and selected preview. Roads, place names, coordinates, clustering and geographic queries retain their meaning and behavior. The teaser is a screenshot of this real map, with provider attribution.
 - **Dossier:** photographic hero, registration details, explicit history/report reading key, comfortable narrative widths, source register, gallery mount, official visiting information and related places. Claims retain their existing qualifications. Community participation remains closed.
 - **Cards:** recognizable photography, geographic labels, serif location names, small attributed-phenomenon labels, clear save controls. Local legends retain an explicit classification.
 
 ## Motion and accessibility
 
-Use short menu and preview reveals and subtle pointer-hover photographic transitions. No flicker, particles, ghost animation, ambient audio, forced intro or scroll hijacking. `prefers-reduced-motion: reduce` removes CSS animation and transitions; the map's existing reduced-motion behavior is preserved.
+Use short menu and preview reveals and subtle pointer-hover image scale transitions, without color filtering. No flicker, particles, ghost animation, ambient audio, forced intro or scroll hijacking. `prefers-reduced-motion: reduce` removes CSS animation and transitions; the map's existing reduced-motion behavior is preserved.
 
 Keyboard navigation, visible focus, skip link, mobile-menu focus management, form labels, error states, and list alternatives to the map remain available. Contrast and screen geometry are checked in Chromium at desktop and mobile sizes. These checks do not constitute physical iPhone or Safari testing.
 

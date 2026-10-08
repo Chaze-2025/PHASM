@@ -99,7 +99,6 @@ export function Profile() {
 
       <section className="profile-hero" aria-labelledby="location-title">
         <PlaceImage location={p} className="profile-image" priority />
-        <div className="profile-hero-shade" aria-hidden="true" />
         <div className="profile-photographic-frame" aria-hidden="true" />
         <div className="profile-hero-top section">
           <span className="profile-dossier-label">
@@ -243,8 +242,7 @@ export function Profile() {
                 </span>
                 {p.image && (
                   <span className="gallery-treatment">
-                    Contemporary location photography · cool monochrome
-                    presentation.
+                    Contemporary location photography · original colors.
                   </span>
                 )}
                 <span className="gallery-credit">

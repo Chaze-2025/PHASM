@@ -4,6 +4,8 @@
 
 Development branch: **`dev/phasm-phase-1-3`**, based on Phase 1.1 `cf915ba2c39856346ceb087e374f2f371cc327ca`. Original Phase 1 commit `9da89485891f07d584a426d487f707af6ef06f46` remains in its history. No merge to main or production deployment is part of this phase.
 
+The subsequent visual review restores the original **green-and-brass palette** and **clear, unfiltered photographs**. Titles are separated from hero photographs where needed for readable contrast. The original before/after screenshots below document the initial Midnight Séance release; the current preview reflects this later refinement.
+
 ## What changed
 
 - A shared Midnight Séance token system replaces the dominant green and warm accents with midnight black, storm blue, mist silver and ghost ivory. Brass is reserved for sparse historical and brand details.

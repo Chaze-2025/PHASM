@@ -40,13 +40,14 @@ function mapPalette() {
   const token = (name: string, fallback: string) =>
     styles.getPropertyValue(name).trim() || fallback;
   return {
-    land: token("--map-land", "#101A29"),
-    water: token("--map-water", "#1B2A3C"),
-    marker: token("--map-marker", "#AABBC8"),
-    selected: token("--map-marker-selected", "#E3E8E9"),
-    ring: token("--map-marker-ring", "#35465B"),
-    midnight: token("--bg", "#0B111D"),
-    panel: token("--panel", "#172334"),
+    land: token("--map-land", "#111813"),
+    water: token("--map-water", "#1C251E"),
+    label: token("--map-label", "#ADB6A3"),
+    marker: token("--map-marker", "#C2AD7C"),
+    selected: token("--map-marker-selected", "#ECE9DF"),
+    ring: token("--map-marker-ring", "#354238"),
+    midnight: token("--bg", "#111513"),
+    panel: token("--panel", "#191E1B"),
   };
 }
 function MapCanvas({
@@ -148,8 +149,8 @@ function MapCanvas({
         setFailed(false);
         const colors = mapPalette();
         // Tint base geography without changing roads, terrain or label placement.
-        // The dark provider style has dim gray lettering: cold silver and dark
-        // halos retain legibility against the blue-black surface.
+        // The dark provider style has dim gray lettering: sage lettering and dark
+        // halos retain legibility against the charcoal-green surface.
         if (m.getLayer("background")?.type === "background")
           m.setPaintProperty("background", "background-color", colors.land);
         if (m.getLayer("water")?.type === "fill")
@@ -159,7 +160,7 @@ function MapCanvas({
             layer.type === "symbol" &&
             /^(place_|highway_name_|water_name)/.test(layer.id)
           ) {
-            m.setPaintProperty(layer.id, "text-color", colors.marker);
+            m.setPaintProperty(layer.id, "text-color", colors.label);
             m.setPaintProperty(layer.id, "text-halo-color", colors.midnight);
             m.setPaintProperty(layer.id, "text-halo-width", 1);
           }

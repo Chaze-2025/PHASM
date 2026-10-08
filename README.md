@@ -2,7 +2,7 @@
 
 A cinematic field guide to haunted places, documented history, and attributed folklore. Phase 1 delivers a working Haunted Atlas, reusable location profiles, and a private editorial API on React, TypeScript, Vite, Cloudflare Workers, and D1.
 
-Current visual refinement: **`dev/phasm-phase-1-3` — Midnight Séance**, based on preserved Phase 1.1 commit `cf915ba` and Phase 1 commit `9da8948`. Cold photographic art direction, historical spirit photography with verified Getty CC0 rights, spectral cartography, and location dossiers preserve the existing database, records, APIs, editorial tools and original Cloudflare configuration.
+Current visual refinement: **`dev/phasm-phase-1-3` — Midnight Séance**, based on preserved Phase 1.1 commit `cf915ba` and Phase 1 commit `9da8948`. The latest review restores the original charcoal-green and antique-brass palette and removes photo filters and tint overlays. Historical spirit photography with verified Getty CC0 rights, cartography, and location dossiers preserve the existing database, records, APIs, editorial tools and original Cloudflare configuration.
 
 [Phase 1.3 visual review](docs/phase-1-3/README.md) · [Design system](docs/phase-1-3/DESIGN-SYSTEM.md) · [Before/after screenshots](docs/phase-1-3/screenshots.md) · [Isolated Cloudflare preview](https://phasm-phase-1-3-preview.wj7djnw2j2.workers.dev) · [Preview deployment instructions](deploy/midnight-preview/README.md)
 

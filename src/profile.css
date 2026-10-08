@@ -1,4 +1,4 @@
-/* Midnight Séance dossiers: cool photographic plates, clear provenance, comfortable reading. */
+/* PHASM dossiers: clear photography, provenance and comfortable reading. */
 .profile-page {
   --dossier-line: var(--border);
   --dossier-muted: var(--muted);
@@ -44,8 +44,8 @@
   inset: 0;
   height: 100%;
   object-position: center 68%;
-  filter: grayscale(1) brightness(0.82) contrast(1.08);
-  mix-blend-mode: luminosity;
+  filter: none;
+  mix-blend-mode: normal;
 }
 .profile-page .profile-photographic-frame {
   position: absolute;
@@ -69,21 +69,6 @@
 .profile-page .profile-photographic-frame::after {
   bottom: -4px;
   right: -4px;
-}
-.profile-page .profile-hero-shade {
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--bg) 60%, transparent) 0%,
-      transparent 33%,
-      color-mix(in srgb, var(--bg) 68%, transparent) 70%,
-      var(--bg) 100%
-    ),
-    linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--bg) 48%, transparent),
-      transparent 80%
-    );
 }
 .profile-page .profile-hero-top {
   position: relative;
@@ -471,8 +456,8 @@
   aspect-ratio: 16/10;
   object-fit: cover;
   border-radius: 2px;
-  filter: grayscale(1) contrast(1.04);
-  mix-blend-mode: luminosity;
+  filter: none;
+  mix-blend-mode: normal;
 }
 .profile-page .gallery-photo figcaption {
   display: flex;
@@ -796,15 +781,6 @@
   .profile-page .profile-hero > img {
     object-position: 52% center;
   }
-  .profile-page .profile-hero-shade {
-    background: linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--bg) 64%, transparent),
-      transparent 36%,
-      color-mix(in srgb, var(--bg) 80%, transparent) 73%,
-      var(--bg) 100%
-    );
-  }
   .profile-page .profile-hero-top {
     padding-top: 19px;
     display: block;
@@ -1053,5 +1029,67 @@
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Keep the image clear; the dossier title has its own solid caption area. */
+.profile-page .profile-hero {
+  height: auto;
+  display: grid;
+  grid-template-rows: clamp(340px, 35vw, 500px) auto auto;
+}
+.profile-page .profile-hero > img {
+  position: relative;
+  inset: auto;
+  grid-row: 1;
+  grid-column: 1;
+}
+.profile-page .profile-hero-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.profile-page .profile-dossier-label {
+  background: var(--bg);
+  padding: 10px 14px;
+  width: fit-content;
+}
+.profile-page .profile-hero-copy {
+  position: static;
+  grid-row: 2;
+  padding: 25px max(64px, calc((100% - 1200px) / 2)) 8px;
+  background: var(--bg);
+}
+.profile-page .profile-hero h1 {
+  margin-block: 8px 16px;
+}
+.profile-page .profile-photo-link {
+  position: static;
+  grid-row: 3;
+  justify-content: flex-start;
+  padding: 0 max(64px, calc((100% - 1200px) / 2)) 12px;
+  background: var(--bg);
+}
+.profile-page .profile-photographic-frame {
+  bottom: auto;
+  height: calc(clamp(340px, 35vw, 500px) - 34px);
+}
+@media (max-width: 600px) {
+  .profile-page .profile-hero {
+    grid-template-rows: 280px auto auto;
+  }
+  .profile-page .profile-hero-copy {
+    padding: 22px 24px 8px;
+  }
+  .profile-page .profile-photo-link {
+    padding: 0 24px 12px;
+  }
+  .profile-page .profile-dossier-label {
+    padding: 8px 12px;
+  }
+  .profile-page .profile-photographic-frame {
+    height: 258px;
   }
 }
