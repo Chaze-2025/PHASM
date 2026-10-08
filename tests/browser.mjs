@@ -9,6 +9,7 @@ import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 
 const baseURL = process.env.PHASM_BASE_URL || "http://localhost:5173";
+const previewReadOnly = process.env.PHASM_PREVIEW_READONLY === "1";
 const output = process.env.PHASM_SCREENSHOT_DIR || "/workspace/scratch";
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({
@@ -81,12 +82,12 @@ try {
     async () => {
       await page.goto(baseURL, { waitUntil: "networkidle" });
       await expect(
-        page.getByRole("heading", { name: /Some places/ }),
+        page.getByRole("heading", { name: /Every place has a story/i }),
       ).toBeVisible();
       await expect(page.locator(".location-card")).toHaveCount(3);
       assert.ok(
         await page
-          .locator(".hero-image")
+          .locator(".home-hero-image")
           .evaluate((image) => image.complete && image.naturalWidth > 0),
       );
       await page.keyboard.press("Tab");
@@ -277,7 +278,12 @@ try {
   await check(
     "Admin stays locked without a configured valid credential",
     async () => {
-      await page.goto(`${baseURL}/admin`);
+      const response = await page.goto(`${baseURL}/admin`);
+      if (previewReadOnly) {
+        assert.equal(response.status(), 404);
+        await expect(page.getByLabel("Editorial access token")).toHaveCount(0);
+        return;
+      }
       await expect(page.getByLabel("Editorial access token")).toBeVisible();
       await expect(
         page.getByRole("button", { name: "New location" }),
@@ -340,7 +346,7 @@ try {
     ["desktop map", "/map", 1440],
     ["desktop list", "/map", 1440],
     ["desktop profile", "/locations/stanley-hotel", 1440],
-    ["admin login", "/admin", 1440],
+    ...(!previewReadOnly ? [["admin login", "/admin", 1440]] : []),
     ["mobile home", "/", 390],
     ["mobile profile", "/locations/stanley-hotel", 390],
   ]) {

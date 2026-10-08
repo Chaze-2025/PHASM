@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   ArrowUpRight,
   Bookmark,
@@ -17,7 +17,21 @@ import { useSaved } from "./api";
 export function Logo() {
   return (
     <Link to="/" className="logo" aria-label="PHASM home">
-      <Compass size={31} strokeWidth={1} />
+      <svg
+        className="brand-mark"
+        viewBox="0 0 40 44"
+        width="32"
+        height="36"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M7 36V18a13 13 0 0 1 26 0v18M12 36V18a8 8 0 0 1 16 0v18M4 36h32M20 2v8M20 27v15M16 31h8"
+          stroke="currentColor"
+          strokeWidth="1.2"
+        />
+        <path d="m20 14 3 5-3 5-3-5Z" fill="currentColor" />
+      </svg>
       <span>
         PHASM<span className="logo-dot">.</span>
       </span>
@@ -26,11 +40,57 @@ export function Logo() {
 }
 export function Header() {
   const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const header = useRef<HTMLElement>(null);
+  const navigation = useRef<HTMLElement>(null);
+  const location = useLocation();
+  useEffect(() => setOpen(false), [location.pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    navigation.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+      if (event.key === "Tab") {
+        const controls = Array.from(
+          header.current?.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]):not([tabindex="-1"])',
+          ) || [],
+        ).filter((control) => control.getClientRects().length > 0);
+        const first = controls[0];
+        const last = controls.at(-1);
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+    const mobile = window.matchMedia("(max-width: 760px)");
+    const closeOnResize = () => {
+      if (!mobile.matches) setOpen(false);
+    };
+    window.addEventListener("keydown", close);
+    mobile.addEventListener("change", closeOnResize);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", close);
+      mobile.removeEventListener("change", closeOnResize);
+    };
+  }, [open]);
   return (
-    <header className="site-header">
+    <header ref={header} className="site-header">
       <div className="header-inner">
         <Logo />
         <nav
+          ref={navigation}
+          id="primary-navigation"
           aria-label="Main navigation"
           className={open ? "main-nav is-open" : "main-nav"}
           onClick={() => setOpen(false)}
@@ -55,15 +115,25 @@ export function Header() {
             <UserRound size={18} />
           </Link>
           <button
+            ref={menuButton}
             className="icon-button menu-button"
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
+            aria-controls="primary-navigation"
             onClick={() => setOpen(!open)}
           >
             {open ? <X /> : <Menu />}
           </button>
         </div>
       </div>
+      {open && (
+        <button
+          className="navigation-scrim"
+          aria-label="Dismiss navigation"
+          onClick={() => setOpen(false)}
+          tabIndex={-1}
+        />
+      )}
     </header>
   );
 }
@@ -127,9 +197,11 @@ export function SaveButton({
 export function PlaceImage({
   location,
   className = "",
+  priority = false,
 }: {
   location: Location;
   className?: string;
+  priority?: boolean;
 }) {
   return (
     <img
@@ -146,10 +218,13 @@ export function PlaceImage({
           ? "100vw"
           : "(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 33vw"
       }
-      loading="lazy"
+      loading={priority ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : "auto"}
       onError={(e) => {
-        if (!e.currentTarget.src.endsWith("archive-placeholder.svg"))
+        if (!e.currentTarget.src.endsWith("archive-placeholder.svg")) {
+          e.currentTarget.removeAttribute("srcset");
           e.currentTarget.src = "/images/archive-placeholder.svg";
+        }
       }}
     />
   );
@@ -162,7 +237,10 @@ export function LocationCard({
   compact?: boolean;
 }) {
   return (
-    <article className={`location-card ${compact ? "compact" : ""}`}>
+    <article
+      className={`location-card ${compact ? "compact" : ""}`}
+      data-classification={location.classification}
+    >
       <div className="card-image">
         <Link
           to={`/locations/${location.slug}`}
@@ -184,6 +262,12 @@ export function LocationCard({
           <ArrowUpRight size={18} />
         </Link>
         <p className="card-summary">{location.summary}</p>
+        {!!location.phenomena.length && (
+          <p className="card-phenomenon">
+            <span>Reported</span>
+            {location.phenomena.slice(0, 2).join(" · ")}
+          </p>
+        )}
         <div className="card-bottom">
           <span>{classificationLabel(location.classification)}</span>
           <span>

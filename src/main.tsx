@@ -2,8 +2,13 @@ import React, { lazy, Suspense, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Header, Footer, Status } from "./components";
-import { Home, Profile, Saved, Editorial, NotFound } from "./pages";
+import { Home } from "./Home";
+import { Profile } from "./Profile";
+import { Saved, Editorial, NotFound } from "./pages";
 import "./styles.css";
+import "./refinement.css";
+import "./home.css";
+import "./profile.css";
 const Atlas = lazy(() => import("./Atlas"));
 const Admin = lazy(() => import("./Admin"));
 function ScrollAndTitle() {

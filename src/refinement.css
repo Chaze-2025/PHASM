@@ -1,0 +1,512 @@
+/* PHASM 1.1: shared identity and readable, touch-friendly surfaces. */
+:root {
+  color-scheme: dark;
+  --bg: #0c0e10;
+  --panel: #15191b;
+  --panel2: #1d2225;
+  --line: #f0e9dc1c;
+  --muted: #adb0b1;
+  --brass: #cbb482;
+  --ivory: #f1ece2;
+  --header-height: calc(80px + env(safe-area-inset-top));
+  color: var(--ivory);
+  background: var(--bg);
+  font-size: 16px;
+}
+body {
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+button,
+input,
+select,
+textarea {
+  accent-color: var(--brass);
+}
+input,
+select,
+textarea {
+  color: var(--ivory);
+}
+input::placeholder,
+textarea::placeholder {
+  color: #a6aaa9;
+  opacity: 1;
+}
+p {
+  line-height: 1.75;
+}
+em {
+  color: #d6c7a8;
+}
+.section {
+  max-width: 1360px;
+  padding-inline: clamp(24px, 4.45vw, 64px);
+}
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  line-height: 1.6;
+}
+.subtle,
+.small {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.button {
+  min-height: 48px;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  padding: 13px 20px;
+  transition:
+    background 180ms,
+    border-color 180ms,
+    transform 180ms;
+}
+.button.brass {
+  color: #171814;
+  background: var(--brass);
+  box-shadow: inset 0 1px #fff3;
+}
+.button.brass:hover {
+  background: #deca9f;
+  border-color: #deca9f;
+}
+.button.secondary {
+  color: var(--ivory);
+  background: #ffffff04;
+  border-color: #f0e9dc35;
+}
+.button.secondary:hover {
+  border-color: #cbb4828c;
+  background: #cbb4820b;
+}
+.text-link {
+  min-height: 44px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.text-link:hover {
+  color: #e7d2a5;
+}
+.pill {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #ddd3c0;
+  background: #15191beb;
+  border-color: #cbb48242;
+}
+.icon-button,
+.save-button {
+  min-height: 44px;
+  min-width: 44px;
+}
+:focus-visible {
+  outline-color: #e2c897;
+}
+.skip-link {
+  z-index: 100;
+  font-size: 1rem;
+  padding: 14px 20px;
+}
+
+/* An architectural threshold forms the mark; no invented paranormal symbol. */
+.site-header {
+  height: var(--header-height);
+  padding-top: env(safe-area-inset-top);
+  background: #0e1113;
+  border-bottom: 1px solid #f0e9dc14;
+}
+.header-inner {
+  padding-inline: clamp(24px, 3.8vw, 54px);
+}
+.logo {
+  gap: 13px;
+  min-height: 44px;
+}
+.logo .brand-mark {
+  color: var(--brass);
+  width: 31px;
+  height: 36px;
+}
+.logo > span {
+  font-size: 29px;
+  letter-spacing: 0.2em;
+}
+.logo-dot {
+  color: var(--brass);
+}
+.main-nav {
+  gap: 36px;
+}
+.main-nav a {
+  font-size: 0.875rem;
+  color: #bcc0be;
+}
+.main-nav a.active:after {
+  height: 1px;
+  bottom: 18px;
+  width: 24px;
+  left: calc(50% - 12px);
+}
+.header-actions {
+  gap: 18px;
+}
+.saved-nav {
+  min-height: 44px;
+  font-size: 0.85rem;
+  color: #c5c8c3;
+}
+.header-actions .icon-button {
+  width: 44px;
+  height: 44px;
+  border-color: #ffffff22;
+}
+.navigation-scrim {
+  display: none;
+}
+
+/* Photographs carry the cards; the record and report labels stay distinct. */
+.location-card {
+  background: linear-gradient(150deg, #1b2022, #141719);
+  border: 1px solid #f0e9dc19;
+  border-radius: 4px;
+  overflow: hidden;
+  transition:
+    border-color 220ms,
+    box-shadow 220ms,
+    transform 220ms;
+}
+.location-card:focus-within {
+  border-color: #cbb4828c;
+}
+.card-image {
+  height: auto;
+  aspect-ratio: 1.48;
+  background: #24272a;
+}
+.card-image img {
+  object-position: center;
+  filter: saturate(0.62) brightness(0.91);
+  transition:
+    transform 500ms,
+    filter 500ms;
+}
+.card-image:after {
+  background: linear-gradient(transparent, #10121480);
+}
+.image-category {
+  top: 16px;
+  left: 16px;
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  border-color: #ffffff36;
+  background: #101416eb;
+  backdrop-filter: blur(8px);
+}
+.save-button {
+  right: 13px;
+  top: 12px;
+  border-color: #ffffff38;
+  background: #111517db;
+  transition:
+    background 180ms,
+    color 180ms;
+}
+.save-button:hover {
+  background: #292d2c;
+}
+.card-content {
+  padding: 22px 23px 0;
+}
+.place-geography {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #b1b6b4;
+  gap: 7px;
+}
+.place-geography svg {
+  color: var(--brass);
+  min-width: 13px;
+}
+.card-title {
+  min-height: 48px;
+  align-items: flex-start;
+  gap: 12px;
+}
+.card-title h3 {
+  font-size: 1.95rem;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+.card-title > svg {
+  color: var(--brass);
+  margin-top: 8px;
+  min-width: 17px;
+}
+.card-summary {
+  color: #c0c2bd;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  margin-top: 12px;
+  min-height: 3.4em;
+}
+.card-phenomenon {
+  color: #c6bdcb;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  margin-top: 17px;
+}
+.card-phenomenon > span {
+  display: block;
+  color: #9ea5a7;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  margin-bottom: 3px;
+}
+.card-bottom {
+  margin-top: 19px;
+  padding: 16px 0;
+  font-size: 0.75rem;
+  color: #d1c4a4;
+  border-color: #f0e9dc16;
+  flex-wrap: wrap;
+  gap: 7px 14px;
+}
+.card-bottom > span + span {
+  color: #b2b8b3;
+}
+.location-card[data-classification="local-legend"]
+  .card-bottom
+  > span:first-child {
+  color: #d0bbd1;
+}
+.location-card.compact .card-phenomenon {
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .location-card:hover {
+    transform: translateY(-4px);
+    border-color: #cbb48262;
+    box-shadow: 0 15px 35px #0003;
+  }
+  .location-card:hover .card-image img {
+    transform: scale(1.035);
+    filter: saturate(0.78) brightness(0.98);
+  }
+}
+.site-footer {
+  background: #090c0e;
+  border-top-color: var(--line);
+  padding-block: 42px;
+}
+.site-footer > div > p {
+  color: #afb4b2;
+  font-size: 0.875rem;
+}
+.footer-links {
+  font-size: 0.85rem;
+  gap: 18px;
+}
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.footer-note {
+  font-size: 0.75rem;
+  line-height: 1.8;
+  color: #a8aeab;
+}
+.page-shell {
+  padding-top: 52px;
+  padding-bottom: 70px;
+}
+.page-heading p,
+.editorial-content p {
+  font-size: 1rem;
+}
+.storage-note {
+  font-size: 0.875rem;
+}
+
+@media (max-width: 900px) {
+  .header-inner {
+    gap: 20px;
+  }
+  .main-nav {
+    gap: 22px;
+  }
+  .saved-nav span {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  :root {
+    --header-height: calc(72px + env(safe-area-inset-top));
+  }
+  .site-header {
+    height: var(--header-height);
+  }
+  .header-inner {
+    padding-inline: 20px;
+  }
+  .logo {
+    gap: 10px;
+  }
+  .logo > span {
+    font-size: 26px;
+  }
+  .logo .brand-mark {
+    width: 26px;
+    height: 32px;
+  }
+  .header-actions {
+    gap: 5px;
+  }
+  .header-actions > .icon-button:not(.menu-button) {
+    display: none;
+  }
+  .saved-nav {
+    width: 44px;
+    justify-content: center;
+  }
+  .header-actions .menu-button {
+    display: flex !important;
+    border: 0;
+    border-radius: 3px;
+  }
+  .main-nav {
+    display: none;
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: calc(var(--header-height) - 1px);
+    height: auto;
+    padding: 16px 20px;
+    background: #171c1f;
+    border: 1px solid #cbb48236;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 25px 60px #0008;
+    z-index: 32;
+  }
+  .main-nav.is-open {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+    animation: menu-reveal 160ms ease-out;
+  }
+  .main-nav a {
+    display: flex;
+    font-size: 1rem;
+    min-height: 52px;
+    padding: 10px 12px;
+    border-bottom: 1px solid #ffffff0c;
+  }
+  .main-nav a.active {
+    color: #e5ce9e;
+    background: #cbb48209;
+  }
+  .main-nav a.active:after {
+    display: none;
+  }
+  .main-nav .mobile-saved {
+    display: flex !important;
+  }
+  .navigation-scrim {
+    display: block;
+    position: fixed;
+    inset: var(--header-height) 0 0;
+    border: 0;
+    padding: 0;
+    background: #0009;
+    z-index: 31;
+    cursor: default;
+  }
+  .section {
+    padding-inline: 24px;
+  }
+  .button {
+    font-size: 0.9375rem;
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+  }
+  .location-grid {
+    gap: 26px;
+  }
+  .card-content {
+    padding-inline: 20px;
+  }
+  .card-image {
+    aspect-ratio: 1.5;
+  }
+  .card-title h3 {
+    font-size: 1.9rem;
+  }
+  .card-summary {
+    font-size: 0.9375rem;
+  }
+  .card-phenomenon {
+    font-size: 0.8125rem;
+  }
+  .card-bottom {
+    font-size: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .place-geography {
+    font-size: 0.8125rem;
+  }
+  .image-category {
+    font-size: 0.75rem;
+  }
+  .page-shell {
+    padding: 36px 24px 52px;
+  }
+  .site-footer {
+    padding: 32px 24px calc(28px + env(safe-area-inset-bottom));
+    gap: 20px;
+  }
+  .site-footer .footer-links {
+    gap: 8px 18px;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+  }
+  .site-footer .footer-note {
+    font-size: 0.75rem;
+  }
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+@keyframes menu-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .location-card:hover {
+    transform: none;
+  }
+  .location-card:hover .card-image img {
+    transform: none;
+  }
+}

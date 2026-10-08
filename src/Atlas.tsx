@@ -3,6 +3,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import * as maplibregl from "maplibre-gl";
 import { type Map as MapInstance, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?url";
+import "./atlas-refinement.css";
 import {
   Search,
   SlidersHorizontal,
@@ -23,29 +25,36 @@ import {
   type Location,
   type LocationPage,
 } from "../shared/types";
-import { LocationCard, PlaceImage, Status, SaveButton } from "./components";
+import { LocationCard, PlaceImage, Status } from "./components";
+
+// Let Vite fingerprint and publish the worker alongside this lazy-loaded bundle.
+maplibregl.setWorkerUrl(mapWorkerUrl);
 const STYLE_URL =
   import.meta.env.VITE_MAP_STYLE_URL ||
   "https://tiles.openfreemap.org/styles/dark";
 function MapCanvas({
   query,
   locations,
+  selected,
   onSelect,
 }: {
   query: string;
   locations: Location[];
+  selected: string;
   onSelect: (slug: string) => void;
 }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MapInstance | null>(null);
   const queryRef = useRef(query);
   const selectRef = useRef(onSelect);
+  const selectedRef = useRef(selected);
   const controller = useRef<AbortController | null>(null);
   const [status, setStatus] = useState("Loading the atlas…");
   const [failed, setFailed] = useState(false);
   const [ready, setReady] = useState(false);
   queryRef.current = query;
   selectRef.current = onSelect;
+  selectedRef.current = selected;
   const refresh = useCallback(async () => {
     const m = map.current;
     if (!m || !m.getSource("locations")) return;
@@ -107,7 +116,7 @@ function MapCanvas({
       resizeObserver.observe(container.current);
       m.addControl(
         new maplibregl.NavigationControl({ showCompass: false }),
-        "bottom-right",
+        "top-right",
       );
       m.addControl(
         new maplibregl.ScaleControl({ maxWidth: 100 }),
@@ -136,7 +145,7 @@ function MapCanvas({
           source: "locations",
           filter: ["has", "point_count"],
           paint: {
-            "circle-color": "#b5a276",
+            "circle-color": "#27292a",
             "circle-radius": [
               "step",
               ["get", "point_count"],
@@ -146,8 +155,8 @@ function MapCanvas({
               100,
               31,
             ],
-            "circle-stroke-color": "#dfc998",
-            "circle-stroke-width": 1,
+            "circle-stroke-color": "#cbb482",
+            "circle-stroke-width": 1.5,
             "circle-opacity": 0.93,
           },
         });
@@ -161,7 +170,37 @@ function MapCanvas({
             "text-font": ["Noto Sans Regular"],
             "text-size": 13,
           },
-          paint: { "text-color": "#111513" },
+          paint: { "text-color": "#f1ece2" },
+        });
+        m.addLayer({
+          id: "place-rings",
+          type: "circle",
+          source: "locations",
+          filter: ["!", ["has", "point_count"]],
+          paint: {
+            "circle-radius": [
+              "case",
+              ["==", ["get", "clustered"], true],
+              22,
+              13,
+            ],
+            "circle-color": "#cbb482",
+            "circle-opacity": 0.16,
+          },
+        });
+        m.addLayer({
+          id: "selected-place",
+          type: "circle",
+          source: "locations",
+          filter: ["==", ["get", "slug"], selectedRef.current],
+          paint: {
+            "circle-radius": 20,
+            "circle-color": "#cbb482",
+            "circle-opacity": 0.13,
+            "circle-stroke-color": "#f1ece2",
+            "circle-stroke-opacity": 0.85,
+            "circle-stroke-width": 1.5,
+          },
         });
         m.addLayer({
           id: "places",
@@ -175,9 +214,9 @@ function MapCanvas({
               17,
               8,
             ],
-            "circle-color": "#c9b587",
-            "circle-stroke-width": 3,
-            "circle-stroke-color": "#504d3b",
+            "circle-color": "#d5bd88",
+            "circle-stroke-width": 2.5,
+            "circle-stroke-color": "#191b1d",
           },
         });
         m.addLayer({
@@ -192,6 +231,15 @@ function MapCanvas({
           },
           paint: { "text-color": "#111513" },
         });
+        // Give individual markers a comfortable touch target without enlarging
+        // their visual footprint or changing their geographic coordinates.
+        m.addLayer({
+          id: "place-targets",
+          type: "circle",
+          source: "locations",
+          filter: ["!", ["has", "point_count"]],
+          paint: { "circle-radius": 22, "circle-opacity": 0 },
+        });
         m.on("click", "clusters", async (e) => {
           const feature = e.features?.[0];
           if (!feature) return;
@@ -201,19 +249,43 @@ function MapCanvas({
           m.easeTo({
             center: (feature.geometry as Point).coordinates as [number, number],
             zoom,
+            duration: window.matchMedia("(prefers-reduced-motion: reduce)")
+              .matches
+              ? 0
+              : 450,
           });
         });
-        m.on("click", "places", (e) => {
+        m.on("click", "place-targets", (e) => {
           const f = e.features?.[0];
           if (!f) return;
           if (f.properties.clustered) {
             m.easeTo({
               center: (f.geometry as Point).coordinates as [number, number],
               zoom: m.getZoom() + 3,
+              duration: window.matchMedia("(prefers-reduced-motion: reduce)")
+                .matches
+                ? 0
+                : 450,
             });
-          } else selectRef.current(f.properties.slug);
+          } else {
+            selectRef.current(f.properties.slug);
+            // Keep the selected pin above the compact preview on shorter phones.
+            if (
+              m.getCanvas().clientWidth <= 600 &&
+              m.getCanvas().clientHeight < 480
+            ) {
+              m.easeTo({
+                center: (f.geometry as Point).coordinates as [number, number],
+                offset: [0, -75],
+                duration: window.matchMedia("(prefers-reduced-motion: reduce)")
+                  .matches
+                  ? 0
+                  : 350,
+              });
+            }
+          }
         });
-        for (const layer of ["places", "clusters"]) {
+        for (const layer of ["place-targets", "clusters"]) {
           m.on(
             "mouseenter",
             layer,
@@ -238,6 +310,17 @@ function MapCanvas({
   useEffect(() => {
     if (ready) refresh();
   }, [query, ready, refresh]);
+  useEffect(() => {
+    const m = map.current;
+    if (!ready || !m?.getLayer("selected-place")) return;
+    m.setFilter("selected-place", ["==", ["get", "slug"], selected]);
+    m.setPaintProperty("places", "circle-color", [
+      "case",
+      ["==", ["get", "slug"], selected],
+      "#fff8e8",
+      "#d5bd88",
+    ]);
+  }, [ready, selected]);
   useEffect(() => {
     const m = map.current;
     if (!ready || !m || !locations.length || !query) return;
@@ -302,6 +385,23 @@ export default function Atlas() {
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [view, setView] = useState<"map" | "list">("map");
   const [selected, setSelected] = useState("");
+  const filterToggle = useRef<HTMLButtonElement>(null);
+  const closeFilters = () => {
+    setFiltersOpen(false);
+    filterToggle.current?.focus();
+  };
+  useEffect(() => {
+    if (!filtersOpen && !selected) return;
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      if (filtersOpen) {
+        setFiltersOpen(false);
+        filterToggle.current?.focus();
+      } else setSelected("");
+    };
+    window.addEventListener("keydown", onEscape);
+    return () => window.removeEventListener("keydown", onEscape);
+  }, [filtersOpen, selected]);
   const query = new URLSearchParams(params);
   query.delete("page");
   const queryString = query.toString();
@@ -337,178 +437,219 @@ export default function Atlas() {
   const activeCount = activeKeys.filter((k) => params.has(k)).length;
   return (
     <main id="main" className="atlas-page">
-      <div className="atlas-top">
-        <div className="atlas-title">
-          <Compass size={24} strokeWidth={1} />
-          <div>
-            <span className="eyebrow plain">Follow the stories</span>
-            <h1>
-              The Haunted Atlas<span>.</span>
-            </h1>
+      <div className="atlas-controls">
+        <div className="atlas-top">
+          <div className="atlas-title">
+            <Compass size={24} strokeWidth={1} />
+            <div>
+              <span className="eyebrow plain">
+                A field guide to the unexplained
+              </span>
+              <h1>
+                The Haunted Atlas<span>.</span>
+              </h1>
+            </div>
           </div>
-        </div>
-        <form
-          className="atlas-search"
-          onSubmit={(e) => {
-            e.preventDefault();
-            change("q", text.trim());
-          }}
-        >
-          <Search size={18} />
-          <input
-            aria-label="Search location name, city, state or country"
-            placeholder="Search a place, city, or country"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            maxLength={100}
-          />
-          {text && (
+          <form
+            className="atlas-search"
+            onSubmit={(e) => {
+              e.preventDefault();
+              change("q", text.trim());
+              setFiltersOpen(false);
+            }}
+          >
+            <Search size={18} />
+            <input
+              aria-label="Search location name, city, state or country"
+              placeholder="Search a place, city, or country"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              maxLength={100}
+            />
+            {text && (
+              <button
+                type="button"
+                className="icon-button"
+                aria-label="Clear search"
+                onClick={() => {
+                  setText("");
+                  change("q", "");
+                }}
+              >
+                <X size={15} />
+              </button>
+            )}
             <button
-              type="button"
-              className="icon-button"
-              aria-label="Clear search"
+              className="search-submit"
+              type="submit"
+              aria-label="Search atlas"
+            >
+              <ArrowUpRight size={19} />
+            </button>
+          </form>
+          <button
+            className={`button filter-toggle ${filtersOpen ? "active" : ""}`}
+            ref={filterToggle}
+            aria-controls="atlas-filters"
+            aria-expanded={filtersOpen}
+            onClick={() => setFiltersOpen(!filtersOpen)}
+          >
+            <SlidersHorizontal size={16} />
+            Filters
+            {activeCount > 0 && (
+              <span className="filter-count">{activeCount}</span>
+            )}
+          </button>
+          <div className="view-switch" aria-label="Atlas view">
+            <button
+              className={view === "map" ? "active" : ""}
+              aria-label="Map view"
+              aria-pressed={view === "map"}
               onClick={() => {
-                setText("");
-                change("q", "");
+                setView("map");
+                setFiltersOpen(false);
               }}
             >
-              <X size={15} />
+              <MapIcon size={16} />
+              <span>Map</span>
             </button>
-          )}
-          <button
-            className="search-submit"
-            type="submit"
-            aria-label="Search atlas"
-          >
-            <ArrowUpRight size={19} />
-          </button>
-        </form>
-        <button
-          className={`button filter-toggle ${filtersOpen ? "active" : ""}`}
-          aria-expanded={filtersOpen}
-          onClick={() => setFiltersOpen(!filtersOpen)}
-        >
-          <SlidersHorizontal size={16} />
-          Filters
-          {activeCount > 0 && (
-            <span className="filter-count">{activeCount}</span>
-          )}
-        </button>
-        <div className="view-switch" aria-label="Atlas view">
-          <button
-            className={view === "map" ? "active" : ""}
-            aria-label="Map view"
-            aria-pressed={view === "map"}
-            onClick={() => setView("map")}
-          >
-            <MapIcon size={16} />
-            <span>Map</span>
-          </button>
-          <button
-            className={view === "list" ? "active" : ""}
-            aria-label="List view"
-            aria-pressed={view === "list"}
-            onClick={() => setView("list")}
-          >
-            <List size={16} />
-            <span>List</span>
-          </button>
+            <button
+              className={view === "list" ? "active" : ""}
+              aria-label="List view"
+              aria-pressed={view === "list"}
+              onClick={() => {
+                setView("list");
+                setFiltersOpen(false);
+              }}
+            >
+              <List size={16} />
+              <span>List</span>
+            </button>
+          </div>
         </div>
-      </div>
-      {filtersOpen && (
-        <div className="filter-panel">
-          {[
-            {
-              key: "category",
-              label: "Category",
-              options: [
-                ...new Set([...categories, ...(facets?.categories || [])]),
-              ].map((v) => [v, v]),
-            },
-            {
-              key: "phenomenon",
-              label: "Reported phenomena",
-              options: [
-                ...new Set([...phenomena, ...(facets?.phenomena || [])]),
-              ].map((v) => [v, v]),
-            },
-            {
-              key: "access",
-              label: "Public access",
-              options: [
-                ["public", "Visitors welcome"],
-                ["restricted", "Restricted"],
-                ["private", "Private"],
-                ["unknown", "Not confirmed"],
-              ],
-            },
-            {
-              key: "tours",
-              label: "Tours",
-              options: [
-                ["yes", "Tours available"],
-                ["no", "No tours"],
-                ["unknown", "Not confirmed"],
-              ],
-            },
-            {
-              key: "region",
-              label: "Region",
-              options: (
-                facets?.regions || ["North America", "Europe", "Oceania"]
-              ).map((v) => [v, v]),
-            },
-            {
-              key: "classification",
-              label: "Editorial classification",
-              options: [
-                ["established", "Established location"],
-                ["local-legend", "Local legend"],
-                ["community-discovery", "Community discovery"],
-              ],
-            },
-          ].map((f) => (
-            <label key={f.key}>
-              {f.label}
-              <select
-                value={params.get(f.key) || ""}
-                onChange={(e) => change(f.key, e.target.value)}
+        {filtersOpen && (
+          <section
+            className="filter-panel"
+            id="atlas-filters"
+            aria-label="Filter locations"
+          >
+            <div className="filter-panel-heading">
+              <div>
+                <span className="eyebrow plain">Narrow the search</span>
+                <h2>Find your kind of mystery.</h2>
+              </div>
+              <button
+                className="icon-button"
+                aria-label="Close filters"
+                onClick={closeFilters}
               >
-                <option value="">
-                  All{" "}
-                  {f.key === "category"
-                    ? "categories"
-                    : f.key === "phenomenon"
-                      ? "phenomena"
-                      : "options"}
-                </option>
-                {f.options.map(([v, t]) => (
-                  <option key={v} value={v}>
-                    {t}
-                  </option>
-                ))}
-              </select>
-            </label>
-          ))}
-          <button className="text-link" onClick={() => setParams({})}>
-            <RotateCcw size={14} />
-            Reset all
-          </button>
-        </div>
-      )}
-      {(activeCount > 0 || params.get("q")) && (
-        <div className="active-filters">
-          {["q", ...activeKeys]
-            .filter((k) => params.has(k))
-            .map((k) => (
-              <button key={k} onClick={() => change(k, "")}>
-                {k === "q" ? "Search: " : ""}
-                {params.get(k)}
-                <X size={12} />
+                <X size={20} />
               </button>
+            </div>
+            {[
+              {
+                key: "category",
+                label: "Category",
+                options: [
+                  ...new Set([...categories, ...(facets?.categories || [])]),
+                ].map((v) => [v, v]),
+              },
+              {
+                key: "phenomenon",
+                label: "Reported phenomena",
+                options: [
+                  ...new Set([...phenomena, ...(facets?.phenomena || [])]),
+                ].map((v) => [v, v]),
+              },
+              {
+                key: "access",
+                label: "Public access",
+                options: [
+                  ["public", "Visitors welcome"],
+                  ["restricted", "Restricted"],
+                  ["private", "Private"],
+                  ["unknown", "Not confirmed"],
+                ],
+              },
+              {
+                key: "tours",
+                label: "Tours",
+                options: [
+                  ["yes", "Tours available"],
+                  ["no", "No tours"],
+                  ["unknown", "Not confirmed"],
+                ],
+              },
+              {
+                key: "region",
+                label: "Region",
+                options: (
+                  facets?.regions || ["North America", "Europe", "Oceania"]
+                ).map((v) => [v, v]),
+              },
+              {
+                key: "classification",
+                label: "Editorial classification",
+                options: [
+                  ["established", "Established location"],
+                  ["local-legend", "Local legend"],
+                  ["community-discovery", "Community discovery"],
+                ],
+              },
+            ].map((f) => (
+              <label key={f.key}>
+                {f.label}
+                <select
+                  value={params.get(f.key) || ""}
+                  onChange={(e) => change(f.key, e.target.value)}
+                >
+                  <option value="">
+                    All{" "}
+                    {f.key === "category"
+                      ? "categories"
+                      : f.key === "phenomenon"
+                        ? "phenomena"
+                        : "options"}
+                  </option>
+                  {f.options.map(([v, t]) => (
+                    <option key={v} value={v}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
+              </label>
             ))}
-        </div>
-      )}
+            <div className="filter-panel-actions">
+              <button
+                className="text-link"
+                onClick={() => {
+                  setParams({});
+                  setSelected("");
+                }}
+              >
+                <RotateCcw size={15} />
+                Reset all
+              </button>
+              <button className="button brass" onClick={closeFilters}>
+                Show places
+              </button>
+            </div>
+          </section>
+        )}
+        {(activeCount > 0 || params.get("q")) && (
+          <div className="active-filters">
+            {["q", ...activeKeys]
+              .filter((k) => params.has(k))
+              .map((k) => (
+                <button key={k} onClick={() => change(k, "")}>
+                  {k === "q" ? "Search: " : ""}
+                  {params.get(k)}
+                  <X size={12} />
+                </button>
+              ))}
+          </div>
+        )}
+      </div>
       <div className={`atlas-body ${view === "list" ? "list-only" : ""}`}>
         <section className="atlas-results" aria-label="Matching locations">
           <div className="results-heading">
@@ -585,14 +726,22 @@ export default function Atlas() {
             Search covers the published archive.
           </p>
         </section>
-        <section className="atlas-map-wrap" aria-label="Map view">
+        <section
+          className={`atlas-map-wrap ${selected ? "has-selection" : ""}`}
+          aria-label="Map view"
+        >
           <MapCanvas
             query={queryString}
             locations={data?.locations || []}
+            selected={selected}
             onSelect={setSelected}
           />
           {selected && (
-            <div className="map-preview">
+            <div
+              className="map-preview"
+              role="region"
+              aria-label="Selected location preview"
+            >
               <button
                 className="preview-close icon-button"
                 onClick={() => setSelected("")}
@@ -631,12 +780,13 @@ export default function Atlas() {
             </div>
           )}
           <div className="map-legend">
-            <span />A documented place. An enduring story.
+            <span />
+            Locations & local legends
           </div>
         </section>
       </div>
       <div className="mobile-map-note">
-        Use List view for accessible location details and profiles.
+        Explore the map, or choose List for every location.
       </div>
     </main>
   );

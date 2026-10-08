@@ -1,0 +1,61 @@
+{
+  "source": "http://localhost:5174",
+  "capturedAt": "2026-10-08T03:36:34.418Z",
+  "browser": "Chromium; viewport simulation, not physical iPhone testing",
+  "checks": [
+    {
+      "name": "homepage",
+      "label": "desktop",
+      "route": "/",
+      "width": 1440,
+      "height": 1000,
+      "title": "Every place\nhas a story.\nSome never rest.",
+      "file": "/workspace/phasm-phase-1-1/docs/phase-1-1/after/homepage-desktop.png"
+    },
+    {
+      "name": "map",
+      "label": "desktop",
+      "route": "/map",
+      "width": 1440,
+      "height": 1000,
+      "title": "The Haunted Atlas.",
+      "file": "/workspace/phasm-phase-1-1/docs/phase-1-1/after/map-desktop.png"
+    },
+    {
+      "name": "stanley-hotel",
+      "label": "desktop",
+      "route": "/locations/stanley-hotel",
+      "width": 1440,
+      "height": 1000,
+      "title": "The Stanley Hotel",
+      "file": "/workspace/phasm-phase-1-1/docs/phase-1-1/after/stanley-hotel-desktop.png"
+    },
+    {
+      "name": "homepage",
+      "label": "mobile",
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "title": "Every place\nhas a story.\nSome never rest.",
+      "file": "/workspace/phasm-phase-1-1/docs/phase-1-1/after/homepage-mobile.png"
+    },
+    {
+      "name": "map",
+      "label": "mobile",
+      "route": "/map",
+      "width": 390,
+      "height": 844,
+      "title": "The Haunted Atlas.",
+      "file": "/workspace/phasm-phase-1-1/docs/phase-1-1/after/map-mobile.png"
+    },
+    {
+      "name": "stanley-hotel",
+      "label": "mobile",
+      "route": "/locations/stanley-hotel",
+      "width": 390,
+      "height": 844,
+      "title": "The Stanley Hotel",
+      "file": "/workspace/phasm-phase-1-1/docs/phase-1-1/after/stanley-hotel-mobile.png"
+    }
+  ]
+}

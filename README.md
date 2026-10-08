@@ -2,14 +2,18 @@
 
 A cinematic field guide to haunted places, documented history, and attributed folklore. Phase 1 delivers a working Haunted Atlas, reusable location profiles, and a private editorial API on React, TypeScript, Vite, Cloudflare Workers, and D1.
 
-Development branch: **`dev/phasm-phase-1`**. This is an engineering preview. No public deployment has been performed or authorized.
+Visual refinement branch: **`dev/phasm-phase-1-1`**, based on the preserved Phase 1 commit `9da8948` on `dev/phasm-phase-1`. This phase improves the cinematic identity, mobile atlas, cards, and location dossiers without changing the database, location records, editorial API, or original Cloudflare configuration.
+
+[Phase 1.1 visual review and before/after screenshots](docs/phase-1-1/README.md) · [Isolated Cloudflare preview](https://phasm-phase-1-1-preview.wj7djnw2j2.workers.dev) · [Preview deployment instructions](deploy/preview/README.md)
+
+The preview is separate from production. Its administrative and development routes are denied, public submissions remain closed, and no paid services are enabled. The [original Phase 1 preview](https://phasm-phase-1-preview.wj7djnw2j2.workers.dev) remains available for comparison.
 
 ## Run locally
 
 Use Node.js **22.13+ or 24** and npm. Tests use Node's built-in SQLite module. No Cloudflare account, map API key, or paid service is needed for local development.
 
 ```bash
-cd /workspace/phasm
+cd /workspace/phasm-phase-1-1
 npm ci
 npm run setup
 npm run dev
@@ -96,7 +100,7 @@ See [architecture](docs/ARCHITECTURE.md) for routes, storage, security boundarie
 
 [Service terms and quotas](docs/SERVICES.md) were checked against official sources on 8 October 2026. Key limits include Workers Free's 100,000 requests/day and 10 ms CPU/request, D1 Free's 5 million scanned rows/day and 500 MB per database, and OpenFreeMap's lack of an SLA. R2 is not configured; its free egress does not make storage and operations unlimited. Production CPU, query throughput, abuse limits, and sustained mobile performance remain launch work.
 
-## Before any authorized public deployment
+## Before a production launch
 
 This is a manual readiness checklist, not a record of completed provisioning:
 
