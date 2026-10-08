@@ -194,6 +194,8 @@ export function SaveButton({
     </>
   );
 }
+const PLACEHOLDER_IMAGE = "/images/archive-placeholder.svg?v=green-1";
+
 export function PlaceImage({
   location,
   className = "",
@@ -206,7 +208,11 @@ export function PlaceImage({
   return (
     <img
       className={className}
-      src={location.image || "/images/archive-placeholder.svg"}
+      src={
+        !location.image || location.image === "/images/archive-placeholder.svg"
+          ? PLACEHOLDER_IMAGE
+          : location.image
+      }
       alt={location.imageAlt || `${location.name} — photograph pending`}
       srcSet={
         location.image?.endsWith(".webp")
@@ -221,9 +227,9 @@ export function PlaceImage({
       loading={priority ? "eager" : "lazy"}
       fetchPriority={priority ? "high" : "auto"}
       onError={(e) => {
-        if (!e.currentTarget.src.endsWith("archive-placeholder.svg")) {
+        if (!e.currentTarget.src.endsWith(PLACEHOLDER_IMAGE)) {
           e.currentTarget.removeAttribute("srcset");
-          e.currentTarget.src = "/images/archive-placeholder.svg";
+          e.currentTarget.src = PLACEHOLDER_IMAGE;
         }
       }}
     />

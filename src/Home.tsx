@@ -227,7 +227,7 @@ export function Home() {
               aria-label="Open the interactive Haunted Atlas"
             >
               <img
-                src="/images/atlas-preview.webp"
+                src="/images/atlas-preview.webp?v=green-1"
                 alt="Map preview showing sourced haunted locations in North America and Europe. Open the atlas to explore all regions."
                 width="1065"
                 height="805"
