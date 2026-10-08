@@ -1,0 +1,280 @@
+[
+  {
+    "name": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "source": "http://localhost:5177",
+    "revision": "Reviewed editorial copy and neutral map thumbnail",
+    "elements": [
+      {
+        "selector": "site-header",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 80,
+          "top": 0,
+          "right": 1440,
+          "bottom": 80,
+          "left": 0
+        }
+      },
+      {
+        "selector": "home-hero",
+        "rect": {
+          "x": 0,
+          "y": 80,
+          "width": 1440,
+          "height": 751.328125,
+          "top": 80,
+          "right": 1440,
+          "bottom": 831.328125,
+          "left": 0
+        }
+      },
+      {
+        "selector": "home-hero-image",
+        "rect": {
+          "x": 720,
+          "y": 80,
+          "width": 720,
+          "height": 750.328125,
+          "top": 80,
+          "right": 1440,
+          "bottom": 830.328125,
+          "left": 720
+        }
+      },
+      {
+        "selector": "home-hero-inner",
+        "rect": {
+          "x": 0,
+          "y": 80,
+          "width": 1440,
+          "height": 691.328125,
+          "top": 80,
+          "right": 1440,
+          "bottom": 771.328125,
+          "left": 0
+        }
+      },
+      {
+        "selector": "home-hero-copy",
+        "rect": {
+          "x": 64,
+          "y": 156,
+          "width": 632,
+          "height": 533.328125,
+          "top": 156,
+          "right": 696,
+          "bottom": 689.328125,
+          "left": 64
+        }
+      },
+      {
+        "selector": "H1",
+        "rect": {
+          "x": 64,
+          "y": 201.1875,
+          "width": 632,
+          "height": 255.546875,
+          "top": 201.1875,
+          "right": 696,
+          "bottom": 456.734375,
+          "left": 64
+        }
+      },
+      {
+        "selector": "home-search",
+        "rect": {
+          "x": 64,
+          "y": 568.328125,
+          "width": 632,
+          "height": 62,
+          "top": 568.328125,
+          "right": 696,
+          "bottom": 630.328125,
+          "left": 64
+        }
+      },
+      {
+        "selector": "home-atlas-link",
+        "rect": {
+          "x": 64,
+          "y": 645.328125,
+          "width": 238,
+          "height": 44,
+          "top": 645.328125,
+          "right": 302,
+          "bottom": 689.328125,
+          "left": 64
+        }
+      },
+      {
+        "selector": "section home-featured",
+        "rect": {
+          "x": 40,
+          "y": 831.328125,
+          "width": 1360,
+          "height": 872.171875,
+          "top": 831.328125,
+          "right": 1400,
+          "bottom": 1703.5,
+          "left": 40
+        }
+      },
+      {
+        "selector": "section home-atlas-section",
+        "rect": {
+          "x": 40,
+          "y": 1703.5,
+          "width": 1360,
+          "height": 627.65625,
+          "top": 1703.5,
+          "right": 1400,
+          "bottom": 2331.15625,
+          "left": 40
+        }
+      }
+    ]
+  },
+  {
+    "name": "mobile",
+    "width": 390,
+    "height": 844,
+    "source": "http://localhost:5177",
+    "revision": "Reviewed editorial copy and neutral map thumbnail",
+    "elements": [
+      {
+        "selector": "site-header",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72,
+          "top": 0,
+          "right": 390,
+          "bottom": 72,
+          "left": 0
+        }
+      },
+      {
+        "selector": "home-hero",
+        "rect": {
+          "x": 0,
+          "y": 72,
+          "width": 390,
+          "height": 811.71875,
+          "top": 72,
+          "right": 390,
+          "bottom": 883.71875,
+          "left": 0
+        }
+      },
+      {
+        "selector": "home-hero-image",
+        "rect": {
+          "x": 0,
+          "y": 72,
+          "width": 390,
+          "height": 170,
+          "top": 72,
+          "right": 390,
+          "bottom": 242,
+          "left": 0
+        }
+      },
+      {
+        "selector": "home-hero-inner",
+        "rect": {
+          "x": 0,
+          "y": 242,
+          "width": 390,
+          "height": 553.71875,
+          "top": 242,
+          "right": 390,
+          "bottom": 795.71875,
+          "left": 0
+        }
+      },
+      {
+        "selector": "home-hero-copy",
+        "rect": {
+          "x": 24,
+          "y": 274,
+          "width": 342,
+          "height": 497.71875,
+          "top": 274,
+          "right": 366,
+          "bottom": 771.71875,
+          "left": 24
+        }
+      },
+      {
+        "selector": "H1",
+        "rect": {
+          "x": 24,
+          "y": 317.1875,
+          "width": 342,
+          "height": 149.53125,
+          "top": 317.1875,
+          "right": 366,
+          "bottom": 466.71875,
+          "left": 24
+        }
+      },
+      {
+        "selector": "home-search",
+        "rect": {
+          "x": 24,
+          "y": 599.71875,
+          "width": 342,
+          "height": 114,
+          "top": 599.71875,
+          "right": 366,
+          "bottom": 713.71875,
+          "left": 24
+        }
+      },
+      {
+        "selector": "home-atlas-link",
+        "rect": {
+          "x": 24,
+          "y": 723.71875,
+          "width": 342,
+          "height": 48,
+          "top": 723.71875,
+          "right": 366,
+          "bottom": 771.71875,
+          "left": 24
+        }
+      },
+      {
+        "selector": "section home-featured",
+        "rect": {
+          "x": 0,
+          "y": 883.71875,
+          "width": 390,
+          "height": 1996.328125,
+          "top": 883.71875,
+          "right": 390,
+          "bottom": 2880.046875,
+          "left": 0
+        }
+      },
+      {
+        "selector": "section home-atlas-section",
+        "rect": {
+          "x": 0,
+          "y": 2880.046875,
+          "width": 390,
+          "height": 838.421875,
+          "top": 2880.046875,
+          "right": 390,
+          "bottom": 3718.46875,
+          "left": 0
+        }
+      }
+    ]
+  }
+]

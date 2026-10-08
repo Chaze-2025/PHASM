@@ -39,12 +39,15 @@
   --danger: #e6b6b8;
   --shadow: rgba(0, 4, 2, 0.38);
   --shadow-deep: rgba(0, 4, 2, 0.68);
-  --map-land: #111813;
-  --map-water: #1c251e;
+  --map-land: #0c0c0c;
+  --map-water: #1b1b1d;
+  --map-ink: #0c0c0c;
+  --map-panel: #1c1c1c;
+  --map-panel-raised: #262626;
   --map-marker: var(--antique-brass);
   --map-marker-selected: var(--warm-ivory);
-  --map-marker-ring: var(--moss-slate);
-  --map-label: #adb6a3;
+  --map-marker-ring: #353535;
+  --map-label: #adadad;
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;

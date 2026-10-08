@@ -216,7 +216,7 @@ try {
         page.getByRole("heading", { name: "The Stanley Hotel", exact: true }),
       ).toBeVisible();
       await expect(
-        page.getByRole("heading", { name: "Before the stories." }),
+        page.getByRole("heading", { name: "The History", exact: true }),
       ).toBeVisible();
       await expect(page.locator("#sources .source-list li")).not.toHaveCount(0);
       await expect(
@@ -317,7 +317,7 @@ try {
       await expect(page.locator(".maplibregl-canvas")).toBeVisible();
       await noOverflow(page);
       await expect(page.locator(".map-status")).toHaveText(
-        /places in this area|No published places/,
+        /places in this area|No places in this area yet/,
         { timeout: 60000 },
       );
       await page.screenshot({ path: `${output}/phasm-map-mobile.png` });

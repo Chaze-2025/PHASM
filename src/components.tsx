@@ -150,7 +150,7 @@ export function Footer() {
         <Link to="/about#visit">Explore responsibly</Link>
       </div>
       <p className="footer-note">
-        History documented. Mysteries kept open.
+        Haunted places. Stories that linger.
         <br />© {new Date().getFullYear()} PHASM
       </p>
     </footer>
@@ -270,7 +270,7 @@ export function LocationCard({
         <p className="card-summary">{location.summary}</p>
         {!!location.phenomena.length && (
           <p className="card-phenomenon">
-            <span>Reported</span>
+            <span>Hauntings</span>
             {location.phenomena.slice(0, 2).join(" · ")}
           </p>
         )}

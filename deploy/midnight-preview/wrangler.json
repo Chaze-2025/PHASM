@@ -16,8 +16,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "phasm-phase-1-preview-db",
-      "database_id": "30400e9a-8eb0-4605-a3a4-0db6470301d1",
+      "database_name": "phasm-editorial-preview-db",
+      "database_id": "fe55176f-43e7-4b79-82c2-02884e4161a0",
       "migrations_dir": "../../migrations"
     }
   ],

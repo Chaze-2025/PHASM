@@ -24,8 +24,8 @@ import {
 } from "./components";
 
 const dossierSections = [
-  ["history", "History"],
   ["reports", "Hauntings"],
+  ["history", "History"],
   ["gallery", "Photographs"],
   ["experiences", "Experiences"],
   ["sources", "Sources"],
@@ -63,7 +63,7 @@ export function Profile() {
   const p = data?.location;
   useEffect(() => {
     if (p) {
-      document.title = `${p.name} — History & Visiting Guide | PHASM`;
+      document.title = `${p.name} — Hauntings, History & Visiting Guide | PHASM`;
       const meta = document.querySelector('meta[name="description"]');
       meta?.setAttribute("content", p.summary);
     }
@@ -87,6 +87,11 @@ export function Profile() {
     );
 
   const geography = [p.city, p.state, p.country].filter(Boolean).join(", ");
+  const hasPhotograph = Boolean(
+    p.image &&
+    !p.image.includes("archive-placeholder.svg") &&
+    p.imageLicense !== "PHASM original illustration",
+  );
   return (
     <main id="main" className="profile profile-page">
       <nav className="breadcrumb section" aria-label="Breadcrumb">
@@ -117,7 +122,7 @@ export function Profile() {
         </div>
         <a className="profile-photo-link" href="#gallery">
           <Camera size={15} aria-hidden="true" />
-          Photograph & credit
+          {hasPhotograph ? "Photograph & credit" : "Illustration & credit"}
         </a>
       </section>
 
@@ -126,7 +131,7 @@ export function Profile() {
           <MapPin size={17} aria-hidden="true" />
           {p.coordinatePrecision === "approximate"
             ? "Approximate location"
-            : "Geographic location documented"}
+            : "On the Haunted Atlas"}
         </p>
         <SaveButton slug={p.slug} label />
       </div>
@@ -145,24 +150,20 @@ export function Profile() {
 
       <div className="profile-layout section">
         <article className="profile-article">
-          <div className="dossier-introduction">
-            <Eyebrow>At the threshold of history & haunting</Eyebrow>
+          <section
+            id="story"
+            className="dossier-introduction"
+            aria-labelledby="story-title"
+          >
+            <h2 id="story-title" className="eyebrow">
+              <span aria-hidden="true" />
+              The Story
+            </h2>
             <p className="profile-intro">{p.summary}</p>
-            <p className="dossier-reading-note">
-              The history is documented. The haunting stories remain an open
-              question.
-            </p>
             <nav
               className="dossier-reading-key"
-              aria-label="Explore this record"
+              aria-label="Explore this story"
             >
-              <a href="#history">
-                <BookOpen size={19} strokeWidth={1.25} aria-hidden="true" />
-                <span>
-                  <small>The historical record</small>Documented history
-                </span>
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
               <a href="#reports">
                 <AudioLines size={20} strokeWidth={1.25} aria-hidden="true" />
                 <span>
@@ -170,31 +171,28 @@ export function Profile() {
                 </span>
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
+              <a href="#history">
+                <BookOpen size={19} strokeWidth={1.25} aria-hidden="true" />
+                <span>
+                  <small>The people & the place</small>Documented history
+                </span>
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
             </nav>
-          </div>
-
-          <section id="history" className="dossier-section dossier-history">
-            <DossierHeading
-              number="01"
-              label="Documented history"
-              title="Before the stories."
-            />
-            <p>{p.history}</p>
-            <a className="dossier-source-link" href="#sources">
-              Explore the sources <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
           </section>
 
           <section id="reports" className="dossier-section dossier-reports">
             <DossierHeading
-              number="02"
-              label="Reported hauntings"
-              title="The unexplained."
+              number="01"
+              label="Stories of the unexplained"
+              title="The Hauntings"
             />
             <p className="dossier-report-narrative">{p.reports}</p>
             {!!p.phenomena.length && (
               <div className="dossier-phenomena">
-                <span className="dossier-small-label">Reported phenomena</span>
+                <span className="dossier-small-label">
+                  Explore these phenomena
+                </span>
                 <div className="tag-list">
                   {p.phenomena.map((tag) => (
                     <Link
@@ -213,14 +211,18 @@ export function Profile() {
                 </div>
               </div>
             )}
-            <p className="editorial-note">
-              <ShieldCheck size={20} aria-hidden="true" />
-              <span>
-                <strong>Accounts, not evidence.</strong>
-                These accounts are folklore or reported experiences. They are
-                not verified evidence of paranormal activity.
-              </span>
-            </p>
+          </section>
+
+          <section id="history" className="dossier-section dossier-history">
+            <DossierHeading
+              number="02"
+              label="The people & the place"
+              title="The History"
+            />
+            <p>{p.history}</p>
+            <a className="dossier-source-link" href="#sources">
+              Explore the sources <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
           </section>
 
           <section id="gallery" className="dossier-section dossier-gallery">
@@ -233,14 +235,14 @@ export function Profile() {
               <div className="gallery-photograph-mount">
                 <PlaceImage location={p} className="profile-image" />
                 <span className="gallery-plate-label">
-                  {p.image ? "Location photograph" : "Photograph pending"}
+                  {hasPhotograph ? "Location photograph" : "Photograph pending"}
                 </span>
               </div>
               <figcaption>
                 <span className="gallery-description">
                   {p.imageAlt || `${p.name} — photograph pending`}
                 </span>
-                {p.image && (
+                {hasPhotograph && (
                   <span className="gallery-treatment">
                     Contemporary location photography · original colors.
                   </span>
@@ -280,18 +282,18 @@ export function Profile() {
           >
             <DossierHeading
               number="04"
-              label="Community field notes"
-              title="Every experience belongs."
+              label="A place for your story"
+              title="Visitor Experiences"
             />
             <div className="empty-experiences">
               <BookOpen size={27} strokeWidth={1.2} aria-hidden="true" />
               <div>
                 <span className="dossier-small-label">A future chapter</span>
-                <h3>The stories yet to be shared.</h3>
+                <h3>Have you experienced something here?</h3>
                 <p>
-                  Community experiences are planned. Whether you encounter
-                  something unusual or simply enjoy the visit, your perspective
-                  will be welcome.
+                  This future chapter will bring together stories from the PHASM
+                  community. An unexpected encounter, a lingering feeling, or a
+                  quiet visit—your experience will be welcome.
                 </p>
                 <span className="experience-status">
                   <span aria-hidden="true" />
@@ -299,17 +301,12 @@ export function Profile() {
                 </span>
               </div>
             </div>
-            <p className="subtle small">
-              Reviews will describe the visitor experience, never measure
-              paranormal activity. Authentication and moderation will be in
-              place before submissions open.
-            </p>
           </section>
 
           <section id="sources" className="dossier-section dossier-sources">
             <DossierHeading
               number="05"
-              label="Follow the evidence"
+              label="Trace the story"
               title="Sources & further reading."
             />
             <ol className="source-list">
@@ -350,7 +347,7 @@ export function Profile() {
             </span>
             <Map size={23} strokeWidth={1.1} aria-hidden="true" />
           </div>
-          <h2 id="visit-title">Step into the story.</h2>
+          <h2 id="visit-title">Plan Your Visit</h2>
           <p className="visit-card-location">
             {p.city}
             {p.state ? `, ${p.state}` : `, ${p.country}`}

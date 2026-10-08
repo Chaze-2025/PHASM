@@ -23,7 +23,10 @@ function SavedEntry({ slug }: { slug: string }) {
   ) : error ? (
     <div className="empty-state">
       <h3>Place unavailable</h3>
-      <p>This saved profile may have been withdrawn from publication.</p>
+      <p>
+        We can’t open this saved place right now. Try again later or explore
+        another mystery.
+      </p>
       <button className="button secondary" onClick={() => toggle(slug)}>
         Remove from saved
       </button>
@@ -45,8 +48,7 @@ export function Saved() {
       />
       <p className="storage-note">
         <Bookmark size={16} />
-        Device-local collection · No account required · Not synced between
-        devices
+        Saved in this browser · No account required · Not synced between devices
       </p>
       {saved.length ? (
         <>
@@ -95,23 +97,23 @@ export function Saved() {
 const definitions = [
   [
     "Apparitions",
-    "Reported visual experiences interpreted as a person, figure, or presence. The interpretation is a claim; ordinary explanations and the reliability of the account should also be considered.",
+    "A figure in an empty doorway. A familiar face glimpsed for a moment. Apparition stories describe spirits taking visible form, from fleeting outlines to figures that seem as solid as anyone else in the room.",
   ],
   [
     "Unexplained sounds",
-    "Accounts of footsteps, voices, or other sounds without an identified source. Describing a sound as unexplained does not establish a supernatural cause.",
+    "Footsteps along a deserted passage, a voice from an empty room, music heard after everyone has gone. Unexplained sounds are among the most enduring threads in haunted-place lore.",
   ],
   [
     "Objects moving",
-    "Reports of objects changing position or moving unexpectedly, sometimes described as poltergeist activity. These accounts require context and independent corroboration.",
+    "Doors opening on their own, belongings found somewhere unexpected, or an object shifting in plain sight. Stories of restless objects are often woven into poltergeist lore and tales of mischievous spirits.",
   ],
   [
     "Unusual sensations",
-    "Personal impressions such as a sensed presence, sudden unease, or changes in temperature. These are subjective experiences, not measurements of paranormal activity.",
+    "The feeling of being watched. A sudden chill. The sense that someone has just entered an empty room. Some encounters are remembered for what a visitor felt, even when nothing was seen or heard.",
   ],
   [
     "Lights and shadows",
-    "Reports of unusual lights or shadows. Environmental conditions, reflections, and camera artifacts can affect what people observe.",
+    "A light drifting across a dark landscape or a shadow passing at the edge of sight. Such glimpses run through ghost stories, from wandering lights outdoors to shadowy figures in quiet interiors.",
   ],
 ];
 export function Editorial({
@@ -126,16 +128,16 @@ export function Editorial({
           <PageHeading
             eyebrow="The case archive"
             title="Look a little deeper."
-            description="A home for careful investigations, historical timelines, and the sources behind the stories."
+            description="Step further into the hauntings: the people, the encounters, and the histories that connect them."
           />
           <div className="empty-state">
             <BookOpen size={42} strokeWidth={1} />
             <span className="pill">In preparation</span>
-            <h2>Good cases take time.</h2>
+            <h2>More mysteries are taking shape.</h2>
             <p>
-              Our first case files are still being researched. For now, explore
-              the documented history and attributed reports in each location
-              profile.
+              Our first case files are still being researched. Until they’re
+              ready, follow the ghost stories and histories in our location
+              profiles, beginning with The Stanley Hotel.
             </p>
             <Link to="/locations/stanley-hotel" className="button brass">
               Explore The Stanley Hotel <ArrowUpRight size={16} />
@@ -146,16 +148,16 @@ export function Editorial({
         <>
           <PageHeading
             eyebrow="Your place in PHASM"
-            title="A community, thoughtfully built."
-            description="Accounts and community contributions are planned for a later phase."
+            title="Every visit has a story."
+            description="A future home for your encounters, memories, and conversations about the unexplained. Accounts and community sharing are not open yet."
           />
           <div className="account-panel">
             <ShieldCheck size={32} />
-            <h2>Trust comes first.</h2>
+            <h2>A place for your experience.</h2>
             <p>
-              Secure sign-in, submission moderation, privacy controls, and media
-              permissions must be ready before community sharing opens. There is
-              no public registration yet.
+              An unexpected encounter or a wonderfully quiet night: both belong
+              here. We’re preparing a welcoming space to share, with moderation
+              and privacy protections in place before contributions open.
             </p>
             <p>
               You can already save places to a private collection in this
@@ -172,7 +174,7 @@ export function Editorial({
           <PageHeading
             eyebrow="The phenomena index"
             title="A language for the unexplained."
-            description="A concise guide to how PHASM labels reported experiences. These are descriptive categories, not scientific findings."
+            description="Meet the apparitions, strange sounds, and fleeting sensations that weave their way through ghost stories. Follow a thread to the places where it lingers."
           />
           <div className="definitions">
             {definitions.map(([title, copy]) => (
@@ -193,35 +195,37 @@ export function Editorial({
         <>
           <PageHeading
             eyebrow="The PHASM approach"
-            title="Curiosity, with a little care."
-            description="A guide to remarkable places, the histories we can document, and the stories people continue to tell."
+            title="There is more to the story."
+            description="PHASM is for everyone drawn to haunted places, local legends, and the feeling that a place holds something more."
           />
           <div className="prose">
             <section>
-              <h2>History and folklore deserve different labels.</h2>
+              <h2>Follow a haunting to its roots.</h2>
               <p>
-                Documented history is grounded in the sources linked on each
-                profile. Reported paranormal activity is presented as an
-                attributed account or local tradition. A story’s longevity does
-                not establish that a supernatural event occurred.
+                Behind every haunted place are people, memories, and stories
+                passed from one visitor to the next. We bring its history and
+                ghost lore together, name the storytellers where we can, and
+                link to the sources so you can follow your curiosity further.
               </p>
             </section>
             <section>
               <h2>Three ways a place joins the atlas.</h2>
               <h3>Established location</h3>
               <p>
-                A recognized paranormal destination with independently
-                documented geographic identity.
+                A recognized haunted destination whose location and identity are
+                documented in independent sources.
               </p>
               <h3>Local legend</h3>
               <p>
-                A place connected to regional folklore or oral tradition. A
-                professional paranormal investigation is not required.
+                A place kept alive in regional folklore or oral tradition, from
+                a quiet country road to a familiar building with a story few
+                outsiders know.
               </p>
               <h3>Community discovery</h3>
               <p>
-                A visitor-proposed location that awaits or has passed editorial
-                review. Public suggestions are not open yet.
+                A place brought to PHASM by a visitor and reviewed by our
+                editors before joining the atlas. Public suggestions are not
+                open yet.
               </p>
             </section>
             <section id="visit">
@@ -235,17 +239,18 @@ export function Editorial({
               </p>
             </section>
             <section>
-              <h2>A growing, sourced archive.</h2>
+              <h2>A world of stories to discover.</h2>
               <p>
-                This foundation release contains a small researched collection.
-                The initial public-launch goal is at least 50 verified profiles.
-                Missing photographs use clearly labeled editorial placeholders;
-                no reviews, ratings, or eyewitness accounts have been invented.
+                The atlas begins with a small, researched collection of haunted
+                places. Each profile brings together its history, haunting
+                traditions, and practical visiting information. Photographs have
+                source credits, and places awaiting photography use clearly
+                labeled illustrations.
               </p>
               <p>
-                Community reviews, case files, curated trails, and synced
-                collections are planned. They will appear as complete features
-                only when they are ready.
+                Community stories, case files, haunted trails, and collections
+                that travel between devices are planned. For now, explore the
+                atlas and save the places that call to you in this browser.
               </p>
             </section>
             <Link to="/map" className="button brass">

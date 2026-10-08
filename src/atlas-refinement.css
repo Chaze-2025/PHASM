@@ -310,7 +310,7 @@
   top: 18px;
   left: 18px;
   padding: 12px 14px;
-  background: var(--panel);
+  background: var(--map-panel);
   border-color: var(--border);
   border-radius: 5px;
   color: var(--ivory);
@@ -324,7 +324,7 @@
   background: var(--accent);
 }
 .atlas-page .map-warning {
-  background: var(--panel2);
+  background: var(--map-panel-raised);
   color: var(--ivory);
 }
 .atlas-page .map-reset {
@@ -335,7 +335,7 @@
   display: grid;
   place-items: center;
   padding: 0;
-  background: var(--panel);
+  background: var(--map-panel);
   color: var(--ivory);
   border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
   border-radius: 5px;
@@ -346,7 +346,7 @@
   left: 18px;
   gap: 9px;
   padding: 9px 12px;
-  background: var(--panel);
+  background: var(--map-panel);
   color: var(--ivory);
   border: 1px solid var(--border);
   font-size: 0.73rem;
@@ -360,7 +360,7 @@
   display: none;
 }
 .atlas-page .maplibregl-ctrl-group {
-  background: var(--panel);
+  background: var(--map-panel);
   border: 1px solid var(--border);
   border-radius: 5px;
   box-shadow: 0 4px 20px #0005;
@@ -374,7 +374,7 @@
   border-color: var(--border);
 }
 .atlas-page .maplibregl-ctrl-group button:hover {
-  background: var(--panel2);
+  background: var(--map-panel-raised);
 }
 .atlas-page .maplibregl-ctrl-group .maplibregl-ctrl-icon,
 .atlas-page .maplibregl-ctrl-attrib-button {
@@ -384,7 +384,7 @@
   margin: 78px 18px 0 0;
 }
 .atlas-page .maplibregl-ctrl-attrib {
-  background: var(--bg) !important;
+  background: var(--map-ink) !important;
   color: var(--ivory) !important;
   font-size: 11px !important;
 }
@@ -397,8 +397,8 @@
 }
 .atlas-page .maplibregl-ctrl-scale {
   margin-bottom: 9px;
-  color: var(--bg);
-  border-color: var(--bg);
+  color: var(--map-ink);
+  border-color: var(--map-ink);
   background: var(--accent) !important;
 }
 .atlas-page .map-preview {
@@ -410,7 +410,7 @@
   grid-template-columns: 114px minmax(0, 1fr);
   border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
   border-radius: 7px;
-  background: var(--panel);
+  background: var(--map-panel);
   box-shadow: 0 16px 60px #0009;
   animation: atlas-panel-in 220ms ease-out both;
 }

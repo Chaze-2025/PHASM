@@ -138,7 +138,7 @@ export function Home() {
         <div className="home-hero-footer">
           <span>
             <Compass size={16} strokeWidth={1.4} aria-hidden="true" /> Real
-            places. Unanswered questions.
+            places. Stories that linger.
           </span>
           <span className="home-photo-credit">
             <a
@@ -206,7 +206,7 @@ export function Home() {
             </h2>
             <p>
               Find them on the map. Explore haunted landmarks and local legends
-              by place, reported phenomena, or the way you want to visit.
+              by region, haunting, or the way you want to visit.
             </p>
             <Link to="/map" className="button home-spectral-button">
               <Map size={18} aria-hidden="true" /> Open the Haunted Atlas{" "}
@@ -214,7 +214,7 @@ export function Home() {
             </Link>
             <div className="home-atlas-counts">
               <span>
-                <strong>{data?.total ?? "—"}</strong> sourced places
+                <strong>{data?.total ?? "—"}</strong> places to discover
               </span>
               <span>
                 <strong>{facets?.regions.length ?? "—"}</strong> regions to
@@ -229,8 +229,8 @@ export function Home() {
               aria-label="Open the interactive Haunted Atlas"
             >
               <img
-                src="/images/atlas-preview.webp?v=green-1"
-                alt="Map preview showing sourced haunted locations in North America and Europe. Open the atlas to explore all regions."
+                src="/images/atlas-preview.webp?v=charcoal-1"
+                alt="Map preview showing haunted locations in North America and Europe. Open the atlas to explore all regions."
                 width="1065"
                 height="805"
                 loading="lazy"
@@ -324,15 +324,15 @@ export function Home() {
               <em>saw ghosts.</em>
             </h2>
             <p>
-              A face in the shadows. A second figure where no one stood. Early
-              spirit photography gave the unseen a place in the picture—and left
-              a remarkable record of belief, performance and photographic
-              illusion.
+              A seated figure. A pale companion fading into the frame. Early
+              spirit photography brought the Victorian fascination with the
+              spirit world into the portrait studio. These uncanny images still
+              hold something of that longing to glimpse the other side.
             </p>
             <p className="home-archive-context">
-              This is a historical staged spirit photograph, presented as a
-              cultural artifact. It is not verified evidence of a ghost and is
-              not connected to any location in the atlas.
+              This staged historical spirit photograph uses a superimposed
+              figure. From Getty’s collection, it offers a window into
+              spiritualist culture; it does not depict an atlas location.
             </p>
             <a
               href={spiritPhotograph.contextSource.url}
@@ -361,10 +361,9 @@ export function Home() {
                   </span>
                   <h3>Some stories still linger.</h3>
                   <p>
-                    At The Stanley Hotel, its Room 217 story describes
-                    belongings tidied by a lingering presence. The hotel
-                    attributes the tale to former housekeeper Elizabeth Wilson;
-                    the claim remains unverified.
+                    According to The Stanley Hotel’s Room 217 lore, former
+                    housekeeper Elizabeth Wilson still tends to her guests,
+                    tidying belongings long after her working days have ended.
                   </p>
                   <Link to={`/locations/${stanley.slug}`} className="text-link">
                     Read the Stanley dossier{" "}
@@ -404,7 +403,7 @@ export function Home() {
               <ArrowRight size={17} aria-hidden="true" />
             </Link>
             <span className="home-lore-footnote">
-              Regional folklore, with its history kept in view.
+              Follow the stories passed down close to home.
             </span>
           </div>
         </section>
@@ -415,7 +414,7 @@ export function Home() {
           <div className="home-section-heading">
             <div>
               <Eyebrow>Keep exploring</Eyebrow>
-              <h2 id="recent-title">Recently catalogued.</h2>
+              <h2 id="recent-title">New to the atlas.</h2>
             </div>
             <Link to="/map" className="text-link">
               Browse the collection <ArrowRight size={17} aria-hidden="true" />
@@ -510,7 +509,8 @@ export function Home() {
           <span className="home-planned-label">Planned</span>
           <h3>Paranormal case files</h3>
           <p>
-            Historical accounts, source materials and the questions that remain.
+            Haunting accounts, forgotten histories, and the stories behind the
+            mystery.
           </p>
           <Link to="/cases" className="text-link">
             About the case files <ArrowRight size={17} aria-hidden="true" />
@@ -533,11 +533,11 @@ export function Home() {
       <section className="home-approach" aria-labelledby="approach-title">
         <div className="section home-approach-inner">
           <div>
-            <Eyebrow>Curiosity, with care</Eyebrow>
+            <Eyebrow>For the curious</Eyebrow>
             <h2 id="approach-title">
-              History documented.
+              Follow the story.
               <br />
-              <em>Mystery kept open.</em>
+              <em>Feel the mystery.</em>
             </h2>
             <Link to="/about" className="text-link">
               The PHASM approach <ArrowRight size={17} aria-hidden="true" />
@@ -547,8 +547,9 @@ export function Home() {
             <p>
               <BookOpen size={21} strokeWidth={1.3} aria-hidden="true" />
               <span>
-                <strong>Know the history.</strong>Documented facts and
-                attributed paranormal reports, clearly distinguished.
+                <strong>Get to know the place.</strong>Meet the people, discover
+                the history, and explore the hauntings that keep its story
+                alive.
               </span>
             </p>
             <p>

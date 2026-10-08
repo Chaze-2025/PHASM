@@ -1,0 +1,66 @@
+{
+  "browser": "WebKit 27.2",
+  "baseURL": "http://localhost:5177",
+  "viewport": "390\u00d7844 mobile touch emulation; not physical iPhone/Safari",
+  "results": [
+    {
+      "name": "Home content, clear images, mobile width and navigation",
+      "passed": true,
+      "detail": {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    },
+    {
+      "name": "Home search routes to live Stanley atlas result",
+      "passed": true,
+      "detail": {
+        "url": "http://localhost:5177/map?q=Stanley",
+        "width": 390,
+        "scrollWidth": 390
+      }
+    },
+    {
+      "name": "Map canvas, charcoal palette, visible controls and live geography",
+      "passed": true,
+      "detail": {
+        "palette": {
+          "land": "#0c0c0c",
+          "water": "#1b1b1d",
+          "labels": "#adadad"
+        },
+        "width": 390,
+        "scrollWidth": 390,
+        "basemapReadiness": "3 places in this area",
+        "networkStatus": "200 responses for style, tiles and glyphs",
+        "visualInspection": "Charcoal geography, silver country labels and location cluster rendered; see map.png",
+        "waitStrategy": "Waited for live area-count status after initial 6.5-second screenshot was still loading"
+      }
+    },
+    {
+      "name": "Stanley profile shows Hauntings then History and submissions closed",
+      "passed": true,
+      "detail": {
+        "nav": [
+          "01Hauntings",
+          "02History",
+          "03Photographs",
+          "04Experiences",
+          "05Sources",
+          "06Visiting"
+        ],
+        "headings": [
+          "The Hauntings",
+          "The History"
+        ],
+        "width": 390,
+        "scrollWidth": 390
+      }
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

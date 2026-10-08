@@ -458,7 +458,7 @@ async function profileHtml(
   const { location } = profile;
   const canonical = `${siteUrl(env)}/locations/${location.slug}`;
   const image = new URL(location.image, siteUrl(env)).href;
-  const title = `${location.name} — Haunted places in ${location.city || location.country} | PHASM`;
+  const title = `${location.name} — Hauntings, History & Visiting Guide | PHASM`;
   const description = location.summary.slice(0, 200);
   const structured = JSON.stringify({
     "@context": "https://schema.org",
@@ -485,7 +485,40 @@ async function profileHtml(
     ...(location.officialUrl ? { sameAs: location.officialUrl } : {}),
   }).replace(/</g, "\\u003c");
   const head = `<link rel="canonical" href="${escapeHtml(canonical)}"><meta name="description" content="${escapeHtml(description)}"><meta property="og:type" content="place"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${escapeHtml(canonical)}"><meta property="og:image" content="${escapeHtml(image)}"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">${structured}</script>`;
-  const article = `<main class="server-profile"><a href="/">PHASM</a><article><h1>${escapeHtml(location.name)}</h1><p>${escapeHtml([location.city, location.state, location.country].filter(Boolean).join(", "))}</p><p>${escapeHtml(location.category)} · ${escapeHtml(location.classification)}</p><figure><img src="${escapeHtml(location.image)}" alt="${escapeHtml(location.imageAlt)}" width="1200" height="675"><figcaption>${escapeHtml(location.imageCredit)} · ${location.imageLicense === "CC BY-SA 4.0" ? '<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener noreferrer">CC BY-SA 4.0</a>' : escapeHtml(location.imageLicense)}${location.imageSource ? ` · <a href="${escapeHtml(location.imageSource)}" rel="noopener noreferrer">Image source</a>` : ""}</figcaption></figure><p>${escapeHtml(location.summary)}</p><h2>Historical overview</h2><p>${escapeHtml(location.history)}</p><h2>Reported paranormal activity</h2><p>Reported experiences and local traditions are not verified supernatural evidence.</p><p>${escapeHtml(location.reports)}</p><h2>Visiting information</h2><p>${escapeHtml(location.accessNotes)}</p>${location.officialUrl ? `<p><a href="${escapeHtml(location.officialUrl)}" rel="noopener noreferrer">Official visiting website</a></p>` : ""}<h2>Sources</h2><ul>${location.sources.map((source) => `<li><a href="${escapeHtml(source.url)}" rel="noopener noreferrer">${escapeHtml(source.title)}</a> (${source.kind})</li>`).join("")}</ul><h2>Community experiences</h2><p>Community submissions are planned. No visitor reviews have been collected.</p></article><a href="/map">Explore the atlas</a></main>`;
+  const article = `<main class="server-profile">
+    <a href="/">PHASM</a>
+    <article>
+      <h1>${escapeHtml(location.name)}</h1>
+      <p>${escapeHtml([location.city, location.state, location.country].filter(Boolean).join(", "))}</p>
+      <p>${escapeHtml(location.category)} · ${escapeHtml(location.classification)}</p>
+      <section id="story"><h2>The Story</h2><p>${escapeHtml(location.summary)}</p></section>
+      <section id="reports"><h2>The Hauntings</h2><p>${escapeHtml(location.reports)}</p></section>
+      <section id="history"><h2>The History</h2><p>${escapeHtml(location.history)}</p></section>
+      <section id="gallery">
+        <h2>A sense of place.</h2>
+        <figure>
+          <img src="${escapeHtml(location.image)}" alt="${escapeHtml(location.imageAlt)}" width="1200" height="675">
+          <figcaption>${escapeHtml(location.imageCredit)} · ${location.imageLicense === "CC BY-SA 4.0" ? '<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener noreferrer">CC BY-SA 4.0</a>' : escapeHtml(location.imageLicense)}${location.imageSource ? ` · <a href="${escapeHtml(location.imageSource)}" rel="noopener noreferrer">Image source</a>` : ""}</figcaption>
+        </figure>
+      </section>
+      <section id="experiences">
+        <h2>Visitor Experiences</h2>
+        <h3>Have you experienced something here?</h3>
+        <p>This future chapter will bring together stories from the PHASM community. An unexpected encounter, a lingering feeling, or a quiet visit—your experience will be welcome.</p>
+        <p>Submissions are not open yet.</p>
+      </section>
+      <section id="sources">
+        <h2>Sources &amp; further reading.</h2>
+        <ul>${location.sources.map((source) => `<li><a href="${escapeHtml(source.url)}" rel="noopener noreferrer">${escapeHtml(source.title)}</a> (${source.kind})</li>`).join("")}</ul>
+      </section>
+      <section id="visit">
+        <h2>Plan Your Visit</h2>
+        <p>${escapeHtml(location.accessNotes)}</p>
+        ${location.officialUrl ? `<p><a href="${escapeHtml(location.officialUrl)}" rel="noopener noreferrer">Official visitor information</a></p>` : ""}
+      </section>
+    </article>
+    <a href="/map">Explore the atlas</a>
+  </main>`;
   // A dynamic profile must not reuse the static template's conditional
   // request headers or ETag; normalize its content type before rewriting.
   const htmlSource = new Response(await asset.text(), {

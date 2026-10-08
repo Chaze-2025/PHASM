@@ -1,0 +1,163 @@
+{
+  "baseURL": "http://localhost:5177",
+  "testedAt": "2026-10-08T07:12:50.660Z",
+  "baseline": "8ffeb28",
+  "results": [
+    {
+      "name": "All ten locations retain identity, geography, taxonomy, visiting access, media and source provenance",
+      "passed": true,
+      "detail": {
+        "locations": 10,
+        "editedNarrativeFields": 30,
+        "verifiedLinkRepairs": [
+          [
+            "https://www.stanleyhotel.com/tours.html",
+            "https://www.stanleyhotel.com/tours/"
+          ],
+          [
+            "https://www.bran-castle.com/en/dracula/",
+            "https://bran-castle.com/pages/count-dracula"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Archival caption edits preserve original provenance, rights and integrity metadata",
+      "passed": true,
+      "detail": {
+        "photographs": 2,
+        "changedFields": [
+          "caption"
+        ],
+        "preserved": "All remaining metadata, license and source fields"
+      }
+    },
+    {
+      "name": "Published API exposes the same ten records",
+      "passed": true,
+      "detail": {
+        "total": 10
+      }
+    },
+    {
+      "name": "The Stanley Hotel: current API, complete no-JavaScript profile and closed experiences",
+      "passed": true,
+      "detail": {
+        "sourceCount": 5,
+        "historyLength": 485,
+        "hauntingsLength": 480,
+        "structuredType": "Place",
+        "javascript": false
+      }
+    },
+    {
+      "name": "Eastern State Penitentiary: current API, complete no-JavaScript profile and closed experiences",
+      "passed": true,
+      "detail": {
+        "sourceCount": 3,
+        "historyLength": 502,
+        "hauntingsLength": 465,
+        "structuredType": "Place",
+        "javascript": false
+      }
+    },
+    {
+      "name": "Edinburgh Castle: current API, complete no-JavaScript profile and closed experiences",
+      "passed": true,
+      "detail": {
+        "sourceCount": 3,
+        "historyLength": 427,
+        "hauntingsLength": 465,
+        "structuredType": "Place",
+        "javascript": false
+      }
+    },
+    {
+      "name": "Winchester Mystery House: current API, complete no-JavaScript profile and closed experiences",
+      "passed": true,
+      "detail": {
+        "sourceCount": 2,
+        "historyLength": 401,
+        "hauntingsLength": 466,
+        "structuredType": "Place",
+        "javascript": false
+      }
+    },
+    {
+      "name": "The Queen Mary: current API, complete no-JavaScript profile and closed experiences",
+      "passed": true,
+      "detail": {
+        "sourceCount": 3,
+        "historyLength": 379,
+        "hauntingsLength": 382,
+        "structuredType": "Place",
+        "javascript": false
+      }
+    },
+    {
+      "name": "The Real Mary King’s Close: current API, complete no-JavaScript profile and closed experiences",
+      "passed": true,
+      "detail": {
+        "sourceCount": 3,
+        "historyLength": 398,
+        "hauntingsLength": 397,
+        "structuredType": "Place",
+        "javascript": false
+      }
+    },
+    {
+      "name": "Port Arthur Historic Site: current API, complete no-JavaScript profile and closed experiences",
+      "passed": true,
+      "detail": {
+        "sourceCount": 4,
+        "historyLength": 414,
+        "hauntingsLength": 418,
+        "structuredType": "Place",
+        "javascript": false
+      }
+    },
+    {
+      "name": "Old Melbourne Gaol: current API, complete no-JavaScript profile and closed experiences",
+      "passed": true,
+      "detail": {
+        "sourceCount": 3,
+        "historyLength": 417,
+        "hauntingsLength": 380,
+        "structuredType": "Place",
+        "javascript": false
+      }
+    },
+    {
+      "name": "Bran Castle: current API, complete no-JavaScript profile and closed experiences",
+      "passed": true,
+      "detail": {
+        "sourceCount": 3,
+        "historyLength": 379,
+        "hauntingsLength": 462,
+        "structuredType": "Place",
+        "javascript": false
+      }
+    },
+    {
+      "name": "Pendle Hill: current API, complete no-JavaScript profile and closed experiences",
+      "passed": true,
+      "detail": {
+        "sourceCount": 3,
+        "historyLength": 365,
+        "hauntingsLength": 423,
+        "structuredType": "Place",
+        "javascript": false
+      }
+    },
+    {
+      "name": "Submission, review, suggestion and upload endpoints remain closed",
+      "passed": true,
+      "detail": {
+        "reviews": 403,
+        "submissions": 403,
+        "suggestions": 403,
+        "uploads": 403
+      }
+    }
+  ]
+}

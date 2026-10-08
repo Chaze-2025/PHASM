@@ -219,9 +219,11 @@ try {
         await expect(
           page.locator('.dossier-reading-key a[href="#reports"]'),
         ).toContainText("Reported hauntings");
-        await expect(page.locator("#reports .editorial-note")).toContainText(
-          "not verified evidence of paranormal activity",
-        );
+        await expect(page.locator("#reports h2")).toHaveText("The Hauntings");
+        await expect(page.locator("#history h2")).toHaveText("The History");
+        await expect(
+          page.locator("#reports .dossier-report-narrative"),
+        ).not.toBeEmpty();
         await expect(page.locator(".gallery-treatment")).toContainText(
           "Contemporary location photography",
         );
@@ -332,13 +334,13 @@ try {
       await navigationPage.goto(baseURL, { waitUntil: "networkidle" });
       await expect(
         navigationPage.locator(".home-archive-context"),
-      ).toContainText("historical staged spirit photograph");
+      ).toContainText("staged historical spirit photograph");
       await expect(
         navigationPage.locator(".home-archive-context"),
-      ).toContainText("not verified evidence");
+      ).toContainText("superimposed figure");
       await expect(
         navigationPage.locator(".home-archive-context"),
-      ).toContainText("not connected to any location");
+      ).toContainText("does not depict an atlas location");
       await expect(
         navigationPage.locator(".home-archive-photograph figcaption"),
       ).toContainText("William H. Mumler");
@@ -358,7 +360,7 @@ try {
           .last(),
       ).toBeVisible();
       await expect(navigationPage.locator(".home-story-excerpt")).toContainText(
-        "unverified",
+        "According to The Stanley Hotel’s Room 217 lore",
       );
       await expect(
         navigationPage.locator(".home-reading-item .home-planned-label"),

@@ -1,0 +1,267 @@
+{
+  "testedAt": "2026-10-08T07:10:17.192Z",
+  "baseURL": "http://localhost:5177",
+  "emulation": "Chromium touch emulation, not a physical iPhone",
+  "results": [
+    {
+      "name": "375px homepage, navigation, form size and motion",
+      "passed": true
+    },
+    {
+      "name": "375px atlas, filters, map/list and touch targets",
+      "passed": true
+    },
+    {
+      "name": "375px Stanley profile reading width, jump navigation and imagery",
+      "passed": true
+    },
+    {
+      "name": "390px homepage, navigation, form size and motion",
+      "passed": true
+    },
+    {
+      "name": "390px atlas, filters, map/list and touch targets",
+      "passed": true
+    },
+    {
+      "name": "390px Stanley profile reading width, jump navigation and imagery",
+      "passed": true
+    },
+    {
+      "name": "mobile map touch-emulated WCAG scan",
+      "passed": true
+    },
+    {
+      "name": "mobile profile touch-emulated WCAG scan",
+      "passed": true
+    },
+    {
+      "name": "Touch marker preview stays within viewport; map drag does not scroll page",
+      "passed": true
+    },
+    {
+      "name": "430px homepage, navigation, form size and motion",
+      "passed": true
+    },
+    {
+      "name": "430px atlas, filters, map/list and touch targets",
+      "passed": true
+    },
+    {
+      "name": "430px Stanley profile reading width, jump navigation and imagery",
+      "passed": true
+    },
+    {
+      "name": "Archival photographs carry provenance, load completely and distinguish staged imagery from location reports",
+      "passed": true
+    },
+    {
+      "name": "Mobile menu focuses links and contains forward/backward keyboard focus",
+      "passed": true
+    },
+    {
+      "name": "Mobile menu Escape and landscape resize restore page scrolling",
+      "passed": true
+    },
+    {
+      "name": "375×667 short phone keeps selected preview and zoom controls visible",
+      "passed": true
+    },
+    {
+      "name": "Supporting navigation pages fit a 375px mobile screen",
+      "passed": true
+    },
+    {
+      "name": "No uncaught errors in supplemental mobile review",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "a11yResults": [
+    {
+      "label": "mobile map",
+      "violations": []
+    },
+    {
+      "label": "mobile profile",
+      "violations": []
+    }
+  ],
+  "measurements": [
+    {
+      "name": "Saved places",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Open navigation",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Find haunted places",
+      "width": 315,
+      "height": 48
+    },
+    {
+      "name": "Explore the Haunted Atlas",
+      "width": 327,
+      "height": 48
+    },
+    {
+      "name": "Search atlas",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Filters",
+      "width": 98,
+      "height": 48
+    },
+    {
+      "name": "Map view",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "List view",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Zoom in",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Zoom out",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Reset map to world view",
+      "width": 46,
+      "height": 46
+    },
+    {
+      "name": "Saved places",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Open navigation",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Find haunted places",
+      "width": 330,
+      "height": 48
+    },
+    {
+      "name": "Explore the Haunted Atlas",
+      "width": 342,
+      "height": 48
+    },
+    {
+      "name": "Search atlas",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Filters",
+      "width": 98,
+      "height": 48
+    },
+    {
+      "name": "Map view",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "List view",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Zoom in",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Zoom out",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Reset map to world view",
+      "width": 46,
+      "height": 46
+    },
+    {
+      "name": "Close location preview",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Explore this place",
+      "width": 234,
+      "height": 44
+    },
+    {
+      "name": "Saved places",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Open navigation",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Find haunted places",
+      "width": 370,
+      "height": 48
+    },
+    {
+      "name": "Explore the Haunted Atlas",
+      "width": 382,
+      "height": 48
+    },
+    {
+      "name": "Search atlas",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Filters",
+      "width": 98,
+      "height": 48
+    },
+    {
+      "name": "Map view",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "List view",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Zoom in",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Zoom out",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Reset map to world view",
+      "width": 46,
+      "height": 46
+    }
+  ]
+}

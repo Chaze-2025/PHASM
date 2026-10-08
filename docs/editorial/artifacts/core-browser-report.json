@@ -1,0 +1,659 @@
+{
+  "testedAt": "2026-10-08T07:10:15.787Z",
+  "baseURL": "http://localhost:5177",
+  "results": [
+    {
+      "name": "Desktop homepage, live cards, images and keyboard skip link",
+      "passed": true
+    },
+    {
+      "name": "Homepage location search navigates and filters real records",
+      "passed": true
+    },
+    {
+      "name": "MapLibre real external style and vector tiles load",
+      "passed": true
+    },
+    {
+      "name": "Region, category, tours and empty search filters work",
+      "passed": true
+    },
+    {
+      "name": "List view, Stanley profile, sources and device-local saves",
+      "passed": true
+    },
+    {
+      "name": "Map marker preview, zoom and map-to-profile navigation",
+      "passed": true
+    },
+    {
+      "name": "Admin stays locked without a configured valid credential",
+      "passed": true
+    },
+    {
+      "name": "Mobile 390px home, navigation, map, list and profile fit viewport",
+      "passed": true
+    },
+    {
+      "name": "desktop home automated WCAG A/AA scan",
+      "passed": true
+    },
+    {
+      "name": "desktop map automated WCAG A/AA scan",
+      "passed": true
+    },
+    {
+      "name": "desktop list automated WCAG A/AA scan",
+      "passed": true
+    },
+    {
+      "name": "desktop profile automated WCAG A/AA scan",
+      "passed": true
+    },
+    {
+      "name": "admin login automated WCAG A/AA scan",
+      "passed": true
+    },
+    {
+      "name": "mobile home automated WCAG A/AA scan",
+      "passed": true
+    },
+    {
+      "name": "mobile profile automated WCAG A/AA scan",
+      "passed": true
+    },
+    {
+      "name": "No uncaught application errors",
+      "passed": true
+    }
+  ],
+  "mapResponses": [
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/styles/dark"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.json"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/1/1.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4608-4863.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/2304-2559.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/1024-1279.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4096-4351.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/65024-65279.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/3584-3839.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/1280-1535.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/5888-6143.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/3328-3583.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/2816-3071.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/8192-8447.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/11520-11775.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/0/1.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/0/0.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/1/0.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/768-1023.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4864-5119.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/0-255.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/64256-64511.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/4/8/5.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/4/7/5.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/4/9/5.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/4/7/4.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/4/9/4.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/4/8/4.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/256-511.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/512-767.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/1536-1791.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/7168-7423.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/styles/dark"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.json"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/0/0.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/1/0.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/0/1.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/1/1.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/0-255.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/65024-65279.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/1024-1279.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/2304-2559.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/1280-1535.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4608-4863.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/3584-3839.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4096-4351.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/5888-6143.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/768-1023.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/11520-11775.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/3328-3583.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/8192-8447.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/2816-3071.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/64256-64511.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4864-5119.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/11/424/771.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/11/423/772.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/11/424/773.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/11/422/772.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/11/423/771.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/11/422/773.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/11/423/773.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/11/424/772.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/11/422/771.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/styles/dark"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.json"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/0/0.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/1/0.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/0/1.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/0-255.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/65024-65279.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/1024-1279.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/2304-2559.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/1280-1535.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4608-4863.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/3584-3839.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4096-4351.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/5888-6143.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/768-1023.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/11520-11775.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/3328-3583.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/8192-8447.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/2816-3071.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/64256-64511.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4864-5119.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/1/1.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/styles/dark"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.json"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/0/0.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/1/0.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/0/1.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/1/1.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/0-255.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/65024-65279.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/1024-1279.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/2304-2559.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/1280-1535.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4608-4863.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/3584-3839.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4096-4351.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/5888-6143.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/768-1023.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/11520-11775.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/3328-3583.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/8192-8447.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/2816-3071.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/64256-64511.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4864-5119.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/styles/dark"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.json"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/0/0.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/1/0.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/0/1.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/planet/20261004_113936_pt/1/1/1.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/0-255.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/65024-65279.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/1024-1279.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/2304-2559.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/1280-1535.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4608-4863.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/3584-3839.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4096-4351.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/5888-6143.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/768-1023.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/11520-11775.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/3328-3583.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/8192-8447.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/2816-3071.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/64256-64511.pbf"
+    },
+    {
+      "status": 200,
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/4864-5119.pbf"
+    }
+  ],
+  "errors": [],
+  "a11yResults": [
+    {
+      "label": "desktop home",
+      "violations": []
+    },
+    {
+      "label": "desktop map",
+      "violations": []
+    },
+    {
+      "label": "desktop list",
+      "violations": []
+    },
+    {
+      "label": "desktop profile",
+      "violations": []
+    },
+    {
+      "label": "admin login",
+      "violations": []
+    },
+    {
+      "label": "mobile home",
+      "violations": []
+    },
+    {
+      "label": "mobile profile",
+      "violations": []
+    }
+  ]
+}

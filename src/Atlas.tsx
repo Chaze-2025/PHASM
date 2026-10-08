@@ -34,20 +34,20 @@ const STYLE_URL =
   "https://tiles.openfreemap.org/styles/dark";
 
 // WebGL paint cannot resolve CSS variables. Read the shared design tokens once
-// when the map loads, so the cartography follows the surrounding interface.
+// when the map loads. Cartography stays neutral charcoal; brass marks the places.
 function mapPalette() {
   const styles = getComputedStyle(document.documentElement);
   const token = (name: string, fallback: string) =>
     styles.getPropertyValue(name).trim() || fallback;
   return {
-    land: token("--map-land", "#111813"),
-    water: token("--map-water", "#1C251E"),
-    label: token("--map-label", "#ADB6A3"),
+    land: token("--map-land", "#0C0C0C"),
+    water: token("--map-water", "#1B1B1D"),
+    label: token("--map-label", "#ADADAD"),
     marker: token("--map-marker", "#C2AD7C"),
     selected: token("--map-marker-selected", "#ECE9DF"),
-    ring: token("--map-marker-ring", "#354238"),
-    midnight: token("--bg", "#111513"),
-    panel: token("--panel", "#191E1B"),
+    ring: token("--map-marker-ring", "#353535"),
+    midnight: token("--map-ink", "#0C0C0C"),
+    panel: token("--map-panel", "#1C1C1C"),
   };
 }
 function MapCanvas({
@@ -107,7 +107,7 @@ function MapCanvas({
       setStatus(
         data.total
           ? `${data.total} ${data.total === 1 ? "place" : "places"} in this area`
-          : "No published places in this area",
+          : "No places in this area yet",
       );
     } catch (e) {
       if ((e as Error).name !== "AbortError")
@@ -148,9 +148,8 @@ function MapCanvas({
         setReady(true);
         setFailed(false);
         const colors = mapPalette();
-        // Tint base geography without changing roads, terrain or label placement.
-        // The dark provider style has dim gray lettering: sage lettering and dark
-        // halos retain legibility against the charcoal-green surface.
+        // Keep the provider’s charcoal geography and road detail intact. Neutral
+        // silver labels and dark halos remain readable at every map scale.
         if (m.getLayer("background")?.type === "background")
           m.setPaintProperty("background", "background-color", colors.land);
         if (m.getLayer("water")?.type === "fill")
@@ -629,7 +628,7 @@ export default function Atlas() {
               },
               {
                 key: "classification",
-                label: "Editorial classification",
+                label: "Location type",
                 options: [
                   ["established", "Established location"],
                   ["local-legend", "Local legend"],
@@ -709,7 +708,7 @@ export default function Atlas() {
               <Search size={30} />
               <h2>A quieter corner of the atlas.</h2>
               <p>
-                No published places match these filters. Try a broader search.
+                No haunted places match these filters. Try a broader search.
               </p>
               <button
                 className="button secondary"
@@ -762,8 +761,8 @@ export default function Atlas() {
             </div>
           )}
           <p className="map-editorial-note">
-            Map markers identify places, not evidence of paranormal activity.
-            Search covers the published archive.
+            Follow the markers to haunted places, local legends, and their
+            stories.
           </p>
         </section>
         <section

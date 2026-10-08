@@ -110,7 +110,10 @@ async function screenshot(page, name) {
 async function unchangedLayout(page, name) {
   const baselines = JSON.parse(
     await readFile(
-      new URL("../docs/fog/artifacts/baseline-layout.json", import.meta.url),
+      new URL(
+        "../docs/editorial/artifacts/layout-baseline.json",
+        import.meta.url,
+      ),
       "utf8",
     ),
   );

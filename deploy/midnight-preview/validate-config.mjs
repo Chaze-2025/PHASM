@@ -51,13 +51,13 @@ export function validateConfig() {
     JSON.stringify([
       {
         binding: "DB",
-        database_name: "phasm-phase-1-preview-db",
-        database_id: "30400e9a-8eb0-4605-a3a4-0db6470301d1",
+        database_name: "phasm-editorial-preview-db",
+        database_id: "fe55176f-43e7-4b79-82c2-02884e4161a0",
         migrations_dir: "../../migrations",
       },
     ])
   )
-    fail("Only the existing separate preview database may be used.");
+    fail("Only the isolated editorial preview database may be used.");
   if (
     JSON.stringify(config.vars) !==
     JSON.stringify({
@@ -77,6 +77,6 @@ export function validateConfig() {
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   validateConfig();
   console.log(
-    "Validated: isolated Phase 1.3 Worker; existing preview D1; no extra services or secrets.",
+    "Validated: isolated Phase 1.3 Worker; isolated editorial preview D1; no extra services or secrets.",
   );
 }
