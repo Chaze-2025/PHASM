@@ -1,0 +1,3 @@
+# Copy to .dev.vars for LOCAL editorial access only, then choose a random 32+ character value.
+# Never use the example value or commit .dev.vars.
+# ADMIN_TOKEN=

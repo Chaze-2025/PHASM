@@ -1,0 +1,498 @@
+[
+  {
+    "id": "stanley-hotel",
+    "slug": "stanley-hotel",
+    "name": "The Stanley Hotel",
+    "city": "Estes Park",
+    "state": "Colorado",
+    "country": "United States",
+    "region": "North America",
+    "latitude": 40.38288,
+    "longitude": -105.51921,
+    "category": "Hotel",
+    "classification": "established",
+    "summary": "A grand Rocky Mountain hotel where literary history meets a century of spirited stories.",
+    "history": "Opened in 1909, The Stanley Hotel was developed by inventor Freelan Oscar Stanley and his wife, Flora, as a mountain resort in Estes Park. Its electric lighting, telephones and en suite bathrooms brought modern comforts to the growing town. The hotel district is listed on the National Register of Historic Places. A later stay by Stephen King helped inspire his novel The Shining; the fictional Overlook Hotel should not be confused with the documented history of this property.",
+    "reports": "The hotel’s own “Spirited Rooms” material recounts unexplained sounds and a sense of lingering presence. Its Room 217 story attributes tidied belongings to the spirit of former housekeeper Elizabeth Wilson. These are stories promoted by the hotel and attributed to guests, not independently verified evidence of supernatural activity. No PHASM eyewitness accounts have been collected.",
+    "phenomena": [
+      "Unexplained sounds",
+      "Objects moving",
+      "Unusual sensations"
+    ],
+    "access": "public",
+    "tours": "yes",
+    "accessNotes": "An operating hotel, with guided tours available to day visitors and guests. Book through the official site and check current age, mobility and photography rules. Guest rooms are private; a tour ticket does not grant access to them.",
+    "officialUrl": "https://www.stanleyhotel.com/",
+    "sources": [
+      {
+        "title": "The Stanley Hotel — history",
+        "url": "https://www.stanleyhotel.com/about/history/",
+        "kind": "history"
+      },
+      {
+        "title": "National Park Service — Stanley Hotel District nomination",
+        "url": "https://npgallery.nps.gov/GetAsset/9ece3884-d4ea-4e3e-910d-432413ca2245/",
+        "kind": "history"
+      },
+      {
+        "title": "The Stanley Hotel — spirited rooms",
+        "url": "https://www.stanleyhotel.com/our-properties/spirited/",
+        "kind": "reports"
+      },
+      {
+        "title": "The Stanley Hotel — Room 217 story",
+        "url": "https://www.stanleyhotel.com/our-properties/the-stanley/",
+        "kind": "reports"
+      },
+      {
+        "title": "The Stanley Hotel — tours and visitor rules",
+        "url": "https://www.stanleyhotel.com/tours.html",
+        "kind": "visiting"
+      }
+    ],
+    "image": "/images/stanley-hotel.webp",
+    "imageAlt": "The Stanley Hotel’s white façade and red roof beneath a Colorado sky.",
+    "imageCredit": "Ontherocks108 / Wikimedia Commons. Resized and converted to WebP.",
+    "imageLicense": "CC BY-SA 4.0",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Stanley_Hotel_front.jpg",
+    "status": "published",
+    "coordinatePrecision": "exact",
+    "featured": true,
+    "updatedAt": "2026-10-08T00:00:00Z"
+  },
+  {
+    "id": "eastern-state-penitentiary",
+    "slug": "eastern-state-penitentiary",
+    "name": "Eastern State Penitentiary",
+    "city": "Philadelphia",
+    "state": "Pennsylvania",
+    "country": "United States",
+    "region": "North America",
+    "latitude": 39.9683,
+    "longitude": -75.1725,
+    "category": "Prison",
+    "classification": "established",
+    "summary": "An imposing Philadelphia prison, preserved as a place to examine history, justice and enduring ghost stories.",
+    "history": "Eastern State admitted its first prisoner in 1829. Architect John Haviland designed its cellblocks around a central hub for the Pennsylvania System of isolation with labor. That system was formally abandoned in 1913. State prison operations ended in 1970, followed by brief use as a city jail in 1971. The historic site opened for public hard-hat tours in 1994 and now interprets incarceration and criminal justice.",
+    "reports": "A 2013 NPR report, republished by KPBS, describes visitors’ claims of shadowy figures, footsteps and voices. In the same report, a site guide explicitly says that Eastern State does not claim the prison is haunted. These accounts belong to its popular reputation; they do not establish a supernatural cause. Seasonal theatrical attractions are entertainment, separate from historical interpretation.",
+    "phenomena": [
+      "Apparitions",
+      "Unexplained sounds",
+      "Lights and shadows"
+    ],
+    "access": "public",
+    "tours": "yes",
+    "accessNotes": "Ticketed historic-site access and interpretation are offered by the operator. Check official opening times, accessibility and event conditions. Remain within visitor areas; do not assume that paranormal investigations or after-hours entry are permitted.",
+    "officialUrl": "https://www.easternstate.org/",
+    "sources": [
+      {
+        "title": "Eastern State — history of the penitentiary",
+        "url": "https://www.easternstate.org/research/history-eastern-state",
+        "kind": "history"
+      },
+      {
+        "title": "KPBS / NPR — Is Eastern State Penitentiary Really Haunted?",
+        "url": "https://www.kpbs.org/news/2013/10/24/is-eastern-state-penitentiary-really-haunted",
+        "kind": "reports"
+      },
+      {
+        "title": "Eastern State — official visitor information",
+        "url": "https://www.easternstate.org/",
+        "kind": "visiting"
+      }
+    ],
+    "image": "/images/eastern-state-penitentiary.webp",
+    "imageAlt": "A vaulted cellblock gallery inside Eastern State Penitentiary.",
+    "imageCredit": "Gangway Ghost / Wikimedia Commons. Resized and converted to WebP.",
+    "imageLicense": "CC BY-SA 4.0",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Eastern_state_penitentiary_cellblock_gallery.jpg",
+    "status": "published",
+    "coordinatePrecision": "exact",
+    "featured": true,
+    "updatedAt": "2026-10-08T00:00:00Z"
+  },
+  {
+    "id": "edinburgh-castle",
+    "slug": "edinburgh-castle",
+    "name": "Edinburgh Castle",
+    "city": "Edinburgh",
+    "state": "Scotland",
+    "country": "United Kingdom",
+    "region": "Europe",
+    "latitude": 55.948611,
+    "longitude": -3.200833,
+    "category": "Castle",
+    "classification": "established",
+    "summary": "High above the Old Town, a royal fortress with centuries of history and tales of phantom music.",
+    "history": "Edinburgh Castle stands on Castle Rock, a volcanic outcrop occupied long before the surviving fortress. The castle served as a royal residence, military stronghold and prison. St Margaret’s Chapel, built in the 12th century, is Edinburgh’s oldest building. Parts of the site remain in military use, while Historic Environment Scotland manages its visitor experience.",
+    "reports": "Historic Environment Scotland’s “Haunted Homes of History (Allegedly)” retells traditions of a phantom piper, a headless drummer and a wandering ghost dog. These are folklore associated with the castle, presented by the heritage organization as alleged hauntings. Their retelling is not confirmation that these figures existed or were encountered.",
+    "phenomena": [
+      "Apparitions",
+      "Unexplained sounds"
+    ],
+    "access": "public",
+    "tours": "yes",
+    "accessNotes": "Ticketed public visitor areas are open subject to the operator’s schedule. Parts of the castle remain in military use. Check access guidance and available guided or audio tours before visiting.",
+    "officialUrl": "https://www.edinburghcastle.scot/",
+    "sources": [
+      {
+        "title": "Edinburgh Castle — history",
+        "url": "https://www.edinburghcastle.scot/the-castle/history/",
+        "kind": "history"
+      },
+      {
+        "title": "Historic Environment Scotland — Haunted Homes of History (Allegedly)",
+        "url": "https://blog.historicenvironment.scot/2017/10/haunted-homes-history-allegedly/",
+        "kind": "reports"
+      },
+      {
+        "title": "Edinburgh Castle — plan your visit",
+        "url": "https://www.edinburghcastle.scot/",
+        "kind": "visiting"
+      }
+    ],
+    "image": "/images/edinburgh-castle.webp",
+    "imageAlt": "A monochrome photograph of Edinburgh Castle rising above the rock.",
+    "imageCredit": "VegasGav7777 / Wikimedia Commons. Resized and converted to WebP.",
+    "imageLicense": "CC BY-SA 4.0",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Edinburgh_Castle_ByVegasGav7777.jpg",
+    "status": "published",
+    "coordinatePrecision": "exact",
+    "featured": true,
+    "updatedAt": "2026-10-08T00:00:00Z"
+  },
+  {
+    "id": "winchester-mystery-house",
+    "slug": "winchester-mystery-house",
+    "name": "Winchester Mystery House",
+    "city": "San Jose",
+    "state": "California",
+    "country": "United States",
+    "region": "North America",
+    "latitude": 37.318361,
+    "longitude": -121.950761,
+    "category": "Historic house",
+    "classification": "established",
+    "summary": "Sarah Winchester’s intricate Victorian mansion, where unusual architecture has inspired generations of speculation.",
+    "history": "Sarah Winchester, heir to the Winchester Repeating Arms fortune, developed this San Jose mansion over decades beginning in 1886 and continuing until her death in 1922. Its complex plan and elaborate craftsmanship now form a preserved visitor attraction. The building’s documented alterations should be distinguished from later explanations that attribute its design to spirits.",
+    "reports": "The house’s operator presents paranormal stories as part of its visitor experience and describes its basements as areas of reported activity. The reviewed official material does not establish a supernatural explanation for the architecture or provide independently verified evidence. Specific phenomenon tags are left unassigned pending a more detailed source review.",
+    "phenomena": [],
+    "access": "public",
+    "tours": "yes",
+    "accessNotes": "Entry to the mansion is by an official ticketed experience. Tour routes, add-ons and age restrictions can change; check the operator before booking. Do not enter roped-off or staff-only areas.",
+    "officialUrl": "https://winchestermysteryhouse.com/",
+    "sources": [
+      {
+        "title": "Winchester Mystery House — history and official tours",
+        "url": "https://winchestermysteryhouse.com/",
+        "kind": "history"
+      },
+      {
+        "title": "Winchester Mystery House — reported activity and visitor experiences",
+        "url": "https://winchestermysteryhouse.com/",
+        "kind": "reports"
+      }
+    ],
+    "image": "/images/winchester-mystery-house.webp",
+    "imageAlt": "The Victorian façade and gardens of Winchester Mystery House in San Jose.",
+    "imageCredit": "The wub / Wikimedia Commons. Resized and converted to WebP.",
+    "imageLicense": "CC BY-SA 4.0",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Winchester_Mystery_House_2023-07-17_02.jpg",
+    "status": "published",
+    "coordinatePrecision": "exact",
+    "featured": true,
+    "updatedAt": "2026-10-08T00:00:00Z"
+  },
+  {
+    "id": "queen-mary",
+    "slug": "queen-mary",
+    "name": "The Queen Mary",
+    "city": "Long Beach",
+    "state": "California",
+    "country": "United States",
+    "region": "North America",
+    "latitude": 33.753056,
+    "longitude": -118.189722,
+    "category": "Hotel",
+    "classification": "established",
+    "summary": "A retired ocean liner at Long Beach, with maritime heritage and a well-known tradition of shipboard ghost tales.",
+    "history": "RMS Queen Mary entered transatlantic service in 1936. During the Second World War, the liner served as a troopship before returning to passenger service. Retired in 1967, it is permanently moored at Long Beach and operates as a hotel and visitor attraction. Its documented maritime history is distinct from the supernatural stories later associated with it.",
+    "reports": "The operator’s paranormal attraction pages retell stories of former passengers and a child spirit called Jackie, associated in the lore with a swimming pool. These are attraction narratives and alleged hauntings. PHASM does not treat the existence, identity or circumstances of any supposed spirit as established historical fact.",
+    "phenomena": [
+      "Apparitions",
+      "Unexplained sounds"
+    ],
+    "access": "public",
+    "tours": "yes",
+    "accessNotes": "The ship is an operating hotel and ticketed attraction. Use official visitor and tour information for current routes and availability. Hotel rooms and maintenance areas are private, and individual tour offerings may change.",
+    "officialUrl": "https://www.queenmary.com/",
+    "sources": [
+      {
+        "title": "RMS Queen Mary — referenced historical overview",
+        "url": "https://en.wikipedia.org/wiki/RMS_Queen_Mary",
+        "kind": "history"
+      },
+      {
+        "title": "The Queen Mary — paranormal attractions and folklore",
+        "url": "https://www.queenmary.com/paranormal-attractions.htm",
+        "kind": "reports"
+      },
+      {
+        "title": "The Queen Mary — official visitor information",
+        "url": "https://www.queenmary.com/",
+        "kind": "visiting"
+      }
+    ],
+    "image": "/images/archive-placeholder.svg",
+    "imageAlt": "Architectural archive illustration; location photograph pending.",
+    "imageCredit": "Editorial placeholder — photograph pending",
+    "imageLicense": "PHASM original illustration",
+    "imageSource": "",
+    "status": "published",
+    "coordinatePrecision": "exact",
+    "featured": false,
+    "updatedAt": "2026-10-08T00:00:00Z"
+  },
+  {
+    "id": "mary-kings-close",
+    "slug": "mary-kings-close",
+    "name": "The Real Mary King’s Close",
+    "city": "Edinburgh",
+    "state": "Scotland",
+    "country": "United Kingdom",
+    "region": "Europe",
+    "latitude": 55.950278,
+    "longitude": -3.190278,
+    "category": "Other",
+    "classification": "established",
+    "summary": "Preserved streets beneath Edinburgh’s Royal Mile, where the lives of former residents meet a modern ghost legend.",
+    "history": "Mary King’s Close preserves historic streets and rooms beneath Edinburgh’s Royal Mile. The operator identifies Mary King as a prominent fabric trader living in the area in the 1630s. The close is a distinct historic site, separate from the city’s South Bridge and Blair Street vaults. Guided interpretation focuses on the people who lived and worked here.",
+    "reports": "The attraction retells a story in which Japanese psychic Aiko Gibo claimed contact with a child spirit called Annie. Dolls left in Annie’s Room have become part of that tradition. This is an attributed psychic claim and visitor custom, not verified evidence of a child’s presence or a documented biography.",
+    "phenomena": [],
+    "access": "public",
+    "tours": "yes",
+    "accessNotes": "Access is through the official guided visitor experience. The site includes stairs and confined historic spaces; check the operator’s accessibility and age guidance before booking.",
+    "officialUrl": "https://www.realmarykingsclose.com/",
+    "sources": [
+      {
+        "title": "The Real Mary King’s Close — about the close",
+        "url": "https://www.realmarykingsclose.com/plan-your-visit/faqs/about-the-close/",
+        "kind": "history"
+      },
+      {
+        "title": "The Real Mary King’s Close — Annie’s Room and visitor experience",
+        "url": "https://www.realmarykingsclose.com/experience/",
+        "kind": "reports"
+      },
+      {
+        "title": "The Real Mary King’s Close — official visitor information",
+        "url": "https://www.realmarykingsclose.com/",
+        "kind": "visiting"
+      }
+    ],
+    "image": "/images/archive-placeholder.svg",
+    "imageAlt": "Architectural archive illustration; location photograph pending.",
+    "imageCredit": "Editorial placeholder — photograph pending",
+    "imageLicense": "PHASM original illustration",
+    "imageSource": "",
+    "status": "published",
+    "coordinatePrecision": "exact",
+    "featured": false,
+    "updatedAt": "2026-10-08T00:00:00Z"
+  },
+  {
+    "id": "port-arthur",
+    "slug": "port-arthur",
+    "name": "Port Arthur Historic Site",
+    "city": "Port Arthur",
+    "state": "Tasmania",
+    "country": "Australia",
+    "region": "Oceania",
+    "latitude": -43.15,
+    "longitude": 147.85,
+    "category": "Prison",
+    "classification": "established",
+    "summary": "A Tasmanian convict settlement where preserved ruins, difficult histories and long-told ghost stories share the landscape.",
+    "history": "Port Arthur began as a timber station in 1830 and grew into a substantial penal settlement. Industries included shipbuilding, brickmaking and timber work. The last convicts left in 1877, and tourism later became part of the site’s story. Today Port Arthur is included in the Australian Convict Sites World Heritage Property and is conserved as a historic place.",
+    "reports": "The site’s official ghost tour recounts stories of unexplained events associated with convicts, settlers, soldiers and visitors. The operator dates the local ghost-story tradition to at least 1870. These narratives are part of the site’s folklore; PHASM has not independently verified the experiences or a supernatural cause. Specific phenomenon tags await further review.",
+    "phenomena": [],
+    "access": "public",
+    "tours": "yes",
+    "accessNotes": "Ticketed public access, history experiences and guided evening ghost tours are offered. Book through the official site and review mobility, weather and age guidance. The pin marks the historic-site area, not a guaranteed entrance or walking route.",
+    "officialUrl": "https://portarthur.org.au/",
+    "sources": [
+      {
+        "title": "Port Arthur — site history",
+        "url": "https://portarthur.org.au/history/",
+        "kind": "history"
+      },
+      {
+        "title": "Port Arthur — history timeline",
+        "url": "https://portarthur.org.au/history/history-timeline/",
+        "kind": "history"
+      },
+      {
+        "title": "Port Arthur — ghost tour and attributed stories",
+        "url": "https://portarthur.org.au/ghost-tour/",
+        "kind": "reports"
+      },
+      {
+        "title": "Port Arthur — official visitor information",
+        "url": "https://portarthur.org.au/",
+        "kind": "visiting"
+      }
+    ],
+    "image": "/images/archive-placeholder.svg",
+    "imageAlt": "Architectural archive illustration; location photograph pending.",
+    "imageCredit": "Editorial placeholder — photograph pending",
+    "imageLicense": "PHASM original illustration",
+    "imageSource": "",
+    "status": "published",
+    "coordinatePrecision": "approximate",
+    "featured": false,
+    "updatedAt": "2026-10-08T00:00:00Z"
+  },
+  {
+    "id": "old-melbourne-gaol",
+    "slug": "old-melbourne-gaol",
+    "name": "Old Melbourne Gaol",
+    "city": "Melbourne",
+    "state": "Victoria",
+    "country": "Australia",
+    "region": "Oceania",
+    "latitude": -37.808056,
+    "longitude": 144.965278,
+    "category": "Prison",
+    "classification": "established",
+    "summary": "A stone prison in central Melbourne, interpreting colonial justice alongside stories of unexplained encounters.",
+    "history": "The gaol’s first cellblock opened in 1845. Melbourne’s gold-rush population growth placed pressure on the prison, and later cellblocks expanded the site. Ned Kelly was executed here in 1880. The gaol closed in 1924 and was decommissioned in 1929. Its surviving buildings now form a National Trust visitor attraction exploring the people and institutions connected to the site.",
+    "reports": "The National Trust’s “Ghosts! What Ghosts?” tour describes tales of unexplained sights, sounds and encounters after dark. These are stories included in the operator’s interpretation and entertainment offerings; they should not be treated as proof of a haunting or as PHASM community testimony.",
+    "phenomena": [
+      "Unexplained sounds"
+    ],
+    "access": "public",
+    "tours": "yes",
+    "accessNotes": "Ticketed public access is available at 377 Russell Street. Night experiences require separate booking. Historic stairs and uneven surfaces can affect access; consult the official accessibility information.",
+    "officialUrl": "https://www.oldmelbournegaol.com.au/",
+    "sources": [
+      {
+        "title": "Old Melbourne Gaol — history",
+        "url": "https://www.oldmelbournegaol.com.au/history/",
+        "kind": "history"
+      },
+      {
+        "title": "Old Melbourne Gaol — Ghosts! What Ghosts?",
+        "url": "https://www.oldmelbournegaol.com.au/event/ghosts-what-ghosts-tour/",
+        "kind": "reports"
+      },
+      {
+        "title": "Old Melbourne Gaol — plan your visit",
+        "url": "https://www.oldmelbournegaol.com.au/visit-and-contact/",
+        "kind": "visiting"
+      }
+    ],
+    "image": "/images/archive-placeholder.svg",
+    "imageAlt": "Architectural archive illustration; location photograph pending.",
+    "imageCredit": "Editorial placeholder — photograph pending",
+    "imageLicense": "PHASM original illustration",
+    "imageSource": "",
+    "status": "published",
+    "coordinatePrecision": "exact",
+    "featured": false,
+    "updatedAt": "2026-10-08T00:00:00Z"
+  },
+  {
+    "id": "bran-castle",
+    "slug": "bran-castle",
+    "name": "Bran Castle",
+    "city": "Bran",
+    "state": "Brașov County",
+    "country": "Romania",
+    "region": "Europe",
+    "latitude": 45.515,
+    "longitude": 25.367222,
+    "category": "Castle",
+    "classification": "established",
+    "summary": "A Transylvanian fortress at the meeting point of royal history, regional vampire folklore and literary imagination.",
+    "history": "Bran Castle is a medieval stronghold in present-day Romania. It served defensive and customs functions before becoming a royal residence associated with Queen Marie in the 20th century. Its widely promoted link with Count Dracula belongs to tourism and literature: Bram Stoker’s vampire is a fictional character, not a historical resident of the castle.",
+    "reports": "The castle’s official Dracula material discusses regional beliefs in strigoi and explicitly asks visitors to distinguish the fictional count from Bran’s historical reality. This profile records those traditions rather than claiming a verified haunting at the building. No specific eyewitness event or phenomenon has been established for this seed profile.",
+    "phenomena": [],
+    "access": "public",
+    "tours": "yes",
+    "accessNotes": "The castle operates as a ticketed public attraction with official tour options. Check current opening hours, accessibility and ticket inclusions on the operator’s website.",
+    "officialUrl": "https://www.bran-castle.com/",
+    "sources": [
+      {
+        "title": "Encyclopaedia Britannica — Bran Castle",
+        "url": "https://www.britannica.com/topic/Bran-Castle",
+        "kind": "history"
+      },
+      {
+        "title": "Bran Castle — Dracula, fiction and regional folklore",
+        "url": "https://www.bran-castle.com/en/dracula/",
+        "kind": "reports"
+      },
+      {
+        "title": "Bran Castle — official visitor information",
+        "url": "https://www.bran-castle.com/",
+        "kind": "visiting"
+      }
+    ],
+    "image": "/images/archive-placeholder.svg",
+    "imageAlt": "Architectural archive illustration; location photograph pending.",
+    "imageCredit": "Editorial placeholder — photograph pending",
+    "imageLicense": "PHASM original illustration",
+    "imageSource": "",
+    "status": "published",
+    "coordinatePrecision": "exact",
+    "featured": false,
+    "updatedAt": "2026-10-08T00:00:00Z"
+  },
+  {
+    "id": "pendle-hill",
+    "slug": "pendle-hill",
+    "name": "Pendle Hill",
+    "city": "Barley",
+    "state": "Lancashire",
+    "country": "United Kingdom",
+    "region": "Europe",
+    "latitude": 53.869,
+    "longitude": -2.3,
+    "category": "Natural landmark",
+    "classification": "local-legend",
+    "summary": "A brooding Lancashire landmark whose surrounding villages preserve the memory and folklore of the Pendle witch trials.",
+    "history": "The Pendle landscape is closely associated with the witchcraft prosecutions of 1612. Visit Pendle’s heritage material and walking routes describe the surrounding villages and the people drawn into those trials. Accusations of witchcraft are part of the historical record of persecution; they do not establish that the accused possessed supernatural powers.",
+    "reports": "Local tradition links places around the hill with alleged meetings with the devil and the stories repeated during the trials. These are regional folklore and historical accusations, not verified paranormal events. PHASM identifies the public landscape and does not mark private homes or alleged sites on farms as places to enter.",
+    "phenomena": [],
+    "access": "public",
+    "tours": "unknown",
+    "accessNotes": "Explore designated public footpaths and official walking routes, with suitable footwear and weather preparation. Surrounding homes and farms are private. The approximate pin represents the hill area; it is not a route instruction. Guided tour availability has not been verified.",
+    "officialUrl": "https://www.visitpendle.com/witches",
+    "sources": [
+      {
+        "title": "Visit Pendle — the Pendle witches and local history",
+        "url": "https://www.visitpendle.com/witches",
+        "kind": "history"
+      },
+      {
+        "title": "Walking with Witches — local traditions and route notes",
+        "url": "https://letswalkinpendle.co.uk/wp-content/uploads/2022/02/walking_with_witches.pdf",
+        "kind": "reports"
+      },
+      {
+        "title": "Visit Pendle — Pendle Witches Walking Trail",
+        "url": "https://www.visitpendle.com/things-to-do/pendle-witches-walking-trail-p555140",
+        "kind": "visiting"
+      }
+    ],
+    "image": "/images/pendle-hill.webp",
+    "imageAlt": "Pendle Hill and the Lancashire landscape, seen from Weets Hill.",
+    "imageCredit": "Dominic Nelson / Wikimedia Commons. Resized and converted to WebP.",
+    "imageLicense": "CC BY-SA 4.0",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Pendle_Hill_-_view_from_Weets_Hill_-_Feb_2025.jpg",
+    "status": "published",
+    "coordinatePrecision": "approximate",
+    "featured": false,
+    "updatedAt": "2026-10-08T00:00:00Z"
+  }
+]
