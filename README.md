@@ -2,18 +2,18 @@
 
 A cinematic field guide to haunted places, documented history, and attributed folklore. Phase 1 delivers a working Haunted Atlas, reusable location profiles, and a private editorial API on React, TypeScript, Vite, Cloudflare Workers, and D1.
 
-Visual refinement branch: **`dev/phasm-phase-1-1`**, based on the preserved Phase 1 commit `9da8948` on `dev/phasm-phase-1`. This phase improves the cinematic identity, mobile atlas, cards, and location dossiers without changing the database, location records, editorial API, or original Cloudflare configuration.
+Current visual refinement: **`dev/phasm-phase-1-3` — Midnight Séance**, based on preserved Phase 1.1 commit `cf915ba` and Phase 1 commit `9da8948`. Cold photographic art direction, historical spirit photography with verified Getty CC0 rights, spectral cartography, and location dossiers preserve the existing database, records, APIs, editorial tools and original Cloudflare configuration.
 
-[Phase 1.1 visual review and before/after screenshots](docs/phase-1-1/README.md) · [Isolated Cloudflare preview](https://phasm-phase-1-1-preview.wj7djnw2j2.workers.dev) · [Preview deployment instructions](deploy/preview/README.md)
+[Phase 1.3 visual review](docs/phase-1-3/README.md) · [Design system](docs/phase-1-3/DESIGN-SYSTEM.md) · [Before/after screenshots](docs/phase-1-3/screenshots.md) · [Isolated Cloudflare preview](https://phasm-phase-1-3-preview.wj7djnw2j2.workers.dev) · [Preview deployment instructions](deploy/midnight-preview/README.md)
 
-The preview is separate from production. Its administrative and development routes are denied, public submissions remain closed, and no paid services are enabled. The [original Phase 1 preview](https://phasm-phase-1-preview.wj7djnw2j2.workers.dev) remains available for comparison.
+The preview is separate from production. Administrative and development routes are denied, submissions remain closed, and no paid services are enabled. Previous [Phase 1](https://phasm-phase-1-preview.wj7djnw2j2.workers.dev) and [Phase 1.1](https://phasm-phase-1-1-preview.wj7djnw2j2.workers.dev) previews remain available for comparison. See the [Phase 1.1 review](docs/phase-1-1/README.md) for earlier evidence.
 
 ## Run locally
 
 Use Node.js **22.13+ or 24** and npm. Tests use Node's built-in SQLite module. No Cloudflare account, map API key, or paid service is needed for local development.
 
 ```bash
-cd /workspace/phasm-phase-1-1
+cd /workspace/phasm-phase-1-3
 npm ci
 npm run setup
 npm run dev
@@ -25,16 +25,16 @@ Open **http://localhost:5173**. The Cloudflare Vite plugin runs the Worker API a
 
 Useful preview routes:
 
-| Route | Available behavior |
-| --- | --- |
-| `/` | Discovery homepage, destination search, featured places, region links |
-| `/map` | Interactive atlas, clustering, search, filters, previews, list view |
-| `/locations/stanley-hotel` | Sourced example profile, visiting links, image credit, related places |
-| `/saved` | Saved places in this browser only; no account or device synchronization |
-| `/encyclopedia` | Introductory descriptions of the reported-phenomenon tags |
-| `/about` | Editorial classifications and visiting principles |
-| `/cases`, `/account` | Clearly identified planned features |
-| `/admin` | Editorial access gate and authenticated location editor |
+| Route                      | Available behavior                                                      |
+| -------------------------- | ----------------------------------------------------------------------- |
+| `/`                        | Discovery homepage, destination search, featured places, region links   |
+| `/map`                     | Interactive atlas, clustering, search, filters, previews, list view     |
+| `/locations/stanley-hotel` | Sourced example profile, visiting links, image credit, related places   |
+| `/saved`                   | Saved places in this browser only; no account or device synchronization |
+| `/encyclopedia`            | Introductory descriptions of the reported-phenomenon tags               |
+| `/about`                   | Editorial classifications and visiting principles                       |
+| `/cases`, `/account`       | Clearly identified planned features                                     |
+| `/admin`                   | Editorial access gate and authenticated location editor                 |
 
 ## Editorial access
 
@@ -50,13 +50,13 @@ This intentionally refuses to overwrite an existing `.dev.vars`. If that file al
 
 The editor can add drafts and edit identity, coordinates, classification, history, reported activity, sources, image metadata, visitor information, tags, and publication status. Publishing makes the record visible immediately in the running environment. The current credential is a shared editorial secret, not a multi-user identity system. Public deployment requires stronger identity controls and the launch checks below.
 
-| Setting | Where | Purpose |
-| --- | --- | --- |
-| `ADMIN_TOKEN` | Local `.dev.vars`; production Worker secret | Privileged editorial credential; never use a `VITE_` prefix |
-| `SITE_URL` | Worker vars in `wrangler.jsonc` | Canonical origin for sitemap, profile metadata, and social images; localhost initially |
-| `DB` | D1 binding in `wrangler.jsonc` | Local/remote structured catalog database |
-| `ASSETS` | Workers Static Assets binding | Built frontend and local media |
-| `VITE_MAP_STYLE_URL` | Optional `.env` setting | Public MapLibre style URL; defaults to OpenFreeMap Dark |
+| Setting              | Where                                       | Purpose                                                                                |
+| -------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ADMIN_TOKEN`        | Local `.dev.vars`; production Worker secret | Privileged editorial credential; never use a `VITE_` prefix                            |
+| `SITE_URL`           | Worker vars in `wrangler.jsonc`             | Canonical origin for sitemap, profile metadata, and social images; localhost initially |
+| `DB`                 | D1 binding in `wrangler.jsonc`              | Local/remote structured catalog database                                               |
+| `ASSETS`             | Workers Static Assets binding               | Built frontend and local media                                                         |
+| `VITE_MAP_STYLE_URL` | Optional `.env` setting                     | Public MapLibre style URL; defaults to OpenFreeMap Dark                                |
 
 No client-side secrets are required. Never place privileged values in Vite variables, frontend source, or committed configuration.
 
@@ -88,7 +88,9 @@ npm run deploy:check
 
 `npm test` exercises validation, publication visibility, search, geographic bounds, a 5,100-record aggregation case, authorization, duplicate handling, and disabled community writes against SQLite. It does not measure Cloudflare production CPU usage or replace browser/mobile testing. `deploy:check` builds and runs **`wrangler deploy --dry-run` only**; it does not publish the site.
 
-Verified results: **8 backend tests, 16 browser checks, and 7 automated accessibility scans passed**. The production build and Cloudflare deployment dry run passed. Both runtime-only and full dependency audits reported zero known vulnerabilities on 8 October 2026. See [the QA record](docs/QA.md) for evidence and remaining manual/device coverage.
+Initial Phase 1 results: **8 backend tests, 16 browser checks, and 7 automated accessibility scans passed**. The production build and Cloudflare deployment dry run passed. Both runtime-only and full dependency audits reported zero known vulnerabilities on 8 October 2026. See [the QA record](docs/QA.md) for evidence and remaining manual/device coverage.
+
+Current refinement results and reproducible commands are in [Phase 1.3 verification](docs/phase-1-3/TEST-RESULTS.md).
 
 For browser checks, start the development server, run `npx playwright install chromium`, then `npm run test:browser`.
 

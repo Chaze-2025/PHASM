@@ -1,0 +1,82 @@
+[
+  {
+    "id": "mumler-woman",
+    "src": "/images/archival/mumler-woman.webp",
+    "width": 735,
+    "height": 1200,
+    "bytes": 52404,
+    "title": "[Unidentified woman seated with a female \"spirit\" in background]",
+    "creator": "William H. Mumler (American, 1832–1884)",
+    "date": "1869–1878",
+    "medium": "Albumen silver print",
+    "institution": "The J. Paul Getty Museum, Los Angeles",
+    "accession": "84.XD.760.1.25",
+    "sourceUrl": "https://www.getty.edu/art/collection/object/107N9F",
+    "sourceImageUrl": "https://media.getty.edu/iiif/image/9075e5b5-d321-4491-926c-70b76413b4ec/full/!1000,1400/0/default.jpg",
+    "license": "CC0 1.0 Universal",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "rightsStatement": "Images provided here are believed to be in the public domain and are available under CC0 through Getty’s Open Content Program.",
+    "rightsSourceUrl": "https://www.getty.edu/art/collection/object/107N9F",
+    "rightsPolicyUrl": "https://www.getty.edu/projects/open-content-program/",
+    "contextSource": {
+      "title": "The Man Who Photographed Ghosts",
+      "author": "Sarah Waldorf",
+      "published": "2024-10-31",
+      "url": "https://www.getty.edu/news/the-man-who-photographed-ghosts/"
+    },
+    "caption": "An unidentified sitter with a superimposed female figure. A nineteenth-century spirit photograph made by William H. Mumler; a photographic construction, not verified paranormal evidence.",
+    "alt": "Historical spirit photograph: a seated woman with a faint female figure behind her.",
+    "credit": "William H. Mumler / The J. Paul Getty Museum / CC0",
+    "editorialClassification": "historical-staged-spirit-photography",
+    "relatedLocationId": null,
+    "integrityNotes": [
+      "Authentic historical photograph of a constructed spirit effect; not proof of spirits.",
+      "No connection between the pictured people and any PHASM location is asserted.",
+      "No people, figures, scenery, or photographic damage have been added or removed.",
+      "The current collection record date is used; Getty’s 2024 editorial article gives the older broader date range 1862–1875."
+    ],
+    "processing": "Full museum scan resized proportionally to 1200px high and encoded as WebP quality 83. Original photographic borders and colors retained; any cold monochrome display treatment is CSS only.",
+    "sha256": "1f289b96a0a5683e589688239ee61bbac0f20e8510825f5c749ab5fb68c6b40b",
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "id": "mumler-three-spirits",
+    "src": "/images/archival/mumler-three-spirits.webp",
+    "width": 735,
+    "height": 1200,
+    "bytes": 59568,
+    "title": "[Unidentified man with a long beard seated with three \"spirits\"]",
+    "creator": "William H. Mumler (American, 1832–1884)",
+    "date": "1861–1878",
+    "medium": "Albumen silver print",
+    "institution": "The J. Paul Getty Museum, Los Angeles",
+    "accession": "84.XD.760.1.24",
+    "sourceUrl": "https://www.getty.edu/art/collection/object/107N9D",
+    "sourceImageUrl": "https://media.getty.edu/iiif/image/f84f12d3-af9f-4973-8d4a-15b883abcfeb/full/!1000,1400/0/default.jpg",
+    "license": "CC0 1.0 Universal",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "rightsStatement": "Images provided here are believed to be in the public domain and are available under CC0 through Getty’s Open Content Program.",
+    "rightsSourceUrl": "https://www.getty.edu/art/collection/object/107N9D",
+    "rightsPolicyUrl": "https://www.getty.edu/projects/open-content-program/",
+    "contextSource": {
+      "title": "The Man Who Photographed Ghosts",
+      "author": "Sarah Waldorf",
+      "published": "2024-10-31",
+      "url": "https://www.getty.edu/news/the-man-who-photographed-ghosts/"
+    },
+    "caption": "An unidentified bearded sitter with three faint figures. A nineteenth-century spirit photograph made by William H. Mumler; a photographic construction, not verified paranormal evidence.",
+    "alt": "Historical spirit photograph: a bearded man in a chair with three faint figures behind him.",
+    "credit": "William H. Mumler / The J. Paul Getty Museum / CC0",
+    "editorialClassification": "historical-staged-spirit-photography",
+    "relatedLocationId": null,
+    "integrityNotes": [
+      "Authentic historical photograph of a constructed spirit effect; not proof of spirits.",
+      "No connection between the pictured people and any PHASM location is asserted.",
+      "No people, figures, scenery, or photographic damage have been added or removed.",
+      "The current collection record date is used; Getty’s 2024 editorial article gives the older broader date range 1862–1875."
+    ],
+    "processing": "Full museum scan resized proportionally to 1200px high and encoded as WebP quality 83. Original photographic borders and colors retained; any cold monochrome display treatment is CSS only.",
+    "sha256": "d712fc165a8d1d033a0aa5d31d9963edbada1bb5de515077aaabaa4dff715ff2",
+    "verifiedOn": "2026-10-08"
+  }
+]

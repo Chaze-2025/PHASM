@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
 <title id="title">PHASM archive — photograph pending</title>
-<desc id="desc">An abstract architectural arch on a charcoal background. This is an illustration, not a photograph of the location.</desc>
-<defs><radialGradient id="bg"><stop stop-color="#30312d"/><stop offset="1" stop-color="#151817"/></radialGradient></defs>
+<desc id="desc">An abstract architectural arch on a midnight-blue background. This is an illustration, not a photograph of the location.</desc>
+<defs><radialGradient id="bg"><stop stop-color="#203047"/><stop offset="1" stop-color="#0b111d"/></radialGradient></defs>
 <rect width="1200" height="800" fill="url(#bg)"/>
-<g stroke="#8e8061" fill="none" opacity=".55" stroke-width="1.5"><path d="M430 565V338a170 170 0 0 1 340 0v227M465 565V338a135 135 0 0 1 270 0v227M500 565V338a100 100 0 0 1 200 0v227"/><path d="M390 565h420M405 582h390M420 599h360"/><circle cx="600" cy="355" r="27"/><path d="M600 308v94M553 355h94"/></g>
-<text x="600" y="664" text-anchor="middle" fill="#b5ab94" font-family="Georgia,serif" font-size="23" letter-spacing="5">PHASM ARCHIVE</text>
-<text x="600" y="702" text-anchor="middle" fill="#8b8e86" font-family="Arial,sans-serif" font-size="14" letter-spacing="3">PHOTOGRAPH PENDING</text>
+<g stroke="#aabbc8" fill="none" opacity=".55" stroke-width="1.5"><path d="M430 565V338a170 170 0 0 1 340 0v227M465 565V338a135 135 0 0 1 270 0v227M500 565V338a100 100 0 0 1 200 0v227"/><path d="M390 565h420M405 582h390M420 599h360"/><circle cx="600" cy="355" r="27"/><path d="M600 308v94M553 355h94"/></g>
+<text x="600" y="664" text-anchor="middle" fill="#e3e8e9" font-family="Georgia,serif" font-size="23" letter-spacing="5">PHASM ARCHIVE</text>
+<text x="600" y="702" text-anchor="middle" fill="#aabbc8" font-family="Arial,sans-serif" font-size="14" letter-spacing="3">PHOTOGRAPH PENDING</text>
 </svg>

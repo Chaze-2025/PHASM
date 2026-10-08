@@ -9,16 +9,21 @@ import {
   BookOpen,
   Map,
   ShieldCheck,
+  History,
+  Route,
 } from "lucide-react";
 import { useApi } from "./api";
+import archivalImages from "../content/archival-images.json";
 import type { Location, LocationPage } from "../shared/types";
 import { LocationCard, Eyebrow, Status, PlaceImage } from "./components";
+
+const spiritPhotograph = archivalImages[0];
 
 export function Home() {
   const navigate = useNavigate();
   const [q, setQ] = useState("");
   const { data, error, loading } = useApi<LocationPage>(
-    "/api/locations?pageSize=6",
+    "/api/locations?pageSize=10",
   );
   const { data: legends } = useApi<LocationPage>(
     "/api/locations?classification=local-legend&pageSize=1",
@@ -26,6 +31,15 @@ export function Home() {
   const { data: facets } = useApi<{ regions: string[] }>("/api/meta");
   const legend = legends?.locations[0];
   const locations = data?.locations || [];
+  const stanley = locations.find(
+    (location) => location.slug === "stanley-hotel",
+  );
+  const recent = [...locations]
+    .sort(
+      (a, b) =>
+        b.updatedAt.localeCompare(a.updatedAt) || a.name.localeCompare(b.name),
+    )
+    .slice(0, 3);
   const chosen = [
     "stanley-hotel",
     "eastern-state-penitentiary",
@@ -54,10 +68,18 @@ export function Home() {
           alt="The vaulted cellblock gallery of Eastern State Penitentiary, with empty corridors receding into the distance."
           fetchPriority="high"
         />
-        <div className="home-hero-shade" />
+        <div className="home-hero-shade" aria-hidden="true" />
+        <div className="home-hero-registration" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="35" />
+            <circle cx="50" cy="50" r="29" strokeDasharray="1 7" />
+            <path d="M50 5v23M50 72v23M5 50h23M72 50h23M39 50h22M50 39v22" />
+          </svg>
+          <span>Beyond the familiar</span>
+        </div>
         <div className="home-hero-inner">
           <div className="home-hero-copy">
-            <Eyebrow>A field guide to the unexplained</Eyebrow>
+            <Eyebrow>Ghosts. Hauntings. The unexplained.</Eyebrow>
             <h1 id="home-title">
               <span>
                 Every place
@@ -68,7 +90,7 @@ export function Home() {
             </h1>
             <p>
               Discover haunted places, uncover their histories, and explore the
-              stories that refuse to fade.
+              ghost stories that linger.
             </p>
             <form
               className="home-search"
@@ -102,7 +124,8 @@ export function Home() {
             className="hero-place-label"
           >
             <span className="hero-place-label-top">
-              <span className="place-status-dot" /> Inside the archive
+              <span className="place-status-dot" /> A place with a haunting
+              history
             </span>
             <strong>Eastern State Penitentiary</strong>
             <span>
@@ -146,7 +169,7 @@ export function Home() {
           </div>
           <div className="home-section-intro">
             <p>
-              Storied hotels. Silent cellblocks. Ancient strongholds.
+              Spirited hotels. Silent cellblocks. Ancient strongholds.
               <br className="desktop-break" /> Find your next encounter with the
               unexplained.
             </p>
@@ -184,7 +207,7 @@ export function Home() {
               Find them on the map. Explore haunted landmarks and local legends
               by place, reported phenomena, or the way you want to visit.
             </p>
-            <Link to="/map" className="button brass">
+            <Link to="/map" className="button home-spectral-button">
               <Map size={18} aria-hidden="true" /> Open the Haunted Atlas{" "}
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
@@ -249,6 +272,112 @@ export function Home() {
         </div>
       </section>
 
+      <section className="home-archive" aria-labelledby="archive-title">
+        <div className="section home-archive-inner">
+          <figure className="home-archive-photograph">
+            <div className="home-archive-mount">
+              <span className="home-archive-register" aria-hidden="true">
+                PHASM · Historical photograph
+              </span>
+              <img
+                src={spiritPhotograph.src}
+                alt={spiritPhotograph.alt}
+                width={spiritPhotograph.width}
+                height={spiritPhotograph.height}
+                loading="lazy"
+              />
+              <span className="home-archive-date">
+                {spiritPhotograph.date} · {spiritPhotograph.medium}
+              </span>
+            </div>
+            <figcaption>
+              <strong>William H. Mumler · Historical spirit photography</strong>
+              <span>
+                An unidentified sitter with a superimposed female figure.
+              </span>
+              <span>
+                <a
+                  href={spiritPhotograph.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  The J. Paul Getty Museum · Collection record
+                </a>{" "}
+                ·{" "}
+                <a
+                  href={spiritPhotograph.licenseUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  CC0
+                </a>
+              </span>
+              <span>
+                Full archival photograph · monochrome display treatment.
+              </span>
+            </figcaption>
+          </figure>
+          <div className="home-archive-copy">
+            <Eyebrow>From the spiritualist archive</Eyebrow>
+            <h2 id="archive-title">
+              When the camera
+              <br />
+              <em>saw ghosts.</em>
+            </h2>
+            <p>
+              A face in the shadows. A second figure where no one stood. Early
+              spirit photography gave the unseen a place in the picture—and left
+              a remarkable record of belief, performance and photographic
+              illusion.
+            </p>
+            <p className="home-archive-context">
+              This is a historical staged spirit photograph, presented as a
+              cultural artifact. It is not verified evidence of a ghost and is
+              not connected to any location in the atlas.
+            </p>
+            <a
+              href={spiritPhotograph.contextSource.url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link home-archive-source"
+            >
+              Read Getty’s photographic history{" "}
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+            {stanley && (
+              <article
+                className="home-story-excerpt"
+                aria-label="From the location dossiers: The Stanley Hotel"
+              >
+                <Link
+                  to={`/locations/${stanley.slug}`}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                >
+                  <PlaceImage location={stanley} />
+                </Link>
+                <div>
+                  <span className="home-story-kicker">
+                    From the location dossiers · Colorado
+                  </span>
+                  <h3>Some stories still linger.</h3>
+                  <p>
+                    At The Stanley Hotel, its Room 217 story describes
+                    belongings tidied by a lingering presence. The hotel
+                    attributes the tale to former housekeeper Elizabeth Wilson;
+                    the claim remains unverified.
+                  </p>
+                  <Link to={`/locations/${stanley.slug}`} className="text-link">
+                    Read the Stanley dossier{" "}
+                    <ArrowRight size={17} aria-hidden="true" />
+                  </Link>
+                </div>
+              </article>
+            )}
+          </div>
+        </div>
+      </section>
+
       {legend && (
         <section className="section home-lore" aria-labelledby="lore-title">
           <Link
@@ -278,6 +407,41 @@ export function Home() {
             <span className="home-lore-footnote">
               Regional folklore, with its history kept in view.
             </span>
+          </div>
+        </section>
+      )}
+
+      {recent.length > 0 && (
+        <section className="section home-recent" aria-labelledby="recent-title">
+          <div className="home-section-heading">
+            <div>
+              <Eyebrow>Keep exploring</Eyebrow>
+              <h2 id="recent-title">Recently catalogued.</h2>
+            </div>
+            <Link to="/map" className="text-link">
+              Browse the collection <ArrowRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="home-recent-list">
+            {recent.map((location) => (
+              <Link
+                to={`/locations/${location.slug}`}
+                className="home-recent-place"
+                key={location.id}
+              >
+                <PlaceImage location={location} />
+                <span>
+                  <span className="home-recent-category">
+                    {location.category}
+                  </span>
+                  <strong>{location.name}</strong>
+                  <span className="home-recent-geography">
+                    {location.city}, {location.country}
+                  </span>
+                </span>
+                <ArrowUpRight size={19} aria-hidden="true" />
+              </Link>
+            ))}
           </div>
         </section>
       )}
@@ -327,6 +491,43 @@ export function Home() {
               <ArrowUpRight size={22} strokeWidth={1.3} aria-hidden="true" />
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section
+        className="section home-reading-room"
+        aria-labelledby="reading-title"
+      >
+        <div className="home-reading-title">
+          <Eyebrow>The reading room</Eyebrow>
+          <h2 id="reading-title">
+            More ways into
+            <br />
+            <em>the unexplained.</em>
+          </h2>
+        </div>
+        <div className="home-reading-item">
+          <History size={23} strokeWidth={1.2} aria-hidden="true" />
+          <span className="home-planned-label">Planned</span>
+          <h3>Paranormal case files</h3>
+          <p>
+            Historical accounts, source materials and the questions that remain.
+          </p>
+          <Link to="/cases" className="text-link">
+            About the case files <ArrowRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="home-reading-item">
+          <Route size={23} strokeWidth={1.2} aria-hidden="true" />
+          <span className="home-planned-label">Planned</span>
+          <h3>Haunted trails</h3>
+          <p>
+            Curated collections of haunted places connected by a region or a
+            story.
+          </p>
+          <span className="home-reading-note">
+            Collections are not yet published.
+          </span>
         </div>
       </section>
 

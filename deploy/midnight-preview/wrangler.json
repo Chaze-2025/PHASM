@@ -1,0 +1,30 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "phasm-phase-1-3-preview",
+  "account_id": "c534ce8f6c2a3b0a54ef39a39b4acced",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "routes": [],
+  "assets": {
+    "directory": ".generated/assets",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/*", "!/assets/*", "!/images/*", "!/favicon.svg"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "phasm-phase-1-preview-db",
+      "database_id": "30400e9a-8eb0-4605-a3a4-0db6470301d1",
+      "migrations_dir": "../../migrations"
+    }
+  ],
+  "vars": {
+    "SITE_URL": "https://phasm-phase-1-3-preview.wj7djnw2j2.workers.dev"
+  },
+  "observability": {
+    "enabled": false
+  }
+}

@@ -32,6 +32,23 @@ maplibregl.setWorkerUrl(mapWorkerUrl);
 const STYLE_URL =
   import.meta.env.VITE_MAP_STYLE_URL ||
   "https://tiles.openfreemap.org/styles/dark";
+
+// WebGL paint cannot resolve CSS variables. Read the shared design tokens once
+// when the map loads, so the cartography follows the surrounding interface.
+function mapPalette() {
+  const styles = getComputedStyle(document.documentElement);
+  const token = (name: string, fallback: string) =>
+    styles.getPropertyValue(name).trim() || fallback;
+  return {
+    land: token("--map-land", "#101A29"),
+    water: token("--map-water", "#1B2A3C"),
+    marker: token("--map-marker", "#AABBC8"),
+    selected: token("--map-marker-selected", "#E3E8E9"),
+    ring: token("--map-marker-ring", "#35465B"),
+    midnight: token("--bg", "#0B111D"),
+    panel: token("--panel", "#172334"),
+  };
+}
 function MapCanvas({
   query,
   locations,
@@ -129,6 +146,24 @@ function MapCanvas({
       m.on("load", () => {
         setReady(true);
         setFailed(false);
+        const colors = mapPalette();
+        // Tint base geography without changing roads, terrain or label placement.
+        // The dark provider style has dim gray lettering: cold silver and dark
+        // halos retain legibility against the blue-black surface.
+        if (m.getLayer("background")?.type === "background")
+          m.setPaintProperty("background", "background-color", colors.land);
+        if (m.getLayer("water")?.type === "fill")
+          m.setPaintProperty("water", "fill-color", colors.water);
+        for (const layer of m.getStyle().layers) {
+          if (
+            layer.type === "symbol" &&
+            /^(place_|highway_name_|water_name)/.test(layer.id)
+          ) {
+            m.setPaintProperty(layer.id, "text-color", colors.marker);
+            m.setPaintProperty(layer.id, "text-halo-color", colors.midnight);
+            m.setPaintProperty(layer.id, "text-halo-width", 1);
+          }
+        }
         m.addSource("locations", {
           type: "geojson",
           data: { type: "FeatureCollection", features: [] },
@@ -145,17 +180,17 @@ function MapCanvas({
           source: "locations",
           filter: ["has", "point_count"],
           paint: {
-            "circle-color": "#27292a",
+            "circle-color": colors.panel,
             "circle-radius": [
               "step",
               ["get", "point_count"],
-              20,
+              22,
               20,
               25,
               100,
               31,
             ],
-            "circle-stroke-color": "#cbb482",
+            "circle-stroke-color": colors.marker,
             "circle-stroke-width": 1.5,
             "circle-opacity": 0.93,
           },
@@ -170,7 +205,7 @@ function MapCanvas({
             "text-font": ["Noto Sans Regular"],
             "text-size": 13,
           },
-          paint: { "text-color": "#f1ece2" },
+          paint: { "text-color": colors.selected },
         });
         m.addLayer({
           id: "place-rings",
@@ -184,8 +219,11 @@ function MapCanvas({
               22,
               13,
             ],
-            "circle-color": "#cbb482",
-            "circle-opacity": 0.16,
+            "circle-color": colors.ring,
+            "circle-opacity": 0.45,
+            "circle-stroke-color": colors.marker,
+            "circle-stroke-opacity": 0.38,
+            "circle-stroke-width": 1,
           },
         });
         m.addLayer({
@@ -195,10 +233,10 @@ function MapCanvas({
           filter: ["==", ["get", "slug"], selectedRef.current],
           paint: {
             "circle-radius": 20,
-            "circle-color": "#cbb482",
-            "circle-opacity": 0.13,
-            "circle-stroke-color": "#f1ece2",
-            "circle-stroke-opacity": 0.85,
+            "circle-color": colors.ring,
+            "circle-opacity": 0.6,
+            "circle-stroke-color": colors.selected,
+            "circle-stroke-opacity": 1,
             "circle-stroke-width": 1.5,
           },
         });
@@ -214,9 +252,9 @@ function MapCanvas({
               17,
               8,
             ],
-            "circle-color": "#d5bd88",
+            "circle-color": colors.marker,
             "circle-stroke-width": 2.5,
-            "circle-stroke-color": "#191b1d",
+            "circle-stroke-color": colors.midnight,
           },
         });
         m.addLayer({
@@ -229,7 +267,7 @@ function MapCanvas({
             "text-font": ["Noto Sans Regular"],
             "text-size": 12,
           },
-          paint: { "text-color": "#111513" },
+          paint: { "text-color": colors.midnight },
         });
         // Give individual markers a comfortable touch target without enlarging
         // their visual footprint or changing their geographic coordinates.
@@ -313,12 +351,13 @@ function MapCanvas({
   useEffect(() => {
     const m = map.current;
     if (!ready || !m?.getLayer("selected-place")) return;
+    const colors = mapPalette();
     m.setFilter("selected-place", ["==", ["get", "slug"], selected]);
     m.setPaintProperty("places", "circle-color", [
       "case",
       ["==", ["get", "slug"], selected],
-      "#fff8e8",
-      "#d5bd88",
+      colors.selected,
+      colors.marker,
     ]);
   }, [ready, selected]);
   useEffect(() => {

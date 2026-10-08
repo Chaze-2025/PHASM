@@ -6,6 +6,7 @@ import { Home } from "./Home";
 import { Profile } from "./Profile";
 import { Saved, Editorial, NotFound } from "./pages";
 import "./styles.css";
+import "./design-tokens.css";
 import "./refinement.css";
 import "./home.css";
 import "./profile.css";

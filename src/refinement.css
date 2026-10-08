@@ -1,18 +1,5 @@
-/* PHASM 1.1: shared identity and readable, touch-friendly surfaces. */
-:root {
-  color-scheme: dark;
-  --bg: #0c0e10;
-  --panel: #15191b;
-  --panel2: #1d2225;
-  --line: #f0e9dc1c;
-  --muted: #adb0b1;
-  --brass: #cbb482;
-  --ivory: #f1ece2;
-  --header-height: calc(80px + env(safe-area-inset-top));
-  color: var(--ivory);
-  background: var(--bg);
-  font-size: 16px;
-}
+/* Shared Midnight Séance identity, location cards and navigation. */
+
 body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
@@ -21,7 +8,7 @@ button,
 input,
 select,
 textarea {
-  accent-color: var(--brass);
+  accent-color: var(--accent);
 }
 input,
 select,
@@ -30,14 +17,14 @@ textarea {
 }
 input::placeholder,
 textarea::placeholder {
-  color: #a6aaa9;
+  color: var(--muted);
   opacity: 1;
 }
 p {
   line-height: 1.75;
 }
 em {
-  color: #d6c7a8;
+  color: var(--ivory);
 }
 .section {
   max-width: 1360px;
@@ -63,23 +50,26 @@ em {
     border-color 180ms,
     transform 180ms;
 }
-.button.brass {
-  color: #171814;
-  background: var(--brass);
-  box-shadow: inset 0 1px #fff3;
+.button.brass,
+.button.primary {
+  color: var(--button-text);
+  background: var(--button-bg);
+  border-color: var(--button-bg);
+  box-shadow: inset 0 1px var(--border);
 }
-.button.brass:hover {
-  background: #deca9f;
-  border-color: #deca9f;
+.button.brass:hover,
+.button.primary:hover {
+  background: var(--button-hover);
+  border-color: var(--button-hover);
 }
 .button.secondary {
   color: var(--ivory);
-  background: #ffffff04;
-  border-color: #f0e9dc35;
+  background: var(--accent-wash);
+  border-color: var(--border);
 }
 .button.secondary:hover {
-  border-color: #cbb4828c;
-  background: #cbb4820b;
+  border-color: var(--border-active);
+  background: var(--accent-wash);
 }
 .text-link {
   min-height: 44px;
@@ -87,14 +77,14 @@ em {
   line-height: 1.5;
 }
 .text-link:hover {
-  color: #e7d2a5;
+  color: var(--ivory);
 }
 .pill {
   font-size: 0.75rem;
   line-height: 1.5;
-  color: #ddd3c0;
-  background: #15191beb;
-  border-color: #cbb48242;
+  color: var(--ivory);
+  background: var(--surface-translucent);
+  border-color: var(--border);
 }
 .icon-button,
 .save-button {
@@ -102,7 +92,7 @@ em {
   min-width: 44px;
 }
 :focus-visible {
-  outline-color: #e2c897;
+  outline-color: var(--focus);
 }
 .skip-link {
   z-index: 100;
@@ -114,8 +104,8 @@ em {
 .site-header {
   height: var(--header-height);
   padding-top: env(safe-area-inset-top);
-  background: #0e1113;
-  border-bottom: 1px solid #f0e9dc14;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-subtle);
 }
 .header-inner {
   padding-inline: clamp(24px, 3.8vw, 54px);
@@ -141,7 +131,7 @@ em {
 }
 .main-nav a {
   font-size: 0.875rem;
-  color: #bcc0be;
+  color: var(--text-secondary);
 }
 .main-nav a.active:after {
   height: 1px;
@@ -155,12 +145,12 @@ em {
 .saved-nav {
   min-height: 44px;
   font-size: 0.85rem;
-  color: #c5c8c3;
+  color: var(--text-secondary);
 }
 .header-actions .icon-button {
   width: 44px;
   height: 44px;
-  border-color: #ffffff22;
+  border-color: var(--border);
 }
 .navigation-scrim {
   display: none;
@@ -168,8 +158,8 @@ em {
 
 /* Photographs carry the cards; the record and report labels stay distinct. */
 .location-card {
-  background: linear-gradient(150deg, #1b2022, #141719);
-  border: 1px solid #f0e9dc19;
+  background: linear-gradient(150deg, var(--panel), var(--surface-soft));
+  border: 1px solid var(--border-subtle);
   border-radius: 4px;
   overflow: hidden;
   transition:
@@ -178,22 +168,22 @@ em {
     transform 220ms;
 }
 .location-card:focus-within {
-  border-color: #cbb4828c;
+  border-color: var(--border-active);
 }
 .card-image {
   height: auto;
   aspect-ratio: 1.48;
-  background: #24272a;
+  background: var(--panel2);
 }
 .card-image img {
   object-position: center;
-  filter: saturate(0.62) brightness(0.91);
+  filter: saturate(0.28) contrast(1.06) brightness(0.9);
   transition:
     transform 500ms,
     filter 500ms;
 }
 .card-image:after {
-  background: linear-gradient(transparent, #10121480);
+  background: linear-gradient(transparent, var(--photo-shade));
 }
 .image-category {
   top: 16px;
@@ -201,21 +191,21 @@ em {
   padding: 6px 10px;
   font-size: 0.75rem;
   letter-spacing: 0.02em;
-  border-color: #ffffff36;
-  background: #101416eb;
+  border-color: var(--border);
+  background: var(--surface-translucent);
   backdrop-filter: blur(8px);
 }
 .save-button {
   right: 13px;
   top: 12px;
-  border-color: #ffffff38;
-  background: #111517db;
+  border-color: var(--border);
+  background: var(--surface-translucent);
   transition:
     background 180ms,
     color 180ms;
 }
 .save-button:hover {
-  background: #292d2c;
+  background: var(--panel2);
 }
 .card-content {
   padding: 22px 23px 0;
@@ -223,11 +213,11 @@ em {
 .place-geography {
   font-size: 0.8rem;
   line-height: 1.6;
-  color: #b1b6b4;
+  color: var(--muted);
   gap: 7px;
 }
 .place-geography svg {
-  color: var(--brass);
+  color: var(--accent);
   min-width: 13px;
 }
 .card-title {
@@ -241,27 +231,27 @@ em {
   letter-spacing: -0.025em;
 }
 .card-title > svg {
-  color: var(--brass);
+  color: var(--accent);
   margin-top: 8px;
   min-width: 17px;
 }
 .card-summary {
-  color: #c0c2bd;
+  color: var(--text-secondary);
   font-size: 0.9375rem;
   line-height: 1.7;
   margin-top: 12px;
   min-height: 3.4em;
 }
 .card-phenomenon {
-  color: #c6bdcb;
+  color: var(--text-secondary);
   font-size: 0.78rem;
   line-height: 1.65;
   margin-top: 17px;
 }
 .card-phenomenon > span {
   display: block;
-  color: #9ea5a7;
-  font-size: 0.66rem;
+  color: var(--muted);
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.13em;
   margin-bottom: 3px;
@@ -270,18 +260,18 @@ em {
   margin-top: 19px;
   padding: 16px 0;
   font-size: 0.75rem;
-  color: #d1c4a4;
-  border-color: #f0e9dc16;
+  color: var(--text-secondary);
+  border-color: var(--border-subtle);
   flex-wrap: wrap;
   gap: 7px 14px;
 }
 .card-bottom > span + span {
-  color: #b2b8b3;
+  color: var(--muted);
 }
 .location-card[data-classification="local-legend"]
   .card-bottom
   > span:first-child {
-  color: #d0bbd1;
+  color: var(--brass);
 }
 .location-card.compact .card-phenomenon {
   display: none;
@@ -289,21 +279,21 @@ em {
 @media (hover: hover) and (pointer: fine) {
   .location-card:hover {
     transform: translateY(-4px);
-    border-color: #cbb48262;
-    box-shadow: 0 15px 35px #0003;
+    border-color: var(--border-active);
+    box-shadow: 0 15px 35px var(--shadow);
   }
   .location-card:hover .card-image img {
     transform: scale(1.035);
-    filter: saturate(0.78) brightness(0.98);
+    filter: saturate(0.55) contrast(1.02) brightness(1);
   }
 }
 .site-footer {
-  background: #090c0e;
+  background: var(--surface-deep);
   border-top-color: var(--line);
   padding-block: 42px;
 }
 .site-footer > div > p {
-  color: #afb4b2;
+  color: var(--muted);
   font-size: 0.875rem;
 }
 .footer-links {
@@ -318,7 +308,7 @@ em {
 .footer-note {
   font-size: 0.75rem;
   line-height: 1.8;
-  color: #a8aeab;
+  color: var(--muted);
 }
 .page-shell {
   padding-top: 52px;
@@ -344,9 +334,6 @@ em {
   }
 }
 @media (max-width: 760px) {
-  :root {
-    --header-height: calc(72px + env(safe-area-inset-top));
-  }
   .site-header {
     height: var(--header-height);
   }
@@ -386,10 +373,10 @@ em {
     top: calc(var(--header-height) - 1px);
     height: auto;
     padding: 16px 20px;
-    background: #171c1f;
-    border: 1px solid #cbb48236;
+    background: var(--panel);
+    border: 1px solid var(--border);
     border-radius: 0 0 5px 5px;
-    box-shadow: 0 25px 60px #0008;
+    box-shadow: 0 25px 60px var(--shadow-deep);
     z-index: 32;
   }
   .main-nav.is-open {
@@ -404,11 +391,11 @@ em {
     font-size: 1rem;
     min-height: 52px;
     padding: 10px 12px;
-    border-bottom: 1px solid #ffffff0c;
+    border-bottom: 1px solid var(--border-subtle);
   }
   .main-nav a.active {
-    color: #e5ce9e;
-    background: #cbb48209;
+    color: var(--ivory);
+    background: var(--accent-wash);
   }
   .main-nav a.active:after {
     display: none;
@@ -422,7 +409,7 @@ em {
     inset: var(--header-height) 0 0;
     border: 0;
     padding: 0;
-    background: #0009;
+    background: var(--shadow-deep);
     z-index: 31;
     cursor: default;
   }

@@ -1,9 +1,12 @@
-/* Location dossiers: photographic atmosphere, clear provenance, comfortable reading. */
+/* Midnight Séance dossiers: cool photographic plates, clear provenance, comfortable reading. */
 .profile-page {
-  --dossier-line: #cbb48228;
-  --dossier-muted: #adb0b1;
-  --dossier-paper: #e8e4dc;
-  background: #0c0e10;
+  --dossier-line: var(--border);
+  --dossier-muted: var(--muted);
+  --dossier-paper: var(--ivory);
+  --dossier-body: color-mix(in srgb, var(--ivory) 74%, var(--muted));
+  --dossier-faint-line: color-mix(in srgb, var(--accent) 12%, transparent);
+  --dossier-strong-line: color-mix(in srgb, var(--accent) 38%, transparent);
+  background: var(--bg);
 }
 .profile-page .breadcrumb {
   min-height: 62px;
@@ -19,39 +22,68 @@
   min-height: 44px;
 }
 .profile-page .breadcrumb span {
-  color: #d3d0c9;
+  color: var(--ivory);
 }
 .profile-page .breadcrumb svg {
   flex: none;
-  color: #867e6d;
+  color: var(--muted);
 }
 .profile-page .breadcrumb a:hover {
-  color: #e1c894;
+  color: var(--ivory);
 }
 .profile-page .profile-hero {
   height: clamp(440px, 41vw, 610px);
   isolation: isolate;
   overflow: hidden;
-  border-top: 1px solid #ffffff0d;
-  border-bottom: 1px solid #cbb48240;
+  border-top: 1px solid var(--dossier-faint-line);
+  border-bottom: 1px solid var(--border);
+  background: var(--panel2);
 }
 .profile-page .profile-hero > img {
   position: absolute;
   inset: 0;
   height: 100%;
   object-position: center 68%;
-  filter: brightness(0.8) saturate(0.48);
+  filter: grayscale(1) brightness(0.82) contrast(1.08);
+  mix-blend-mode: luminosity;
+}
+.profile-page .profile-photographic-frame {
+  position: absolute;
+  inset: 17px;
+  pointer-events: none;
+  border: 1px solid var(--dossier-strong-line);
+  opacity: 0.55;
+}
+.profile-page .profile-photographic-frame::before,
+.profile-page .profile-photographic-frame::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--accent);
+}
+.profile-page .profile-photographic-frame::before {
+  top: -4px;
+  left: -4px;
+}
+.profile-page .profile-photographic-frame::after {
+  bottom: -4px;
+  right: -4px;
 }
 .profile-page .profile-hero-shade {
   background:
     linear-gradient(
       180deg,
-      #0c0e108c 0%,
-      #0c0e1010 33%,
-      #0c0e10a1 70%,
-      #0c0e10f5 100%
+      color-mix(in srgb, var(--bg) 60%, transparent) 0%,
+      transparent 33%,
+      color-mix(in srgb, var(--bg) 68%, transparent) 70%,
+      var(--bg) 100%
     ),
-    linear-gradient(90deg, #0c0e1077, transparent 80%);
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--bg) 48%, transparent),
+      transparent 80%
+    );
 }
 .profile-page .profile-hero-top {
   position: relative;
@@ -70,15 +102,47 @@
   letter-spacing: 0.13em;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: #cbb482;
+  color: var(--accent);
 }
 .profile-page .profile-dossier-label {
-  color: #e9e0ce;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ivory);
+}
+.profile-page .dossier-registration {
+  position: relative;
+  display: block;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+  outline: 1px solid color-mix(in srgb, var(--brass) 35%, transparent);
+  outline-offset: 4px;
+}
+.profile-page .dossier-registration::before,
+.profile-page .dossier-registration::after {
+  content: "";
+  position: absolute;
+  background: var(--brass);
+}
+.profile-page .dossier-registration::before {
+  height: 1px;
+  width: 36px;
+  left: -6px;
+  top: 11px;
+}
+.profile-page .dossier-registration::after {
+  width: 1px;
+  height: 36px;
+  top: -6px;
+  left: 11px;
 }
 .profile-page .profile-hero .pill {
-  background: #0c0e10a8;
-  border-color: #cbb48275;
-  color: #e7d6b2;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  border-color: var(--dossier-strong-line);
+  color: var(--ivory);
   font-size: 0.875rem;
   padding: 9px 13px;
   letter-spacing: 0.1em;
@@ -89,7 +153,7 @@
   bottom: 52px;
 }
 .profile-page .profile-category {
-  color: #d5bc87;
+  color: var(--accent);
 }
 .profile-page .profile-hero h1 {
   max-width: 950px;
@@ -99,16 +163,16 @@
   font-weight: 400;
   margin: 13px 0 20px;
   text-wrap: balance;
-  color: #f5f0e6;
+  color: var(--ivory);
 }
 .profile-page .profile-hero-copy > p {
-  color: #e0ddd6;
+  color: var(--ivory);
   font-size: 1rem;
   gap: 9px;
 }
 .profile-page .profile-hero-copy > p svg {
   flex: none;
-  color: #cbb482;
+  color: var(--accent);
 }
 .profile-page .profile-photo-link {
   position: absolute;
@@ -119,11 +183,11 @@
   justify-content: flex-end;
   min-height: 44px;
   gap: 8px;
-  color: #d0cdc6;
+  color: var(--ivory);
   font-size: 0.75rem;
 }
 .profile-page .profile-photo-link:hover {
-  color: #f6e2b9;
+  color: var(--ivory);
 }
 .profile-page .profile-subnav {
   padding-top: 19px;
@@ -141,7 +205,7 @@
 }
 .profile-page .profile-location-note svg {
   flex: none;
-  color: #a38f68;
+  color: var(--muted);
 }
 .profile-page .profile-subnav > .button {
   min-height: 46px;
@@ -157,7 +221,7 @@
   gap: 0;
   border-top: 1px solid var(--dossier-line);
   border-bottom: 1px solid var(--dossier-line);
-  background: #111417;
+  background: var(--panel);
 }
 .profile-page .dossier-navigation a {
   display: flex;
@@ -166,23 +230,23 @@
   gap: 10px;
   min-height: 63px;
   padding: 12px 8px;
-  color: #d5d3cd;
+  color: var(--ivory);
   font-size: 0.875rem;
   transition:
     color 180ms ease,
     background 180ms ease;
 }
 .profile-page .dossier-navigation a + a {
-  border-left: 1px solid #cbb48217;
+  border-left: 1px solid var(--dossier-faint-line);
 }
 .profile-page .dossier-navigation a > span {
   font-family: var(--serif);
   font-size: 1rem;
-  color: #ad9a74;
+  color: var(--brass);
 }
 .profile-page .dossier-navigation a:hover {
-  color: #eed8a9;
-  background: #cbb48209;
+  color: var(--ivory);
+  background: var(--panel2);
 }
 .profile-page .profile-layout {
   grid-template-columns: minmax(0, 1fr) 336px;
@@ -203,15 +267,54 @@
 .profile-page .profile-intro {
   font-size: clamp(1.85rem, 2.4vw, 2.5rem);
   line-height: 1.32;
-  color: #eae4d9;
+  color: var(--ivory);
   max-width: 760px;
   text-wrap: pretty;
 }
 .profile-page .dossier-reading-note {
   margin-top: 21px;
   color: var(--dossier-muted);
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.8;
+}
+.profile-page .dossier-reading-key {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--dossier-line);
+  border-bottom: 1px solid var(--dossier-line);
+  margin-top: 27px;
+}
+.profile-page .dossier-reading-key a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 14px 18px 0;
+  color: var(--ivory);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  transition: background 180ms ease;
+}
+.profile-page .dossier-reading-key a + a {
+  padding-left: 20px;
+  border-left: 1px solid var(--dossier-line);
+}
+.profile-page .dossier-reading-key a:hover {
+  background: var(--panel);
+}
+.profile-page .dossier-reading-key svg {
+  flex: none;
+  color: var(--accent);
+}
+.profile-page .dossier-reading-key a > svg:last-child {
+  margin-left: auto;
+}
+.profile-page .dossier-reading-key small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  margin-bottom: 4px;
 }
 .profile-page .profile-article > .dossier-section {
   padding: 38px 0 40px;
@@ -230,19 +333,20 @@
   align-items: center;
   justify-content: center;
   width: 35px;
-  min-height: 29px;
-  border-top: 1px solid #cbb48263;
+  height: 35px;
+  border: 1px solid var(--dossier-strong-line);
+  border-radius: 50%;
   font-family: var(--serif);
   font-size: 1.12rem;
   line-height: 1.5;
-  color: #cbb482;
-  padding-top: 5px;
+  color: var(--accent);
+  margin-top: 3px;
 }
 .profile-page .dossier-heading .eyebrow {
   margin-bottom: 9px;
   font-size: 0.875rem;
   letter-spacing: 0.105em;
-  color: #bba980;
+  color: var(--muted);
 }
 .profile-page .dossier-heading .eyebrow > span {
   display: none;
@@ -255,7 +359,7 @@
   font-weight: 400;
 }
 .profile-page .profile-article .dossier-section > p {
-  color: #bdc0be;
+  color: var(--dossier-body);
   font-size: 1rem;
   line-height: 1.85;
   text-wrap: pretty;
@@ -266,27 +370,36 @@
   gap: 9px;
   min-height: 44px;
   font-size: 0.875rem;
-  color: #cbb482;
+  color: var(--accent);
   margin-top: 15px;
 }
 .profile-page .dossier-source-link:hover {
-  color: #efd9ab;
+  color: var(--ivory);
 }
 .profile-page .profile-article > .dossier-reports {
-  background: radial-gradient(ellipse at 0 40%, #5b3a500d, transparent 70%);
+  background: radial-gradient(
+    ellipse at 0 40%,
+    color-mix(in srgb, var(--panel) 75%, transparent),
+    transparent 70%
+  );
+}
+.profile-page .profile-article .dossier-report-narrative {
+  margin-left: 17px;
+  padding-left: 35px;
+  border-left: 1px solid var(--dossier-strong-line);
 }
 .profile-page .dossier-reports .dossier-number {
-  color: #cab0c1;
-  border-color: #ae81925e;
+  color: var(--accent);
+  border-color: var(--dossier-strong-line);
 }
 .profile-page .dossier-reports .dossier-heading .eyebrow {
-  color: #c0a9b7;
+  color: var(--muted);
 }
 .profile-page .dossier-phenomena {
   margin-top: 29px;
 }
 .profile-page .dossier-phenomena > .dossier-small-label {
-  color: #b3a6af;
+  color: var(--muted);
   font-size: 0.875rem;
   letter-spacing: 0.08em;
 }
@@ -300,9 +413,9 @@
   line-height: 1.5;
   padding: 9px 12px;
   gap: 9px;
-  border: 1px solid #a895a238;
-  color: #d3c9d0;
-  background: #352b3529;
+  border: 1px solid var(--border);
+  color: var(--ivory);
+  background: var(--panel);
   border-radius: 3px;
   transition:
     background 180ms ease,
@@ -310,41 +423,56 @@
 }
 .profile-page .tag-list a > svg {
   flex: none;
-  color: #bfa9b8;
+  color: var(--accent);
 }
 .profile-page .tag-list a:hover {
-  background: #5540514f;
-  border-color: #a895a280;
+  background: var(--panel2);
+  border-color: var(--dossier-strong-line);
 }
 .profile-page .profile-article .editorial-note {
   margin-top: 26px;
   padding: 18px 19px;
   gap: 12px;
-  background: #ffffff03;
-  border-left: 2px solid #a991635e;
-  color: #aeb1af;
+  background: var(--panel);
+  border-left: 2px solid var(--dossier-strong-line);
+  color: var(--muted);
   font-size: 0.875rem;
   line-height: 1.75;
 }
 .profile-page .editorial-note > svg {
-  color: #cbb482;
+  color: var(--accent);
   flex: none;
 }
 .profile-page .editorial-note strong {
   display: block;
-  color: #d6cdbd;
+  color: var(--ivory);
   font-weight: 500;
   margin-bottom: 3px;
 }
 .profile-page .gallery-photo {
   overflow: hidden;
 }
+.profile-page .gallery-photograph-mount {
+  padding: 12px;
+  background: var(--panel);
+  border: 1px solid var(--dossier-strong-line);
+}
+.profile-page .gallery-plate-label {
+  display: block;
+  padding-top: 12px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
 .profile-page .gallery-photo img {
   max-height: none;
   aspect-ratio: 16/10;
   object-fit: cover;
   border-radius: 2px;
-  filter: saturate(0.82);
+  filter: grayscale(1) contrast(1.04);
+  mix-blend-mode: luminosity;
 }
 .profile-page .gallery-photo figcaption {
   display: flex;
@@ -353,12 +481,16 @@
   gap: 9px;
   font-size: 0.75rem;
   line-height: 1.7;
-  color: #a4a9a8;
+  color: var(--muted);
   margin-top: 14px;
 }
 .profile-page .gallery-description {
-  color: #c6c8c3;
+  color: var(--ivory);
   font-size: 0.875rem;
+}
+.profile-page .gallery-treatment {
+  color: var(--muted);
+  font-size: 0.75rem;
 }
 .profile-page .gallery-credit a {
   margin: 0;
@@ -370,7 +502,7 @@
   align-items: center;
   margin: -4px 0 0;
   font-size: 0.875rem;
-  color: #cbb482;
+  color: var(--accent);
   gap: 8px;
   text-decoration: none;
 }
@@ -378,17 +510,17 @@
   display: flex;
   gap: 20px;
   padding: 26px;
-  background: linear-gradient(125deg, #181b1e, #141619);
-  border-color: #ffffff12;
+  background: linear-gradient(125deg, var(--panel), var(--bg));
+  border-color: var(--border);
   border-radius: 3px;
 }
 .profile-page .empty-experiences > svg {
   flex: none;
-  color: #b3a181;
+  color: var(--accent);
   margin: 4px 0 0;
 }
 .profile-page .empty-experiences .dossier-small-label {
-  color: #afa58f;
+  color: var(--muted);
   font-size: 0.875rem;
   letter-spacing: 0.08em;
 }
@@ -402,7 +534,7 @@
   margin: 14px 0 21px;
   font-size: 1rem;
   line-height: 1.8;
-  color: #afb4b3;
+  color: var(--dossier-body);
 }
 .profile-page .experience-status {
   display: inline-flex;
@@ -410,12 +542,12 @@
   gap: 9px;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: #bcb4a3;
+  color: var(--muted);
 }
 .profile-page .experience-status > span {
   height: 5px;
   width: 5px;
-  background: #a89979;
+  background: var(--muted);
   border-radius: 50%;
   flex: none;
 }
@@ -424,12 +556,12 @@
 }
 .profile-page .profile-article .dossier-experiences > p {
   font-size: 0.875rem;
-  color: #a8aeac;
+  color: var(--muted);
 }
 .profile-page .source-list {
   list-style: decimal-leading-zero;
   padding-left: 27px;
-  color: #a89776;
+  color: var(--brass);
   margin: 0;
 }
 .profile-page .source-list li {
@@ -442,27 +574,27 @@
 .profile-page .source-list a {
   min-height: 72px;
   padding: 17px 0;
-  color: #d7d8d1;
+  color: var(--ivory);
   font-size: 1rem;
   line-height: 1.5;
   gap: 20px;
 }
 .profile-page .source-list a > svg {
-  color: #b8a278;
+  color: var(--accent);
   flex: none;
 }
 .profile-page .source-list a:hover {
-  color: #e5cf9f;
+  color: var(--ivory);
 }
 .profile-page .source-list small {
-  color: #aaa899;
+  color: var(--muted);
   font-size: 0.875rem;
   line-height: 1.5;
   letter-spacing: 0.07em;
   margin-bottom: 6px;
 }
 .profile-page .profile-article .dossier-updated {
-  color: #a0a6a5;
+  color: var(--muted);
   font-size: 0.875rem;
   margin-top: 23px;
 }
@@ -470,11 +602,11 @@
   position: sticky;
   top: 28px;
   padding: 27px;
-  border: 1px solid #cbb48230;
-  border-top: 2px solid #cbb48291;
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--dossier-strong-line);
   border-radius: 2px;
-  background: linear-gradient(155deg, #1d2021, #14181a 68%);
-  box-shadow: 0 18px 44px #00000020;
+  background: linear-gradient(155deg, var(--panel2), var(--panel) 68%);
+  box-shadow: 0 18px 44px #00000026;
   scroll-margin-top: 105px;
 }
 .profile-page .visit-card-top {
@@ -485,7 +617,7 @@
   margin-bottom: 23px;
 }
 .profile-page .visit-card-top > svg {
-  color: #aa9877;
+  color: var(--accent);
   flex: none;
 }
 .profile-page .visit-card .dossier-small-label {
@@ -501,7 +633,7 @@
 }
 .profile-page .visit-card > .visit-card-location {
   font-size: 0.875rem;
-  color: #c1bcaf;
+  color: var(--muted);
   margin-bottom: 0;
 }
 .profile-page .visit-card dl {
@@ -514,19 +646,19 @@
 }
 .profile-page .visit-card dt {
   font-size: 0.875rem;
-  color: #aeb4b1;
+  color: var(--muted);
   margin-bottom: 8px;
 }
 .profile-page .visit-card dt svg {
-  color: #ad9b77;
+  color: var(--muted);
 }
 .profile-page .visit-card dd {
   font-size: 1rem;
   line-height: 1.5;
-  color: #e0ddd4;
+  color: var(--ivory);
 }
 .profile-page .visit-card > p {
-  color: #b7bcba;
+  color: var(--dossier-body);
   font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 25px;
@@ -541,11 +673,20 @@
 .profile-page .visit-card > .button svg {
   flex: none;
 }
+.profile-page .visit-card > .dossier-visitor-action {
+  color: var(--bg);
+  background: var(--ivory);
+  border-color: var(--ivory);
+}
+.profile-page .visit-card > .dossier-visitor-action:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
 .profile-page .visit-card > .text-link {
   align-items: center;
   min-height: 44px;
   font-size: 0.875rem;
-  color: #cbb482;
+  color: var(--accent);
 }
 .profile-page .respect-note {
   margin-top: 20px;
@@ -554,10 +695,10 @@
 }
 .profile-page .respect-note > svg {
   flex: none;
-  color: #b9a47d;
+  color: var(--muted);
 }
 .profile-page .respect-note > p {
-  color: #a9b0ad;
+  color: var(--muted);
   font-size: 0.875rem;
   line-height: 1.75;
 }
@@ -565,13 +706,13 @@
   padding-top: 40px;
   padding-bottom: 80px;
   border-top: 1px solid var(--dossier-line);
-  background: linear-gradient(#14171a55, transparent);
+  background: linear-gradient(var(--panel), transparent);
 }
 .profile-page .related-section h2 {
   text-wrap: balance;
 }
 .profile-page :is(a, button):focus-visible {
-  outline: 2px solid #e0c794;
+  outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
 
@@ -623,7 +764,7 @@
     border-left: 0;
   }
   .profile-page .dossier-navigation a:nth-child(n + 4) {
-    border-top: 1px solid #cbb48217;
+    border-top: 1px solid var(--dossier-faint-line);
   }
   .profile-page .profile-hero-copy {
     bottom: 65px;
@@ -658,10 +799,10 @@
   .profile-page .profile-hero-shade {
     background: linear-gradient(
       180deg,
-      #0c0e1099,
-      #0c0e101a 36%,
-      #0c0e10c4 73%,
-      #0c0e10fa 100%
+      color-mix(in srgb, var(--bg) 64%, transparent),
+      transparent 36%,
+      color-mix(in srgb, var(--bg) 80%, transparent) 73%,
+      var(--bg) 100%
     );
   }
   .profile-page .profile-hero-top {
@@ -671,6 +812,23 @@
   .profile-page .profile-dossier-label {
     font-size: 0.875rem;
     letter-spacing: 0.12em;
+    gap: 12px;
+    padding: 3px 0 3px 5px;
+  }
+  .profile-page .profile-photographic-frame {
+    inset: 11px;
+  }
+  .profile-page .dossier-registration {
+    width: 22px;
+    height: 22px;
+  }
+  .profile-page .dossier-registration::before {
+    width: 32px;
+    top: 9px;
+  }
+  .profile-page .dossier-registration::after {
+    height: 32px;
+    left: 9px;
   }
   .profile-page .profile-hero .pill {
     margin-top: 14px;
@@ -760,8 +918,24 @@
   }
   .profile-page .dossier-reading-note {
     margin-top: 17px;
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.75;
+  }
+  .profile-page .dossier-reading-key {
+    grid-template-columns: 1fr;
+    margin-top: 23px;
+  }
+  .profile-page .dossier-reading-key a {
+    padding: 15px 0;
+    font-size: 1rem;
+  }
+  .profile-page .dossier-reading-key a + a {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--dossier-line);
+  }
+  .profile-page .dossier-reading-key small {
+    font-size: 0.8125rem;
   }
   .profile-page .profile-article > .dossier-section {
     padding-top: 32px;
@@ -773,7 +947,8 @@
     margin-bottom: 22px;
   }
   .profile-page .dossier-number {
-    width: 27px;
+    width: 30px;
+    height: 30px;
     font-size: 1rem;
   }
   .profile-page .dossier-heading .eyebrow {
@@ -788,6 +963,10 @@
   .profile-page .profile-article .dossier-section > p {
     font-size: 1rem;
     line-height: 1.85;
+  }
+  .profile-page .profile-article .dossier-report-narrative {
+    margin-left: 0;
+    padding-left: 19px;
   }
   .profile-page .dossier-phenomena {
     margin-top: 23px;

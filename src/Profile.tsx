@@ -99,10 +99,12 @@ export function Profile() {
 
       <section className="profile-hero" aria-labelledby="location-title">
         <PlaceImage location={p} className="profile-image" priority />
-        <div className="profile-hero-shade" />
+        <div className="profile-hero-shade" aria-hidden="true" />
+        <div className="profile-photographic-frame" aria-hidden="true" />
         <div className="profile-hero-top section">
           <span className="profile-dossier-label">
-            PHASM / Location dossier
+            <span className="dossier-registration" aria-hidden="true" />
+            PHASM / Haunted location dossier
           </span>
           <span className="pill">{classificationLabel(p.classification)}</span>
         </div>
@@ -145,12 +147,31 @@ export function Profile() {
       <div className="profile-layout section">
         <article className="profile-article">
           <div className="dossier-introduction">
-            <Eyebrow>A place worth looking closer</Eyebrow>
+            <Eyebrow>At the threshold of history & haunting</Eyebrow>
             <p className="profile-intro">{p.summary}</p>
             <p className="dossier-reading-note">
               The history is documented. The haunting stories remain an open
               question.
             </p>
+            <nav
+              className="dossier-reading-key"
+              aria-label="Explore this record"
+            >
+              <a href="#history">
+                <BookOpen size={19} strokeWidth={1.25} aria-hidden="true" />
+                <span>
+                  <small>The historical record</small>Documented history
+                </span>
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+              <a href="#reports">
+                <AudioLines size={20} strokeWidth={1.25} aria-hidden="true" />
+                <span>
+                  <small>The stories that linger</small>Reported hauntings
+                </span>
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            </nav>
           </div>
 
           <section id="history" className="dossier-section dossier-history">
@@ -171,7 +192,7 @@ export function Profile() {
               label="Reported hauntings"
               title="The unexplained."
             />
-            <p>{p.reports}</p>
+            <p className="dossier-report-narrative">{p.reports}</p>
             {!!p.phenomena.length && (
               <div className="dossier-phenomena">
                 <span className="dossier-small-label">Reported phenomena</span>
@@ -210,11 +231,22 @@ export function Profile() {
               title="A sense of place."
             />
             <figure className="gallery-photo">
-              <PlaceImage location={p} className="profile-image" />
+              <div className="gallery-photograph-mount">
+                <PlaceImage location={p} className="profile-image" />
+                <span className="gallery-plate-label">
+                  {p.image ? "Location photograph" : "Photograph pending"}
+                </span>
+              </div>
               <figcaption>
                 <span className="gallery-description">
                   {p.imageAlt || `${p.name} — photograph pending`}
                 </span>
+                {p.image && (
+                  <span className="gallery-treatment">
+                    Contemporary location photography · cool monochrome
+                    presentation.
+                  </span>
+                )}
                 <span className="gallery-credit">
                   {p.imageCredit} ·{" "}
                   {p.imageLicense === "CC BY-SA 4.0" ? (
@@ -358,7 +390,7 @@ export function Profile() {
           <p>{p.accessNotes}</p>
           {p.officialUrl && (
             <a
-              className="button brass"
+              className="button brass dossier-visitor-action"
               href={p.officialUrl}
               target="_blank"
               rel="noreferrer"
