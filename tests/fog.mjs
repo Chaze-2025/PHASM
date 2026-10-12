@@ -138,9 +138,10 @@ async function unchangedLayout(page, name) {
       );
   }
 }
-async function protectedComparison(page, name, requireVisible = true) {
-  // Exact rendered pixel comparison against hiding only the mist layer. The shader
-  // must contribute no visible pixels in central or occupied content regions.
+async function layeredComparison(page, name) {
+  // Compare only the decorative overlay with the same static page underneath.
+  // Cards, photos and the middle of the page must receive mist; reading and
+  // controls retain a bounded luminance change instead of rectangular cutouts.
   await page.locator("img:visible").evaluateAll(async (images) => {
     await Promise.all(
       images
@@ -155,83 +156,270 @@ async function protectedComparison(page, name, requireVisible = true) {
   const regions = await page.evaluate(() => {
     const width = innerWidth,
       height = innerHeight;
-    const boxes = [
-      ...document.querySelectorAll(
-        "header, h1, h2, h3, p, a, button, input, select, textarea, img, .location-card",
-      ),
-    ]
-      .filter(
-        (el) =>
-          !el.closest(".atmospheric-fog") &&
-          getComputedStyle(el).visibility !== "hidden",
-      )
-      .map((el) => el.getBoundingClientRect())
-      .filter(
-        (r) => r.width > 0 && r.height > 0 && r.bottom > 0 && r.top < height,
-      )
-      .map((r) => ({
-        x: Math.max(0, Math.ceil(r.x)),
-        y: Math.max(0, Math.ceil(r.y)),
-        right: Math.min(width, Math.floor(r.right)),
-        bottom: Math.min(height, Math.floor(r.bottom)),
-      }));
-    boxes.push({
-      x: Math.floor(width * 0.32),
-      right: Math.ceil(width * 0.68),
-      y: 0,
-      bottom: height,
+    const clip = (r) => ({
+      x: Math.max(0, Math.ceil(r.left ?? r.x)),
+      y: Math.max(0, Math.ceil(r.top ?? r.y)),
+      right: Math.min(width, Math.floor(r.right)),
+      bottom: Math.min(height, Math.floor(r.bottom)),
     });
-    return boxes;
+    const visible = (r) =>
+      r.width > 0 &&
+      r.height > 0 &&
+      r.bottom > 0 &&
+      r.top < height &&
+      r.right > 0 &&
+      r.left < width;
+    const boxes = (selector) =>
+      [...document.querySelectorAll(selector)]
+        .filter(
+          (el) =>
+            !el.closest(".atmospheric-fog") &&
+            getComputedStyle(el).visibility !== "hidden",
+        )
+        .map((el) => el.getBoundingClientRect())
+        .filter(visible);
+    const text = [];
+    const walker = document.createTreeWalker(
+      document.querySelector(".home-page"),
+      NodeFilter.SHOW_TEXT,
+    );
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      const parent = node.parentElement;
+      if (
+        !node.textContent.trim() ||
+        !parent ||
+        parent.closest("script,style,.atmospheric-fog")
+      )
+        continue;
+      if (getComputedStyle(parent).visibility === "hidden") continue;
+      const range = document.createRange();
+      range.selectNodeContents(node);
+      text.push(...[...range.getClientRects()].filter(visible).map(clip));
+    }
+    const surfaces = boxes(".location-card,.home-atlas-panel,.home-archive");
+    const edgeInside = [],
+      edgeOutside = [];
+    // Observe paired bands across actual card/panel edges. This detects the old
+    // rectangular exclusions without demanding fog in every turbulent hollow.
+    for (const r of surfaces) {
+      if (r.width < 80 || r.height < 80) continue;
+      if (r.left >= 8 && r.left + 8 < width) {
+        edgeInside.push(
+          clip({
+            left: r.left + 1,
+            right: r.left + 7,
+            top: r.top + 12,
+            bottom: r.bottom - 12,
+          }),
+        );
+        edgeOutside.push(
+          clip({
+            left: r.left - 7,
+            right: r.left - 1,
+            top: r.top + 12,
+            bottom: r.bottom - 12,
+          }),
+        );
+      }
+      if (r.right <= width - 8 && r.right - 8 > 0) {
+        edgeInside.push(
+          clip({
+            left: r.right - 7,
+            right: r.right - 1,
+            top: r.top + 12,
+            bottom: r.bottom - 12,
+          }),
+        );
+        edgeOutside.push(
+          clip({
+            left: r.right + 1,
+            right: r.right + 7,
+            top: r.top + 12,
+            bottom: r.bottom - 12,
+          }),
+        );
+      }
+      if (r.top >= 8 && r.top + 8 < height) {
+        edgeInside.push(
+          clip({
+            left: r.left + 12,
+            right: r.right - 12,
+            top: r.top + 1,
+            bottom: r.top + 7,
+          }),
+        );
+        edgeOutside.push(
+          clip({
+            left: r.left + 12,
+            right: r.right - 12,
+            top: r.top - 7,
+            bottom: r.top - 1,
+          }),
+        );
+      }
+      if (r.bottom <= height - 8 && r.bottom - 8 > 0) {
+        edgeInside.push(
+          clip({
+            left: r.left + 12,
+            right: r.right - 12,
+            top: r.bottom - 7,
+            bottom: r.bottom - 1,
+          }),
+        );
+        edgeOutside.push(
+          clip({
+            left: r.left + 12,
+            right: r.right - 12,
+            top: r.bottom + 1,
+            bottom: r.bottom + 7,
+          }),
+        );
+      }
+    }
+    return {
+      text,
+      controls: boxes(
+        ".home-page button,.home-page input,.home-page select,.home-page textarea",
+      ).map(clip),
+      header: boxes(".site-header").map(clip),
+      center: [
+        {
+          x: Math.floor(width * 0.32),
+          right: Math.ceil(width * 0.68),
+          y: 0,
+          bottom: height,
+        },
+      ],
+      bottom: [{ x: 0, right: width, y: height - 24, bottom: height }],
+      surfaces: surfaces.map(clip),
+      photos: boxes(".home-page img").map(clip),
+      edgeInside,
+      edgeOutside,
+    };
   });
   const withFog = await page.screenshot();
   await page.locator(fog).evaluate((el) => (el.style.opacity = "0"));
+  await page.waitForTimeout(220);
   const withoutFog = await page.screenshot();
   await page.locator(fog).evaluate((el) => el.style.removeProperty("opacity"));
+  await page.waitForTimeout(220);
   const a = await sharp(withFog)
     .ensureAlpha()
     .raw()
     .toBuffer({ resolveWithObject: true });
   const b = await sharp(withoutFog).ensureAlpha().raw().toBuffer();
-  let protectedPixels = 0,
-    changedProtectedPixels = 0,
-    changedPixels = 0,
-    maxDifference = 0;
-  const regionPixels = new Uint8Array(a.info.width * a.info.height);
-  for (const r of regions)
-    for (let y = r.y; y < r.bottom; y++)
-      for (let x = r.x; x < r.right; x++)
-        regionPixels[y * a.info.width + x] = 1;
-  for (let p = 0; p < regionPixels.length; p++) {
+  const differences = new Uint8Array(a.info.width * a.info.height);
+  for (let p = 0; p < differences.length; p++) {
     const i = p * 4;
-    const delta = Math.max(
+    differences[p] = Math.max(
       ...[0, 1, 2].map((c) => Math.abs(a.data[i + c] - b[i + c])),
     );
-    if (delta > 1) changedPixels++;
-    if (regionPixels[p]) {
-      protectedPixels++;
-      if (delta > 1) changedProtectedPixels++;
+  }
+  const measured = {};
+  for (const [category, boxes] of Object.entries(regions)) {
+    const mask = new Uint8Array(differences.length);
+    for (const r of boxes)
+      for (let y = r.y; y < r.bottom; y++)
+        for (let x = r.x; x < r.right; x++) mask[y * a.info.width + x] = 1;
+    const histogram = new Uint32Array(256);
+    let pixels = 0,
+      changedPixels = 0,
+      sum = 0,
+      maxDifference = 0;
+    for (let p = 0; p < mask.length; p++) {
+      if (!mask[p]) continue;
+      const delta = differences[p];
+      pixels++;
+      histogram[delta]++;
+      sum += delta;
+      if (delta > 1) changedPixels++;
       maxDifference = Math.max(maxDifference, delta);
     }
+    let cumulative = 0,
+      p99 = 0;
+    for (; p99 < 255; p99++) {
+      cumulative += histogram[p99];
+      if (cumulative >= pixels * 0.99) break;
+    }
+    measured[category] = {
+      pixels,
+      changedPixels,
+      maxDifference,
+      p99,
+      meanDifference: pixels ? sum / pixels : 0,
+    };
   }
-  metrics.push({
-    comparison: name,
-    protectedPixels,
-    changedProtectedPixels,
-    changedPixels,
-    maxDifference,
-  });
-  assert.equal(
-    changedProtectedPixels,
-    0,
-    `${name}: ${changedProtectedPixels} protected pixels changed (max ${maxDifference})`,
-  );
-  if (requireVisible)
+  metrics.push({ comparison: name, regions: measured });
+  for (const category of ["text", "controls"]) {
+    const m = measured[category];
+    if (!m.pixels) continue;
     assert.ok(
-      changedPixels > 0,
-      `${name}: no detectable perimeter mist after full reveal`,
+      m.p99 <= 28 && m.maxDifference <= 45,
+      `${name}: ${category} mist exceeds reading budget ${JSON.stringify(m)}`,
     );
-  return changedPixels;
+  }
+  assert.equal(
+    measured.header.changedPixels,
+    0,
+    `${name}: header should stay above the mist`,
+  );
+  for (const category of [
+    "center",
+    "bottom",
+    "surfaces",
+    "photos",
+    "edgeInside",
+    "edgeOutside",
+  ]) {
+    const m = measured[category];
+    if (m.pixels < 100) continue;
+    assert.ok(
+      m.changedPixels >= Math.max(10, m.pixels * 0.001),
+      `${name}: no meaningful mist over ${category}: ${JSON.stringify(m)}`,
+    );
+  }
+  return measured;
 }
+
+async function continuousScroll(page, name) {
+  const before = await state(page);
+  const samples = await page.evaluate(async () => {
+    const host = document.querySelector(".atmospheric-fog");
+    const canvas = host.querySelector("canvas");
+    const target =
+      document.querySelector(".home-atlas-section").getBoundingClientRect()
+        .top + scrollY;
+    const start = scrollY;
+    const readings = [];
+    for (let step = 0; step <= 16; step++) {
+      window.scrollTo(0, start + ((target - start) * step) / 16);
+      await new Promise((resolve) => setTimeout(resolve, 65));
+      readings.push({
+        status: host.dataset.status,
+        visibility: getComputedStyle(canvas).visibility,
+        frame: Number(canvas.dataset.frame || 0),
+      });
+    }
+    return readings;
+  });
+  const after = await state(page);
+  metrics.push({ continuousScroll: name, samples });
+  assert.ok(
+    samples.every((s) => s.status === "running" && s.visibility === "visible"),
+    `${name}: mist disappeared or restarted during scrolling ${JSON.stringify(samples)}`,
+  );
+  assert.ok(
+    after.frame > before.frame,
+    `${name}: animation stopped during scroll`,
+  );
+  assert.equal(
+    after.contextRequests,
+    before.contextRequests,
+    `${name}: scrolling recreated WebGL`,
+  );
+}
+
 try {
   const desktop = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
@@ -239,12 +427,15 @@ try {
   });
   const page = await open(desktop);
   await check(
-    "Homepage mist initializes once, is noninteractive and low-resolution",
+    "Homepage mist initializes once, is noninteractive and stays within its render budget",
     async () => {
       await running(page);
       const s = await state(page);
       metrics.push({ initial: s });
-      assert.ok(s.width <= 768 && s.height <= 768, JSON.stringify(s));
+      assert.ok(
+        s.width <= 1024 && s.height <= 1024 && s.width * s.height <= 550000,
+        JSON.stringify(s),
+      );
       assert.equal(await page.locator(fog).getAttribute("aria-hidden"), "true");
       assert.equal(
         await page
@@ -268,18 +459,17 @@ try {
     },
   );
   await check(
-    "Homepage text, navigation, image and central pixels remain unchanged",
+    "Homepage fog crosses content surfaces while text and controls remain readable",
     async () => {
-      await protectedComparison(page, "desktop-top");
+      await layeredComparison(page, "desktop-top");
       await screenshot(page, "homepage-desktop");
       await page.locator(".home-featured").scrollIntoViewIfNeeded();
       await page.waitForTimeout(700);
-      const changes = await protectedComparison(page, "desktop-featured");
-      assert.ok(
-        changes > 0,
-        "Fog should be faintly visible in unoccupied perimeter pixels",
-      );
+      await layeredComparison(page, "desktop-featured");
       await screenshot(page, "homepage-desktop-scrolled");
+      await continuousScroll(page, "desktop");
+      await layeredComparison(page, "desktop-atlas-panel");
+      await screenshot(page, "homepage-atlas-panel");
     },
   );
   await check(
@@ -399,7 +589,9 @@ try {
           JSON.stringify(s),
         );
         assert.equal(await page.locator(canvas).count(), 1);
-        assert.ok(s.width <= 768 && s.height <= 768);
+        assert.ok(
+          s.width <= 1024 && s.height <= 1024 && s.width * s.height <= 550000,
+        );
         if (!firstPixels) firstPixels = await page.screenshot();
         await page.waitForTimeout(
           Math.min(15000, Math.max(250, longRunMs - (Date.now() - start))),
@@ -418,7 +610,7 @@ try {
           emulatedSoftwareGPU: true,
         },
       });
-      assert.ok(fps <= 21, `Unexpected frame rate ${fps}`);
+      assert.ok(fps <= 33, `Unexpected frame rate ${fps}`);
       if (final.status === "running") {
         assert.ok(final.frame > initial.frame, "Frame count did not advance");
         assert.ok(
@@ -477,22 +669,17 @@ try {
     });
     const phone = await open(context);
     await check(
-      `${width}×${height} touch layout protects content and resizes cleanly`,
+      `${width}×${height} touch layout layers mist over content and resizes cleanly`,
       async () => {
         await running(phone);
         await noOverflow(phone);
         if (name === "iphone") await unchangedLayout(phone, "mobile");
-        // At 844×390 the full-bleed hero photograph occupies nearly the entire
-        // viewport: image protection is expected to suppress visible mist there.
-        await protectedComparison(
-          phone,
-          `mobile-${name}-top`,
-          name !== "landscape",
-        );
+        await layeredComparison(phone, `mobile-${name}-top`);
         await screenshot(phone, `homepage-${name}`);
         await phone.locator(".home-featured").scrollIntoViewIfNeeded();
         await phone.waitForTimeout(650);
-        await protectedComparison(phone, `mobile-${name}-scrolled`);
+        await layeredComparison(phone, `mobile-${name}-scrolled`);
+        await continuousScroll(phone, `mobile-${name}`);
         await screenshot(phone, `homepage-${name}-scrolled`);
         await phone.evaluate(() => scrollTo(0, 0));
         const menu = phone.getByRole("button", { name: "Open navigation" });
@@ -501,7 +688,12 @@ try {
           await expect(
             phone.getByRole("navigation", { name: "Main navigation" }),
           ).toBeVisible();
+          await expect(phone.locator(fog)).toHaveCSS("opacity", "0");
+          const menuFrame = await state(phone);
+          await phone.waitForTimeout(250);
+          assert.ok((await state(phone)).frame > menuFrame.frame);
           await phone.getByRole("button", { name: "Close navigation" }).tap();
+          await expect(phone.locator(fog)).toHaveCSS("opacity", "1");
         }
         await phone.setViewportSize({ width: height, height: width });
         await phone.waitForTimeout(650);

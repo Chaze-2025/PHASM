@@ -1,5 +1,7 @@
 # Atmospheric mist: browser review
 
+> Historical record: this page and its artifacts describe the original perimeter mist. Its clipping and complete foreground-exclusion requirements are superseded by the continuous homepage atmosphere on `codex/rolling-fog`. See [the current implementation](README.md) and [rolling fog verification record](ROLLING-FOG-QA.md); the results below do not validate that new renderer.
+
 The effect is limited to the homepage. It preserves the green-and-brass design and clear photography, and never mounts in the Haunted Atlas or location profiles.
 
 ## Reproduce
