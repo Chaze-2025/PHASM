@@ -1,6 +1,6 @@
 # PHASM architecture
 
-This describes the implemented foundation and USA atlas integration on `codex/usa-atlas-130`. An isolated Cloudflare evaluation preview is deployed; the [USA atlas integration record](USA-ATLAS-130.md) identifies its exact source and the pending coordinate update. Production launch and community writing workflows remain separate work.
+This describes the implemented foundation and USA atlas integration on `codex/usa-atlas-130`. An isolated Cloudflare evaluation preview is deployed; the [USA atlas integration record](USA-ATLAS-130.md) identifies the exact deployed source and verified coordinate update. Production launch and community writing workflows remain separate work.
 
 ## Runtime and repository layout
 
@@ -110,7 +110,7 @@ The CLI validates the same `Location` contract as the Worker, detects in-file no
 
 The seed script explicitly invokes Wrangler with `--local`. It reads existing IDs, adds missing seed records, rejects identity conflicts, and preserves existing editorial versions. It writes SQL to a temporary directory and removes that file after execution. It is not a remote publishing tool or a destructive database reset.
 
-`scripts/geocode-revision.ts` generates a guarded update from the deployed 136-record baseline `9d76541aec32d093a2caa2f3d2a617d73ebe22f3`. It requires the existing IDs, protects every field of the 61 already mapped records, and permits coordinate fields and associated access-note wording to change for the 75 enriched records. Shared revision guards check complete live JSON, relational projections, source relationships and tags before any writes. Unexpected drift is rejected; an already-applied update is accepted without duplicate audit entries. The generated revision appends `mapped:usa-atlas-75:2026-10-12` audit entries and preserves member relationships. SQL generation itself performs no database operations.
+`scripts/geocode-revision.ts` generates a guarded update from the deployed 136-record baseline `9d76541aec32d093a2caa2f3d2a617d73ebe22f3`. It requires the existing IDs, protects every field of the 61 already mapped records, and permits coordinate fields for the 75 enriched records plus one exact reviewed Devil’s Tramping Ground access-notice replacement. Shared revision guards check complete live JSON, relational projections, source relationships and tags before any writes. Unexpected drift is rejected; an already-applied update is accepted without duplicate audit entries. The generated revision appends `mapped:usa-atlas-75:2026-10-12` audit entries and preserves member relationships. SQL generation itself performs no database operations.
 
 Use the commands in [README](../README.md). Do not copy local development credentials into a public build or provision production services simply to run the preview.
 

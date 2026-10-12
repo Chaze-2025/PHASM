@@ -2,7 +2,7 @@
 
 The October 10, 2026 handoff contributes 130 researched US profiles across all 50 states. The catalog has 136 records: 126 additions, four updates to the existing US IDs, and six unchanged international profiles. The public Cloudflare catalog was read before integration and exactly matched the ten records at `0e980f203650ddbac2d843e66f47194f80735359`.
 
-The initial atlas import is deployed. The subsequent coordinate update is **prepared and pending deployment**: all 136 checked-in profiles now have map points, including 75 newly researched approximate references and the 61 preserved original points. The initial deployment and its verification are recorded separately below.
+The atlas and subsequent coordinate update are **deployed and verified**: all 136 profiles have live map points, including 75 newly researched approximate references and the 61 preserved original points. Both deployments and their verification are recorded below.
 
 ## Content and geography
 
@@ -48,7 +48,17 @@ These results describe source `9d76541aec32d093a2caa2f3d2a617d73ebe22f3`, which 
 
 Browser commands: `node tests/browser.mjs` and `node tests/usa-atlas-browser.mjs`, against `npm run dev`. Screenshots and machine-readable results are retained in the working environment under `/workspace/phasm-verification`.
 
-The coordinate update needs its own recorded validation, build, database and browser results before its deployment is marked complete. Expected catalog counts for that revision are 136 mapped profiles and zero withheld profiles; the 75 newly researched pairs are approximate references.
+## Coordinate update verification — October 12, 2026
+
+- All 35 automated tests pass, including source evidence validation, preservation of existing mapped profiles and member data, guarded drift rejection, and idempotent coordinate revisions.
+- Deterministic regeneration, native validation of 136 published profiles, TypeScript, production build and the explicit preview dry run pass. The bibliography preserves 431 original references and adds 75 geographic references.
+- The real local D1 revision and its rerun passed: 136 mapped profiles, zero withheld profiles, exactly 75 coordinate audit entries, clean foreign keys and integrity checks.
+- Local browser verification passed six USA checks plus two actual Woodburn marker interactions at desktop and mobile widths, with no runtime or accessibility failures. Approximate private-site markers open their matching profiles and retain visitor restrictions.
+- Before the live update, all 19 ordinary tables, schema, rowids and autoincrement sequences were backed up privately with a Time Travel bookmark. A generated restore script reproduced the full snapshot exactly, including FTS, foreign keys and integrity. The ordinary D1 export alone can renumber implicit rowids; use the separately verified rowid-preserving restore artifact.
+- After deployment, all 136 live database profiles and map points exactly matched the committed catalog. All 61 previously mapped profiles, 17 other tables, original location rowids and prior audits were unchanged. Exactly 75 new coordinate audit entries were appended; remote foreign-key and integrity checks pass.
+- Live browser verification passed 23 checks: 15 core regressions, six USA atlas checks and two actual Woodburn marker interactions. Eight WCAG A/AA scans reported zero violations; no application errors occurred. Desktop/mobile coverage uses browser emulation rather than physical devices.
+
+Coordinate verification artifacts are retained privately under `/workspace/phasm-verification-geocodes` and `/workspace/phasm-cloudflare-backup-geocodes-2026-10-12`.
 
 ## Existing Cloudflare preview
 
@@ -58,7 +68,7 @@ The initial import deployed on **October 12, 2026** to [the existing Cloudflare 
 
 Before deployment, all 19 ordinary tables, schema and rowids were backed up privately and a Time Travel bookmark was saved. A local restore verified the table counts, rowids, original catalog, foreign keys and rebuilt FTS. Migration 0003 preserved all 18 existing data tables byte-for-byte before the catalog update. The compatible Worker was deployed before importing withheld-coordinate records.
 
-The new coordinate update has no deployment version recorded yet. The initial version above remains the recovery baseline, not evidence that the new 75 points are live.
+The coordinate update deployed on **October 12, 2026** from source `69b6c4b3fd048ef9254d91373e610de52ef0004f`, Worker version `8538cdf2-47b7-4305-a697-4a98227e85d8`. The live preview now has **136 map points and zero withheld pins**. The initial version remains the pre-coordinate recovery baseline.
 
 ## Apply the coordinate update
 
@@ -71,7 +81,7 @@ npx tsx scripts/geocode-revision.ts /private/path/geocodes.sql
 node deploy/midnight-preview/validate-config.mjs
 ```
 
-The generator uses `9d76541aec32d093a2caa2f3d2a617d73ebe22f3` as its baseline. It requires the 136 existing records, protects all fields of the 61 already mapped records, and allows coordinate fields and associated access-note wording to change for the 75 enriched profiles. Source relationships, narrative copy, access classifications, images, IDs and slugs remain protected. Shared guards compare live JSON, indexed columns, sources and tags before any writes; unexpected drift stops the update. The update preserves member data and appends `mapped:usa-atlas-75:2026-10-12` audit entries. An already-applied revision is accepted without duplicate audit entries. Generating SQL changes no database.
+The generator uses `9d76541aec32d093a2caa2f3d2a617d73ebe22f3` as its baseline. It requires the 136 existing records, protects all fields of the 61 already mapped records, and allows coordinate fields plus one exact reviewed Devil's Tramping Ground access-notice replacement to change. Source relationships, narrative copy, access classifications, images, IDs and slugs remain protected. Shared guards compare live JSON, indexed columns, sources and tags before any writes; unexpected drift stops the update. The update preserves member data and appends `mapped:usa-atlas-75:2026-10-12` audit entries. An already-applied revision is accepted without duplicate audit entries. Generating SQL changes no database.
 
 The initial import already applied migration `0003_withheld_coordinates.sql`, which preserved row IDs, source IDs and cascading children while rebuilding FTS. The coordinate update needs no additional schema migration. `scripts/atlas-revision.ts` remains the original ten-to-136 import generator; use the dedicated geocode revision for this deployed baseline.
 

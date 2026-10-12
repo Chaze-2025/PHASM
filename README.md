@@ -2,7 +2,7 @@
 
 A cinematic field guide to haunted places, documented history, and attributed folklore. Phase 1 delivers a working Haunted Atlas, reusable location profiles, and a private editorial API on React, TypeScript, Vite, Cloudflare Workers, and D1.
 
-Current work: **`codex/usa-atlas-130` — 136 sourced profiles with map points**, including 130 US locations across all 50 states and six preserved international profiles. The 75 newly researched points are approximate references to identified sites, parks, roads or visitor locations; the original 61 points remain unchanged. The coordinate update is prepared for deployment. See [the USA atlas integration](docs/USA-ATLAS-130.md) for the deployed baseline and current release status. The green-and-brass design, neutral charcoal map, photography, homepage mist and closed community features remain intact.
+Current work: **`codex/usa-atlas-130` — 136 sourced profiles with map points**, including 130 US locations across all 50 states and six preserved international profiles. The 75 newly researched points are approximate references to identified sites, parks, roads or visitor locations; the original 61 points remain unchanged. The coordinate update is deployed and verified on the existing Cloudflare preview. See [the USA atlas integration](docs/USA-ATLAS-130.md) for the deployed baseline and current release status. The green-and-brass design, neutral charcoal map, photography, homepage mist and closed community features remain intact.
 
 [Editorial refinement and voice](docs/editorial/README.md) · [Source review](docs/editorial/SOURCE-REVIEW.md) · [Screenshots and QA](docs/editorial/QA.md)
 
@@ -98,7 +98,7 @@ npm run deploy:check
 
 Initial Phase 1 results: **8 backend tests, 16 browser checks, and 7 automated accessibility scans passed**. The production build and Cloudflare deployment dry run passed. Both runtime-only and full dependency audits reported zero known vulnerabilities on 8 October 2026. See [the QA record](docs/QA.md) for evidence and remaining manual/device coverage.
 
-The [USA atlas integration](docs/USA-ATLAS-130.md) distinguishes the initial import's recorded verification from the pending coordinate update. Earlier results remain in [editorial verification](docs/editorial/QA.md), [fog verification](docs/fog/QA.md) and [Phase 1.3 verification](docs/phase-1-3/TEST-RESULTS.md).
+The [USA atlas integration](docs/USA-ATLAS-130.md) records verification of the initial import and the deployed coordinate update. Earlier results remain in [editorial verification](docs/editorial/QA.md), [fog verification](docs/fog/QA.md) and [Phase 1.3 verification](docs/phase-1-3/TEST-RESULTS.md).
 
 For browser checks, start the development server, run `npx playwright install chromium`, then `npm run test:browser`.
 
