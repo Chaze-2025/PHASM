@@ -27,6 +27,11 @@ npx wrangler deploy --config deploy/midnight-preview/wrangler.json --dry-run
 
 Preparation requires the expected branch, a clean working tree, and the preserved Phase 1 (`9da8948`), Phase 1.1 (`cf915ba`), Midnight Séance (`d3c7a21`), and atmospheric fog (`8ffeb28`) commits as ancestors. It performs a fresh production build, copies public assets into ignored `.generated/assets`, adds preview-only indexing headers, and records the exact source commit in `.generated/source.json`. Vite packages the MapLibre browser worker through the application's asset import.
 
+The preparation allowlist also includes the subsequent `codex/usa-atlas-130`,
+`codex/rolling-fog` and `codex/responsive-performance` revisions. The
+[performance update](../../docs/PERFORMANCE.md) uses this same isolated Worker
+and database without migrations or catalog writes.
+
 For local review before committing, `node deploy/midnight-preview/prepare.mjs --allow-dirty` permits a marked, uncommitted build. Use that output only for local checks and Wrangler's `--dry-run`. Before a real deployment, commit reviewed changes and rerun preparation **without** `--allow-dirty`.
 
 ## Preview database isolation

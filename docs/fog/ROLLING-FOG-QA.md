@@ -2,15 +2,18 @@
 
 Status: **deployed and verified locally and live**. The results below were recorded on October 12, 2026.
 
-| Item | Current record |
-| --- | --- |
-| Working branch | `codex/rolling-fog` |
-| Starting source | `ede8fff`, recorded deployment of all 136 atlas pins |
-| Change | One continuous homepage fog layer with three moving noise fields and soft text/control attenuation |
-| Reviewed source commit | `d17baf0c0ffb79c8da10fa473eca7346116417d2` |
-| Local build and automated checks | 35 automated tests, TypeScript, production build and preview configuration validation passed |
-| Desktop/mobile visual and motion review | 18 focused fog checks; two accessibility scans; real-time 25-second recording |
-| Deployed Worker version and live verification | `04388f1d-4e3b-4277-b7a4-ef546d4d6573`; 33 live checks passed |
+This records the initial rolling-fog release. Subsequent geometry caching, menu
+pausing and faster adaptation are documented in the [performance update](../PERFORMANCE.md).
+
+| Item                                          | Current record                                                                                     |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Working branch                                | `codex/rolling-fog`                                                                                |
+| Starting source                               | `ede8fff`, recorded deployment of all 136 atlas pins                                               |
+| Change                                        | One continuous homepage fog layer with three moving noise fields and soft text/control attenuation |
+| Reviewed source commit                        | `d17baf0c0ffb79c8da10fa473eca7346116417d2`                                                         |
+| Local build and automated checks              | 35 automated tests, TypeScript, production build and preview configuration validation passed       |
+| Desktop/mobile visual and motion review       | 18 focused fog checks; two accessibility scans; real-time 25-second recording                      |
+| Deployed Worker version and live verification | `04388f1d-4e3b-4277-b7a4-ef546d4d6573`; 33 live checks passed                                      |
 
 The [implementation guide](README.md) describes the current shader, motion, readability mask and adaptive rendering budget. [QA.md](QA.md) and its existing artifacts describe the original perimeter mist. Its unchanged-center and completely protected-photo checks are historical requirements superseded by this revision; those results do not validate the new effect.
 

@@ -399,3 +399,129 @@ test("catalog pagination uses the matching index without sorting the full catalo
   );
   assert.ok(result.results.every((row) => !row.detail.includes("TEMP B-TREE")));
 });
+
+test("summary formats keep catalog fields, ordering and pagination while full APIs remain compatible", async () => {
+  const env = createEnv([
+    fixture,
+    { ...fixture, id: "second", slug: "second", name: "Another place" },
+    { ...fixture, id: "draft", slug: "draft", name: "Draft", status: "draft" },
+  ]);
+  const full = (await (
+    await request("/api/locations?pageSize=1", env)
+  ).json()) as any;
+  const cards = (await (
+    await request("/api/locations?pageSize=1&format=summary", env)
+  ).json()) as any;
+  assert.equal(cards.total, 2);
+  assert.equal(cards.pageSize, 1);
+  assert.equal(cards.locations[0].slug, full.locations[0].slug);
+  for (const field of [
+    "latitude",
+    "longitude",
+    "coordinatePrecision",
+    "summary",
+    "phenomena",
+    "imageLicense",
+    "access",
+    "tours",
+  ])
+    assert.deepEqual(cards.locations[0][field], full.locations[0][field]);
+  for (const field of [
+    "history",
+    "reports",
+    "accessNotes",
+    "officialUrl",
+    "sources",
+    "imageCredit",
+    "imageSource",
+  ]) {
+    assert.ok(field in full.locations[0]);
+    assert.ok(!(field in cards.locations[0]));
+  }
+  let queries = 0;
+  const prepare = env.DB.prepare.bind(env.DB);
+  env.DB.prepare = (sql: string) => {
+    queries++;
+    return prepare(sql);
+  };
+  const preview = (await (
+    await request(`/api/locations/${fixture.slug}?format=summary`, env)
+  ).json()) as any;
+  assert.equal(queries, 1);
+  assert.equal(preview.location.slug, fixture.slug);
+  assert.ok(!("nearby" in preview));
+  const profile = (await (
+    await request(`/api/locations/${fixture.slug}`, env)
+  ).json()) as any;
+  assert.deepEqual(profile.location, fixture);
+  assert.equal(profile.nearby[0].slug, "second");
+  const admin = (await (
+    await request("/api/admin/locations?format=summary", env, auth())
+  ).json()) as any;
+  assert.equal(admin.total, 3);
+  assert.ok("history" in admin.locations[0]);
+});
+
+test("metadata returns all published facets and total in one D1 statement", async () => {
+  const env = createEnv([
+    fixture,
+    {
+      ...fixture,
+      id: "draft",
+      slug: "draft",
+      name: "Draft",
+      status: "draft",
+      region: "Hidden region",
+      category: "Castle",
+    },
+  ]);
+  let queries = 0;
+  const prepare = env.DB.prepare.bind(env.DB);
+  env.DB.prepare = (sql: string) => {
+    queries++;
+    return prepare(sql);
+  };
+  const meta = (await (await request("/api/meta", env)).json()) as any;
+  assert.equal(queries, 1);
+  assert.deepEqual(meta, {
+    categories: ["Hotel"],
+    phenomena: ["Unexplained sounds"],
+    regions: ["North America"],
+    classifications: ["established"],
+    total: 1,
+  });
+});
+
+test("only successful anonymous public JSON permits 30-second browser caching", async () => {
+  const env = createEnv();
+  for (const path of [
+    "/api/meta",
+    "/api/locations",
+    "/api/atlas?zoom=5",
+    `/api/locations/${fixture.slug}`,
+    `/api/locations/${fixture.slug}?format=summary`,
+  ]) {
+    const result = await request(path, env);
+    assert.equal(
+      result.headers.get("Cache-Control"),
+      "public, max-age=30",
+      path,
+    );
+    assert.equal(result.headers.get("Vary"), "Authorization, Cookie");
+  }
+  for (const [path, init] of [
+    ["/api/admin/locations", auth()],
+    ["/api/admin/locations", undefined],
+    ["/api/locations/unavailable", undefined],
+    ["/api/atlas?zoom=bad", undefined],
+    ["/api/meta", { headers: { Cookie: "session=test" } }],
+    ["/api/meta", auth()],
+    ["/api/reviews", { method: "POST" }],
+  ] as [string, RequestInit | undefined][]) {
+    assert.equal(
+      (await request(path, env, init)).headers.get("Cache-Control"),
+      "no-store",
+      path,
+    );
+  }
+});

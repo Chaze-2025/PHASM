@@ -100,13 +100,25 @@ export function AtmosphericFog() {
     const host = hostRef.current;
     if (!host) return;
     let canvas: HTMLCanvasElement | undefined;
+    let disposed = false;
+    let startFrame = 0;
+    let startTimer = 0;
+    let startIdle = 0;
 
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const forcedColors = window.matchMedia("(forced-colors: active)");
     const navigatorHints = navigator as SaverNavigator;
     let disposeRenderer: (() => void) | undefined;
 
+    function cancelInitialization() {
+      window.cancelAnimationFrame(startFrame);
+      window.clearTimeout(startTimer);
+      if (startIdle) window.cancelIdleCallback(startIdle);
+      startFrame = startTimer = startIdle = 0;
+    }
+
     function start() {
+      cancelInitialization();
       disposeRenderer?.();
       disposeRenderer = undefined;
       canvas?.remove();
@@ -130,7 +142,23 @@ export function AtmosphericFog() {
         host!.dataset.status = "low-memory";
         return;
       }
-      disposeRenderer = createRenderer(host!, canvas!);
+      // Let the homepage paint before compiling decorative shaders. A bounded
+      // idle callback keeps initialization out of the initial rendering work.
+      host!.dataset.status = "initializing";
+      const pendingCanvas = canvas;
+      const initialize = () => {
+        startIdle = startTimer = 0;
+        if (disposed || canvas !== pendingCanvas) return;
+        disposeRenderer = createRenderer(host!, pendingCanvas);
+      };
+      startFrame = window.requestAnimationFrame(() => {
+        startFrame = 0;
+        if (typeof window.requestIdleCallback === "function") {
+          startIdle = window.requestIdleCallback(initialize, { timeout: 1000 });
+        } else {
+          startTimer = window.setTimeout(initialize, 32);
+        }
+      });
     }
 
     start();
@@ -138,6 +166,8 @@ export function AtmosphericFog() {
     forcedColors.addEventListener("change", start);
     navigatorHints.connection?.addEventListener("change", start);
     return () => {
+      disposed = true;
+      cancelInitialization();
       motion.removeEventListener("change", start);
       forcedColors.removeEventListener("change", start);
       navigatorHints.connection?.removeEventListener("change", start);
@@ -175,12 +205,30 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
   let revealTime = 0;
   let performanceSamples = 0;
   let slowSamples = 0;
+  let performanceWarmupUntil = 0;
+  let initialAdaptation = true;
   let quality = 0;
   let frameInterval = 1000 / 30;
   let lastMaskTime = 0;
   let geometryDirty = true;
+  let contentGeometryDirty = true;
+  let textureWidth = 0;
+  let textureHeight = 0;
   let scrollPosition = window.scrollY;
   let clearTop = 0;
+  const homepage = document.querySelector(".home-page");
+  const header = document.querySelector(".site-header");
+  const navigation = document.querySelector(".main-nav");
+  let menuOpen = navigation?.classList.contains("is-open") || false;
+  type ProtectedRect = {
+    left: number;
+    top: number;
+    width: number;
+    height: number;
+    strength: number;
+    margin: number;
+  };
+  let protectionRects: ProtectedRect[] = [];
 
   let gl: WebGLRenderingContext | null = null;
   try {
@@ -366,13 +414,23 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
   }
 
   function schedule() {
-    if (disposed || lost || disabled || document.hidden || !ready) return;
+    if (
+      disposed ||
+      lost ||
+      disabled ||
+      document.hidden ||
+      menuOpen ||
+      !ready ||
+      animationFrame
+    )
+      return;
     animationFrame = window.requestAnimationFrame(draw);
   }
 
   function draw(now: number) {
     animationFrame = 0;
-    if (disposed || lost || disabled || document.hidden || !ready) return;
+    if (disposed || lost || disabled || document.hidden || menuOpen || !ready)
+      return;
     const cadenceGap = cadenceTime ? now - cadenceTime : frameInterval;
     if (cadenceGap < frameInterval - 1) {
       schedule();
@@ -385,8 +443,8 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     elapsed += delta;
     revealTime += delta;
     previousFrameTime = now;
-    // Refresh only when page geometry changes, at most 20 times per second
-    // while scrolling. The soft mask never forces a hide/reveal cycle.
+    // Scrolling redraws the mask from cached document-space rectangles. Only
+    // layout/content changes remeasure text, independently of this 20 Hz cap.
     if (geometryDirty && now - lastMaskTime >= 50) measureAndMask();
     scrollPosition +=
       (window.scrollY - scrollPosition) * Math.min(1, delta * 6);
@@ -401,17 +459,26 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     canvas.dataset.frame = String(++frame);
     host.dataset.status = "running";
 
-    // Cadence includes GPU backpressure. Lower resolution first, keeping the
-    // same layers and motion; abandon the decoration only if that still fails.
-    if (elapsed > 4) {
+    // Cadence includes GPU backpressure. Catch sustained startup overload
+    // promptly, then use longer windows once a suitable resolution is found.
+    // A resize cooldown and a majority of missed intervals avoid reacting to
+    // one shader warmup, image decode, or content-layout frame.
+    if (!performanceWarmupUntil) performanceWarmupUntil = now + 1000;
+    if (now >= performanceWarmupUntil) {
       performanceSamples++;
-      if (gap > frameInterval * 1.8) slowSamples++;
-      if (performanceSamples >= 60) {
-        if (slowSamples > performanceSamples * 0.45) {
+      if (gap > frameInterval * (initialAdaptation ? 1.5 : 1.8)) slowSamples++;
+      if (performanceSamples >= (initialAdaptation ? 24 : 60)) {
+        if (
+          slowSamples >
+          performanceSamples * (initialAdaptation ? 0.5 : 0.45)
+        ) {
           if (quality < 2) {
             quality++;
             host.dataset.quality = quality === 1 ? "balanced" : "economy";
             geometryDirty = true;
+            performanceWarmupUntil = now + 500;
+            // Give economy mode the longer window before disabling anything.
+            if (quality === 2) initialAdaptation = false;
           } else {
             disabled = true;
             canvas.style.visibility = "hidden";
@@ -420,16 +487,49 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
             context.getExtension("WEBGL_lose_context")?.loseContext();
             return;
           }
-        }
+        } else initialAdaptation = false;
         performanceSamples = slowSamples = 0;
       }
     }
     schedule();
   }
 
+  function measureContent() {
+    const measured: ProtectedRect[] = [];
+    const documentLeft = window.scrollX;
+    const documentTop = window.scrollY;
+    function remember(rect: DOMRect, strength: number, margin: number) {
+      if (!rect.width || !rect.height) return;
+      measured.push({
+        left: rect.left + documentLeft,
+        top: rect.top + documentTop,
+        width: rect.width,
+        height: rect.height,
+        strength,
+        margin,
+      });
+    }
+    if (homepage) {
+      const walker = document.createTreeWalker(homepage, NodeFilter.SHOW_TEXT);
+      const range = document.createRange();
+      let node: Node | null;
+      while ((node = walker.nextNode())) {
+        if (!node.textContent?.trim() || host.contains(node)) continue;
+        if (node.parentElement?.closest("script,style,[aria-hidden='true']"))
+          continue;
+        range.selectNodeContents(node);
+        for (const rect of range.getClientRects()) remember(rect, 0.78, 70);
+      }
+      for (const node of homepage.querySelectorAll(controlSelector))
+        remember(node.getBoundingClientRect(), 0.72, 48);
+    }
+    protectionRects = measured;
+    contentGeometryDirty = false;
+  }
+
   function measureAndMask() {
     geometryFrame = 0;
-    if (disposed || lost || disabled || document.hidden) return;
+    if (disposed || lost || disabled || document.hidden || menuOpen) return;
     const viewport = window.visualViewport;
     width = Math.max(1, viewport?.width || window.innerWidth);
     height = Math.max(1, viewport?.height || window.innerHeight);
@@ -437,9 +537,12 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     viewportTop = viewport?.offsetTop || 0;
     clearTop = Math.max(
       0,
-      (document.querySelector(".site-header")?.getBoundingClientRect().bottom ||
-        0) - viewportTop,
+      (header?.getBoundingClientRect().bottom || 0) - viewportTop,
     );
+    // Complete layout reads before changing the fixed overlay's sizing styles.
+    if (contentGeometryDirty) measureContent();
+    const documentLeft = window.scrollX + viewportLeft;
+    const documentTop = window.scrollY + viewportTop;
     frameInterval = 1000 / (width <= 760 ? 24 : 30);
     host.style.width = `${width}px`;
     host.style.height = `${height}px`;
@@ -466,9 +569,9 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     ctx.globalCompositeOperation = "darken";
     // Broad elliptical shoulders reduce density near actual text lines. They
     // never erase entire card/photo rectangles or cut a square hole in a bank.
-    function soften(rect: DOMRect, strength: number, margin: number) {
-      const left = rect.left - viewportLeft;
-      const top = rect.top - viewportTop;
+    function soften(rect: ProtectedRect) {
+      const left = rect.left - documentLeft;
+      const top = rect.top - documentTop;
       if (
         !rect.width ||
         !rect.height ||
@@ -476,13 +579,13 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
         top + rect.height < -60
       )
         return;
-      const rx = rect.width * 0.64 + margin;
-      const ry = rect.height * 0.7 + margin;
+      const rx = rect.width * 0.64 + rect.margin;
+      const ry = rect.height * 0.7 + rect.margin;
       ctx.save();
       ctx.translate(left + rect.width / 2, top + rect.height / 2);
       ctx.scale(rx, ry);
       const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
-      const shade = Math.round(strength * 255);
+      const shade = Math.round(rect.strength * 255);
       gradient.addColorStop(0, `rgb(${shade},${shade},${shade})`);
       gradient.addColorStop(0.45, `rgb(${shade},${shade},${shade})`);
       gradient.addColorStop(1, "white");
@@ -490,41 +593,41 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
       ctx.fillRect(-1, -1, 2, 2);
       ctx.restore();
     }
-    const homepage = document.querySelector(".home-page");
-    if (homepage) {
-      const walker = document.createTreeWalker(homepage, NodeFilter.SHOW_TEXT);
-      const range = document.createRange();
-      let node: Node | null;
-      while ((node = walker.nextNode())) {
-        if (!node.textContent?.trim() || host.contains(node)) continue;
-        if (node.parentElement?.closest("script,style,[aria-hidden='true']"))
-          continue;
-        range.selectNodeContents(node);
-        for (const rect of range.getClientRects()) soften(rect, 0.78, 70);
-      }
-      for (const node of homepage.querySelectorAll(controlSelector))
-        soften(node.getBoundingClientRect(), 0.72, 48);
-    }
+    for (const rect of protectionRects) soften(rect);
     context.activeTexture(context.TEXTURE0);
     context.bindTexture(context.TEXTURE_2D, protectionTexture);
-    context.texImage2D(
-      context.TEXTURE_2D,
-      0,
-      context.RGBA,
-      context.RGBA,
-      context.UNSIGNED_BYTE,
-      mask,
-    );
+    if (textureWidth !== renderWidth || textureHeight !== renderHeight) {
+      context.texImage2D(
+        context.TEXTURE_2D,
+        0,
+        context.RGBA,
+        context.RGBA,
+        context.UNSIGNED_BYTE,
+        mask,
+      );
+      textureWidth = renderWidth;
+      textureHeight = renderHeight;
+    } else {
+      context.texSubImage2D(
+        context.TEXTURE_2D,
+        0,
+        0,
+        0,
+        context.RGBA,
+        context.UNSIGNED_BYTE,
+        mask,
+      );
+    }
     geometryDirty = false;
     lastMaskTime = performance.now();
     ready = true;
     host.dataset.quality = ["high", "balanced", "economy"][quality];
   }
 
-  function markGeometryDirty() {
+  function markMaskDirty() {
     if (disposed || lost || disabled) return;
     geometryDirty = true;
-    if (!ready && !document.hidden && !geometryFrame) {
+    if (!ready && !document.hidden && !menuOpen && !geometryFrame) {
       geometryFrame = window.requestAnimationFrame(() => {
         measureAndMask();
         schedule();
@@ -532,20 +635,36 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     }
   }
 
+  function markGeometryDirty() {
+    contentGeometryDirty = true;
+    markMaskDirty();
+  }
+
   function visibilityChanged() {
-    if (document.hidden) {
+    if (document.hidden || menuOpen) {
       stopScheduling();
       window.cancelAnimationFrame(geometryFrame);
       geometryFrame = 0;
-      canvas.style.visibility = "hidden";
-      if (!disabled && !lost) host.dataset.status = "paused";
+      // Keep the last frame for the menu's existing opacity transition.
+      if (document.hidden) canvas.style.visibility = "hidden";
+      if (!disabled && !lost)
+        host.dataset.status = document.hidden ? "paused" : "paused-menu";
     } else {
       previousFrameTime = 0;
       cadenceTime = 0;
       geometryDirty = true;
+      lastMaskTime = 0;
       if (ready) schedule();
       else markGeometryDirty();
     }
+  }
+  function menuChanged() {
+    const next = navigation?.classList.contains("is-open") || false;
+    if (menuOpen === next) return;
+    menuOpen = next;
+    // Scroll locking can change the layout width without a window resize.
+    contentGeometryDirty = true;
+    visibilityChanged();
   }
   function contextLost(event: Event) {
     event.preventDefault();
@@ -556,11 +675,11 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
   }
   canvas.addEventListener("webglcontextlost", contextLost);
   window.addEventListener("resize", markGeometryDirty, { passive: true });
-  window.addEventListener("scroll", markGeometryDirty, { passive: true });
+  window.addEventListener("scroll", markMaskDirty, { passive: true });
   window.visualViewport?.addEventListener("resize", markGeometryDirty, {
     passive: true,
   });
-  window.visualViewport?.addEventListener("scroll", markGeometryDirty, {
+  window.visualViewport?.addEventListener("scroll", markMaskDirty, {
     passive: true,
   });
   document.addEventListener("visibilitychange", visibilityChanged);
@@ -569,7 +688,6 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
   void document.fonts?.ready.then(() => {
     if (!disposed) markGeometryDirty();
   });
-  const homepage = document.querySelector(".home-page");
   const resizeObserver = new ResizeObserver(markGeometryDirty);
   if (homepage) resizeObserver.observe(homepage);
   // Async location cards and other content changes need a new protection mask.
@@ -583,8 +701,17 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
       childList: true,
       subtree: true,
       characterData: true,
+      attributes: true,
+      attributeFilter: ["class", "style", "hidden", "open", "aria-hidden"],
     });
-  markGeometryDirty();
+  const menuObserver = new MutationObserver(menuChanged);
+  if (navigation)
+    menuObserver.observe(navigation, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  if (document.hidden || menuOpen) visibilityChanged();
+  else markGeometryDirty();
 
   return () => {
     disposed = true;
@@ -592,15 +719,16 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     window.cancelAnimationFrame(geometryFrame);
     geometryFrame = 0;
     window.removeEventListener("resize", markGeometryDirty);
-    window.removeEventListener("scroll", markGeometryDirty);
+    window.removeEventListener("scroll", markMaskDirty);
     window.visualViewport?.removeEventListener("resize", markGeometryDirty);
-    window.visualViewport?.removeEventListener("scroll", markGeometryDirty);
+    window.visualViewport?.removeEventListener("scroll", markMaskDirty);
     document.removeEventListener("visibilitychange", visibilityChanged);
     document.removeEventListener("load", markGeometryDirty, true);
     document.fonts?.removeEventListener("loadingdone", markGeometryDirty);
     canvas.removeEventListener("webglcontextlost", contextLost);
     resizeObserver.disconnect();
     mutationObserver.disconnect();
+    menuObserver.disconnect();
     release();
     context.getExtension("WEBGL_lose_context")?.loseContext();
   };

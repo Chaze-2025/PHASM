@@ -32,10 +32,11 @@ if (
     "dev/phasm-editorial-voice",
     "codex/usa-atlas-130",
     "codex/rolling-fog",
+    "codex/responsive-performance",
   ].includes(branch)
 )
   throw new Error(
-    "Preview requires a reviewed editorial, atlas or rolling-fog branch.",
+    "Preview requires a reviewed editorial, atlas, fog or performance branch.",
   );
 git("merge-base", "--is-ancestor", preservedPhaseOne, "HEAD");
 git("merge-base", "--is-ancestor", preservedPhaseOneOne, "HEAD");

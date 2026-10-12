@@ -1,4 +1,9 @@
-import type { AtlasFeature, AtlasGeoJSON, Location } from "../shared/types";
+import type {
+  AtlasFeature,
+  AtlasGeoJSON,
+  Location,
+  LocationSummary,
+} from "../shared/types";
 import {
   HttpError,
   identityKey,
@@ -31,8 +36,32 @@ const securityHeaders = {
 function json(data: unknown, status = 200): Response {
   return Response.json(data, { status, headers: publicHeaders });
 }
+function publicJson(data: unknown): Response {
+  return Response.json(data, {
+    headers: {
+      ...publicHeaders,
+      // Brief browser reuse for anonymous catalog reads. This does not enable
+      // a Workers edge cache; publication changes expire within 30 seconds.
+      "Cache-Control": "public, max-age=30",
+      Vary: "Authorization, Cookie",
+    },
+  });
+}
 function fromRow(row: Row): Location {
   return JSON.parse(row.data_json) as Location;
+}
+function summary(location: Location): LocationSummary {
+  const {
+    history: _history,
+    reports: _reports,
+    accessNotes: _accessNotes,
+    officialUrl: _officialUrl,
+    sources: _sources,
+    imageCredit: _imageCredit,
+    imageSource: _imageSource,
+    ...card
+  } = location;
+  return card;
 }
 
 export function buildFilters(
@@ -106,26 +135,37 @@ async function listLocations(
       .bind(...filter.values, pageSize, (page - 1) * pageSize)
       .all<Row>(),
   ]);
-  return json({
-    locations: result.results.map(fromRow),
+  const locations = result.results.map(fromRow);
+  return (admin ? json : publicJson)({
+    locations:
+      !admin && params.get("format") === "summary"
+        ? locations.map(summary)
+        : locations,
     total: count?.total ?? 0,
     page,
     pageSize,
   });
 }
 
-async function getProfile(
+async function getLocation(
   db: D1Database,
   slug: string,
-): Promise<{ location: Location; nearby: Location[] } | null> {
+): Promise<Location | null> {
   const row = await db
     .prepare(
       "SELECT data_json FROM locations WHERE slug = ? AND status = 'published'",
     )
     .bind(slug)
     .first<Row>();
-  if (!row) return null;
-  const location = fromRow(row);
+  return row ? fromRow(row) : null;
+}
+
+async function getProfile(
+  db: D1Database,
+  slug: string,
+): Promise<{ location: Location; nearby: Location[] } | null> {
+  const location = await getLocation(db, slug);
+  if (!location) return null;
   const discoveries: Location[] = [];
   if (location.latitude !== null && location.longitude !== null) {
     // A small indexed bounding search avoids sorting the full catalog for each profile.
@@ -193,7 +233,7 @@ async function atlas(
     .first<{ total: number }>();
   const total = count?.total ?? 0;
   if (!total)
-    return json({ type: "FeatureCollection", features: [], total: 0 });
+    return publicJson({ type: "FeatureCollection", features: [], total: 0 });
   let features: AtlasFeature[];
   if (zoom < 5 || total > 500) {
     // At most 25 x 17 grid cells, even across the antimeridian. Aggregation
@@ -276,30 +316,29 @@ async function atlas(
     total,
     truncated: false,
   };
-  return json(result);
+  return publicJson(result);
 }
 
 async function metadata(db: D1Database): Promise<Response> {
-  // One statement keeps requests below D1's free-plan query budget.
+  // Facets and total share one round trip and one consistent read.
   const data = await db
     .prepare(
-      `SELECT 'category' AS kind, category AS value FROM locations WHERE status='published' GROUP BY category UNION ALL SELECT 'region', region FROM locations WHERE status='published' GROUP BY region UNION ALL SELECT 'classification', classification FROM locations WHERE status='published' GROUP BY classification UNION ALL SELECT 'phenomenon', p.phenomenon FROM location_phenomena p JOIN locations l ON l.id = p.location_id WHERE l.status='published' GROUP BY p.phenomenon`,
+      `SELECT 'category' AS kind, category AS value FROM locations WHERE status='published' GROUP BY category UNION ALL SELECT 'region', region FROM locations WHERE status='published' GROUP BY region UNION ALL SELECT 'classification', classification FROM locations WHERE status='published' GROUP BY classification UNION ALL SELECT 'phenomenon', p.phenomenon FROM location_phenomena p JOIN locations l ON l.id = p.location_id WHERE l.status='published' GROUP BY p.phenomenon UNION ALL SELECT 'total', CAST(COUNT(*) AS TEXT) FROM locations WHERE status='published'`,
     )
     .all<{ kind: string; value: string }>();
-  const total = await db
-    .prepare("SELECT COUNT(*) AS total FROM locations WHERE status='published'")
-    .first<{ total: number }>();
   const values = (kind: string) =>
     data.results
       .filter((item) => item.kind === kind)
       .map((item) => item.value)
       .sort();
-  return json({
+  return publicJson({
     categories: values("category"),
     phenomena: values("phenomenon"),
     regions: values("region"),
     classifications: values("classification"),
-    total: total?.total ?? 0,
+    total: Number(
+      data.results.find((item) => item.kind === "total")?.value ?? 0,
+    ),
   });
 }
 
@@ -442,15 +481,18 @@ async function profileHtml(
   env: Env,
   slug: string,
 ): Promise<Response> {
-  const profile = await getProfile(env.DB, slug);
+  // The HTML article uses only this location, not the related-card results.
   // Cloudflare's HTML asset handling redirects /index.html to /. Fetch the
   // canonical root asset directly so the rewriter receives the HTML body.
-  const asset = await env.ASSETS.fetch(
-    new Request(new URL("/", request.url), {
-      headers: { Accept: "text/html" },
-    }),
-  );
-  if (!profile)
+  const [location, asset] = await Promise.all([
+    getLocation(env.DB, slug),
+    env.ASSETS.fetch(
+      new Request(new URL("/", request.url), {
+        headers: { Accept: "text/html" },
+      }),
+    ),
+  ]);
+  if (!location)
     return new Response(
       '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="robots" content="noindex"><title>Location not found — PHASM</title><body><main><h1>Location not found</h1><p>This location is unavailable or has not been published.</p><a href="/map">Explore the Haunted Atlas</a></main></body></html>',
       {
@@ -461,7 +503,6 @@ async function profileHtml(
         },
       },
     );
-  const { location } = profile;
   const canonical = `${siteUrl(env)}/locations/${location.slug}`;
   const image = new URL(location.image, siteUrl(env)).href;
   const title = `${location.name} — Hauntings, History & Visiting Guide | PHASM`;
@@ -568,9 +609,14 @@ async function route(request: Request, env: Env): Promise<Response> {
   if (path === "/api/meta") return metadata(env.DB);
   const slug = path.match(/^\/api\/locations\/([a-z0-9-]+)$/)?.[1];
   if (slug) {
+    if (url.searchParams.get("format") === "summary") {
+      const location = await getLocation(env.DB, slug);
+      if (!location) throw new HttpError(404, "Location not found.");
+      return publicJson({ location: summary(location) });
+    }
     const profile = await getProfile(env.DB, slug);
     if (!profile) throw new HttpError(404, "Location not found.");
-    return json(profile);
+    return publicJson(profile);
   }
   if (path.startsWith("/api/")) throw new HttpError(404, "Endpoint not found.");
   if (request.method !== "GET" && request.method !== "HEAD")
@@ -632,6 +678,11 @@ export default {
     );
     for (const [name, value] of Object.entries(securityHeaders))
       secured.headers.set(name, value);
+    if (
+      new URL(request.url).pathname.startsWith("/api/") &&
+      (request.headers.has("Authorization") || request.headers.has("Cookie"))
+    )
+      secured.headers.set("Cache-Control", "no-store");
     if (/^\/(?:api\/)?admin(?:\/|$)/.test(new URL(request.url).pathname))
       secured.headers.set("X-Robots-Tag", "noindex, nofollow");
     return secured;

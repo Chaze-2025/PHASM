@@ -11,11 +11,11 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useApi, useSaved } from "./api";
-import type { Location } from "../shared/types";
+import type { LocationSummary } from "../shared/types";
 import { LocationCard, PageHeading, Status, Eyebrow } from "./components";
 function SavedEntry({ slug }: { slug: string }) {
-  const { data, error, loading } = useApi<{ location: Location }>(
-    `/api/locations/${slug}`,
+  const { data, error, loading } = useApi<{ location: LocationSummary }>(
+    `/api/locations/${encodeURIComponent(slug)}?format=summary`,
   );
   const { toggle } = useSaved();
   return loading ? (

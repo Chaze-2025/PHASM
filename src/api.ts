@@ -1,41 +1,36 @@
 import { useEffect, useState } from "react";
-export async function api<T>(path: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(path, init);
-  if (!response.ok) {
-    const body = (await response.json().catch(() => ({}))) as {
-      error?: string;
-    };
-    throw new Error(
-      body.error || `Unable to load this page (${response.status}).`,
-    );
-  }
-  return response.json();
-}
+import { api } from "./api-request";
+export { api } from "./api-request";
 export function useApi<T>(path: string | null) {
-  const [data, setData] = useState<T>();
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [state, setState] = useState<{
+    path: string | null;
+    data?: T;
+    error: string;
+    loading: boolean;
+  }>({ path, error: "", loading: Boolean(path) });
   useEffect(() => {
     if (!path) {
-      setLoading(false);
-      setData(undefined);
-      setError("");
+      setState({ path, error: "", loading: false });
       return;
     }
     const controller = new AbortController();
-    setLoading(true);
-    setError("");
+    setState({ path, error: "", loading: true });
     api<T>(path, { signal: controller.signal })
-      .then(setData)
-      .catch((e) => {
-        if (e.name !== "AbortError") setError(e.message);
+      .then((data) => {
+        if (!controller.signal.aborted)
+          setState({ path, data, error: "", loading: false });
       })
-      .finally(() => {
-        if (!controller.signal.aborted) setLoading(false);
+      .catch((e) => {
+        if (!controller.signal.aborted && e.name !== "AbortError")
+          setState({ path, error: e.message, loading: false });
       });
     return () => controller.abort();
   }, [path]);
-  return { data, error, loading };
+  // Never expose the previous filter/profile as the current result while a
+  // changed path is waiting for its effect or response.
+  return state.path === path
+    ? { data: state.data, error: state.error, loading: state.loading }
+    : { data: undefined, error: "", loading: Boolean(path) };
 }
 export function useSaved() {
   const read = (): string[] => {

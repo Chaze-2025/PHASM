@@ -15,6 +15,7 @@ import {
 import { useApi } from "./api";
 import type { Location } from "../shared/types";
 import { hasLocationPhotograph, hasMapCoordinates } from "./location";
+import "./profile.css";
 import {
   LocationCard,
   Eyebrow,

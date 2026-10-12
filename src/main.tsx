@@ -3,15 +3,24 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Header, Footer, Status } from "./components";
 import { Home } from "./Home";
-import { Profile } from "./Profile";
-import { Saved, Editorial, NotFound } from "./pages";
 import "./styles.css";
 import "./design-tokens.css";
 import "./refinement.css";
 import "./home.css";
-import "./profile.css";
 const Atlas = lazy(() => import("./Atlas"));
 const Admin = lazy(() => import("./Admin"));
+const Profile = lazy(() =>
+  import("./Profile").then(({ Profile }) => ({ default: Profile })),
+);
+const Saved = lazy(() =>
+  import("./pages").then(({ Saved }) => ({ default: Saved })),
+);
+const Editorial = lazy(() =>
+  import("./pages").then(({ Editorial }) => ({ default: Editorial })),
+);
+const NotFound = lazy(() =>
+  import("./pages").then(({ NotFound }) => ({ default: NotFound })),
+);
 function ScrollAndTitle() {
   const { pathname } = useLocation();
   useEffect(() => {
