@@ -1,88 +1,8 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import "./atmospheric-fog.css";
-
-const vertexSource = `
-attribute vec2 aPosition;
-varying vec2 vUv;
-void main() {
-  vUv = aPosition * .5 + .5;
-  gl_Position = vec4(aPosition, 0., 1.);
-}`;
-
-// Three advected volumes share a seamless 3D noise texture. Low-frequency
-// domain warping forms billows; finer erosion breaks their edges into tendrils.
-const fragmentSource = `
-precision highp float;
-varying vec2 vUv;
-uniform vec2 uViewport;
-uniform float uTime;
-uniform float uReveal;
-uniform float uScroll;
-uniform float uClearTop;
-uniform float uDensity;
-uniform sampler2D uProtection;
-uniform sampler2D uNoise;
-
-float noise(vec3 p) {
-  vec3 cell = floor(p);
-  vec3 f = fract(p);
-  f = f * f * (3. - 2. * f);
-  vec2 uv = cell.xy + vec2(37., 17.) * cell.z + f.xy;
-  vec2 pair = texture2D(uNoise, (uv + .5) / 256.).rg;
-  return mix(pair.r, pair.g, f.z);
-}
-float field(vec3 p) {
-  float value = .5333 * noise(p);
-  p.xy = mat2(.8, -.6, .6, .8) * p.xy;
-  p = p * 2.03 + vec3(13.7, 9.2, 17.1);
-  value += .2667 * noise(p);
-  p.xy = mat2(.8, -.6, .6, .8) * p.xy;
-  p = p * 2.01 + vec3(8.3, 19.1, 3.7);
-  value += .1333 * noise(p);
-  return value + .0667 * noise(p * 2.02 + 11.3);
-}
-vec2 volume(vec3 p, float seed) {
-  vec3 drift = vec3(uTime * .038, -uTime * .012, uTime * .013);
-  p += drift + vec3(seed, seed * .37, seed * .71);
-  vec3 warp = vec3(
-    noise(p * .56 + vec3(0., 0., uTime * .009)),
-    noise(p * .51 + 31.4),
-    noise(p * .48 - 17.8)
-  );
-  p += (warp - .5) * 2.6;
-  float body = field(p);
-  float erosion = noise(p * 7.1 + vec3(-uTime * .021, 4.8, 13.2));
-  float density = smoothstep(.38, .76, body) * mix(.58, 1., erosion);
-  // A broad upward light gives each bank a silver crest and shaded underside.
-  float light = clamp(.56 + (noise(p + vec3(0., .27, .1)) - noise(p)) * 1.8, .28, .84);
-  return vec2(density, light);
-}
-void main() {
-  vec2 screen = vec2(vUv.x, 1. - vUv.y);
-  float aspect = uViewport.x / uViewport.y;
-  vec2 p = vec2((screen.x - .5) * aspect, screen.y);
-  // A little depth-dependent parallax connects the atmosphere to the page while
-  // preserving continuous motion across card, photograph and section borders.
-  float scroll = uScroll / uViewport.y;
-  float ground = smoothstep(.12, .94, screen.y);
-  float edges = pow(abs(screen.x - .5) * 2., 1.5);
-  float envelope = (.16 + .69 * ground + .15 * edges)
-                 * smoothstep(uClearTop + 16., uClearTop + 180., screen.y * uViewport.y);
-  vec2 farFog = volume(vec3(p * vec2(2.6, 3.5) + vec2(0., scroll * .10), 3.2), 2.3);
-  vec2 midFog = volume(vec3(p * vec2(3.8, 4.4) + vec2(-uTime * .015, scroll * .18), 9.7), 17.1);
-  vec2 nearFog = volume(vec3(p * vec2(5.1, 5.8) + vec2(uTime * .021, scroll * .27), 15.3), 41.6);
-  // Beer-Lambert accumulation softly combines independent volumes instead of
-  // adding three flat white layers or making periodic horizontal smoke ribbons.
-  float opticalDepth = (.45 * farFog.x + .36 * midFog.x + .26 * nearFog.x) * envelope;
-  float protection = texture2D(uProtection, screen).r;
-  float alpha = (1. - exp(-opticalDepth * uDensity)) * protection * uReveal;
-  alpha = min(alpha, .18);
-  float light = (farFog.y + midFog.y + nearFog.y) / 3.;
-  vec3 silver = mix(vec3(.30, .37, .35), vec3(.76, .81, .78), light);
-  // Premultiplied alpha keeps the fringe clean on both photography and dark UI.
-  gl_FragColor = vec4(silver * alpha, alpha);
-}`;
+import { vertexSource, fragmentSource } from "./fog-shader";
+import { calculateFogSurface, type FogSurface } from "./fog-viewport";
 
 const controlSelector =
   'button,input,select,textarea,[role="button"],[data-fog-protect]';
@@ -197,14 +117,16 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
   let ready = false;
   let width = 1;
   let height = 1;
-  let viewportLeft = 0;
-  let viewportTop = 0;
+  let surface: FogSurface | undefined;
+  let windDisplacement = 0;
+  let windVelocity = 0;
   let elapsed = 0;
   let previousFrameTime = 0;
   let cadenceTime = 0;
   let revealTime = 0;
   let performanceSamples = 0;
   let slowSamples = 0;
+  let performanceGapTotal = 0;
   let performanceWarmupUntil = 0;
   let initialAdaptation = true;
   let quality = 0;
@@ -401,6 +323,10 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
 
   const uniforms = {
     viewport: context.getUniformLocation(program!, "uViewport"),
+    surfaceOrigin: context.getUniformLocation(program!, "uSurfaceOrigin"),
+    surfaceSize: context.getUniformLocation(program!, "uSurfaceSize"),
+    worldScale: context.getUniformLocation(program!, "uWorldScale"),
+    wind: context.getUniformLocation(program!, "uWind"),
     time: context.getUniformLocation(program!, "uTime"),
     reveal: context.getUniformLocation(program!, "uReveal"),
     scroll: context.getUniformLocation(program!, "uScroll"),
@@ -446,14 +372,45 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     // Scrolling redraws the mask from cached document-space rectangles. Only
     // layout/content changes remeasure text, independently of this 20 Hz cap.
     if (geometryDirty && now - lastMaskTime >= 50) measureAndMask();
+    const previousScroll = scrollPosition;
     scrollPosition +=
-      (window.scrollY - scrollPosition) * Math.min(1, delta * 6);
-    context.uniform2f(uniforms.viewport, width, height);
+      (window.scrollY - scrollPosition) * (1 - Math.exp(-delta * 6));
+    // Scrolling gives the air a small impulse. A damped spring lets that gust
+    // settle naturally instead of snapping the fog to pointer/scroll events.
+    const scrollVelocity = Math.max(
+      -4,
+      Math.min(
+        4,
+        (scrollPosition - previousScroll) /
+          Math.max(delta, 0.001) /
+          surface!.worldScale,
+      ),
+    );
+    const substeps = Math.max(1, Math.ceil(delta * 60));
+    const step = delta / substeps;
+    for (let i = 0; i < substeps; i++) {
+      windVelocity +=
+        (scrollVelocity * 0.11 - windDisplacement * 2.8 - windVelocity * 3.4) *
+        step;
+      windDisplacement += windVelocity * step;
+    }
+    context.uniform2f(
+      uniforms.viewport,
+      surface!.layoutWidth,
+      surface!.heightHighWater,
+    );
+    context.uniform2f(uniforms.surfaceOrigin, surface!.left, surface!.top);
+    context.uniform2f(uniforms.surfaceSize, width, height);
+    context.uniform1f(uniforms.worldScale, surface!.worldScale);
+    context.uniform2f(uniforms.wind, windDisplacement * 0.24, windDisplacement);
     context.uniform1f(uniforms.time, elapsed);
     context.uniform1f(uniforms.reveal, Math.min(1, revealTime / 2.2));
     context.uniform1f(uniforms.scroll, scrollPosition);
     context.uniform1f(uniforms.clearTop, clearTop);
-    context.uniform1f(uniforms.density, width <= 760 ? 0.46 : 0.54);
+    context.uniform1f(
+      uniforms.density,
+      surface!.layoutWidth <= 760 ? 0.46 : 0.54,
+    );
     context.drawArrays(context.TRIANGLES, 0, 6);
     canvas.style.visibility = "visible";
     canvas.dataset.frame = String(++frame);
@@ -466,11 +423,17 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     if (!performanceWarmupUntil) performanceWarmupUntil = now + 1000;
     if (now >= performanceWarmupUntil) {
       performanceSamples++;
-      if (gap > frameInterval * (initialAdaptation ? 1.5 : 1.8)) slowSamples++;
+      performanceGapTotal += gap;
+      if (gap > frameInterval * 1.3) slowSamples++;
       if (performanceSamples >= (initialAdaptation ? 24 : 60)) {
+        // A sustained 20 fps can miss a 30 fps target without any frame
+        // crossing the old 60 ms threshold. Use both the mean and a majority
+        // of late frames; normal 33/50 ms mobile cadence and isolated pauses
+        // do not lower quality. Keep the final disable threshold more lenient.
+        const averageGap = performanceGapTotal / performanceSamples;
         if (
-          slowSamples >
-          performanceSamples * (initialAdaptation ? 0.5 : 0.45)
+          averageGap > frameInterval * (quality < 2 ? 1.35 : 1.8) &&
+          slowSamples > performanceSamples * 0.45
         ) {
           if (quality < 2) {
             quality++;
@@ -488,7 +451,7 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
             return;
           }
         } else initialAdaptation = false;
-        performanceSamples = slowSamples = 0;
+        performanceSamples = slowSamples = performanceGapTotal = 0;
       }
     }
     schedule();
@@ -531,25 +494,37 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     geometryFrame = 0;
     if (disposed || lost || disabled || document.hidden || menuOpen) return;
     const viewport = window.visualViewport;
-    width = Math.max(1, viewport?.width || window.innerWidth);
-    height = Math.max(1, viewport?.height || window.innerHeight);
-    viewportLeft = viewport?.offsetLeft || 0;
-    viewportTop = viewport?.offsetTop || 0;
-    clearTop = Math.max(
-      0,
-      (header?.getBoundingClientRect().bottom || 0) - viewportTop,
-    );
+    surface = calculateFogSurface(surface, {
+      innerWidth: window.innerWidth,
+      innerHeight: window.innerHeight,
+      clientWidth: document.documentElement.clientWidth,
+      clientHeight: document.documentElement.clientHeight,
+      visualViewport: viewport
+        ? {
+            width: viewport.width,
+            height: viewport.height,
+            offsetLeft: viewport.offsetLeft,
+            offsetTop: viewport.offsetTop,
+          }
+        : undefined,
+      orientation: window.screen.orientation?.type,
+    });
+    width = surface.width;
+    height = surface.height;
+    clearTop = Math.max(0, header?.getBoundingClientRect().bottom || 0);
     // Complete layout reads before changing the fixed overlay's sizing styles.
     if (contentGeometryDirty) measureContent();
-    const documentLeft = window.scrollX + viewportLeft;
-    const documentTop = window.scrollY + viewportTop;
-    frameInterval = 1000 / (width <= 760 ? 24 : 30);
+    const documentLeft = window.scrollX + surface.left;
+    const documentTop = window.scrollY + surface.top;
+    frameInterval = 1000 / (surface.layoutWidth <= 760 ? 24 : 30);
     host.style.width = `${width}px`;
     host.style.height = `${height}px`;
-    host.style.transform = `translate(${viewportLeft}px, ${viewportTop}px)`;
+    host.style.transform = `translate(${surface.left}px, ${surface.top}px)`;
+    // The surface stays allocated across toolbar/keyboard changes. Overscan is
+    // included in the same bounded GPU budget, not an extra fullscreen pass.
     const scale =
       Math.min(
-        width <= 760 ? 0.65 : 0.58,
+        surface.layoutWidth <= 760 ? 0.65 : 0.58,
         1024 / Math.max(width, height),
         Math.sqrt(500000 / (width * height)),
       ) * [1, 0.78, 0.6][quality];
@@ -652,6 +627,8 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     } else {
       previousFrameTime = 0;
       cadenceTime = 0;
+      performanceSamples = slowSamples = performanceGapTotal = 0;
+      performanceWarmupUntil = 0;
       geometryDirty = true;
       lastMaskTime = 0;
       if (ready) schedule();
@@ -676,7 +653,7 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
   canvas.addEventListener("webglcontextlost", contextLost);
   window.addEventListener("resize", markGeometryDirty, { passive: true });
   window.addEventListener("scroll", markMaskDirty, { passive: true });
-  window.visualViewport?.addEventListener("resize", markGeometryDirty, {
+  window.visualViewport?.addEventListener("resize", markMaskDirty, {
     passive: true,
   });
   window.visualViewport?.addEventListener("scroll", markMaskDirty, {
@@ -720,7 +697,7 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     geometryFrame = 0;
     window.removeEventListener("resize", markGeometryDirty);
     window.removeEventListener("scroll", markMaskDirty);
-    window.visualViewport?.removeEventListener("resize", markGeometryDirty);
+    window.visualViewport?.removeEventListener("resize", markMaskDirty);
     window.visualViewport?.removeEventListener("scroll", markMaskDirty);
     document.removeEventListener("visibilitychange", visibilityChanged);
     document.removeEventListener("load", markGeometryDirty, true);
