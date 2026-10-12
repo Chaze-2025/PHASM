@@ -141,7 +141,7 @@ function request(env: Env, path: string, body?: Location) {
   );
 }
 
-test("withheld coordinates are explicit pairs; private sites retain their existing precision protection", () => {
+test("withheld coordinates are explicit pairs; private landmark reference points retain researched coordinates", () => {
   assert.deepEqual(validateLocation(withheld), withheld);
   for (const invalid of [
     { ...withheld, latitude: 40 },
@@ -159,15 +159,14 @@ test("withheld coordinates are explicit pairs; private sites retain their existi
     () => validateLocation({ ...mapped, access: "private" }),
     /approximate/,
   );
-  assert.throws(
-    () =>
-      validateLocation({
-        ...mapped,
-        access: "private",
-        coordinatePrecision: "approximate",
-        latitude: 40.123,
-      }),
-    /rounded/,
+  assert.equal(
+    validateLocation({
+      ...mapped,
+      access: "private",
+      coordinatePrecision: "approximate",
+      latitude: 40.123,
+    }).latitude,
+    40.123,
   );
   assert.equal(
     validateLocation({

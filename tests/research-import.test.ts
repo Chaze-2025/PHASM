@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import type { Location } from "../shared/types";
 import {
   convertResearch,
@@ -8,6 +8,7 @@ import {
   type ImportOptions,
   type ResearchLocation,
   type ResearchSource,
+  type ReviewedGeocode,
 } from "../scripts/research-import";
 import { validateImport } from "../scripts/import-locations";
 
@@ -16,6 +17,12 @@ const baseline = readJson(
   "content/research/catalog-before-usa-130.json",
 ) as Location[];
 const catalog = validateImport(readJson("content/locations.json"));
+const geocodePath = "content/research/usa-130-geocodes.json";
+const reviewedGeocodes: Record<string, ReviewedGeocode> = existsSync(
+  geocodePath,
+)
+  ? readJson(geocodePath)
+  : {};
 
 function fixture() {
   const record: ResearchLocation = {
@@ -94,6 +101,21 @@ function fixture() {
   return { record, sources, options };
 }
 
+function geocodeFixture(researchId: string): ReviewedGeocode {
+  return {
+    researchId,
+    latitude: 40.12345,
+    longitude: -105.12345,
+    precision: "approximate",
+    pointKind: "mapped building reference",
+    sourceUrl: "https://example.com/map/example-house",
+    sourceTitle: "Example House map record",
+    evidence:
+      "Inspected map record identifies Example House with this coordinate pair.",
+    checkedOn: "2026-10-12",
+  };
+}
+
 test("conversion retains all narrative paragraphs, omits invented history, and withholds unverified pins", () => {
   const { record, sources, options } = fixture();
   const result = convertResearch([record], sources, [], options);
@@ -141,6 +163,95 @@ test("conversion updates stable IDs/slugs/images and preserves unrelated baselin
   ] as const)
     assert.equal(updated[key], baseline[0][key]);
   assert.deepEqual(result.locations.slice(1), baseline.slice(1));
+});
+
+test("reviewed geocodes add source-grounded pins and separate geographic provenance without rewriting stories or access", () => {
+  const { record, sources, options } = fixture();
+  options.reviews[record.research_id].access = "restricted";
+  const original = convertResearch([record], sources, [], options).locations[0];
+  const geocode = geocodeFixture(record.research_id);
+  options.geocodes = { [record.research_id]: geocode };
+  const result = convertResearch([record], sources, [], options);
+  const location = result.locations[0];
+  assert.deepEqual(location, {
+    ...original,
+    latitude: geocode.latitude,
+    longitude: geocode.longitude,
+    coordinatePrecision: "approximate",
+  });
+  assert.equal(result.geocodeSources.length, 1);
+  assert.equal(result.geocodeSources[0].sourceType, "geographic_reference");
+  assert.equal(result.geocodeSources[0].url, geocode.sourceUrl);
+  const provenance = JSON.parse(JSON.stringify(result.provenance[0]));
+  assert.equal(provenance.coordinateEnrichment.evidence, geocode.evidence);
+  assert.equal(
+    provenance.coordinateEnrichment.sourceId,
+    `geocode-${record.research_id}`,
+  );
+  assert.equal(provenance.coordinateEnrichment.checkedOn, "2026-10-12");
+  assert.deepEqual(location.sources, original.sources);
+});
+
+test("geocode enrichment rejects incomplete evidence, fabricated coordinate placeholders and invalid URLs", () => {
+  const { record, sources, options } = fixture();
+  options.reviews[record.research_id].access = "restricted";
+  const invalidChanges: [Partial<ReviewedGeocode>, RegExp][] = [
+    [{ latitude: Number.NaN }, /finite coordinate pair/],
+    [{ longitude: 181 }, /finite coordinate pair/],
+    [
+      { latitude: null } as unknown as Partial<ReviewedGeocode>,
+      /finite coordinate pair/,
+    ],
+    [
+      { latitude: "40.12345" } as unknown as Partial<ReviewedGeocode>,
+      /finite coordinate pair/,
+    ],
+    [{ evidence: "" }, /inspected source metadata/],
+    [{ sourceTitle: " " }, /inspected source metadata/],
+    [{ pointKind: "" }, /inspected source metadata/],
+    [{ sourceUrl: "javascript:alert(1)" }, /source URL/],
+    [{ sourceUrl: "https://user:pass@example.com/map" }, /source URL/],
+    [{ checkedOn: "2026-02-30" }, /valid inspection date/],
+    [{ researchId: "other-id" }, /does not match its key/],
+    [
+      { precision: "withheld" } as unknown as Partial<ReviewedGeocode>,
+      /precision must be/,
+    ],
+  ];
+  for (const [change, pattern] of invalidChanges) {
+    options.geocodes = {
+      [record.research_id]: {
+        ...geocodeFixture(record.research_id),
+        ...change,
+      },
+    };
+    assert.throws(
+      () => convertResearch([record], sources, [], options),
+      pattern,
+    );
+  }
+});
+
+test("geocode enrichment cannot alter an existing original pin or reference an unknown research identity", () => {
+  const { record, sources, options } = fixture();
+  options.reviews[record.research_id].access = "public";
+  record.geography = {
+    coordinates: { latitude: 39.5, longitude: -104.5 },
+    precision: "approximate",
+    mapping_visibility: "public",
+  };
+  options.geocodes = {
+    [record.research_id]: geocodeFixture(record.research_id),
+  };
+  assert.throws(
+    () => convertResearch([record], sources, [], options),
+    /cannot replace an original public pin/,
+  );
+  options.geocodes = { "unknown-id": geocodeFixture("unknown-id") };
+  assert.throws(
+    () => convertResearch([record], sources, [], options),
+    /Unused coordinate enrichment/,
+  );
 });
 
 test("copy changes require the exact reviewed source and reject unused or drifting adjustments", () => {
@@ -198,7 +309,14 @@ test("complete catalog reconciles all research identities and preserves every pu
   const sourceIds = new Set(sources.map((source) => source.sourceId));
   assert.equal(catalog.length, 136);
   assert.equal(provenance.locations.length, 130);
-  assert.equal(sourceIds.size, 431);
+  const geocodeCount = Object.keys(reviewedGeocodes).length;
+  if (existsSync(geocodePath))
+    assert.equal(
+      geocodeCount,
+      75,
+      "The reviewed complete atlas maps all 75 previously missing points.",
+    );
+  assert.equal(sourceIds.size, 431 + geocodeCount);
   assert.equal(
     new Set(
       catalog
@@ -210,7 +328,13 @@ test("complete catalog reconciles all research identities and preserves every pu
   assert.equal(
     catalog.filter((location) => location.coordinatePrecision === "withheld")
       .length,
-    75,
+    75 - geocodeCount,
+  );
+  assert.equal(
+    catalog.filter(
+      (location) => location.latitude !== null && location.longitude !== null,
+    ).length,
+    61 + geocodeCount,
   );
   assert.equal(
     catalog.filter(
@@ -238,6 +362,18 @@ test("complete catalog reconciles all research identities and preserves every pu
     for (const id of row.sourceIds)
       assert.ok(sourceIds.has(id), `Missing public bibliography entry: ${id}`);
     for (const role of row.sourceRoles) assert.ok(sourceIds.has(role.sourceId));
+    const geocode = reviewedGeocodes[row.researchId];
+    if (geocode) {
+      const location = catalog.find((entry) => entry.id === row.appId)!;
+      assert.equal(location.latitude, geocode.latitude);
+      assert.equal(location.longitude, geocode.longitude);
+      assert.equal(location.coordinatePrecision, geocode.precision);
+      assert.equal(
+        row.coordinateEnrichment.sourceId,
+        `geocode-${row.researchId}`,
+      );
+      assert.ok(sourceIds.has(row.coordinateEnrichment.sourceId));
+    }
   }
   for (const location of catalog) {
     assert.equal(

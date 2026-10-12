@@ -767,8 +767,8 @@ export default function Atlas() {
             </div>
           )}
           <p className="map-editorial-note">
-            Every matching profile appears in the list. Places without a public
-            map pin remain available to read here.
+            Explore each place on the map. Approximate pins mark site reference
+            points; check the profile for visiting access and restrictions.
           </p>
         </section>
         <section

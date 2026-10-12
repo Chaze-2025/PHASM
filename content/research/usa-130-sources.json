@@ -4308,5 +4308,755 @@
     "publicationDate": null,
     "accessedOn": "2026-10-10",
     "sourceType": "folklore"
+  },
+  {
+    "sourceId": "geocode-phasm-us-tx-marfa-lights",
+    "title": "Visit Marfa — Mystery / Marfa Lights",
+    "url": "https://visitmarfa.com/mystery",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nd-custer-house",
+    "title": "TopoQuest — Fort Abraham Lincoln Custer House, North Dakota",
+    "url": "https://topoquest.com/place/north-dakota/building/fort-abraham-lincoln-custer-house/2749119",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ks-mcinteer-villa",
+    "title": "Wikipedia — McInteer Villa",
+    "url": "https://en.wikipedia.org/wiki/McInteer_Villa",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-tx-fort-concho",
+    "title": "Wikipedia — Fort Concho",
+    "url": "https://en.wikipedia.org/wiki/Fort_Concho",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-or-pendleton-center-for-the-arts",
+    "title": "Pendleton Center for the Arts — official directions link",
+    "url": "https://pendletonarts.org/",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-cairo-public-library",
+    "title": "Historical Marker Database — The Cairo Public Library",
+    "url": "https://www.hmdb.org/m.asp?m=194717",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-me-buck-monument",
+    "title": "Historical Marker Database — The Legend of the Buck Memorial",
+    "url": "https://www.hmdb.org/m.asp?m=145041",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ma-sk-pierce-mansion",
+    "title": "Wikipedia — Sylvester K. Pierce House",
+    "url": "https://en.wikipedia.org/wiki/Sylvester_K._Pierce_House",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ne-historic-argo-hotel",
+    "title": "Wikipedia — Argo Hotel",
+    "url": "https://en.wikipedia.org/wiki/Argo_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-al-sturdivant-hall",
+    "title": "Wikipedia — Sturdivant Hall",
+    "url": "https://en.wikipedia.org/wiki/Sturdivant_Hall",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ga-bonaventure-cemetery",
+    "title": "Wikipedia — Bonaventure Cemetery",
+    "url": "https://en.wikipedia.org/wiki/Bonaventure_Cemetery",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nj-burlington-county-prison-museum",
+    "title": "Wikipedia — Burlington County Prison",
+    "url": "https://en.wikipedia.org/wiki/Burlington_County_Prison",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-reid-memorial-library-harriet-haskell",
+    "title": "The National Map feature via HomeTownLocator — Lewis and Clark Community College Benjamin Godfrey Campus",
+    "url": "https://illinois.hometownlocator.com/maps/tnm-feature-map,n,lewis-and-clark-community-college-benjamin-godfrey-campus-3958,fcode,73006.cfm",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-peoria-public-library-main",
+    "title": "TopoQuest — Peoria Public Library, Illinois",
+    "url": "https://topoquest.com/place/illinois/building/peoria-public-library/1820874",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nj-clinton-road",
+    "title": "Wikipedia — Clinton Road (New Jersey)",
+    "url": "https://en.wikipedia.org/wiki/Clinton_Road_(New_Jersey)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-wv-west-virginia-penitentiary",
+    "title": "West Virginia Penitentiary — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/West_Virginia_Penitentiary",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-mn-wabasha-street-caves",
+    "title": "Wabasha Street Caves — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Wabasha_Street_Caves",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ut-mccune-mansion",
+    "title": "Alfred McCune Home / McCune Mansion — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/McCune_Mansion",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-sc-old-exchange-provost-dungeon",
+    "title": "Exchange and Provost — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Exchange_and_Provost",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-md-point-lookout-state-park",
+    "title": "Point Lookout State Park — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Point_Lookout_State_Park",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-me-fort-knox-state-historic-site",
+    "title": "Fort Knox (Maine) — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Fort_Knox_(Maine)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-la-myrtles-plantation",
+    "title": "Myrtles Plantation — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Myrtles_Plantation",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ca-bodie-ghost-town",
+    "title": "Bodie, California — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Bodie,_California",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-oh-ohio-state-reformatory",
+    "title": "Ohio State Reformatory — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Ohio_State_Reformatory",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-mt-old-montana-prison",
+    "title": "The Old Montana Prison Historical Marker — Historical Marker Database",
+    "url": "https://www.hmdb.org/m.asp?m=127789",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ct-captain-grants-1754-inn",
+    "title": "Captain Grant’s Inn 2 Poquetanuck CT — University of North Florida Digital Commons",
+    "url": "https://digitalcommons.unf.edu/historical_architecture_main/6361/",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ny-rolling-hills-asylum",
+    "title": "ROLLING HILLS — William G. Pomeroy Foundation",
+    "url": "https://www.wgpfoundation.org/historic-markers/rolling-hills/",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-va-ferry-plantation-house",
+    "title": "Ferry Plantation House — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Ferry_Plantation_House",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-co-hotel-colorado",
+    "title": "Hotel Colorado — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Hotel_Colorado",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ia-edinburgh-manor",
+    "title": "U.S. Census Geocoder — Edinburgh Manor published address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=13241+E23+County+Home+Rd%2C+Monticello%2C+IA&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nh-omni-mount-washington-resort",
+    "title": "Mount Washington Hotel — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Mount_Washington_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-wa-manresa-castle",
+    "title": "U.S. Census Geocoder — Manresa Castle public address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=651+Cleveland+Street%2C+Port+Townsend%2C+WA+98368&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-al-sloss-furnaces",
+    "title": "Sloss Furnaces — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Sloss_Furnaces",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ca-hotel-del-coronado",
+    "title": "Hotel del Coronado — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Hotel_del_Coronado",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-in-whispers-estate",
+    "title": "U.S. Census Geocoder — Whispers Estate public address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=714+West+Warren+Street%2C+Mitchell%2C+IN+47446&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-resurrection-mary-cemetery",
+    "title": "Resurrection Cemetery (Justice, Illinois) — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Resurrection_Cemetery_(Justice,_Illinois)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ne-hummel-park",
+    "title": "Hummel Park — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Hummel_Park",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-tn-orpheum-theatre-memphis",
+    "title": "Orpheum Theatre (Memphis) — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Orpheum_Theatre_(Memphis)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-tx-haunted-magnolia-hotel-seguin",
+    "title": "U.S. Census Geocoder — Haunted Magnolia Hotel public address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=203+South+Crockett+Street%2C+Seguin%2C+TX+78155&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-az-jerome-grand-hotel",
+    "title": "Jerome Grand Hotel — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Jerome_Grand_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-wy-fort-laramie-woman-in-green",
+    "title": "Fort Laramie National Historic Site — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Fort_Laramie_National_Historic_Site",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-tx-yorktown-memorial-hospital",
+    "title": "U.S. Census Geocoder — Yorktown Memorial Hospital public address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=728+West+Main+Street%2C+Yorktown%2C+TX+78164&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ny-morris-jumel-mansion",
+    "title": "Morris–Jumel Mansion — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Morris%E2%80%93Jumel_Mansion",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-wi-pfister-hotel",
+    "title": "The Pfister Hotel — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/The_Pfister_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-pa-sachs-covered-bridge",
+    "title": "Sachs Covered Bridge — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Sachs_Covered_Bridge",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-former-first-unitarian-church-alton",
+    "title": "First Unitarian Church, Illinois — TopoQuest geographic feature 1962702",
+    "url": "https://topoquest.com/place/illinois/church/first-unitarian-church/1962702",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-milton-schoolhouse-alton",
+    "title": "Milton School House — Great Rivers & Routes official tourism listing",
+    "url": "https://www.riversandroutes.com/directory/milton-school-house/",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-mineral-springs-hotel-alton",
+    "title": "U.S. Census Bureau Geocoder — original Mineral Springs Hotel address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=301+East+Broadway%2C+Alton%2C+IL+62002&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-former-jacoby-furniture-building",
+    "title": "U.S. Census Bureau Geocoder — former Jacoby Furniture building address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=627+East+Broadway%2C+Alton%2C+IL+62002&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ga-colonial-park-cemetery",
+    "title": "Colonial Park Cemetery — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Colonial_Park_Cemetery",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ma-harvard-shaker-lollipop-cemetery",
+    "title": "Shaker Burying Ground / Harvard Shakers Cemetery — Find a Grave cemetery 1973617",
+    "url": "https://www.findagrave.com/cemetery/1973617/shaker-burying-ground",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ma-dean-hill-revolutionary-cemetery",
+    "title": "Dean Hill Cemetery, est. 1800 — City of Fitchburg facilities map",
+    "url": "https://www.fitchburgma.gov/facilities/facility/details/Dean-Hill-Cemetery-est-1800-61",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-pa-wildwood-cemetery-williamsport",
+    "title": "Wildwood Cemetery, Pennsylvania — TopoQuest geographic feature 1191429",
+    "url": "https://topoquest.com/place/pennsylvania/cemetery/wildwood-cemetery/1191429",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-fl-georgiana-cemetery-ethel-allen",
+    "title": "Georgiana Cemetery in Merritt Island — Atlas Obscura",
+    "url": "https://www.atlasobscura.com/places/georgiana-cemetery",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nv-old-tonopah-cemetery",
+    "title": "Old Tonopah Cemetery — Find a Grave cemetery 2174134",
+    "url": "https://www.findagrave.com/cemetery/2174134",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-sc-alice-flagg-grave-all-saints",
+    "title": "All Saints Cemetery, South Carolina — TopoQuest geographic feature 1232235",
+    "url": "https://topoquest.com/place/south-carolina/cemetery/all-saints-cemetery/1232235",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-wa-greenwood-cemetery-thousand-steps",
+    "title": "Greenwood Memorial Terrace — Fairmount Memorial Association official cemetery map",
+    "url": "https://www.fairmountmemorial.com/greenwood",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-al-dead-childrens-playground-maple-hill",
+    "title": "Dead Children’s Playground — Atlas Obscura",
+    "url": "https://www.atlasobscura.com/places/dead-children-s-playground-2",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-sc-charleston-unitarian-churchyard",
+    "title": "Unitarian Church Cemetery, Charleston — Find a Grave cemetery 1969705",
+    "url": "https://www.findagrave.com/cemetery/1969705/unitarian-church-cemetery",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-st-omer-cemetery-caroline-barnes",
+    "title": "Saint Omer Cemetery, Illinois — TopoQuest geographic feature 417658",
+    "url": "https://topoquest.com/place/illinois/cemetery/saint-omer-cemetery/417658",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ca-el-campo-santo-cemetery",
+    "title": "HomeTownLocator — El Campo Santo Cemetery (USGS National Map data)",
+    "url": "https://california.hometownlocator.com/maps/tnm-feature-map,n,el-campo-santo-cemetery-16482,fcode,82010.cfm",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-al-historic-lowry-house",
+    "title": "Wikipedia — Lowry House (Huntsville, Alabama)",
+    "url": "https://en.wikipedia.org/wiki/Lowry_House_(Huntsville,_Alabama)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-or-white-eagle-saloon-hotel",
+    "title": "Wikipedia — Hryszko Brothers Building / White Eagle Saloon & Hotel",
+    "url": "https://en.wikipedia.org/wiki/White_Eagle_Saloon_%26_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-pa-farnsworth-house-inn",
+    "title": "Historical Marker Database — Farnsworth House, circa 1810",
+    "url": "https://www.hmdb.org/m.asp?m=258505",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nc-devils-tramping-ground",
+    "title": "Wikipedia — Devil's Tramping Ground",
+    "url": "https://en.wikipedia.org/wiki/Devil%27s_Tramping_Ground",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-de-woodburn-governors-residence",
+    "title": "Wikipedia — Delaware Governor's Mansion (Woodburn)",
+    "url": "https://en.wikipedia.org/wiki/Delaware_Governor%27s_Mansion",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ny-iron-island-museum",
+    "title": "Roadtrippers — Iron Island Museum, Buffalo",
+    "url": "https://maps.roadtrippers.com/us/buffalo-ny/points-of-interest/iron-island-museum-buffalo-ny",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ar-basin-park-hotel",
+    "title": "Atlas Obscura — Basin Park Hotel",
+    "url": "https://www.atlasobscura.com/places/basin-park-hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-sd-historic-bullock-hotel",
+    "title": "Wikipedia — Bullock Hotel",
+    "url": "https://en.wikipedia.org/wiki/Bullock_Hotel?wprov=sfti1",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-mn-palmer-house-hotel",
+    "title": "Wikipedia — The Palmer House (Sauk Centre)",
+    "url": "https://en.wikipedia.org/wiki/The_Palmer_House_(Sauk_Centre)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ca-whaley-house-museum",
+    "title": "Wikipedia — Whaley House (San Diego, California)",
+    "url": "https://en.wikipedia.org/wiki/Whaley_House_(San_Diego,_California)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ks-eldridge-hotel-lawrence",
+    "title": "Wikipedia — The Eldridge Hotel",
+    "url": "https://en.wikipedia.org/wiki/The_Eldridge_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-de-rockwood-park-museum",
+    "title": "Wikipedia — Rockwood Museum and Park",
+    "url": "https://en.wikipedia.org/wiki/Rockwood_Museum_and_Park",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-pa-jennie-wade-house",
+    "title": "Atlas Obscura — Jennie Wade House",
+    "url": "https://www.atlasobscura.com/places/jennie-wade-house",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-mi-morrow-road-woman-in-white",
+    "title": "Ghost Map — Morrow Road",
+    "url": "https://ghostmap.org/haunted-places/morrow-road/",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
   }
 ]

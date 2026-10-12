@@ -1,6 +1,6 @@
-# PHASM Phase 1 architecture
+# PHASM architecture
 
-This describes the implemented foundation on `dev/phasm-phase-1`, not a completed public-launch system. The repository began without an existing application to preserve. Cloudflare resources have not been provisioned or deployed by this work.
+This describes the implemented foundation and USA atlas integration on `codex/usa-atlas-130`. An isolated Cloudflare evaluation preview is deployed; the [USA atlas integration record](USA-ATLAS-130.md) identifies its exact source and the pending coordinate update. Production launch and community writing workflows remain separate work.
 
 ## Runtime and repository layout
 
@@ -27,8 +27,10 @@ Vite and `@cloudflare/vite-plugin` provide the local Worker/D1 development envir
 | `worker/index.ts` | HTTP routing, D1 reads, editorial auth/writes, initial HTML SEO, sitemap |
 | `worker/validation.ts` | Server-side schema/URL/privacy/bounds validation and identity normalization |
 | `worker/location-sql.ts` | Shared SQL statements for imports and transactional editorial saves |
+| `worker/seo.ts` | Profile structured data, including omission of approximate or unavailable geo coordinates |
 | `migrations/` | Catalog, search indexes, related data, future community/editorial tables, and corrected case-insensitive pagination index |
 | `content/` | Researched seed records and exact image-license metadata |
+| `content/research/usa-130-geocodes.json` | Reviewed coordinate pairs, source URLs, point kinds, evidence and inspection dates for 75 added map points |
 | `scripts/` | Non-destructive local seed and validated SQL generation |
 | `tests/backend.test.ts` | SQLite-backed Worker behavior tests, including 5,100-location aggregation |
 
@@ -50,11 +52,11 @@ Public reads expose only `published` records. API responses currently use `Cache
 
 Filters are `q`, `category`, `phenomenon`, `access`, `tours`, `region`, and `classification`. `page` and `pageSize` apply to lists. Query values are bound parameters. The server bounds input lengths and pagination values and reports malformed requests with 400-class responses. Unexpected failures return a generic 503 response rather than database details.
 
-`q` uses FTS5 across location name, city, state, and country. It extracts up to eight letter/number terms, quotes them as prefix searches, and joins them with `AND`; the server accepts at most 160 characters. This is catalog geographic discovery, not an address geocoder. No Nominatim or paid geocoding integration is enabled.
+`q` uses FTS5 across location name, city, state, and country. It extracts up to eight letter/number terms, quotes them as prefix searches, and joins them with `AND`; the server accepts at most 160 characters. This is catalog geographic discovery, not an address geocoder. No runtime geocoding integration is enabled. Reviewed geographic research is stored in the catalog and its provenance registry before publication.
 
 ## Geographic loading and scalability
 
-The browser asks for `bbox=west,south,east,north` and `zoom` after map movement stops, and aborts a superseded request. Search runs on explicit form submission, avoiding per-keystroke API traffic. List filters are reflected in the URL. The list covers matching catalog records; map points additionally reflect the current viewport.
+The browser asks for `bbox=west,south,east,north` and `zoom` after map movement stops, and aborts a superseded request. Search runs on explicit form submission, avoiding per-keystroke API traffic. List filters are reflected in the URL. The list covers matching catalog records; map points additionally reflect the current viewport. The current catalog has 136 mapped records: 61 original points and 75 newly sourced approximate reference points. A viewport can therefore contain fewer map results than the complete matching list.
 
 The Worker validates coordinate ranges and supports antimeridian-crossing bounds. D1 indexes include publication status with longitude/latitude and latitude/longitude, plus common category, region, and access filters. The query first counts matching records. At zoom below 5 or more than 500 matches, SQL groups them into geographic bins and returns representative centers and counts. Otherwise it returns lightweight individual points. Responses contain at most 500 features, without downloading full profiles into the Worker to cluster them.
 
@@ -64,13 +66,17 @@ Nearby results use a bounded latitude/longitude window and an approximate distan
 
 ## Data model
 
-`locations` stores stable IDs, unique slugs, a unique normalized identity key, geographic identity, numeric coordinates, one flexible category, classification, access/tours states, publication status, coordinate precision, featured status, and a timestamp. A validated `data_json` snapshot contains the complete profile for compact retrieval; indexed columns duplicate the fields used for query planning. All supported write paths update the snapshot and relational fields together.
+`locations` stores stable IDs, unique slugs, a unique normalized identity key, geographic identity, a numeric coordinate pair or two nulls, one flexible category, classification, access/tours states, publication status, coordinate precision, featured status, and a timestamp. A validated `data_json` snapshot contains the complete profile for compact retrieval; indexed columns duplicate the fields used for query planning. All supported write paths update the snapshot and relational fields together.
 
 `location_phenomena` provides multiple tags per place. `location_sources` stores labelled history, reports, and visiting references. `locations_fts` is an external-content FTS5 index maintained by insertion/update/deletion triggers. `editorial_audit` records location ID, action/status, and time; it does not yet identify a human editor or retain field-by-field revisions.
 
 Every profile separates `history` from `reports`. Published records require attributed reports and at least one report source. History is optional; a nonempty history must have a historical source. These are structural validation rules, not an automatic truth or independence check. `unknown` is an explicit access/tour value. Haunting classification is `established`, `local-legend`, or `community-discovery` and is separate from publication status.
 
-Locations can withhold their map pin using two null coordinates and `coordinatePrecision: "withheld"`. They remain in search, filters, saved places, and profiles but are excluded from map queries, geographic nearby calculations and structured geo metadata. Numeric coordinates must be a complete valid pair. Private locations can withhold coordinates or use approximate coordinates rounded to one decimal degree or coarser; no private exact coordinates are retained in public profile data. Approximate pins for other sensitive sites still require editorial judgment.
+The current 136-record catalog has no withheld pins. The schema still supports future records without reviewed coordinates using two nulls and `coordinatePrecision: "withheld"`. Such records remain in search, filters, saved places and profiles, but are excluded from map queries, geographic nearby calculations and structured geo metadata. Numeric coordinates must be a complete valid pair.
+
+All 75 newly researched points use `coordinatePrecision: "approximate"`: they identify a sourced building, property, marker, park, road segment or other named feature, without claiming a surveyed visitor entrance. Their decimal values are retained from the inspected source or geocoder response. Private locations may use these approximate reference points without forced decimal rounding; the validator continues to reject private locations labelled `exact`. Coordinates do not alter ownership, booking requirements or permission to enter. The original 61 mapped records remain unchanged.
+
+The public geographic registry records each research ID, coordinate pair, precision, point kind, source URL/title, evidence and inspection date. The converter records its checksum and per-location geographic provenance. `usa-130-sources.json` retains the 431 original bibliographic records and appends 75 geographic references. Those references are tracked separately from historical and paranormal source roles; coordinate inspection does not change a narrative's research date.
 
 The shared profile currently has one primary photograph or placeholder, reused in its visual-record section. A rich multi-image gallery and managed upload workflow remain unfinished. R2 is not provisioned or bound.
 
@@ -104,6 +110,8 @@ The CLI validates the same `Location` contract as the Worker, detects in-file no
 
 The seed script explicitly invokes Wrangler with `--local`. It reads existing IDs, adds missing seed records, rejects identity conflicts, and preserves existing editorial versions. It writes SQL to a temporary directory and removes that file after execution. It is not a remote publishing tool or a destructive database reset.
 
+`scripts/geocode-revision.ts` generates a guarded update from the deployed 136-record baseline `9d76541aec32d093a2caa2f3d2a617d73ebe22f3`. It requires the existing IDs, protects every field of the 61 already mapped records, and permits coordinate fields and associated access-note wording to change for the 75 enriched records. Shared revision guards check complete live JSON, relational projections, source relationships and tags before any writes. Unexpected drift is rejected; an already-applied update is accepted without duplicate audit entries. The generated revision appends `mapped:usa-atlas-75:2026-10-12` audit entries and preserves member relationships. SQL generation itself performs no database operations.
+
 Use the commands in [README](../README.md). Do not copy local development credentials into a public build or provision production services simply to run the preview.
 
 ## Future systems already represented in the schema
@@ -119,6 +127,6 @@ There are no public submission endpoints. Writes to reviews, submissions, sugges
 
 ## Verification and remaining operational work
 
-See [QA](QA.md) for recorded outcomes; documentation of a test command is not a passing result. See [content review](CONTENT.md) for the 10-profile seed, licenses, and remaining 40+ profiles. See [service limits](SERVICES.md) for dated provider terms and quota safeguards.
+See [QA](QA.md) for original foundation outcomes and [USA atlas integration](USA-ATLAS-130.md) for the 136-profile import and coordinate update status; documentation of a test command is not a passing result. The [content review](CONTENT.md) describes the original seed and licensing approach. See [service limits](SERVICES.md) for dated provider terms and quota safeguards.
 
-Before release: run production D1/Worker CPU and concurrency benchmarks, test iPhone/WebGL and keyboard/screen-reader behavior, introduce rate limiting and measured public caching, enable useful quota/error monitoring, perform backup/restore exercises, harden identity, complete content review, and recheck provider terms. The user has not authorized a public deployment.
+Before a production release: run production D1/Worker CPU and concurrency benchmarks, test iPhone/WebGL and keyboard/screen-reader behavior, introduce rate limiting and measured public caching, enable useful quota/error monitoring, perform backup/restore exercises, harden identity, complete content review, and recheck provider terms. The authorized evaluation-preview updates do not enable community submissions or constitute a production launch.

@@ -113,7 +113,11 @@ function reconcileChildren(previous: Location | undefined, next: Location) {
  * Unknown live rows require a fresh review, which also blocks duplicates whose
  * stored identity_key does not agree with their actual name/address fields.
  */
-export function atlasRevisionSql(beforeInput: unknown, afterInput: unknown) {
+export function atlasRevisionSql(
+  beforeInput: unknown,
+  afterInput: unknown,
+  revision = { baseline: atlasBaseline, auditAction: atlasAuditAction },
+) {
   const before = validateImport(beforeInput);
   const after = validateImport(afterInput);
   const previousById = new Map(
@@ -181,7 +185,7 @@ export function atlasRevisionSql(beforeInput: unknown, afterInput: unknown) {
       ? `EXISTS (SELECT 1 FROM locations WHERE id = ${id} AND json(data_json) = ${json(previous)})`
       : `NOT EXISTS (SELECT 1 FROM locations WHERE id = ${id})`;
     changes.push(
-      `INSERT INTO editorial_audit (location_id, action) SELECT ${id}, ${quote(atlasAuditAction)} WHERE ${needsWrite} AND NOT EXISTS (SELECT 1 FROM editorial_audit WHERE location_id = ${id} AND action = ${quote(atlasAuditAction)});`,
+      `INSERT INTO editorial_audit (location_id, action) SELECT ${id}, ${quote(revision.auditAction)} WHERE ${needsWrite} AND NOT EXISTS (SELECT 1 FROM editorial_audit WHERE location_id = ${id} AND action = ${quote(revision.auditAction)});`,
     );
     const values = { ...columns(next), data_json: JSON.stringify(next) };
     changes.push(
@@ -198,7 +202,7 @@ export function atlasRevisionSql(beforeInput: unknown, afterInput: unknown) {
   }
   return [
     "-- PHASM USA Haunted Atlas research revision. Generated SQL; review before applying.",
-    `-- Baseline: ${atlasBaseline}. ${before.length} existing; ${added} additions; ${updated} updates; ${after.length} final.`,
+    `-- Baseline: ${revision.baseline}. ${before.length} existing; ${added} additions; ${updated} updates; ${after.length} final.`,
     "-- Apply the nullable-coordinate schema migration before this revision.",
     "-- All guards precede all writes. Unexpected catalog changes stop the import.",
     "-- D1 executes the import as a transaction; no explicit BEGIN is needed.",

@@ -1,9 +1,10 @@
 import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import type { Location, Source } from "../shared/types";
 import { validateImport } from "./import-locations";
+import { safeUrl } from "../worker/validation";
 
 interface Block {
   text: string;
@@ -59,9 +60,21 @@ interface CopyAdjustment {
   sourceSha256: string;
   text: string;
 }
+export interface ReviewedGeocode {
+  researchId: string;
+  latitude: number;
+  longitude: number;
+  precision: "exact" | "approximate";
+  pointKind: string;
+  sourceUrl: string;
+  sourceTitle: string;
+  evidence: string;
+  checkedOn: string;
+}
 export interface ImportOptions {
   reviews: Record<string, Review>;
   copyAdjustments: Record<string, CopyAdjustment>;
+  geocodes?: Record<string, ReviewedGeocode>;
 }
 
 const categories: Record<string, string> = {
@@ -104,6 +117,43 @@ export function sha256(value: string): string {
   return createHash("sha256").update(value).digest("hex");
 }
 
+function validateGeocode(key: string, geocode: ReviewedGeocode): void {
+  if (!geocode || typeof geocode !== "object" || geocode.researchId !== key)
+    throw new Error(`Geocode research ID does not match its key: ${key}`);
+  if (
+    typeof geocode.latitude !== "number" ||
+    !Number.isFinite(geocode.latitude) ||
+    Math.abs(geocode.latitude) > 90 ||
+    typeof geocode.longitude !== "number" ||
+    !Number.isFinite(geocode.longitude) ||
+    Math.abs(geocode.longitude) > 180
+  )
+    throw new Error(
+      `Geocode requires a finite coordinate pair within geographic bounds: ${key}`,
+    );
+  if (!["exact", "approximate"].includes(geocode.precision))
+    throw new Error(`Geocode precision must be exact or approximate: ${key}`);
+  for (const field of ["pointKind", "sourceTitle", "evidence"] as const) {
+    if (typeof geocode[field] !== "string" || !geocode[field].trim())
+      throw new Error(
+        `Geocode requires inspected source metadata (${field}): ${key}`,
+      );
+  }
+  safeUrl(
+    geocode.sourceUrl,
+    `geocode source URL for ${key}`,
+    false,
+    true,
+    true,
+  );
+  if (
+    !/^\d{4}-\d{2}-\d{2}$/.test(geocode.checkedOn) ||
+    !Number.isFinite(Date.parse(geocode.checkedOn)) ||
+    new Date(geocode.checkedOn).toISOString().slice(0, 10) !== geocode.checkedOn
+  )
+    throw new Error(`Geocode requires a valid inspection date: ${key}`);
+}
+
 /** Convert only explicitly public prose. Full research and internal notes stay external. */
 export function convertResearch(
   research: ResearchLocation[],
@@ -122,6 +172,20 @@ export function convertResearch(
   const converted = new Map<string, Location>();
   const provenance: object[] = [];
   const usedAdjustments = new Set<string>();
+  const geocodes = options.geocodes ?? {};
+  const usedGeocodes = new Set<string>();
+  const geocodeSources: {
+    sourceId: string;
+    title: string;
+    url: string;
+    publisher: null;
+    author: null;
+    publicationDate: null;
+    accessedOn: string;
+    sourceType: "geographic_reference";
+  }[] = [];
+  for (const [key, geocode] of Object.entries(geocodes))
+    validateGeocode(key, geocode);
 
   for (const record of research) {
     const review = options.reviews[record.research_id];
@@ -187,12 +251,37 @@ export function convertResearch(
         throw new Error(`Unresolved source: ${sourceId}`);
     }
 
-    const coordinates =
+    const originalCoordinates =
       record.geography.mapping_visibility === "public"
         ? record.geography.coordinates
         : null;
-    if (record.geography.mapping_visibility === "public" && !coordinates)
+    if (
+      record.geography.mapping_visibility === "public" &&
+      !originalCoordinates
+    )
       throw new Error(`Public research pin has no coordinates: ${id}`);
+    const geocode = geocodes[record.research_id];
+    if (geocode && originalCoordinates)
+      throw new Error(
+        `Coordinate enrichment cannot replace an original public pin: ${id}`,
+      );
+    const coordinates = geocode || originalCoordinates;
+    const geocodeSourceId = geocode
+      ? `geocode-${record.research_id}`
+      : undefined;
+    if (geocode) {
+      usedGeocodes.add(record.research_id);
+      geocodeSources.push({
+        sourceId: geocodeSourceId!,
+        title: geocode.sourceTitle,
+        url: geocode.sourceUrl,
+        publisher: null,
+        author: null,
+        publicationDate: null,
+        accessedOn: geocode.checkedOn,
+        sourceType: "geographic_reference",
+      });
+    }
     const category = categories[record.identity.primary_category];
     const classification =
       classifications[
@@ -212,7 +301,8 @@ export function convertResearch(
       region: record.identity.continent,
       latitude: coordinates?.latitude ?? null,
       longitude: coordinates?.longitude ?? null,
-      coordinatePrecision: coordinates ? "approximate" : "withheld",
+      coordinatePrecision:
+        geocode?.precision || (coordinates ? "approximate" : "withheld"),
       category,
       classification,
       summary: publicText("card_summary", record.content.card_summary),
@@ -263,18 +353,35 @@ export function convertResearch(
       sourceIds: record.source_ids,
       sourceRoles,
       lastReviewedOn: record.last_reviewed_on,
+      ...(geocode
+        ? {
+            coordinateEnrichment: {
+              sourceId: geocodeSourceId,
+              latitude: geocode.latitude,
+              longitude: geocode.longitude,
+              precision: geocode.precision,
+              pointKind: geocode.pointKind,
+              evidence: geocode.evidence,
+              checkedOn: geocode.checkedOn,
+            },
+          }
+        : {}),
     });
   }
   for (const key of Object.keys(options.copyAdjustments)) {
     if (!usedAdjustments.has(key))
       throw new Error(`Unused public-copy adjustment: ${key}`);
   }
+  for (const key of Object.keys(geocodes)) {
+    if (!usedGeocodes.has(key))
+      throw new Error(`Unused coordinate enrichment: ${key}`);
+  }
   const baselineIds = new Set(baseline.map((record) => record.id));
   const locations = validateImport([
     ...baseline.map((record) => converted.get(record.id) || record),
     ...[...converted.values()].filter((record) => !baselineIds.has(record.id)),
   ]);
-  return { locations, provenance };
+  return { locations, provenance, geocodeSources };
 }
 
 if (
@@ -291,6 +398,10 @@ if (
     const readJson = (path: string) => JSON.parse(readFileSync(path, "utf8"));
     const researchPath = resolve(researchDirectory, "phasm_usa_locations.json");
     const sourcesPath = resolve(researchDirectory, "phasm_sources.json");
+    const geocodesPath = resolve(
+      root,
+      "content/research/usa-130-geocodes.json",
+    );
     const research = readJson(researchPath).locations as ResearchLocation[];
     const sources = readJson(sourcesPath).sources as ResearchSource[];
     if (research.length !== 130 || sources.length !== 431)
@@ -305,6 +416,7 @@ if (
       copyAdjustments: readJson(
         resolve(root, "content/research/usa-130-public-copy.json"),
       ),
+      geocodes: existsSync(geocodesPath) ? readJson(geocodesPath) : {},
     };
     const result = convertResearch(research, sources, baseline, options);
     if (result.locations.length !== 136)
@@ -315,6 +427,12 @@ if (
         "phasm_usa_locations.json": sha256(readFileSync(researchPath, "utf8")),
         "phasm_sources.json": sha256(readFileSync(sourcesPath, "utf8")),
       },
+      ...(existsSync(geocodesPath)
+        ? {
+            geocodeInputSha256: sha256(readFileSync(geocodesPath, "utf8")),
+            geocodedCount: result.geocodeSources.length,
+          }
+        : {}),
       baselineCount: baseline.length,
       researchCount: research.length,
       addedCount: 126,
@@ -337,16 +455,19 @@ if (
       writeFileSync(
         resolve(root, "content/research/usa-130-sources.json"),
         JSON.stringify(
-          sources.map((source) => ({
-            sourceId: source.source_id,
-            title: source.title,
-            url: source.url,
-            publisher: source.organization,
-            author: source.author ?? null,
-            publicationDate: source.publication_date ?? null,
-            accessedOn: source.accessed_on ?? null,
-            sourceType: source.source_type ?? null,
-          })),
+          [
+            ...sources.map((source) => ({
+              sourceId: source.source_id,
+              title: source.title,
+              url: source.url,
+              publisher: source.organization,
+              author: source.author ?? null,
+              publicationDate: source.publication_date ?? null,
+              accessedOn: source.accessed_on ?? null,
+              sourceType: source.source_type ?? null,
+            })),
+            ...result.geocodeSources,
+          ],
           null,
           2,
         ) + "\n",

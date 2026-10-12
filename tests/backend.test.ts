@@ -54,7 +54,9 @@ const fixture: Location = {
 
 function createEnv(locations: Location[] = [fixture]): Env {
   const db = new DatabaseSync(":memory:");
-  for (const filename of readdirSync("migrations").filter(name => name.endsWith(".sql")).sort()) {
+  for (const filename of readdirSync("migrations")
+    .filter((name) => name.endsWith(".sql"))
+    .sort()) {
     db.exec(readFileSync(`migrations/${filename}`, "utf8"));
   }
   class Statement {
@@ -132,14 +134,13 @@ test("publication validation rejects uncredited sources, unsafe URLs and private
     () => validateLocation({ ...fixture, access: "private" }),
     /approximate/,
   );
-  assert.throws(
-    () =>
-      validateLocation({
-        ...fixture,
-        access: "private",
-        coordinatePrecision: "approximate",
-      }),
-    /rounded/,
+  assert.equal(
+    validateLocation({
+      ...fixture,
+      access: "private",
+      coordinatePrecision: "approximate",
+    }).latitude,
+    fixture.latitude,
   );
   assert.equal(
     validateLocation({ ...fixture, coordinatePrecision: "approximate" })
@@ -390,7 +391,11 @@ test("community writes remain disabled and body limits are enforced", async () =
 
 test("catalog pagination uses the matching index without sorting the full catalog", async () => {
   const env = createEnv();
-  const result = await env.DB.prepare("EXPLAIN QUERY PLAN SELECT l.data_json FROM locations l WHERE l.status = 'published' ORDER BY l.featured DESC, l.name COLLATE NOCASE, l.id LIMIT 24 OFFSET 0").all<{detail: string}>();
-  assert.ok(result.results.some(row => row.detail.includes('locations_editorial')));
-  assert.ok(result.results.every(row => !row.detail.includes('TEMP B-TREE')));
+  const result = await env.DB.prepare(
+    "EXPLAIN QUERY PLAN SELECT l.data_json FROM locations l WHERE l.status = 'published' ORDER BY l.featured DESC, l.name COLLATE NOCASE, l.id LIMIT 24 OFFSET 0",
+  ).all<{ detail: string }>();
+  assert.ok(
+    result.results.some((row) => row.detail.includes("locations_editorial")),
+  );
+  assert.ok(result.results.every((row) => !row.detail.includes("TEMP B-TREE")));
 });

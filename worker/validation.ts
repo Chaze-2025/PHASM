@@ -132,17 +132,8 @@ export function validateLocation(input: unknown): Location {
       400,
       "Private sites require withheld or privacy-safe approximate coordinates.",
     );
-  if (
-    access === "private" &&
-    typeof latitude === "number" &&
-    typeof longitude === "number" &&
-    (Math.abs(latitude * 10 - Math.round(latitude * 10)) > 0.00001 ||
-      Math.abs(longitude * 10 - Math.round(longitude * 10)) > 0.00001)
-  )
-    throw new HttpError(
-      400,
-      "Private-site coordinates must be rounded to one decimal degree or coarser.",
-    );
+  // Access describes visiting permission. Preserve researched landmark points
+  // rather than displacing them by rounding; approximate pins are not entrances.
   if (!Array.isArray(data.phenomena) || data.phenomena.length > 20)
     throw new HttpError(400, "Provide at most 20 phenomenon tags.");
   const phenomena = [
