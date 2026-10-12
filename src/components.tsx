@@ -12,7 +12,7 @@ import {
   BookOpen,
   Map,
 } from "lucide-react";
-import type { Location } from "../shared/types";
+import type { LocationSummary } from "../shared/types";
 import { useSaved } from "./api";
 import { hasLocationPhotograph, hasMapCoordinates } from "./location";
 export function Logo() {
@@ -201,10 +201,12 @@ export function PlaceImage({
   location,
   className = "",
   priority = false,
+  sizes,
 }: {
-  location: Location;
+  location: LocationSummary;
   className?: string;
   priority?: boolean;
+  sizes?: string;
 }) {
   return (
     <img
@@ -220,13 +222,15 @@ export function PlaceImage({
           ? `${location.image.replace(".webp", "-card.webp")} 720w, ${location.image} 1920w`
           : undefined
       }
-      sizes={
-        className === "profile-image"
+      sizes={`${priority ? "" : "auto, "}${
+        sizes ??
+        (className === "profile-image"
           ? "100vw"
-          : "(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 33vw"
-      }
+          : "(max-width: 520px) calc(100vw - 34px), (max-width: 1000px) 50vw, 33vw")
+      }`}
       loading={priority ? "eager" : "lazy"}
       fetchPriority={priority ? "high" : "auto"}
+      decoding="async"
       onError={(e) => {
         if (!e.currentTarget.src.endsWith(PLACEHOLDER_IMAGE)) {
           e.currentTarget.removeAttribute("srcset");
@@ -241,7 +245,7 @@ export function LocationCard({
   location,
   compact = false,
 }: {
-  location: Location;
+  location: LocationSummary;
   compact?: boolean;
 }) {
   return (

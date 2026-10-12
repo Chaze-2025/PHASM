@@ -48,11 +48,26 @@ async function open(context, path = "/") {
   page.setDefaultTimeout(30000);
   page.on("pageerror", (error) => errors.push(error.message));
   await page.addInitScript(() => {
-    window.__fogTest = { webglContexts: 0, longTasks: [] };
+    window.__fogTest = {
+      webglContexts: 0,
+      textMeasurements: 0,
+      maskUpdates: 0,
+      longTasks: [],
+    };
     const original = HTMLCanvasElement.prototype.getContext;
     HTMLCanvasElement.prototype.getContext = function (kind, ...args) {
       if (String(kind).includes("webgl")) window.__fogTest.webglContexts++;
       return original.call(this, kind, ...args);
+    };
+    const originalRects = Range.prototype.getClientRects;
+    Range.prototype.getClientRects = function (...args) {
+      window.__fogTest.textMeasurements++;
+      return originalRects.apply(this, args);
+    };
+    const originalTextureUpdate = WebGLRenderingContext.prototype.texSubImage2D;
+    WebGLRenderingContext.prototype.texSubImage2D = function (...args) {
+      window.__fogTest.maskUpdates++;
+      return originalTextureUpdate.apply(this, args);
     };
     if (PerformanceObserver.supportedEntryTypes.includes("longtask")) {
       new PerformanceObserver((list) =>
@@ -473,6 +488,46 @@ try {
     },
   );
   await check(
+    "Scrolling reuses text geometry and content changes refresh the fog mask",
+    async () => {
+      await page.evaluate(() => scrollTo(0, 0));
+      await running(page);
+      const measurements = await page.evaluate(async () => {
+        // Stay inside the already-loaded hero so lazy-image loads do not
+        // legitimately invalidate the cache during this scroll-only check.
+        const before = window.__fogTest.textMeasurements;
+        const uploadsBefore = window.__fogTest.maskUpdates;
+        for (const top of [80, 120, 40, 0]) {
+          scrollTo(0, top);
+          await new Promise((resolve) => setTimeout(resolve, 100));
+        }
+        return {
+          before,
+          after: window.__fogTest.textMeasurements,
+          uploadsBefore,
+          uploadsAfter: window.__fogTest.maskUpdates,
+        };
+      });
+      assert.ok(measurements.before > 0, "Text geometry was never collected");
+      assert.equal(measurements.after, measurements.before);
+      assert.ok(measurements.uploadsAfter > measurements.uploadsBefore);
+      const text = page.locator(".home-hero-copy > p");
+      const originalText = await text.textContent();
+      try {
+        await text.evaluate((el) => el.append(" A new line of field notes."));
+        await expect
+          .poll(() => page.evaluate(() => window.__fogTest.textMeasurements))
+          .toBeGreaterThan(measurements.after);
+      } finally {
+        await text.evaluate(
+          (el, content) => (el.textContent = content),
+          originalText,
+        );
+      }
+      await running(page);
+    },
+  );
+  await check(
     "Scrolling, keyboard navigation and search are unaffected",
     async () => {
       await page.evaluate(() => scrollTo(0, 0));
@@ -689,11 +744,17 @@ try {
             phone.getByRole("navigation", { name: "Main navigation" }),
           ).toBeVisible();
           await expect(phone.locator(fog)).toHaveCSS("opacity", "0");
+          await expect(phone.locator(fog)).toHaveAttribute(
+            "data-status",
+            "paused-menu",
+          );
           const menuFrame = await state(phone);
           await phone.waitForTimeout(250);
-          assert.ok((await state(phone)).frame > menuFrame.frame);
+          assert.equal((await state(phone)).frame, menuFrame.frame);
           await phone.getByRole("button", { name: "Close navigation" }).tap();
           await expect(phone.locator(fog)).toHaveCSS("opacity", "1");
+          await running(phone);
+          assert.ok((await state(phone)).frame > menuFrame.frame);
         }
         await phone.setViewportSize({ width: height, height: width });
         await phone.waitForTimeout(650);

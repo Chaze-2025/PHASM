@@ -34,8 +34,20 @@ export interface Location {
   featured: boolean;
   updatedAt: string;
 }
-export interface LocationPage {
-  locations: Location[];
+// Public cards keep their display and map fields without downloading the full
+// history, reports, source bibliography, and visiting prose for every result.
+export type LocationSummary = Omit<
+  Location,
+  | "history"
+  | "reports"
+  | "accessNotes"
+  | "officialUrl"
+  | "sources"
+  | "imageCredit"
+  | "imageSource"
+>;
+export interface LocationPage<T = Location> {
+  locations: T[];
   total: number;
   page: number;
   pageSize: number;

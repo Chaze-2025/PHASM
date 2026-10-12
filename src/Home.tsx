@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { useApi } from "./api";
 import archivalImages from "../content/archival-images.json";
-import type { Location, LocationPage } from "../shared/types";
+import type { LocationSummary, LocationPage } from "../shared/types";
 import { LocationCard, Eyebrow, Status, PlaceImage } from "./components";
 import { AtmosphericFog } from "./AtmosphericFog";
 
@@ -23,11 +23,11 @@ const spiritPhotograph = archivalImages[0];
 export function Home() {
   const navigate = useNavigate();
   const [q, setQ] = useState("");
-  const { data, error, loading } = useApi<LocationPage>(
-    "/api/locations?pageSize=10",
+  const { data, error, loading } = useApi<LocationPage<LocationSummary>>(
+    "/api/locations?pageSize=10&format=summary",
   );
-  const { data: legends } = useApi<LocationPage>(
-    "/api/locations?classification=local-legend&pageSize=1",
+  const { data: legends } = useApi<LocationPage<LocationSummary>>(
+    "/api/locations?classification=local-legend&pageSize=1&format=summary",
   );
   const { data: facets } = useApi<{ regions: string[] }>("/api/meta");
   const legend = legends?.locations[0];
@@ -47,7 +47,7 @@ export function Home() {
     "edinburgh-castle",
   ]
     .map((slug) => locations.find((location) => location.slug === slug))
-    .filter(Boolean) as Location[];
+    .filter(Boolean) as LocationSummary[];
   const featured = locations
     .filter((location) => location.featured)
     .slice(0, 3);
@@ -65,10 +65,11 @@ export function Home() {
         <img
           className="home-hero-image"
           src="/images/eastern-state-penitentiary.webp"
-          srcSet="/images/eastern-state-penitentiary-card.webp 720w, /images/eastern-state-penitentiary.webp 1920w"
-          sizes="(max-width: 700px) 100vw, 75vw"
+          srcSet="/images/eastern-state-penitentiary-card.webp 720w, /images/eastern-state-penitentiary-1080.webp 1080w, /images/eastern-state-penitentiary-1280.webp 1280w, /images/eastern-state-penitentiary.webp 1920w"
+          sizes="(max-width: 850px) 100vw, max(50vw, 960px)"
           alt="The vaulted cellblock gallery of Eastern State Penitentiary, with empty corridors receding into the distance."
           fetchPriority="high"
+          decoding="async"
         />
         <div className="home-hero-registration" aria-hidden="true">
           <svg viewBox="0 0 100 100" fill="none">
@@ -234,6 +235,7 @@ export function Home() {
                 width="1065"
                 height="805"
                 loading="lazy"
+                decoding="async"
               />
               <span className="home-map-preview-label">
                 <Compass size={17} aria-hidden="true" /> Map preview{" "}
@@ -286,6 +288,7 @@ export function Home() {
                 width={spiritPhotograph.width}
                 height={spiritPhotograph.height}
                 loading="lazy"
+                decoding="async"
               />
               <span className="home-archive-date">
                 {spiritPhotograph.date} · {spiritPhotograph.medium}
@@ -353,7 +356,10 @@ export function Home() {
                   tabIndex={-1}
                   aria-hidden="true"
                 >
-                  <PlaceImage location={stanley} />
+                  <PlaceImage
+                    location={stanley}
+                    sizes="(max-width: 600px) calc(100vw - 48px), 100px"
+                  />
                 </Link>
                 <div>
                   <span className="home-story-kicker">
@@ -383,7 +389,10 @@ export function Home() {
             to={`/locations/${legend.slug}`}
             aria-label={`Explore ${legend.name}`}
           >
-            <PlaceImage location={legend} />
+            <PlaceImage
+              location={legend}
+              sizes="(max-width: 600px) calc(100vw - 48px), (max-width: 1360px) 45vw, 615px"
+            />
             <span>Local legend</span>
           </Link>
           <div className="home-lore-copy">
@@ -427,7 +436,10 @@ export function Home() {
                 className="home-recent-place"
                 key={location.id}
               >
-                <PlaceImage location={location} />
+                <PlaceImage
+                  location={location}
+                  sizes="(max-width: 850px) 68px, (max-width: 1100px) 55px, 68px"
+                />
                 <span>
                   <span className="home-recent-category">
                     {location.category}
