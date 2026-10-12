@@ -46,7 +46,13 @@ The actual-opacity phone and desktop stills and the frame sequence from a 25-sec
 
 An earlier development-server run was interrupted by a document reload and its aggregate frame rate was discarded. The stability test now rejects counter/context discontinuities. A separate uninterrupted probe found the older adaptation threshold tolerated sustained 50 ms frames against a 33 ms target. The new mean-gap plus majority-late gate correctly lowers resolution without treating normal 33/50 ms mobile cadence as overload.
 
-Deployment identifiers and live verification will be recorded after publication through the existing isolated preview configuration.
+Deployed to [the existing PHASM preview](https://phasm-phase-1-3-preview.wj7djnw2j2.workers.dev/) from clean source `75806dc807f8a4d185577b2eb43ddfb4176ade0a`. Worker version: `c5eb751f-2aba-4d7b-885a-c30d7689b1f0`. The previous version is `71ca3373-bf86-486a-a153-aa15bda10d84`.
+
+The explicit isolated preview configuration validated, clean preparation rebuilt the application, and the deployment dry run passed. The live entrypoint references the exact built application asset, `index-Cdjt7Tny.js`. Before/after `/api/atlas?zoom=5` responses are identical: all 136 pins, IDs, coordinates and public feature data are preserved, with no database writes. Source provenance and before/after responses are retained at `/workspace/phasm-mist-depth/deployment`.
+
+The review is [draft pull request #4](https://github.com/Chaze-2025/PHASM/pull/4), based on the preceding performance branch. Live verification passed **29/29 checks**: 14 Chromium/WebKit viewport checks and 15 read-only application checks. Six live axe scans reported zero violations, with zero uncaught browser errors. The live bottom bands contain visible mist through toolbar changes and scrolling; both engines recorded zero bitmap writes across the toolbar cycle and kept one context. Search, filters, real map tiles/controls, profiles, saves, mobile navigation and the admin lock also passed. Live WebKit/Chromium screenshots match the reviewed render.
+
+Live reports and screenshots are retained at `/workspace/phasm-mist-depth/live-viewport/report.json` and `/workspace/phasm-mist-depth/live-core/phasm-qa-results.json`.
 
 ## Limits
 
