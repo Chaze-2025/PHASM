@@ -55,6 +55,7 @@ function fixture(fn: (db: DatabaseSync, after: Location[]) => void) {
       JSON.stringify(originals[0], null, 2),
       originals[0].id,
     );
+
     const after = structuredClone(originals);
     after[0].image = "/images/nationwide/reviewed.jpg";
     after[0].imageCredit = "Reviewed publication photo";
@@ -395,4 +396,42 @@ test("planning refuses draft additions, baseline non-photo mutations, removed re
       () => buildPublicationPlan(before, after, { inputHash, batchSize: 1000 }),
       /batchSize/,
     );
+  }));
+
+test("publication ownership and collision guards use indexes instead of catalog-sized scans", () =>
+  fixture((db, after) => {
+    const plan = buildPublicationPlan(baseline(db), after, {
+      inputHash,
+      batchSize: 1,
+    });
+    const batch = plan.batches.find(
+      (entry) => entry.ids[0] === "nationwide-new-0",
+    )!;
+    const queries = batch.applySql
+      .split("\n")
+      .filter((line) => line.startsWith("SELECT CASE"));
+    const details = (sql: string) =>
+      db
+        .prepare(`EXPLAIN QUERY PLAN ${sql}`)
+        .all()
+        .map((row) => String(row.detail))
+        .join("\n");
+    const ownershipPlan = details(queries[0]);
+    const collisionPlan = details(queries[1]);
+    assert.match(
+      ownershipPlan,
+      /SEARCH editorial_audit USING COVERING INDEX editorial_audit_location_action/,
+    );
+    assert.doesNotMatch(ownershipPlan, /SCAN editorial_audit/);
+    assert.equal(
+      (collisionPlan.match(/SEARCH locations USING INDEX/g) ?? []).length,
+      3,
+    );
+    assert.match(
+      collisionPlan,
+      /SEARCH locations USING INDEX locations_identity_fields/,
+    );
+    assert.match(collisionPlan, /slug=\?/);
+    assert.match(collisionPlan, /identity_key=\?/);
+    assert.doesNotMatch(collisionPlan, /SCAN locations/);
   }));

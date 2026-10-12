@@ -81,6 +81,64 @@ function verifyFiles(directory: string, manifest: Manifest) {
       throw new Error(`Frozen SQL changed: ${name}`);
   }
 }
+
+/** Wrangler's file-upload spinner can precede JSON even with --json. */
+export function parseD1FileResult(stdout: string): number {
+  const normalized = stdout
+    .replace(/\u001b\[[0-9;]*m/g, "")
+    .replace(/\r\n/g, "\n");
+  // Use the first JSON-looking line, never a later success object after an
+  // earlier error. JSON.parse also rejects trailing output or multiple payloads.
+  const start = normalized.search(/^[ \t]*[\[{]/m);
+  if (start < 0) throw new Error("D1 output contains no JSON result");
+  for (const line of normalized.slice(0, start).split("\n")) {
+    const progress = line.replace(/^[ \t]*[├│└][─ \t]*/, "").trim();
+    if (
+      progress &&
+      progress !== "Checking if file needs uploading" &&
+      progress !== "🌀 Uploading complete." &&
+      progress !== "🌀 File already uploaded. Processing." &&
+      !/^🌀 Uploading [a-zA-Z0-9._-]+\.sql$/.test(progress)
+    )
+      throw new Error("Unexpected output before D1 JSON result");
+  }
+  const result: unknown = JSON.parse(normalized.slice(start));
+  const values = Array.isArray(result) ? result : [result];
+  if (!values.length) throw new Error("D1 returned an empty result");
+  let rowsWritten = 0;
+  for (const value of values) {
+    if (
+      !value ||
+      typeof value !== "object" ||
+      Array.isArray(value) ||
+      value.success !== true ||
+      "error" in value ||
+      ("errors" in value &&
+        (!Array.isArray(value.errors) || value.errors.length > 0)) ||
+      !Array.isArray(value.results) ||
+      typeof value.finalBookmark !== "string" ||
+      !value.finalBookmark ||
+      !value.meta ||
+      typeof value.meta !== "object"
+    )
+      throw new Error("D1 did not report a successful completed file import");
+    for (const field of ["rows_read", "rows_written", "duration"] as const) {
+      const number = value.meta[field];
+      if (
+        typeof number !== "number" ||
+        !Number.isFinite(number) ||
+        number < 0 ||
+        (field !== "duration" && !Number.isSafeInteger(number))
+      )
+        throw new Error(`Invalid D1 metadata: ${field}`);
+    }
+    rowsWritten += value.meta.rows_written;
+    if (!Number.isSafeInteger(rowsWritten))
+      throw new Error("Invalid aggregate D1 write count");
+  }
+  return rowsWritten;
+}
+
 function execute(file: string, log: string) {
   let stdout: string;
   try {
@@ -111,14 +169,13 @@ function execute(file: string, log: string) {
     );
   }
   writeFileSync(log, stdout, { mode: 0o600 });
-  const result = JSON.parse(stdout);
-  const values = Array.isArray(result) ? result : [result];
-  if (values.some((value) => value.success === false))
-    throw new Error(`D1 reported failure; inspect ${log}`);
-  return values.reduce(
-    (sum, value) => sum + Number(value.meta?.rows_written ?? 0),
-    0,
-  );
+  try {
+    return parseD1FileResult(stdout);
+  } catch (error) {
+    throw new Error(
+      `D1 result could not be verified; batch remains uncheckpointed. Inspect ${log}: ${error instanceof Error ? error.message : String(error)}`,
+    );
+  }
 }
 export function publicationMain(args = process.argv.slice(2)) {
   const argv = [...args];

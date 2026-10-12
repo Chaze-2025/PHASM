@@ -27,7 +27,7 @@ outside the public assets directory.
 The private publication packet for this run is
 `/workspace/phasm-nationwide-publication`. It contains the fresh preflight snapshot
 and restorable SQLite database, the validated published catalog, frozen SQL in
-`live-batches`, and verification results. Its research fingerprint is
+`live-batches-v2`, and verification results. Its research fingerprint is
 `a21736313a51b784bc18f38ad63db993e0758ebdd8d49ecddda149dd0b77ef90`.
 The publication revision is
 `d891e774d536ac2d60f221b1c7a027892ba2e42090243cc52c24554016293d4d`.
@@ -36,18 +36,30 @@ From the repository root, inspect the frozen plan:
 
 ```sh
 npx tsx scripts/nationwide-publish-run.ts check \
-  --plan-dir /workspace/phasm-nationwide-publication/live-batches
+  --plan-dir /workspace/phasm-nationwide-publication/live-batches-v2
 ```
 
 After clean application/photo preparation and deployment as described in
-[the deployment guide](../deploy/midnight-preview/README.md), publish or resume:
+[the deployment guide](../deploy/midnight-preview/README.md), apply the additive
+`0004_publication_lookup.sql` migration using the explicit deployment config.
+It indexes audit ownership and the raw identity comparison, preventing repeated
+full-table scans during publication as the catalog grows. Check the pending
+migration list before applying. This changes no catalog content. Then publish
+or resume:
+
+```sh
+npx wrangler d1 migrations list phasm-editorial-preview-db \
+  --remote --config deploy/midnight-preview/wrangler.json
+npx wrangler d1 migrations apply phasm-editorial-preview-db \
+  --remote --config deploy/midnight-preview/wrangler.json
+```
 
 ```sh
 npx tsx scripts/nationwide-publish-run.ts apply \
-  --plan-dir /workspace/phasm-nationwide-publication/live-batches \
+  --plan-dir /workspace/phasm-nationwide-publication/live-batches-v2 \
   --remote --max-batches 1
 npx tsx scripts/nationwide-publish-run.ts resume \
-  --plan-dir /workspace/phasm-nationwide-publication/live-batches --remote
+  --plan-dir /workspace/phasm-nationwide-publication/live-batches-v2 --remote
 ```
 
 Every apply/resume checks the entire original and planned catalog before skipping
@@ -60,13 +72,15 @@ For an approved recovery, rollback processes the frozen batches in reverse order
 
 ```sh
 npx tsx scripts/nationwide-publish-run.ts rollback \
-  --plan-dir /workspace/phasm-nationwide-publication/live-batches --remote
+  --plan-dir /workspace/phasm-nationwide-publication/live-batches-v2 --remote
 ```
 
 Rollback restores the two original image records exactly and removes only the
 new records and audit entries owned by this revision. New member, moderation or
 editorial references prevent deletion. An interrupted rollback resumes using the
 same command. Keep the deployed images available until database rollback finishes.
+The two supporting indexes remain after content rollback; they can continue to
+serve subsequent imports without changing the restored records.
 The previous Worker version is recorded in the private preflight report; code
 rollback is a separate Cloudflare operation.
 

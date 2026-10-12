@@ -336,7 +336,11 @@ export function buildPublicationPlan(
           `before-image or owned applied-state mismatch: ${next.id}`,
         ),
         guard(
-          `NOT EXISTS (SELECT 1 FROM locations WHERE id <> ${id} AND (slug = ${q(next.slug)} OR identity_key = ${q(identityKey(next))} OR (name = ${q(next.name)} COLLATE NOCASE AND city = ${q(next.city)} COLLATE NOCASE AND state = ${q(next.state)} COLLATE NOCASE AND country = ${q(next.country)} COLLATE NOCASE)))`,
+          [
+            `NOT EXISTS (SELECT 1 FROM locations WHERE id <> ${id} AND slug = ${q(next.slug)})`,
+            `NOT EXISTS (SELECT 1 FROM locations WHERE id <> ${id} AND identity_key = ${q(identityKey(next))})`,
+            `NOT EXISTS (SELECT 1 FROM locations WHERE id <> ${id} AND name = ${q(next.name)} COLLATE NOCASE AND city = ${q(next.city)} COLLATE NOCASE AND state = ${q(next.state)} COLLATE NOCASE AND country = ${q(next.country)} COLLATE NOCASE)`,
+          ].join(" AND "),
           `identity collision: ${next.id}`,
         ),
       ],
