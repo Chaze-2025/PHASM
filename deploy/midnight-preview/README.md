@@ -28,11 +28,64 @@ npx wrangler deploy --config deploy/midnight-preview/wrangler.json --dry-run
 Preparation requires the expected branch, a clean working tree, and the preserved Phase 1 (`9da8948`), Phase 1.1 (`cf915ba`), Midnight Séance (`d3c7a21`), and atmospheric fog (`8ffeb28`) commits as ancestors. It performs a fresh production build, copies public assets into ignored `.generated/assets`, adds preview-only indexing headers, and records the exact source commit in `.generated/source.json`. Vite packages the MapLibre browser worker through the application's asset import.
 
 The preparation allowlist also includes the subsequent `codex/usa-atlas-130`,
-`codex/rolling-fog` and `codex/responsive-performance` revisions. The
+`codex/rolling-fog`, `codex/responsive-performance`, `codex/volumetric-mist`,
+and `codex/nationwide-research-2853` revisions. The
 [performance update](../../docs/PERFORMANCE.md) uses this same isolated Worker
 and database without migrations or catalog writes.
 
 For local review before committing, `node deploy/midnight-preview/prepare.mjs --allow-dirty` permits a marked, uncommitted build. Use that output only for local checks and Wrangler's `--dry-run`. Before a real deployment, commit reviewed changes and rerun preparation **without** `--allow-dirty`.
+
+## Nationwide catalog and cleared photographs
+
+The owner approved publication of the 2,723 nationwide additions on 2026-10-12.
+The public origin and exact existing Worker/D1 bindings in the table above remain
+the deployment targets. This approval does not authorize a paid plan, a new
+service, changing another preview, or opening the wrapper's administrative routes.
+
+On `codex/nationwide-research-2853`, preparation requires an explicit completed
+photo workspace. The reviewed workspace contains 33 independently cleared image
+files, totaling 24,819,976 bytes. The one missing supplied photograph and the
+three quarantined Wyoming image choices are not packaged. Existing approved
+public images remain in the regular application build.
+
+```sh
+node deploy/midnight-preview/prepare.mjs \
+  --photo-workspace /workspace/phasm-nationwide-review/full \
+  --photo-patch-version nationwide-photos-2026-10-12-v2
+npx wrangler deploy --config deploy/midnight-preview/wrangler.json --dry-run
+```
+
+The workspace path is explicit and may differ on another machine. Omitting
+`--photo-patch-version` selects the version in its `photo-plan.json`. For local
+checks of uncommitted code, add `--allow-dirty`; prepare again from a clean commit
+before deploying. Preparation itself never writes D1 or deploys a Worker.
+
+Photo preparation verifies the frozen manifest and plan hashes, the complete
+photo run and every applied operation in `journal.sqlite`, its individual asset
+receipts, and matching image fields in `catalog.sqlite`. Every catalog reference
+under `/images/research/` must be covered by the selected completed patch. This
+prevents accidentally dropping an already referenced image; a future partial
+photo patch needs a cumulative reviewed deployment package before preparation.
+Only the installed, content-addressed JPG/PNG/WebP/AVIF files under the workspace's
+`assets/images/research/` are eligible. Symlinks, path escapes, substituted bytes,
+catalog edits, incomplete runs and conflicting existing assets stop preparation.
+All assets are checked against Workers Free's 20,000-file and 25 MiB-per-file
+limits. These checks do not change Cloudflare's account or billing settings.
+
+The ignored `.generated/source.json` records source commit, patch version,
+manifest/plan/run hashes, total bytes, and each installed image's hash, attribution,
+license, source URL and review metadata. It excludes local source paths, the raw
+research, database contents and credentials; it is operational provenance, not a
+public website asset. The bulk images, databases and reports remain outside Git.
+Repeated preparation copies the same approved bytes to the same URLs.
+
+Apply only the separately reviewed, guarded nationwide publication plan to the
+explicit editorial database, preserving existing records and relationships.
+Application/asset deployment and D1 publication are distinct operations; the
+preparation script does not imply that records have been imported or published.
+Keep the pre-publication database snapshot, rollback SQL and deployment provenance
+with the private operational review packet, then verify public totals and images
+against that plan after the deployment and D1 update.
 
 ## Preview database isolation
 
