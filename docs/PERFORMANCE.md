@@ -93,3 +93,46 @@ PHASM_BASE_URL=http://localhost:5173 \
   PHASM_PERF_OUTPUT=/workspace/phasm-performance/comparison \
   node tests/performance.mjs
 ```
+
+### Deployment and live verification
+
+- URL: <https://phasm-phase-1-3-preview.wj7djnw2j2.workers.dev/>
+- Source: `0d85920b2c81e85a572095de4653b1f8c2b6d340` on
+  `codex/responsive-performance`.
+- Worker version: `71ca3373-bf86-486a-a153-aa15bda10d84`.
+- Review: <https://github.com/Chaze-2025/PHASM/pull/3>.
+- Clean preparation, production build and explicit preview-config dry run passed.
+  The existing isolated Worker/database were retained; no database writes,
+  migrations, additional services or plan changes were needed.
+- **32 final live checks passed**: 15 core, six atlas/catalog, nine performance
+  behavior and two image-loading checks. No uncaught application errors were
+  observed. The complete 136-point response exactly matches the pre-update JSON.
+- Final image tests verify 720px mobile card selection at DPR 2 and zero unwanted
+  original-photo downloads when filtering, paginating or changing routes. Explicit
+  responsive sizes avoid the departing-image re-selection seen with native
+  automatic sizing during the first live comparison.
+- Preview indexing/path restrictions and public cache headers were verified.
+  Profile HTML remains `no-store`; public metadata reports all 136 locations.
+
+Final artifacts are in `live-core`, `live-atlas`, `live-behavior-final`,
+`live-images` and `deployment` under `/workspace/phasm-performance/`.
+
+The comparative probe found startup atlas requests fell from two to one;
+pan/zoom/pagination requests fell to zero; a Europe filter uses one request rather
+than three; and repeated marker previews and warm homepage navigation use no new
+API requests. Same-document scroll JavaScript time fell from 169 to 134 ms on
+desktop and 89 to 60 ms on mobile in the recorded samples. Desktop fog frame-rate
+gains were small in SwiftShader: native/software-GPU work still dominates. No
+physical-device FPS or population Web Vitals claim is made.
+
+Fresh-context cold-homepage checks were repeated on the final deployed bundle
+(`index-Bv-F3Xci.js`) with the same readiness condition and 1,500 ms observation
+window. They selected the 1080px hero and 720px card variants with no unwanted
+original photos or browser errors:
+
+| Homepage transfer |      Before |     Final | Reduction |
+| ----------------- | ----------: | --------: | --------: |
+| Desktop, DPR 1    | 1,004,814 B | 765,416 B |    23.83% |
+| Mobile, DPR 2     | 2,037,211 B | 764,479 B |    62.47% |
+
+The final report is `/workspace/phasm-performance/after-final-home/report.json`.
