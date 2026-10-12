@@ -2,7 +2,7 @@
 
 A cinematic field guide to haunted places, documented history, and attributed folklore. Phase 1 delivers a working Haunted Atlas, reusable location profiles, and a private editorial API on React, TypeScript, Vite, Cloudflare Workers, and D1.
 
-Current work: **`codex/rolling-fog` — continuous rolling fog across the homepage**, starting from the deployed, fully mapped atlas at `ede8fff`. Three moving procedural fields cross photography, cards and sections with soft attenuation around text and controls. Local verification has passed; deployment status is recorded in the [rolling fog QA record](docs/fog/ROLLING-FOG-QA.md). The [USA atlas integration](docs/USA-ATLAS-130.md) retains the verified deployment of all 136 mapped profiles, including 130 US locations across all 50 states and six international profiles; this visual revision changes no catalog records or community features.
+Current work: **`codex/rolling-fog` — continuous rolling fog across the homepage**, starting from the deployed, fully mapped atlas at `ede8fff`. Three moving procedural fields cross photography, cards and sections with soft attenuation around text and controls. The update is deployed; verification and deployment status are recorded in the [rolling fog QA record](docs/fog/ROLLING-FOG-QA.md). The [USA atlas integration](docs/USA-ATLAS-130.md) retains the verified deployment of all 136 mapped profiles, including 130 US locations across all 50 states and six international profiles; this visual revision changes no catalog records or community features.
 
 [Editorial refinement and voice](docs/editorial/README.md) · [Source review](docs/editorial/SOURCE-REVIEW.md) · [Screenshots and QA](docs/editorial/QA.md)
 

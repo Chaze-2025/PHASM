@@ -2,7 +2,7 @@
 
 The `codex/rolling-fog` revision replaces the earlier perimeter mist with one continuous atmosphere across the homepage. It starts from `ede8fff`, the recorded deployment of all 136 atlas pins. The atlas content, map, profiles, access restrictions and community features remain as documented in the [USA atlas integration](../USA-ATLAS-130.md). Fog mounts only on the homepage.
 
-Local verification has passed; deployment results are recorded in the [rolling fog QA record](ROLLING-FOG-QA.md). The [original mist QA](QA.md) preserves evidence for the superseded perimeter effect.
+The update is deployed; verification and deployment results are recorded in the [rolling fog QA record](ROLLING-FOG-QA.md). The [original mist QA](QA.md) preserves evidence for the superseded perimeter effect.
 
 ## Shape, light and motion
 

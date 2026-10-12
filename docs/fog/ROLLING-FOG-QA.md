@@ -1,16 +1,16 @@
 # Rolling homepage fog: verification record
 
-Status: **local verification passed; deployment pending**. The results below were recorded on October 12, 2026.
+Status: **deployed and verified locally and live**. The results below were recorded on October 12, 2026.
 
 | Item | Current record |
 | --- | --- |
 | Working branch | `codex/rolling-fog` |
 | Starting source | `ede8fff`, recorded deployment of all 136 atlas pins |
 | Change | One continuous homepage fog layer with three moving noise fields and soft text/control attenuation |
-| Reviewed source commit | Pending |
+| Reviewed source commit | `d17baf0c0ffb79c8da10fa473eca7346116417d2` |
 | Local build and automated checks | 35 automated tests, TypeScript, production build and preview configuration validation passed |
 | Desktop/mobile visual and motion review | 18 focused fog checks; two accessibility scans; real-time 25-second recording |
-| Deployed Worker version and live verification | Pending |
+| Deployed Worker version and live verification | `04388f1d-4e3b-4277-b7a4-ef546d4d6573`; 33 live checks passed |
 
 The [implementation guide](README.md) describes the current shader, motion, readability mask and adaptive rendering budget. [QA.md](QA.md) and its existing artifacts describe the original perimeter mist. Its unchanged-center and completely protected-photo checks are historical requirements superseded by this revision; those results do not validate the new effect.
 
@@ -56,7 +56,7 @@ Keep the original `docs/fog/artifacts` directory intact. Save new reports, scree
 
 Local verification used Node.js 24.19.0 and Playwright 1.64.0 with Chromium/SwiftShader. `npm test` passed all 35 automated tests; TypeScript, the production build and explicit preview configuration validation passed.
 
-The focused fog suite passed **18 of 18 checks**, including desktop layout and input, overlap across photos/card edges/section surfaces, bottom-of-viewport coverage, continuous scrolling, mobile menu behavior, resizing, reduced motion, visibility lifecycle, context loss and unsupported/low-memory/data-saving fallbacks. Two axe accessibility scans reported zero violations, with zero uncaught browser errors. Touch viewports were 390×844, 375×667, 360×800 and 844×390; desktop was 1440×1000.
+The focused fog suite passed **18 of 18 checks**, including desktop layout and input, overlap across photos/card edges/section surfaces, bottom-of-viewport coverage, continuous scrolling, mobile menu behavior, resizing, reduced motion, visibility lifecycle, context loss and unsupported/low-memory/data-saving fallbacks. Two axe accessibility scans reported zero violations, with zero uncaught browser errors. Touch viewports were 375×667, 390×844, 430×932 and 844×390; desktop was 1440×1000.
 
 Eleven fog-on/off pixel comparisons found zero changed header pixels. The highest text contribution was 22 RGB levels at the 99th percentile and 24 maximum; controls were 16 and 18 respectively. Every measured bottom band received fog. Five continuous-scroll checks kept the canvas visible and running without context recreation. These pixel budgets complement visual review; they are not a standalone contrast-ratio measurement.
 
@@ -68,9 +68,15 @@ An early bottom cutoff was isolated with an independent plain WebGL canvas: an o
 
 ## Deployment
 
-Pending. The previous atlas deployment remains documented in [USA-ATLAS-130.md](../USA-ATLAS-130.md). The presence of the existing Cloudflare URL does not demonstrate that rolling fog has been published.
+Deployed on October 12, 2026 to [the existing PHASM preview](https://phasm-phase-1-3-preview.wj7djnw2j2.workers.dev/) from clean source `d17baf0c0ffb79c8da10fa473eca7346116417d2`. Worker version: `04388f1d-4e3b-4277-b7a4-ef546d4d6573`. Clean preparation rebuilt the application and recorded source provenance; the explicit preview dry run passed before publication.
 
-If deployed, record the source commit, clean preparation provenance, Worker version, deployment time and live verification. This visual revision requires no database migration or content update. Verify the homepage effect and route restrictions on the deployed version while confirming atlas/profile behavior and the 136 mapped records remain intact.
+The public atlas response before and after deployment is identical: all 136 points, IDs and coordinates are preserved. This deployment made no database changes. The recovery Worker version is `8538cdf2-47b7-4305-a697-4a98227e85d8`, recorded before deployment. The earlier atlas release remains documented in [USA-ATLAS-130.md](../USA-ATLAS-130.md).
+
+Live verification passed **33 of 33 checks**: 15 core application regressions and all 18 focused fog checks, with the live stability interval shortened to 15 seconds and recording disabled. Eight accessibility scans reported zero violations; both suites recorded zero uncaught browser errors. Production desktop and mobile screenshots were visually inspected and match the approved effect, including continuous coverage at the viewport bottom.
+
+The live fog comparisons found zero altered header pixels across 11 comparisons, text contribution of at most 23 RGB levels at the 99th percentile and 25 maximum, and control contribution of 16 and 18. The 15-second software-rendered sample averaged 20.99 fps, adapted from 835×580 to 651×452 and retained a roughly 10 MB sampled heap. These shorter live measurements are separate from the two-minute local stability run.
+
+Live reports and screenshots remain at `/workspace/phasm-fog-quality/live/core/phasm-qa-results.json` and `/workspace/phasm-fog-quality/live/fog/report.json`, alongside desktop, phone and atlas-panel screenshots. The separate review is [pull request #2](https://github.com/Chaze-2025/PHASM/pull/2), based on the completed atlas branch.
 
 ## Limits
 
