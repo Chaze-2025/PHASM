@@ -7,6 +7,7 @@ import {
   validateLocation,
 } from "./validation";
 import { locationStatements } from "./location-sql";
+import { locationStructuredData } from "./seo";
 
 export interface Env {
   DB: D1Database;
@@ -125,38 +126,41 @@ async function getProfile(
     .first<Row>();
   if (!row) return null;
   const location = fromRow(row);
-  // A small indexed bounding search avoids sorting the full catalog for each profile.
-  const south = Math.max(-90, location.latitude - 8);
-  const north = Math.min(90, location.latitude + 8);
-  const rawWest = location.longitude - 12;
-  const rawEast = location.longitude + 12;
-  const west = rawWest < -180 ? rawWest + 360 : rawWest;
-  const east = rawEast > 180 ? rawEast - 360 : rawEast;
-  const longitudeClause =
-    west > east
-      ? "(longitude >= ? OR longitude <= ?)"
-      : "longitude BETWEEN ? AND ?";
-  const longitudeScale = Math.cos((location.latitude * Math.PI) / 180) ** 2;
-  const nearby = await db
-    .prepare(
-      `SELECT data_json FROM locations WHERE status = 'published' AND id != ? AND latitude BETWEEN ? AND ? AND ${longitudeClause} ORDER BY ((latitude - ?) * (latitude - ?) + MIN((longitude - ?) * (longitude - ?), (360 - ABS(longitude - ?)) * (360 - ABS(longitude - ?))) * ?) LIMIT 3`,
-    )
-    .bind(
-      location.id,
-      south,
-      north,
-      west,
-      east,
-      location.latitude,
-      location.latitude,
-      location.longitude,
-      location.longitude,
-      location.longitude,
-      location.longitude,
-      longitudeScale,
-    )
-    .all<Row>();
-  const discoveries = nearby.results.map(fromRow);
+  const discoveries: Location[] = [];
+  if (location.latitude !== null && location.longitude !== null) {
+    // A small indexed bounding search avoids sorting the full catalog for each profile.
+    const south = Math.max(-90, location.latitude - 8);
+    const north = Math.min(90, location.latitude + 8);
+    const rawWest = location.longitude - 12;
+    const rawEast = location.longitude + 12;
+    const west = rawWest < -180 ? rawWest + 360 : rawWest;
+    const east = rawEast > 180 ? rawEast - 360 : rawEast;
+    const longitudeClause =
+      west > east
+        ? "(longitude >= ? OR longitude <= ?)"
+        : "longitude BETWEEN ? AND ?";
+    const longitudeScale = Math.cos((location.latitude * Math.PI) / 180) ** 2;
+    const nearby = await db
+      .prepare(
+        `SELECT data_json FROM locations WHERE status = 'published' AND id != ? AND latitude BETWEEN ? AND ? AND ${longitudeClause} ORDER BY ((latitude - ?) * (latitude - ?) + MIN((longitude - ?) * (longitude - ?), (360 - ABS(longitude - ?)) * (360 - ABS(longitude - ?))) * ?) LIMIT 3`,
+      )
+      .bind(
+        location.id,
+        south,
+        north,
+        west,
+        east,
+        location.latitude,
+        location.latitude,
+        location.longitude,
+        location.longitude,
+        location.longitude,
+        location.longitude,
+        longitudeScale,
+      )
+      .all<Row>();
+    discoveries.push(...nearby.results.map(fromRow));
+  }
   if (!discoveries.length) {
     // The interface labels these "Other stories in the archive": where a
     // region has no nearby coverage yet, offer editorially related places.
@@ -181,7 +185,7 @@ async function atlas(
   if (zoomText === "" || !Number.isFinite(zoom) || zoom < 0 || zoom > 24)
     throw new HttpError(400, "zoom must be between 0 and 24.");
   const filter = buildFilters(params);
-  filter.where += ` AND l.latitude BETWEEN ? AND ? AND ${west > east ? "(l.longitude >= ? OR l.longitude <= ?)" : "l.longitude BETWEEN ? AND ?"}`;
+  filter.where += ` AND l.coordinate_precision != 'withheld' AND l.latitude IS NOT NULL AND l.longitude IS NOT NULL AND l.latitude BETWEEN ? AND ? AND ${west > east ? "(l.longitude >= ? OR l.longitude <= ?)" : "l.longitude BETWEEN ? AND ?"}`;
   filter.values.push(south, north, west, east);
   const count = await db
     .prepare(`SELECT COUNT(*) AS total FROM locations l WHERE ${filter.where}`)
@@ -442,7 +446,9 @@ async function profileHtml(
   // Cloudflare's HTML asset handling redirects /index.html to /. Fetch the
   // canonical root asset directly so the rewriter receives the HTML body.
   const asset = await env.ASSETS.fetch(
-    new Request(new URL("/", request.url), { headers: { Accept: "text/html" } }),
+    new Request(new URL("/", request.url), {
+      headers: { Accept: "text/html" },
+    }),
   );
   if (!profile)
     return new Response(
@@ -460,30 +466,9 @@ async function profileHtml(
   const image = new URL(location.image, siteUrl(env)).href;
   const title = `${location.name} — Hauntings, History & Visiting Guide | PHASM`;
   const description = location.summary.slice(0, 200);
-  const structured = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Place",
-    name: location.name,
-    description,
-    url: canonical,
-    image,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: location.city,
-      addressRegion: location.state,
-      addressCountry: location.country,
-    },
-    ...(location.coordinatePrecision === "exact"
-      ? {
-          geo: {
-            "@type": "GeoCoordinates",
-            latitude: location.latitude,
-            longitude: location.longitude,
-          },
-        }
-      : {}),
-    ...(location.officialUrl ? { sameAs: location.officialUrl } : {}),
-  }).replace(/</g, "\\u003c");
+  const structured = JSON.stringify(
+    locationStructuredData(location, siteUrl(env)),
+  ).replace(/</g, "\\u003c");
   const head = `<link rel="canonical" href="${escapeHtml(canonical)}"><meta name="description" content="${escapeHtml(description)}"><meta property="og:type" content="place"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${escapeHtml(canonical)}"><meta property="og:image" content="${escapeHtml(image)}"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">${structured}</script>`;
   const article = `<main class="server-profile">
     <a href="/">PHASM</a>
@@ -493,7 +478,7 @@ async function profileHtml(
       <p>${escapeHtml(location.category)} · ${escapeHtml(location.classification)}</p>
       <section id="story"><h2>The Story</h2><p>${escapeHtml(location.summary)}</p></section>
       <section id="reports"><h2>The Hauntings</h2><p>${escapeHtml(location.reports)}</p></section>
-      <section id="history"><h2>The History</h2><p>${escapeHtml(location.history)}</p></section>
+      ${location.history ? `<section id="history"><h2>The History</h2><p>${escapeHtml(location.history)}</p></section>` : ""}
       <section id="gallery">
         <h2>A sense of place.</h2>
         <figure>
@@ -550,7 +535,8 @@ async function profileHtml(
     })
     .transform(htmlSource);
   const headers = new Headers(transformed.headers);
-  for (const [name, value] of Object.entries(publicHeaders)) headers.set(name, value);
+  for (const [name, value] of Object.entries(publicHeaders))
+    headers.set(name, value);
   headers.set("Content-Type", "text/html; charset=utf-8");
   return new Response(transformed.body, { status: 200, headers });
 }

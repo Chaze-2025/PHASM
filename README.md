@@ -2,7 +2,7 @@
 
 A cinematic field guide to haunted places, documented history, and attributed folklore. Phase 1 delivers a working Haunted Atlas, reusable location profiles, and a private editorial API on React, TypeScript, Vite, Cloudflare Workers, and D1.
 
-Current refinement: **`dev/phasm-editorial-voice` — paranormal storytelling and charcoal cartography**, based on preserved atmospheric-fog commit `8ffeb28`. The ten existing location profiles and public interface now use welcoming, source-backed paranormal storytelling. The map returns to neutral gray and black, while the surrounding green-and-brass design, clear photography, homepage mist, and application functionality remain intact. No new locations or community features are introduced.
+Current work: **`codex/usa-atlas-130` — 136 sourced profiles with map points**, including 130 US locations across all 50 states and six preserved international profiles. The 75 newly researched points are approximate references to identified sites, parks, roads or visitor locations; the original 61 points remain unchanged. The coordinate update is deployed and verified on the existing Cloudflare preview. See [the USA atlas integration](docs/USA-ATLAS-130.md) for the deployed baseline and current release status. The green-and-brass design, neutral charcoal map, photography, homepage mist and closed community features remain intact.
 
 [Editorial refinement and voice](docs/editorial/README.md) · [Source review](docs/editorial/SOURCE-REVIEW.md) · [Screenshots and QA](docs/editorial/QA.md)
 
@@ -17,7 +17,7 @@ The preview is separate from production and now uses its own editorial D1 copy, 
 Use Node.js **22.13+ or 24** and npm. Tests use Node's built-in SQLite module. No Cloudflare account, map API key, or paid service is needed for local development.
 
 ```bash
-cd /workspace/phasm-editorial
+cd /path/to/PHASM
 npm ci
 npm run setup
 npm run dev
@@ -66,7 +66,9 @@ No client-side secrets are required. Never place privileged values in Vite varia
 
 ## Content and imports
 
-The seed contains **10 genuine locations toward a 50-profile public-release target**. Profiles distinguish historical information from attributed paranormal reports. Five use licensed location photographs; five use an explicitly labelled editorial placeholder. No reviews, ratings, eyewitness accounts, or paranormal evidence were invented.
+The catalog contains **136 locations, all with map points**. The October 10 research handoff added 126 locations and updated four existing US IDs. Subsequent geographic research supplies approximate reference points for all 75 profiles that initially lacked coordinates, preserving the other 61 records. The [coordinate registry](content/research/usa-130-geocodes.json) records each inspected source, numeric pair, point kind, evidence and inspection date. The public bibliography retains all 431 original source records and adds 75 geographic references, which do not serve as evidence for historical or paranormal claims.
+
+Profiles distinguish historical information from attributed paranormal reports; history is optional when the research supports only a sourced story. A map point does not establish permission to enter: private ownership, booking requirements, closures and other access restrictions still apply. Approximate means a reference to the identified feature, with the source's numeric coordinates retained; it does not require rounding to a town-sized area. Existing approved imagery is retained and new profiles use a clearly labelled nonphotographic placeholder. No member reviews or ratings were added. See [the USA atlas integration](docs/USA-ATLAS-130.md) for provenance, verification and deployment status.
 
 Read [content research and image licensing](docs/CONTENT.md) and [image credits](content/image-credits.json) before editing. These records are published in the local database for evaluation, but all require another editorial review before a public launch.
 
@@ -79,6 +81,8 @@ npm run import:validate -- /path/to/reviewed-locations.json --write-sql /tmp/pha
 ```
 
 The import tool accepts 1–5,000 records per file and rejects malformed records and duplicate IDs, slugs, or normalized name/city/state/country identities within a batch. Database uniqueness constraints also reject collisions with existing records. It validates required publication sources, bounds, URL schemes, image metadata, and privacy rules. Validation does not establish historical truth, media rights, or visiting permission: an editor must check those.
+
+To update the already imported 136-record atlas, generate the dedicated guarded coordinate revision with `npx tsx scripts/geocode-revision.ts /private/path/geocodes.sql`. It uses deployed source `9d76541aec32d093a2caa2f3d2a617d73ebe22f3` as its baseline, protects the 61 previously mapped records and updates the 75 newly researched pins. This command generates SQL only; follow the integration guide for backup, review and deployment.
 
 Keep candidate files and generated SQL private, use draft publication status until reviewed, and inspect the complete SQL before applying it to a database. SQL generation does not apply the import. Existing records are not silently updated by bulk import. The private editor is the supported Phase 1 editing interface; a guided bulk-import administration screen is still planned.
 
@@ -94,7 +98,7 @@ npm run deploy:check
 
 Initial Phase 1 results: **8 backend tests, 16 browser checks, and 7 automated accessibility scans passed**. The production build and Cloudflare deployment dry run passed. Both runtime-only and full dependency audits reported zero known vulnerabilities on 8 October 2026. See [the QA record](docs/QA.md) for evidence and remaining manual/device coverage.
 
-Current refinement results and reproducible commands are in [editorial verification](docs/editorial/QA.md). Earlier results remain in [fog verification](docs/fog/QA.md) and [Phase 1.3 verification](docs/phase-1-3/TEST-RESULTS.md).
+The [USA atlas integration](docs/USA-ATLAS-130.md) records verification of the initial import and the deployed coordinate update. Earlier results remain in [editorial verification](docs/editorial/QA.md), [fog verification](docs/fog/QA.md) and [Phase 1.3 verification](docs/phase-1-3/TEST-RESULTS.md).
 
 For browser checks, start the development server, run `npx playwright install chromium`, then `npm run test:browser`.
 
@@ -113,13 +117,13 @@ This is a manual readiness checklist, not a record of completed provisioning:
 1. Obtain deployment authorization and select the Cloudflare account and plan. Create a D1 database, replace the placeholder `database_id` with its real ID, and apply reviewed migrations/content to that database only after a backup and recovery plan is in place.
 2. Set `SITE_URL` to the final HTTPS canonical origin. Configure `ADMIN_TOKEN` as a Worker secret through Cloudflare's secret workflow; never commit it. Protect `/admin` and `/api/admin/*` behind an identity gateway such as Cloudflare Access, or implement equivalent server-verified per-editor authentication with authorization and MFA. The shared token alone is a Phase 1 foundation.
 3. Complete security and accessibility review, real iPhone/mobile testing, production CPU/query benchmarks, rate limiting, quota alerts, restore testing, and map outage checks. Account for direct asset versus Worker routing costs.
-4. Recheck every location's facts, access, privacy, sources, and image license. Research at least 40 additional profiles and complete second-editor review of the entire release catalog.
+4. Recheck every location's facts, access, privacy, sources, and image license, and complete second-editor review of the entire release catalog.
 5. Keep public reviews, suggestions, uploads, replies, accounts, and synced collections closed until their authentication, permissions, moderation, consent, reporting, appeals, spam prevention, and abuse controls are implemented and tested.
 6. Recheck Cloudflare/OpenFreeMap terms, run the documented checks, inspect the preview, and perform deployment only after explicit authorization. No `deploy` script is provided.
 
 ## Next development milestones
 
-- Expand and verify the catalog to 50+ profiles, improve regional coverage, and build reviewed case files and Haunted Trails.
+- Maintain and review the expanded catalog, improve regional coverage, and build reviewed case files and Haunted Trails.
 - Add a richer licensed media gallery, source review tracking, and a guided private import workflow.
 - Replace the shared editorial credential with per-editor identity, fuller audit history, and operational protections.
 - Implement secure community accounts and the unified moderated review system, followed by synchronized collections.

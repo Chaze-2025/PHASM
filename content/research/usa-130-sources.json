@@ -1,0 +1,5062 @@
+[
+  {
+    "sourceId": "UNION-01",
+    "title": "Easton’s Ladies in White",
+    "url": "https://eastoncourier.news/2020/10/02/eastons-ladies-in-white/",
+    "publisher": "Easton Courier",
+    "author": "Elizabeth Boyce",
+    "publicationDate": "2020-10-02",
+    "accessedOn": "2026-10-08",
+    "sourceType": "local_history_and_folklore"
+  },
+  {
+    "sourceId": "UNION-02",
+    "title": "Between a Headstone & a Hard Place – Union Cemetery",
+    "url": "https://eastoncourier.news/2022/09/16/between-a-headstone-a-hard-place-union-cemetery/",
+    "publisher": "Easton Courier",
+    "author": "Bruce Nelson",
+    "publicationDate": "2022-09-16",
+    "accessedOn": "2026-10-08",
+    "sourceType": "local_history"
+  },
+  {
+    "sourceId": "UNION-03",
+    "title": "Historical Sites and Resources",
+    "url": "https://eastonct.gov/1759/Historical-Sites-and-Resources",
+    "publisher": "Town of Easton",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "UNION-GEO",
+    "title": "Union Cemetery (Easton, Connecticut)",
+    "url": "https://en.wikipedia.org/w/index.php?title=Union_Cemetery_(Easton,_Connecticut)&oldid=1368348707",
+    "publisher": "Wikipedia contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "BACHELORS-01",
+    "title": "The History of Batchelors Grove",
+    "url": "https://www.bachelorsgrove.com/history",
+    "publisher": "Bachelors Grove Cemetery & Settlement Research Center",
+    "author": "Brad L. Bettenhausen",
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "local_historical_research"
+  },
+  {
+    "sourceId": "BACHELORS-02",
+    "title": "Bachelor’s Grove Cemetery",
+    "url": "https://www.ghostresearch.org/sites/bachelors.html",
+    "publisher": "Ghost Research Society",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "original_investigation_and_collected_accounts"
+  },
+  {
+    "sourceId": "BACHELORS-03",
+    "title": "Rubio Woods",
+    "url": "https://fpdcc.com/places/locations/rubio-woods/",
+    "publisher": "Forest Preserves of Cook County",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "BACHELORS-GEO",
+    "title": "Bachelor’s Grove Cemetery",
+    "url": "https://en.wikipedia.org/w/index.php?title=Bachelor%27s_Grove_Cemetery&oldid=1364466253",
+    "publisher": "Wikipedia contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "MOONVILLE-01",
+    "title": "Moonville Rail Trail Association",
+    "url": "https://visitvintonohio.com/moonville-railtrail-association/",
+    "publisher": "Vinton County Convention and Visitors Bureau / Moonville Rail Trail Association",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_partner_visitor_and_history"
+  },
+  {
+    "sourceId": "MOONVILLE-02",
+    "title": "The Moonville Tunnel",
+    "url": "https://www.kitgentry.com/spooklights_moonville.html",
+    "publisher": "Kit Gentry",
+    "author": "Kit Gentry",
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "folklore_research_with_reproduced_newspapers"
+  },
+  {
+    "sourceId": "MOONVILLE-GEO",
+    "title": "Moonville Tunnel",
+    "url": "https://mapcarta.com/N5407529256",
+    "publisher": "Mapcarta / OpenStreetMap contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "VILLISCA-01",
+    "title": "About Us",
+    "url": "https://murderhouse.com/about-us/",
+    "publisher": "Villisca Axe Murder House / US Ghost Adventures",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_history"
+  },
+  {
+    "sourceId": "VILLISCA-02",
+    "title": "Visit",
+    "url": "https://murderhouse.com/visit/",
+    "publisher": "Villisca Axe Murder House / US Ghost Adventures",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "VILLISCA-03",
+    "title": "FAQ",
+    "url": "https://murderhouse.com/faq/",
+    "publisher": "Villisca Axe Murder House / US Ghost Adventures",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information_and_folklore"
+  },
+  {
+    "sourceId": "VILLISCA-04",
+    "title": "Hauntings Encountered/Captured",
+    "url": "https://murderhouse.com/hauntings/",
+    "publisher": "Villisca Axe Murder House / US Ghost Adventures",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_collected_paranormal_accounts"
+  },
+  {
+    "sourceId": "VILLISCA-05",
+    "title": "I Spent the Night in the Infamous Villisca Axe Murder House — This Is What Happened",
+    "url": "https://people.com/villisca-murder-house-iowa-spend-the-night-ghost-moms-we-tried-it-8727983",
+    "publisher": "People",
+    "author": "Julie Jordan",
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "firsthand_published_account"
+  },
+  {
+    "sourceId": "VILLISCA-06",
+    "title": "Moore, Josiah B. and Sara, House — National Register Information System 97001471",
+    "url": "https://npgallery.nps.gov/AssetDetail/NRIS/97001471",
+    "publisher": "National Park Service",
+    "author": null,
+    "publicationDate": "1997-12-01",
+    "accessedOn": "2026-10-08",
+    "sourceType": "primary_register_metadata"
+  },
+  {
+    "sourceId": "VILLISCA-07",
+    "title": "Villisca Axe Murder House — official home page",
+    "url": "https://murderhouse.com/",
+    "publisher": "Villisca Axe Murder House / US Ghost Adventures",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "VILLISCA-GEO",
+    "title": "Villisca Axe Murder House",
+    "url": "https://mapcarta.com/W1297466299",
+    "publisher": "Mapcarta / OpenStreetMap contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "MERCHANT-01",
+    "title": "Our Ghosts",
+    "url": "https://merchantshouse.org/ghosts/",
+    "publisher": "Merchant’s House Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_collected_paranormal_accounts"
+  },
+  {
+    "sourceId": "MERCHANT-02",
+    "title": "Museum History",
+    "url": "https://merchantshouse.org/about/museum-history/",
+    "publisher": "Merchant’s House Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "institutional_history"
+  },
+  {
+    "sourceId": "MERCHANT-03",
+    "title": "Hours & Admission",
+    "url": "https://merchantshouse.org/visit/",
+    "publisher": "Merchant’s House Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "MERCHANT-04",
+    "title": "Mission",
+    "url": "https://merchantshouse.org/about/",
+    "publisher": "Merchant’s House Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "institutional_history"
+  },
+  {
+    "sourceId": "MERCHANT-GEO",
+    "title": "Merchant’s House Museum",
+    "url": "https://en.wikipedia.org/wiki/Merchant%27s_House_Museum",
+    "publisher": "Wikipedia contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "FORTDE-01",
+    "title": "Unveiling Delaware’s Dark Secrets: Exploring the Haunted Fort Delaware and Beyond",
+    "url": "https://dnrec.delaware.gov/outdoor-delaware/unveiling-delawares-dark-secrets-exploring-the-haunted-fort-delaware-and-beyond/",
+    "publisher": "Delaware Department of Natural Resources and Environmental Control",
+    "author": null,
+    "publicationDate": "2023-10-27",
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_feature_with_investigator_interviews"
+  },
+  {
+    "sourceId": "FORTDE-02",
+    "title": "Fort Delaware Debuts Fort Fest for 75th Anniversary",
+    "url": "https://news.delaware.gov/2026/04/25/fort-delaware-debuts-fort-fest-for-75th-anniversary/",
+    "publisher": "Delaware DNREC / State of Delaware News",
+    "author": null,
+    "publicationDate": "2026-04-25",
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_current_program_announcement"
+  },
+  {
+    "sourceId": "FORTDE-03",
+    "title": "Fort Delaware",
+    "url": "https://destateparks.com/park/fort-delaware/",
+    "publisher": "Delaware State Parks",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "FORTDE-GEO",
+    "title": "Fort Delaware (historical), GeoNameId 4142577",
+    "url": "https://www.geonames.org/4142577",
+    "publisher": "GeoNames",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "STAUG-01",
+    "title": "Ghost Stories: The Pittee Girls",
+    "url": "https://www.staugustinelighthouse.org/2020/03/02/ghost-stories-the-pittee-girls/",
+    "publisher": "St. Augustine Lighthouse & Maritime Museum",
+    "author": "Kelcie Lloyd",
+    "publicationDate": "2020-03-02",
+    "accessedOn": "2026-10-08",
+    "sourceType": "museum_history_and_collected_paranormal_accounts"
+  },
+  {
+    "sourceId": "STAUG-02",
+    "title": "St. Augustine Lighthouse",
+    "url": "https://www.history.uscg.mil/Browse-by-Topic/Assets/Land/All/Article/1991134/st-augustine-lighthouse/",
+    "publisher": "United States Coast Guard Historian’s Office",
+    "author": "Diane Hackney",
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "institutional_historical_chronology"
+  },
+  {
+    "sourceId": "STAUG-03",
+    "title": "Plan Your Visit",
+    "url": "https://www.staugustinelighthouse.org/visit/",
+    "publisher": "St. Augustine Lighthouse & Maritime Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "STAUG-GEO",
+    "title": "St. Augustine Light",
+    "url": "https://en.wikipedia.org/wiki/St._Augustine_Light",
+    "publisher": "Wikipedia contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "DUMAS-01",
+    "title": "Dumas Hotel — Butte National Historic Landmark District",
+    "url": "https://historicmt.org/items/show/1994",
+    "publisher": "Montana National Register Sign Program / Historic Montana",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "heritage_institution_history"
+  },
+  {
+    "sourceId": "DUMAS-02",
+    "title": "Ghost Alleys of Butte",
+    "url": "https://bigskyjournal.com/ghost-alleys-of-butte/",
+    "publisher": "Big Sky Journal",
+    "author": "Toby Thompson",
+    "publicationDate": "2014-07-23",
+    "accessedOn": "2026-10-08",
+    "sourceType": "reported_interview_with_property_steward"
+  },
+  {
+    "sourceId": "DUMAS-03",
+    "title": "Dumas Brothel — official visitor information",
+    "url": "https://dumasbrothel.com/",
+    "publisher": "Dumas Brothel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "DUMAS-GEO",
+    "title": "Dumas Brothel",
+    "url": "https://en.wikipedia.org/w/index.php?title=Dumas_Brothel&oldid=1375095107",
+    "publisher": "Wikipedia contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "REDONION-01",
+    "title": "Brothel Museum",
+    "url": "https://www.redonion1898.com/museum.html",
+    "publisher": "Red Onion Saloon",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_history_and_folklore"
+  },
+  {
+    "sourceId": "REDONION-02",
+    "title": "Red Onion Saloon in Skagway",
+    "url": "https://www.atlasobscura.com/places/red-onion-saloon",
+    "publisher": "Atlas Obscura",
+    "author": "Marilyn / community contributors and editors",
+    "publicationDate": "2019-03-22",
+    "accessedOn": "2026-10-08",
+    "sourceType": "edited_travel_folklore_and_geography"
+  },
+  {
+    "sourceId": "REDONION-03",
+    "title": "Plan Your Visit",
+    "url": "https://www.redonion1898.com/plan-your-visit.html",
+    "publisher": "Red Onion Saloon",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "IOLANI-01",
+    "title": "Friday Night Frights: The Ghosts Who Haunt Hawai‘i’s Historic ‘Iolani Palace",
+    "url": "https://www.honolulumagazine.com/friday-night-frights-the-ghosts-who-haunt-hawaiis-historic-iolani-palace/",
+    "publisher": "HONOLULU Magazine",
+    "author": "Diane Lee",
+    "publicationDate": "2024-10-24",
+    "accessedOn": "2026-10-08",
+    "sourceType": "reported_interview_and_attributed_firsthand_account"
+  },
+  {
+    "sourceId": "IOLANI-02",
+    "title": "ʻIolani Palace — official overview",
+    "url": "https://www.iolanipalace.org/",
+    "publisher": "The Friends of ʻIolani Palace",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "institutional_history"
+  },
+  {
+    "sourceId": "IOLANI-03",
+    "title": "The Palace",
+    "url": "https://www.iolanipalace.org/sacred-palace/the-palace/",
+    "publisher": "The Friends of ʻIolani Palace",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "institutional_history"
+  },
+  {
+    "sourceId": "IOLANI-04",
+    "title": "Restoration of the Palace",
+    "url": "https://www.iolanipalace.org/history/restoration-of-the-palace/",
+    "publisher": "The Friends of ʻIolani Palace",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "institutional_history"
+  },
+  {
+    "sourceId": "IOLANI-05",
+    "title": "Visit",
+    "url": "https://www.iolanipalace.org/visit/",
+    "publisher": "The Friends of ʻIolani Palace",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "IOLANI-06",
+    "title": "Palace Grounds",
+    "url": "https://www.iolanipalace.org/sacred-palace/palace-grounds/",
+    "publisher": "The Friends of ʻIolani Palace",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_cultural_and_visitor_guidance"
+  },
+  {
+    "sourceId": "IOLANI-GEO",
+    "title": "ʻIolani Palace",
+    "url": "https://en.wikipedia.org/w/index.php?title=%CA%BBIolani_Palace&oldid=1374765468",
+    "publisher": "Wikipedia contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "MCRAVEN-01",
+    "title": "History",
+    "url": "https://www.mcraventourhome.com/history",
+    "publisher": "McRaven Tour Home",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_history"
+  },
+  {
+    "sourceId": "MCRAVEN-02",
+    "title": "Ghosts",
+    "url": "https://www.mcraventourhome.com/ghosts",
+    "publisher": "McRaven Tour Home",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_folklore"
+  },
+  {
+    "sourceId": "MCRAVEN-03",
+    "title": "Tours",
+    "url": "https://www.mcraventourhome.com/tours",
+    "publisher": "McRaven Tour Home",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "MCRAVEN-04",
+    "title": "McRaven Tour Home — visitor home page",
+    "url": "https://www.mcraventourhome.com/",
+    "publisher": "McRaven Tour Home",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "MCRAVEN-GEO",
+    "title": "McRaven Tour Home in Vicksburg",
+    "url": "https://www.atlasobscura.com/places/mcraven-tour-home",
+    "publisher": "Atlas Obscura",
+    "author": "kendra ac25de14",
+    "publicationDate": "2026-03-03",
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "HECETA-01",
+    "title": "Sleeping with Ghosts at Heceta Head Lighthouse’s Haunted B&B",
+    "url": "https://www.pdxmonthly.com/travel-and-outdoors/2024/08/heceta-head-lighthouse-ghost-haunted-oregon-coast",
+    "publisher": "Portland Monthly",
+    "author": "Jessi Bunch",
+    "publicationDate": "2024-08-21",
+    "accessedOn": "2026-10-08",
+    "sourceType": "firsthand_travel_account_and_folklore"
+  },
+  {
+    "sourceId": "HECETA-02",
+    "title": "Unique Rooms",
+    "url": "https://www.hecetalighthouse.com/rooms",
+    "publisher": "Heceta Lighthouse B&B",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information_and_folklore"
+  },
+  {
+    "sourceId": "HECETA-03",
+    "title": "Heceta Lighthouse Bed & Breakfast",
+    "url": "https://lighthousefoundation.org/lighthouses/heceta-head-light/",
+    "publisher": "American Lighthouse Foundation",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "heritage_history_and_geography"
+  },
+  {
+    "sourceId": "HECETA-04",
+    "title": "Heceta Lighthouse B&B — construction notice and visitor information",
+    "url": "https://www.hecetaheadlighthouse.com/",
+    "publisher": "Heceta Lighthouse B&B",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_current_notice"
+  },
+  {
+    "sourceId": "HECETA-05",
+    "title": "Directions to Heceta Lighthouse B&B",
+    "url": "https://www.hecetalighthouse.com/directions",
+    "publisher": "Heceta Lighthouse B&B",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "MONTEVISTA-01",
+    "title": "About — History of a Flagstaff Legend and Ghost Stories",
+    "url": "https://hotelmontevista.com/about/",
+    "publisher": "Hotel Monte Vista",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_history_and_folklore"
+  },
+  {
+    "sourceId": "MONTEVISTA-02",
+    "title": "One Hundred Years in the Making",
+    "url": "https://www.flagstaffbusinessnews.com/one-hundred-years-in-the-making/",
+    "publisher": "Flagstaff Business News",
+    "author": "FBN",
+    "publicationDate": "2026-09-28",
+    "accessedOn": "2026-10-08",
+    "sourceType": "reported_owner_interview"
+  },
+  {
+    "sourceId": "MONTEVISTA-03",
+    "title": "Hotel Monte Vista — official reservations and visitor home page",
+    "url": "https://hotelmontevista.com/",
+    "publisher": "Hotel Monte Vista",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "MONTEVISTA-GEO",
+    "title": "Hotel Monte Vista",
+    "url": "https://mapcarta.com/36305890",
+    "publisher": "Mapcarta / OpenStreetMap contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "SALLIE-01",
+    "title": "Haunted Atchison",
+    "url": "https://www.travelks.com/kansas-magazine/articles/post/haunted-atchison/",
+    "publisher": "KANSAS! Magazine / Kansas Tourism",
+    "author": "Beccy Tanner with Lisa Waterman Gray",
+    "publicationDate": "2022-06-16",
+    "accessedOn": "2026-10-08",
+    "sourceType": "reported_feature_and_folklore"
+  },
+  {
+    "sourceId": "SALLIE-02",
+    "title": "Haunted Houses in Atchison Kansas – Things That Go Bump in the Night",
+    "url": "https://www.travelks.com/blog/stories/post/haunted-houses-in-atchison-kansas-things-that-go-bump-in-the-night/",
+    "publisher": "Kansas Tourism",
+    "author": "Jill Robbins",
+    "publicationDate": "2024-10-07",
+    "accessedOn": "2026-10-08",
+    "sourceType": "firsthand_travel_account_and_folklore"
+  },
+  {
+    "sourceId": "SALLIE-03",
+    "title": "Haunted Tours — Sallie House day tours and overnight stays",
+    "url": "https://www.visitatchison.com/haunted-tours",
+    "publisher": "Visit Atchison",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "SALLIE-GEO",
+    "title": "Sallie House",
+    "url": "https://mapcarta.com/W1175258853",
+    "publisher": "Mapcarta / OpenStreetMap contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "BROWNMOUNTAIN-01",
+    "title": "Brown Mountain Lights",
+    "url": "https://www.ncpedia.org/brown-mountain-lights",
+    "publisher": "NCpedia / State Library of North Carolina",
+    "author": "Robert J. Dodge",
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "regional_reference_and_folklore"
+  },
+  {
+    "sourceId": "BROWNMOUNTAIN-02",
+    "title": "Brown Mountain Lights — Down the Road on the Blue Ridge Music Trails",
+    "url": "https://www.blueridgemusicnc.com/listen-and-learn/down-the-road/brown-mountain-lights-captured-in-popular-song/",
+    "publisher": "Blue Ridge National Heritage Area / North Carolina Arts Council / WNCW",
+    "author": null,
+    "publicationDate": "2018-10-15",
+    "accessedOn": "2026-10-08",
+    "sourceType": "heritage_music_history"
+  },
+  {
+    "sourceId": "BROWNMOUNTAIN-03",
+    "title": "Lost Cove Cliffs Overlook",
+    "url": "https://www.nps.gov/places/lost-cove-cliffs-overlook.htm",
+    "publisher": "National Park Service",
+    "author": null,
+    "publicationDate": "2024-11-02",
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_site_history_and_visitor_information"
+  },
+  {
+    "sourceId": "BROWNMOUNTAIN-04",
+    "title": "Road Status and Closures — Blue Ridge Parkway",
+    "url": "https://www.nps.gov/blri/planyourvisit/roadclosures.htm",
+    "publisher": "National Park Service",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_current_access_notice"
+  },
+  {
+    "sourceId": "BROWNMOUNTAIN-05",
+    "title": "Map of Brown Mountain and Occurrences of the Brown Mountain Lights",
+    "url": "https://www.usgs.gov/media/images/map-brown-mountain-and-occurrences-brown-mountain-lights",
+    "publisher": "U.S. Geological Survey",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "archival_item_and_rights_record"
+  },
+  {
+    "sourceId": "BROWNMOUNTAIN-GEO",
+    "title": "Lost Cove Cliffs Overlook",
+    "url": "https://fotospot.com/attractions/north-carolina/lost-cove-cliffs-overlook",
+    "publisher": "Fotospot",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "STALBANS-01",
+    "title": "St. Albans Hospital — 077-0046",
+    "url": "https://www.dhr.virginia.gov/historic-registers/077-0046/",
+    "publisher": "Virginia Department of Historic Resources",
+    "author": null,
+    "publicationDate": "2023-07-06",
+    "accessedOn": "2026-10-08",
+    "sourceType": "historic_preservation_register"
+  },
+  {
+    "sourceId": "STALBANS-02",
+    "title": "St. Albans School and the Promus",
+    "url": "https://mozart.radford.edu/archives/index.php/2017/08/10/st-albans-school-and-the-promus/",
+    "publisher": "Radford University, McConnell Library Archives",
+    "author": "Kaitlin Scott",
+    "publicationDate": "2017-08-10",
+    "accessedOn": "2026-10-08",
+    "sourceType": "archival_collection_description"
+  },
+  {
+    "sourceId": "STALBANS-03",
+    "title": "St Albans Sanitorium Has Ghosts!",
+    "url": "https://midatlanticdaytrips.com/2022/03/st-albans-sanitorium-has-ghosts/",
+    "publisher": "MidAtlantic Daytrips",
+    "author": "Jody Arneson",
+    "publicationDate": "2022-03-22",
+    "accessedOn": "2026-10-08",
+    "sourceType": "firsthand_investigation_account"
+  },
+  {
+    "sourceId": "STALBANS-04",
+    "title": "St. Albans Sanatorium — official site and historical tour page",
+    "url": "https://www.stalbansvirginia.com/historical-tours",
+    "publisher": "St. Albans Sanatorium",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_access_check_incomplete"
+  },
+  {
+    "sourceId": "STALBANS-GEO",
+    "title": "St. Albans Hospital, Radford, Virginia",
+    "url": "https://treealive.com/nr/100004653",
+    "publisher": "TreeAlive / National Register data",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "STANLEY-01",
+    "title": "The Stanley Hotel History",
+    "url": "https://www.stanleyhotel.com/about/history/",
+    "publisher": "The Stanley Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_history"
+  },
+  {
+    "sourceId": "STANLEY-02",
+    "title": "The Stanley — main building and Room 217",
+    "url": "https://www.stanleyhotel.com/our-properties/the-stanley/",
+    "publisher": "The Stanley Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_folklore_and_visitor_information"
+  },
+  {
+    "sourceId": "STANLEY-03",
+    "title": "Spirited Rooms & Suites",
+    "url": "https://www.stanleyhotel.com/our-properties/spirited/",
+    "publisher": "The Stanley Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_folklore"
+  },
+  {
+    "sourceId": "STANLEY-04",
+    "title": "The Stanley Hotel Tours",
+    "url": "https://www.stanleyhotel.com/tours/",
+    "publisher": "The Stanley Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "STANLEY-GEO",
+    "title": "The Stanley Hotel — geographic reference",
+    "url": "https://en.wikipedia.org/wiki/The_Stanley_Hotel",
+    "publisher": "Wikipedia contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "EASTERNSTATE-01",
+    "title": "History of Eastern State Penitentiary",
+    "url": "https://easternstate.org/about/history-of-eastern-state-penitentiary",
+    "publisher": "Eastern State Penitentiary Historic Site",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "institutional_history"
+  },
+  {
+    "sourceId": "EASTERNSTATE-02",
+    "title": "Is Eastern State Penitentiary Really Haunted?",
+    "url": "https://www.kpbs.org/news/2013/10/24/is-eastern-state-penitentiary-really-haunted",
+    "publisher": "NPR / KPBS Public Media",
+    "author": "Laurel Dalrymple",
+    "publicationDate": "2013-10-24",
+    "accessedOn": "2026-10-08",
+    "sourceType": "reported_interviews_and_folklore"
+  },
+  {
+    "sourceId": "EASTERNSTATE-03",
+    "title": "Know Before You Go",
+    "url": "https://easternstate.org/historic-site/know-before-you-go",
+    "publisher": "Eastern State Penitentiary Historic Site",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "EASTERNSTATE-GEO",
+    "title": "Eastern State Penitentiary — geographic reference",
+    "url": "https://en.wikipedia.org/wiki/Eastern_State_Penitentiary",
+    "publisher": "Wikipedia contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "WINCHESTER-01",
+    "title": "History",
+    "url": "https://winchestermysteryhouse.com/history/",
+    "publisher": "Winchester Mystery House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_history_and_folklore"
+  },
+  {
+    "sourceId": "WINCHESTER-02",
+    "title": "The Sarah Winchester Story",
+    "url": "https://winchestermysteryhouse.com/timeline/",
+    "publisher": "Winchester Mystery House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_historical_timeline"
+  },
+  {
+    "sourceId": "WINCHESTER-03",
+    "title": "Voices from the Past",
+    "url": "https://winchestermysteryhouse.com/voices-from-the-past/",
+    "publisher": "Winchester Mystery House",
+    "author": null,
+    "publicationDate": "2017-12-14",
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_report_and_material_history"
+  },
+  {
+    "sourceId": "WINCHESTER-04",
+    "title": "Tours & Ticket Info",
+    "url": "https://winchestermysteryhouse.com/tours/",
+    "publisher": "Winchester Mystery House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information_and_folklore"
+  },
+  {
+    "sourceId": "WINCHESTER-05",
+    "title": "General FAQs",
+    "url": "https://winchestermysteryhouse.com/faq/",
+    "publisher": "Winchester Mystery House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "WINCHESTER-06",
+    "title": "Sarah Winchester at History San Jose",
+    "url": "https://historysanjose.org/research-collection/research-library/sarah-winchester-at-history-san-jose/",
+    "publisher": "History San Jose Research Library & Archives",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "archival_collection_description"
+  },
+  {
+    "sourceId": "WINCHESTER-GEO",
+    "title": "Winchester Mystery House — geographic reference",
+    "url": "https://en.wikipedia.org/wiki/Winchester_Mystery_House",
+    "publisher": "Wikipedia contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "QUEENMARY-01",
+    "title": "Ship History",
+    "url": "https://www.queenmary.com/ship-history.htm",
+    "publisher": "The Queen Mary",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_maritime_history"
+  },
+  {
+    "sourceId": "QUEENMARY-02",
+    "title": "Paranormal Attractions",
+    "url": "https://www.queenmary.com/paranormal-attractions.htm",
+    "publisher": "The Queen Mary",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_folklore_and_visitor_information"
+  },
+  {
+    "sourceId": "QUEENMARY-03",
+    "title": "Explore The Queen Mary — Exhibits",
+    "url": "https://www.queenmary.com/exhibits.htm",
+    "publisher": "The Queen Mary",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_exhibit_interpretation"
+  },
+  {
+    "sourceId": "QUEENMARY-04",
+    "title": "Special Hotel Offers & Packages",
+    "url": "https://www.queenmary.com/special-offers.htm",
+    "publisher": "The Queen Mary",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_accommodation_and_folklore"
+  },
+  {
+    "sourceId": "QUEENMARY-05",
+    "title": "Preservation & Restoration",
+    "url": "https://www.queenmary.com/design--preservation.htm",
+    "publisher": "The Queen Mary",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_preservation_record"
+  },
+  {
+    "sourceId": "QUEENMARY-GEO",
+    "title": "The Queen Mary — OpenStreetMap way 438331516",
+    "url": "https://mapcarta.com/W438331516",
+    "publisher": "Mapcarta / OpenStreetMap contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "MCPIKE-01",
+    "title": "Whose ghosts supposedly haunt McPike Mansion in Alton?",
+    "url": "https://www.stlmag.com/history/st-louis-sage/whose-ghosts-supposedly-haunt-mcpike-mansion-in-alton/",
+    "publisher": "St. Louis Magazine",
+    "author": "SLM Staff",
+    "publicationDate": "2022-10-01",
+    "accessedOn": "2026-10-08",
+    "sourceType": "reported_owner_interview_and_folklore"
+  },
+  {
+    "sourceId": "MCPIKE-02",
+    "title": "The McPikes and Their Mansion: Current Owner Shares Insights",
+    "url": "https://www.riverbender.com/news/details/the-mcpikes-and-their-mansion-current-owner-shares-insights-79280.cfm",
+    "publisher": "RiverBender",
+    "author": "Dalton Brown",
+    "publicationDate": "2025-01-30",
+    "accessedOn": "2026-10-08",
+    "sourceType": "reported_owner_talk"
+  },
+  {
+    "sourceId": "MCPIKE-03",
+    "title": "McPike Mansion Ghost Tours",
+    "url": "https://www.riversandroutes.com/events/mcpike-mansion-ghost-tours/",
+    "publisher": "Great Rivers & Routes Tourism Bureau",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "current_destination_visitor_information_and_folklore"
+  },
+  {
+    "sourceId": "MCPIKE-GEO",
+    "title": "McPike Mansion",
+    "url": "https://www.atlasobscura.com/places/mcpike-mansion-alton",
+    "publisher": "Atlas Obscura",
+    "author": "Virginia Brown",
+    "publicationDate": "2024-09-04",
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference_and_history"
+  },
+  {
+    "sourceId": "VANHORN-01",
+    "title": "Van Horn Mansion — history and 2026 visitor program",
+    "url": "https://www.newfanehistoricalsociety.com/mansion.html",
+    "publisher": "Town of Newfane Historical Society",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator_history_folklore_and_visitor_information"
+  },
+  {
+    "sourceId": "VANHORN-02",
+    "title": "The Van Horn Mansion",
+    "url": "https://hauntedhistorytrail.com/explore/the-van-horn-mansion",
+    "publisher": "Haunted History Trail of New York State",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "destination_folklore_retelling"
+  },
+  {
+    "sourceId": "VANHORN-03",
+    "title": "2026 Candlelight Tours",
+    "url": "https://www.newfanehistoricalsociety.com/mansion_october.html",
+    "publisher": "Town of Newfane Historical Society",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_dated_visitor_information"
+  },
+  {
+    "sourceId": "VANHORN-GEO",
+    "title": "Van Horn Mansion — OpenStreetMap building reference",
+    "url": "https://mapcarta.com/W217916306",
+    "publisher": "Mapcarta / OpenStreetMap contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "OAKLAND-01",
+    "title": "Oakland Cemetery — the Black Angel and visitor rules",
+    "url": "https://www.icgov.org/government/departments-and-divisions/parks-and-recreation/oakland-cemetery",
+    "publisher": "City of Iowa City",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "municipal_history_and_visitor_information"
+  },
+  {
+    "sourceId": "OAKLAND-02",
+    "title": "The Black Angel",
+    "url": "https://www.roadsideamerica.com/story/16409",
+    "publisher": "RoadsideAmerica.com",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "local_legend_retelling"
+  },
+  {
+    "sourceId": "OAKLAND-GEO",
+    "title": "The Black Angel of Oakland Cemetery",
+    "url": "https://www.atlasobscura.com/places/black-angel-of-oakland-cemetery",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2013-04-23",
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "GREENMOUNT-01",
+    "title": "Green Mount Cemetery",
+    "url": "https://www.montpelier-vt.org/158/Green-Mount-Cemetery",
+    "publisher": "City of Montpelier",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "municipal_history"
+  },
+  {
+    "sourceId": "GREENMOUNT-02",
+    "title": "Cemeteries",
+    "url": "https://www.montpelier-vt.org/155/Cemeteries",
+    "publisher": "City of Montpelier",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "GREENMOUNT-03",
+    "title": "Black Agnes, Isn’t!",
+    "url": "https://gravelyspeaking.com/2017/07/13/black-agnes-isnt/",
+    "publisher": "Gravely Speaking",
+    "author": "gravelyspeaking",
+    "publicationDate": "2017-07-13",
+    "accessedOn": "2026-10-08",
+    "sourceType": "documented_local_legend_retelling"
+  },
+  {
+    "sourceId": "GREENMOUNT-GEO",
+    "title": "Green Mount Cemetery, Montpelier VT — burial records",
+    "url": "https://www.interment.net/united-states/vermont/washington-county/montpelier/green-mount-cemetery.php",
+    "publisher": "Interment.net",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "GREENMOUNT-ART",
+    "title": "John Erastus Hubbard memorial — photograph from Karl Bitter: A Biography",
+    "url": "https://commons.wikimedia.org/wiki/File:Schevill_Karl_Bitter_John_Erastrus_Hubbard_memorial.jpg",
+    "publisher": "Wikimedia Commons; underlying University of Chicago Press publication",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "archival_item_metadata"
+  },
+  {
+    "sourceId": "WILLARD-01",
+    "title": "A Timeline of Willard Library",
+    "url": "https://www.willardlib.org/history",
+    "publisher": "Willard Public Library",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "institutional_history"
+  },
+  {
+    "sourceId": "WILLARD-02",
+    "title": "Ghost FAQs",
+    "url": "https://www.willardlib.org/ghost-faqs",
+    "publisher": "Willard Public Library",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "institutional_folklore_collection"
+  },
+  {
+    "sourceId": "WILLARD-03",
+    "title": "Phantoms among the Folios: A Guide to Haunted Libraries",
+    "url": "https://americanlibrariesmagazine.org/2015/10/28/phantoms-among-folios-guide-to-haunted-libraries/",
+    "publisher": "American Libraries / American Library Association",
+    "author": "Alison Marcotte and George M. Eberhart",
+    "publicationDate": "2015-10-28",
+    "accessedOn": "2026-10-08",
+    "sourceType": "reported_staff_interviews"
+  },
+  {
+    "sourceId": "WILLARD-04",
+    "title": "Ghost Cams",
+    "url": "https://www.willardlib.org/ghost-cams",
+    "publisher": "Willard Public Library",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_folklore_and_current_program_notice"
+  },
+  {
+    "sourceId": "WILLARD-05",
+    "title": "Paranormal Investigations",
+    "url": "https://www.willardlib.org/paranormal-investigations",
+    "publisher": "Willard Public Library",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_arranged_access"
+  },
+  {
+    "sourceId": "WILLARD-06",
+    "title": "Willard Public Library — current homepage and calendar",
+    "url": "https://www.willardlib.org/",
+    "publisher": "Willard Public Library",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_current_visitor_information"
+  },
+  {
+    "sourceId": "WILLARD-GEO",
+    "title": "Willard Library — geographic reference",
+    "url": "https://en.wikipedia.org/wiki/Willard_Library",
+    "publisher": "Wikipedia contributors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "GROVE-01",
+    "title": "The Grove",
+    "url": "https://ghosthunttv.com/2025/04/15/the-grove/",
+    "publisher": "Ghost Hunt TV",
+    "author": null,
+    "publicationDate": "2025-04-15",
+    "accessedOn": "2026-10-08",
+    "sourceType": "paranormal_program_companion"
+  },
+  {
+    "sourceId": "GROVE-02",
+    "title": "Tour The Grove",
+    "url": "http://thegrove-jefferson.com/tour/index.htm",
+    "publisher": "The Grove",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "MARFA-01",
+    "title": "Mystery — Marfa Lights",
+    "url": "https://visitmarfa.com/mystery",
+    "publisher": "Visit Marfa",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_tourism_folklore"
+  },
+  {
+    "sourceId": "MARFA-02",
+    "title": "Marfa Mystery Lights",
+    "url": "https://www.marfacc.com/todo/marfalights/",
+    "publisher": "Marfa Chamber of Commerce",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "CUSTER-01",
+    "title": "North Dakota Legend and Lore",
+    "url": "https://www.ndtourism.com/articles/north-dakota-legend-and-lore",
+    "publisher": "North Dakota Tourism",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_tourism_folklore"
+  },
+  {
+    "sourceId": "CUSTER-02",
+    "title": "Fort Abraham Lincoln State Park",
+    "url": "https://www.parkrec.nd.gov/fort-abraham-lincoln-state-park",
+    "publisher": "North Dakota Parks and Recreation",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_visiting"
+  },
+  {
+    "sourceId": "MERCY-01",
+    "title": "Have Mercy…",
+    "url": "https://www.rihs.org/have-mercy/",
+    "publisher": "Rhode Island Historical Society",
+    "author": "Jennifer L. Galpern",
+    "publicationDate": "2016-10-31",
+    "accessedOn": "2026-10-08",
+    "sourceType": "local_history_and_folklore"
+  },
+  {
+    "sourceId": "MERCY-02",
+    "title": "Grave of Mercy Brown",
+    "url": "https://www.atlasobscura.com/places/grave-mercy-brown",
+    "publisher": "Atlas Obscura",
+    "author": "J.W. Ocker",
+    "publicationDate": "2016-10-12",
+    "accessedOn": "2026-10-08",
+    "sourceType": "place_directory_and_folklore"
+  },
+  {
+    "sourceId": "MIFFLIN-01",
+    "title": "Fort Mifflin, Philadelphia, PA",
+    "url": "https://theshadowlands.net/famous/mifflin.htm",
+    "publisher": "The Shadowlands",
+    "author": "Dave Juliano",
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "paranormal_investigator_account"
+  },
+  {
+    "sourceId": "MIFFLIN-02",
+    "title": "Plan Your Visit",
+    "url": "https://www.fortmifflin.us/plan-your-visit/",
+    "publisher": "Fort Mifflin on the Delaware",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "MIFFLIN-03",
+    "title": "Paranormal Programs & Events",
+    "url": "https://www.fortmifflin.us/our-programs/paranormal-programs/",
+    "publisher": "Fort Mifflin on the Delaware",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "MCINTEER-02",
+    "title": "The Haunted 1889 McInteer Villa — Home",
+    "url": "https://1889mcinteervilla.com/",
+    "publisher": "1889 McInteer Villa",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "CONCHO-01",
+    "title": "Fort Concho — city facility information",
+    "url": "https://www.sanangelo.gov/facilities/facility/details/Fort-Concho-54",
+    "publisher": "City of San Angelo",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_visiting"
+  },
+  {
+    "sourceId": "PENDLETON-01",
+    "title": "Pendleton Center for the Arts",
+    "url": "https://pendletonarts.org/",
+    "publisher": "Pendleton Center for the Arts",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_visiting"
+  },
+  {
+    "sourceId": "CAIRO-01",
+    "title": "Spooky Stacks: Viewing Haunted Libraries of the Midwest through Library Postcards",
+    "url": "https://www.library.illinois.edu/ala/2020/10/29/spooky-stacks-viewing-haunted-libraries-of-the-midwest-through-library-postcards/",
+    "publisher": "University of Illinois Library / ALA Archives",
+    "author": "Lauren Quinlan",
+    "publicationDate": "2020-10-29",
+    "accessedOn": "2026-10-08",
+    "sourceType": "library_folklore_collection"
+  },
+  {
+    "sourceId": "CAIRO-02",
+    "title": "Cairo Public Library — A Lasting Tribute",
+    "url": "https://cairopubliclibrary.org/",
+    "publisher": "Cairo Public Library, Illinois",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "BUCK-01",
+    "title": "The Spooky Side of Maine: Hauntings & Urban Legends from the Pine Tree State",
+    "url": "https://gardinerpubliclibrary.org/the-spooky-side-of-maine-hauntings-urban-legends-from-the-pine-tree-state/",
+    "publisher": "Gardiner Public Library",
+    "author": "Jessica Betit",
+    "publicationDate": "2022-10-03",
+    "accessedOn": "2026-10-08",
+    "sourceType": "regional_folklore_collection"
+  },
+  {
+    "sourceId": "BUCK-02",
+    "title": "4 spooky New England ghost stories you’ve probably never heard",
+    "url": "https://www.boston.com/culture/history/2017/10/31/4-spooky-new-england-ghost-stories-youve-probably-never-heard/",
+    "publisher": "Boston.com",
+    "author": "Dialynn Dwyer",
+    "publicationDate": "2017-10-31",
+    "accessedOn": "2026-10-08",
+    "sourceType": "folklore_interview_and_historical_context"
+  },
+  {
+    "sourceId": "PINEHILL-01",
+    "title": "Spooky Stuff: Blood Cemetery",
+    "url": "https://www.nhmagazine.com/spooky-stuff-blood-cemetery/",
+    "publisher": "New Hampshire Magazine",
+    "author": "Barbara Coles",
+    "publicationDate": "2012-10-23",
+    "accessedOn": "2026-10-08",
+    "sourceType": "regional_folklore_interview"
+  },
+  {
+    "sourceId": "PINEHILL-02",
+    "title": "Pine Hill Cemetery — Blood Cemetery",
+    "url": "https://www.hauntedplaces.org/item/pine-hill-cemetery-blood-cemetery/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "external_public_accounts_and_geography"
+  },
+  {
+    "sourceId": "SKPIERCE-01",
+    "title": "Visit Us — S.K. Pierce Mansion",
+    "url": "https://www.skhauntedmansion.com/visit-sk-pierce-haunted-mansion-massachusetts",
+    "publisher": "S.K. Pierce Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_folklore_and_visiting"
+  },
+  {
+    "sourceId": "SKPIERCE-02",
+    "title": "The Mansion — About",
+    "url": "https://www.skhauntedmansion.com/about",
+    "publisher": "S.K. Pierce Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_folklore"
+  },
+  {
+    "sourceId": "ARGO-01",
+    "title": "Historic Argo Hotel — Home",
+    "url": "https://www.stayattheargo.com/",
+    "publisher": "Historic Argo Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_visiting"
+  },
+  {
+    "sourceId": "ARGO-02",
+    "title": "Historic Argo Hotel — About",
+    "url": "https://stayattheargo.com/about",
+    "publisher": "Historic Argo Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_folklore"
+  },
+  {
+    "sourceId": "ALEXJOHNSON-01",
+    "title": "Paranormal — Hotel Alex Johnson",
+    "url": "https://www.alexjohnson.com/paranormal/",
+    "publisher": "Hotel Alex Johnson",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_folklore_and_visiting"
+  },
+  {
+    "sourceId": "ALEXJOHNSON-02",
+    "title": "Hotel Alex Johnson — Geographic Information",
+    "url": "https://www.hauntedplaces.org/item/hotel-alex-johnson/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_directory"
+  },
+  {
+    "sourceId": "KIMO-01",
+    "title": "Haunted KiMo Theatre in Albuquerque, New Mexico",
+    "url": "https://www.legendsofamerica.com/nm-kimotheatre/",
+    "publisher": "Legends of America",
+    "author": "Kathy Alexander",
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "regional_folklore_collection"
+  },
+  {
+    "sourceId": "KIMO-02",
+    "title": "KiMo Theatre",
+    "url": "https://www.cabq.gov/artsculture/kimo",
+    "publisher": "City of Albuquerque",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "KIMO-03",
+    "title": "KiMo Theatre — Geographic Information",
+    "url": "https://www.hauntedplaces.org/item/kimo-theatre/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_directory"
+  },
+  {
+    "sourceId": "STONELION-01",
+    "title": "Stone Lion Inn — Ghost Story",
+    "url": "https://www.allstays.com/Haunted/ok_guthrie_stonelioninn.htm",
+    "publisher": "AllStays",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "lodging_folklore_directory"
+  },
+  {
+    "sourceId": "STONELION-02",
+    "title": "Stone Lion Inn Bed & Breakfast",
+    "url": "https://www.travelok.com/listings/view.profile/id.7271",
+    "publisher": "Oklahoma Tourism and Recreation Department / TravelOK",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_tourism_listing"
+  },
+  {
+    "sourceId": "STONELION-03",
+    "title": "Stone Lion Inn — website retrieval limitation",
+    "url": "https://www.stonelioninn.com/",
+    "publisher": "Stone Lion Inn",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_site_retrieval"
+  },
+  {
+    "sourceId": "MIZPAH-01",
+    "title": "Meet the Lady in Red: Nevada’s Most Famous Ghost",
+    "url": "https://travelnevada.com/haunted-history/meet-the-lady-in-red-nevadas-most-famous-ghost/",
+    "publisher": "Travel Nevada",
+    "author": "Susan Michelle",
+    "publicationDate": "2022-05-27",
+    "accessedOn": "2026-10-08",
+    "sourceType": "tourism_folklore_collection"
+  },
+  {
+    "sourceId": "MIZPAH-02",
+    "title": "Mizpah Hotel — Rooms and Suites",
+    "url": "https://www.themizpahhotel.com/",
+    "publisher": "Mizpah Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_visiting"
+  },
+  {
+    "sourceId": "MIZPAH-03",
+    "title": "Mizpah Hotel — Geographic Information and public account",
+    "url": "https://www.hauntedplaces.org/item/mizpah-hotel/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "external_public_account_and_geography"
+  },
+  {
+    "sourceId": "CRESCENT-01",
+    "title": "Crescent Hotel — collected haunting accounts and geography",
+    "url": "https://www.hauntedplaces.org/item/crescent-hotel/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "folklore_and_geographic_directory"
+  },
+  {
+    "sourceId": "CRESCENT-02",
+    "title": "Haunted Hotel — 1886 Crescent Hotel & Spa",
+    "url": "https://crescent-hotel.com/things-to-do/ghosts/",
+    "publisher": "1886 Crescent Hotel & Spa",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_folklore_and_visiting"
+  },
+  {
+    "sourceId": "CRESCENT-03",
+    "title": "Crescent Hotel in Eureka Springs",
+    "url": "https://crescent-hotel.com/",
+    "publisher": "1886 Crescent Hotel & Spa",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_visiting"
+  },
+  {
+    "sourceId": "SEULCHOIX-01",
+    "title": "Seul Choix Point Lighthouse, Gulliver, Michigan",
+    "url": "https://exploringthenorth.com/seulchoix/seul.html",
+    "publisher": "Exploring the North",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "regional_folklore_and_visitor_guide"
+  },
+  {
+    "sourceId": "SEULCHOIX-02",
+    "title": "Seul Choix Pointe Lighthouse",
+    "url": "https://www.greatlakelighthouse.com/",
+    "publisher": "Gulliver Historical Society",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "SEULCHOIX-03",
+    "title": "Seul Choix Point Lighthouse — Geographic Information",
+    "url": "https://www.hauntedplaces.org/item/seul-choix-point-lighthouse/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_directory"
+  },
+  {
+    "sourceId": "STURDIVANT-01",
+    "title": "The Ghost That Lives In Sturdivant Hall In Selma",
+    "url": "https://www.wsfa.com/story/3689284/the-ghost-that-lives-in-sturdivant-hall-in-selma/",
+    "publisher": "WSFA 12 News",
+    "author": "Kim Hendrix",
+    "publicationDate": "2005-08-06",
+    "accessedOn": "2026-10-08",
+    "sourceType": "reported_staff_accounts"
+  },
+  {
+    "sourceId": "STURDIVANT-02",
+    "title": "Sturdivant Hall",
+    "url": "https://www.dallascounty-al.org/Tourism/Museums/Sturdivant-Hall",
+    "publisher": "Dallas County, Alabama",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_visiting"
+  },
+  {
+    "sourceId": "BONAVENTURE-01",
+    "title": "Bonaventure Cemetery",
+    "url": "https://the-grim.squarespace.com/tales/bonaventure-cemetery",
+    "publisher": "The Grim",
+    "author": "Kristin Lopes",
+    "publicationDate": "2024-05-24",
+    "accessedOn": "2026-10-08",
+    "sourceType": "independent_folklore_blog"
+  },
+  {
+    "sourceId": "BONAVENTURE-02",
+    "title": "Bonaventure Cemetery",
+    "url": "https://www.savannahga.gov/864/Bonaventure-Cemetery",
+    "publisher": "City of Savannah",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_visiting"
+  },
+  {
+    "sourceId": "BONAVENTURE-03",
+    "title": "Cemetery Etiquette When Visiting Bonaventure",
+    "url": "https://www.bonaventurehistorical.org/cemetery-etiquette-when-visiting-bonaventure/",
+    "publisher": "Bonaventure Historical Society",
+    "author": "David Peek",
+    "publicationDate": "2022-07-20",
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_guidance"
+  },
+  {
+    "sourceId": "OLDLACAPITOL-01",
+    "title": "Tales of paranormal activity surrounding the Old State Capitol",
+    "url": "https://www.wbrz.com/videos/tales-of-paranormal-activity-surrounding-the-old-state-capitol/",
+    "publisher": "WBRZ",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "reported_staff_accounts"
+  },
+  {
+    "sourceId": "OLDLACAPITOL-02",
+    "title": "Louisiana’s Old State Capitol",
+    "url": "https://www.sos.la.gov/museums/louisianas-old-state-capitol",
+    "publisher": "Louisiana Secretary of State",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_visiting"
+  },
+  {
+    "sourceId": "OLDLACAPITOL-03",
+    "title": "Old State Capitol — Geographic Information",
+    "url": "https://www.hauntedplaces.org/item/old-state-capitol/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_directory"
+  },
+  {
+    "sourceId": "OCTAGON-01",
+    "title": "Octagon Hall Investigation",
+    "url": "https://www.ghostresearch.org/Investigations/octagon.html",
+    "publisher": "Ghost Research Society",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "original_investigation_and_collected_accounts"
+  },
+  {
+    "sourceId": "OCTAGON-02",
+    "title": "Paranormal — Octagon Hall Museum",
+    "url": "https://www.octagonhallmuseum.com/paranormal",
+    "publisher": "Octagon Hall Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "OCTAGON-03",
+    "title": "Octagon Hall Museum",
+    "url": "https://www.octagonhallmuseum.com/",
+    "publisher": "Octagon Hall Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_history_and_visiting"
+  },
+  {
+    "sourceId": "BELLWITCH-01",
+    "title": "The Bell Witch Cave",
+    "url": "https://www.atlasobscura.com/places/the-bell-witch-cave",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2012-01-18",
+    "accessedOn": "2026-10-08",
+    "sourceType": "folklore_retelling_and_geography"
+  },
+  {
+    "sourceId": "BELLWITCH-02",
+    "title": "Pricing & Tours — Historic Bell Witch Cave",
+    "url": "https://www.bellwitchcave.com/pricing-tours/",
+    "publisher": "Historic Bell Witch Cave",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "BELLWITCH-03",
+    "title": "FAQs — Historic Bell Witch Cave",
+    "url": "https://www.bellwitchcave.com/faq/",
+    "publisher": "Historic Bell Witch Cave",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "BELLWITCH-04",
+    "title": "Paranormal Investigations — Historic Bell Witch Cave",
+    "url": "https://www.bellwitchcave.com/paranormal-investigations-tennessee/",
+    "publisher": "Historic Bell Witch Cave",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_visitor_information"
+  },
+  {
+    "sourceId": "NELSEN-01",
+    "title": "Nelsen’s Hall Bitters Pub",
+    "url": "https://www.hauntedplaces.org/item/nelsens-hall-bitters-pub/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "folklore_and_geographic_directory"
+  },
+  {
+    "sourceId": "NELSEN-02",
+    "title": "Nelsen’s Hall Bitter’s Pub & Restaurant",
+    "url": "https://washingtonisland.com/nelsens-hall-bitters-pub-restaurant/",
+    "publisher": "Washington Island Chamber of Commerce",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official_tourism_listing"
+  },
+  {
+    "sourceId": "GROVE-GEO",
+    "title": "The Grove — Geographic Information",
+    "url": "https://www.hauntedplaces.org/item/the-grove/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_directory"
+  },
+  {
+    "sourceId": "MIFFLIN-GEO",
+    "title": "Fort Mifflin — Geographic Information",
+    "url": "https://www.hauntedplaces.org/item/fort-mifflin/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_directory"
+  },
+  {
+    "sourceId": "OCTAGON-GEO",
+    "title": "Octagon Hall — Geographic Information",
+    "url": "https://www.hauntedplaces.org/item/octagon-hall/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_directory"
+  },
+  {
+    "sourceId": "STONELION-GEO",
+    "title": "Stone Lion Inn — Geographic Information",
+    "url": "https://www.hauntedplaces.org/item/stone-lion-inn/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "geographic_directory"
+  },
+  {
+    "sourceId": "src-cd6b49bbf413dd70",
+    "title": "Northwest Florida Water Management District — Bellamy Bridge",
+    "url": "https://nwfwater.com/lands/recreation/area/chipola-river/bellamy-bridge/",
+    "publisher": "Northwest Florida Water Management District",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "public land manager"
+  },
+  {
+    "sourceId": "src-7f88f85e401ccbfd",
+    "title": "Jackson County TDC — Bellamy Bridge Heritage Trail",
+    "url": "https://visitjacksoncountyfla.com/attractions/bellamy-bridge-heritage-trail/",
+    "publisher": "Jackson County TDC",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "regional tourism lore"
+  },
+  {
+    "sourceId": "src-b8368b9e6f646494",
+    "title": "WKMG — This Florida bridge has a creepy story (Anthony Talcott)",
+    "url": "https://www.clickorlando.com/features/2025/07/28/this-florida-bridge-has-a-creepy-story-behind-it-how-much-is-true/",
+    "publisher": "WKMG",
+    "author": null,
+    "publicationDate": "2025-07-28",
+    "accessedOn": "2026-10-08",
+    "sourceType": "reported history with historian"
+  },
+  {
+    "sourceId": "src-4d53303c35fb5193",
+    "title": "Bellamy Bridge — OpenStreetMap-derived bridge point",
+    "url": "https://mapcarta.com/20640150",
+    "publisher": "Bellamy Bridge",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "map gazetteer"
+  },
+  {
+    "sourceId": "src-6af3d4a586dc9f8e",
+    "title": "Historic Anchorage Hotel — Our Haunted History",
+    "url": "https://www.historicanchoragehotel.com/our-history.htm",
+    "publisher": "Historic Anchorage Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official property history and reported lore"
+  },
+  {
+    "sourceId": "src-63b8a3e3d7824b73",
+    "title": "Historic Anchorage Hotel — Hotel Ghost Log and Early Anchorage Ghost Lore",
+    "url": "https://www.historicanchoragehotel.com/our-history.htm",
+    "publisher": "Historic Anchorage Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "hotel-operated firsthand encounter log and historical ghost narratives"
+  },
+  {
+    "sourceId": "src-87c012ed00739df0",
+    "title": "National Park Service — Anchorage Hotel Annex NRHP nomination",
+    "url": "https://npgallery.nps.gov/GetAsset/fcf0d94b-f3d1-4277-9638-1411b74ecc57",
+    "publisher": "National Park Service",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "National Register historical documentation"
+  },
+  {
+    "sourceId": "src-96754d879b9d571a",
+    "title": "Anchorage Hotel — mapped historic annex",
+    "url": "https://en.wikipedia.org/wiki/Anchorage_Hotel",
+    "publisher": "Anchorage Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "public mapped heritage reference"
+  },
+  {
+    "sourceId": "src-907338abbff18496",
+    "title": "Historic Anchorage Hotel — official site",
+    "url": "https://www.historicanchoragehotel.com/",
+    "publisher": "Historic Anchorage Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "current hotel operator"
+  },
+  {
+    "sourceId": "src-457f6d79ce50496d",
+    "title": "Idaho State Historical Society — Old Idaho Penitentiary",
+    "url": "https://history.idaho.gov/oldpen/",
+    "publisher": "Idaho State Historical Society",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official state historic-site history, lore and visitor policy"
+  },
+  {
+    "sourceId": "src-ef4826a3fc8f4175",
+    "title": "Idaho State Historical Society — Old Idaho Penitentiary Paranormal Accounts",
+    "url": "https://history.idaho.gov/oldpen/",
+    "publisher": "Idaho State Historical Society",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official state historic site visitor and paranormal accounts"
+  },
+  {
+    "sourceId": "src-92c5e1ec1181205c",
+    "title": "Old Idaho Penitentiary — mapped complex",
+    "url": "https://mapcarta.com/W421958184",
+    "publisher": "Old Idaho Penitentiary",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "OpenStreetMap mapped heritage building"
+  },
+  {
+    "sourceId": "src-2e9738d1cdd153fc",
+    "title": "Alabama Historical Commission — Old Cahawba",
+    "url": "https://ahc.alabama.gov/properties/cahawba/cahawba.aspx",
+    "publisher": "Alabama Historical Commission",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "state historical site"
+  },
+  {
+    "sourceId": "src-226b3bbb8c6b9989",
+    "title": "PBS / APT — Jeffrey’s Southern Ghosts: Specter in the Maze",
+    "url": "https://www.pbs.org/video/spectre-in-the-maze-at-cahaba-hjiqzu/",
+    "publisher": "PBS / APT",
+    "author": null,
+    "publicationDate": "2026-05-14",
+    "accessedOn": "2026-10-08",
+    "sourceType": "documentary treatment of recorded Southern folklore"
+  },
+  {
+    "sourceId": "src-8cfd72bd29360069",
+    "title": "Alabama Historical Commission — 2021 Ghost Stories of Old Cahawba wagon tour",
+    "url": "https://ahc.alabama.gov/news_detail.aspx?ID=15636",
+    "publisher": "Alabama Historical Commission",
+    "author": null,
+    "publicationDate": "2021-10-07",
+    "accessedOn": "2026-10-08",
+    "sourceType": "state historic operator describing local lore"
+  },
+  {
+    "sourceId": "src-6a66f642438c6490",
+    "title": "Alabama Historical Commission — Old Cahawba Plan Your Visit",
+    "url": "https://ahc.alabama.gov/CahawbaPlanYourVisit.aspx",
+    "publisher": "Alabama Historical Commission",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official opening/access"
+  },
+  {
+    "sourceId": "src-abc6b2a4e0bcef73",
+    "title": "Alabama Historical Commission — Old Cahawba Tour Request / GPS",
+    "url": "https://ahc.alabama.gov/properties/cahawba/Tour_Request_Form.pdf",
+    "publisher": "Alabama Historical Commission",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official visitor-center GPS and address"
+  },
+  {
+    "sourceId": "src-8291b28cf75099b3",
+    "title": "Nevada SHPO — Historic Marker #132 Mackay Mansion",
+    "url": "https://shpo.nv.gov/uploads/documents/Historic_Marker_Booklet_Online_Version_with_Links_2022_Final.pdf",
+    "publisher": "Nevada SHPO",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "state heritage marker booklet"
+  },
+  {
+    "sourceId": "src-32d1a725326e3033",
+    "title": "Mackay Mansion — About",
+    "url": "https://www.therealmackaymansion.com/about",
+    "publisher": "Mackay Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator history and ghost tradition"
+  },
+  {
+    "sourceId": "src-e1acf7bf172931f1",
+    "title": "Mackay Mansion — About (hauntings)",
+    "url": "https://www.therealmackaymansion.com/about",
+    "publisher": "Mackay Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator-reported folklore"
+  },
+  {
+    "sourceId": "src-0d431c64857cd598",
+    "title": "Mackay Mansion — Tours",
+    "url": "https://www.therealmackaymansion.com/tours",
+    "publisher": "Mackay Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official tour access"
+  },
+  {
+    "sourceId": "src-0de804c6cec54012",
+    "title": "Mackay Mansion — Paranormal Investigations",
+    "url": "https://www.therealmackaymansion.com/paranormal-investigations",
+    "publisher": "Mackay Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator arrangement details"
+  },
+  {
+    "sourceId": "src-70dd948a63eaf56f",
+    "title": "Mackay Mansion — Contact",
+    "url": "https://www.therealmackaymansion.com/contact",
+    "publisher": "Mackay Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official public business contact"
+  },
+  {
+    "sourceId": "src-9c4276e845a266f2",
+    "title": "City of St. Louis Cultural Resources — Lemp Brewery Complex",
+    "url": "https://www.stlouis-mo.gov/government/departments/planning/cultural-resources/Lemp-Brewery-Complex.cfm",
+    "publisher": "City of St. Louis Cultural Resources",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "municipal historical inventory"
+  },
+  {
+    "sourceId": "src-0684ea556100fac5",
+    "title": "City of St. Louis — William Lemp biography",
+    "url": "https://dynamic.stlouis-mo.gov/history/peopledetail.cfm?Master_ID=1827",
+    "publisher": "City of St. Louis",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "municipal historical biography"
+  },
+  {
+    "sourceId": "src-e02d98e4d48208b2",
+    "title": "Lemp Mansion — History",
+    "url": "https://www.lempmansion.com/history.htm",
+    "publisher": "Lemp Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official property history and family chronology"
+  },
+  {
+    "sourceId": "src-0fa600125b5b41f3",
+    "title": "Lemp Mansion — Spirits with the Spirits Ghost Tour",
+    "url": "https://www.lempmansion.com/spirits-tour.htm",
+    "publisher": "Lemp Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator paranormal program and tradition"
+  },
+  {
+    "sourceId": "src-cc1bb1c180d0e1df",
+    "title": "Lemp Mansion — Lemp Experience",
+    "url": "https://lempmansion.com/lempexperience.htm",
+    "publisher": "Lemp Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator investigation program"
+  },
+  {
+    "sourceId": "src-c1d46bccdcdbc76f",
+    "title": "Lemp Mansion — Official Site",
+    "url": "https://lempmansion.com/",
+    "publisher": "Lemp Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator lodging/restaurant access"
+  },
+  {
+    "sourceId": "src-016efb921f59d2a0",
+    "title": "PANICd — Lemp Mansion map coordinates",
+    "url": "https://www.panicd.com/lemp-mansion.html",
+    "publisher": "PANICd",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "independent paranormal site mapped coordinate"
+  },
+  {
+    "sourceId": "src-443fb12d057c8f74",
+    "title": "Deadwood History — Historic Adams House",
+    "url": "https://www.deadwoodhistory.com/about-us/properties/historic-adams-house/",
+    "publisher": "Deadwood History",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official museum property interpretation"
+  },
+  {
+    "sourceId": "src-204154d45d707b55",
+    "title": "605 Magazine — A Supernatural Experience: The Adams House",
+    "url": "https://605magazine.com/2018/10/01/a-supernatural-experience-the-adams-house/",
+    "publisher": "605 Magazine",
+    "author": null,
+    "publicationDate": "2018-10-01",
+    "accessedOn": "2026-10-08",
+    "sourceType": "original interview and historic context"
+  },
+  {
+    "sourceId": "src-06b1e06a9de12ae2",
+    "title": "605 Magazine — Staff voice account (Rose Speirs)",
+    "url": "https://605magazine.com/2018/10/01/a-supernatural-experience-the-adams-house/",
+    "publisher": "605 Magazine",
+    "author": null,
+    "publicationDate": "2018-10-01",
+    "accessedOn": "2026-10-08",
+    "sourceType": "named museum employee interview"
+  },
+  {
+    "sourceId": "src-a22bb3f2612dcece",
+    "title": "Deadwood History — Paranormal investigations (2025 press release)",
+    "url": "https://www.deadwoodhistory.com/press/paranormal-investigations-of-the-historic-adams-house-2025/",
+    "publisher": "Deadwood History",
+    "author": null,
+    "publicationDate": "2025-09-18",
+    "accessedOn": "2026-10-08",
+    "sourceType": "official museum interpretation and investigation context"
+  },
+  {
+    "sourceId": "src-24b406519ef79a8b",
+    "title": "Deadwood History — official hours and admission",
+    "url": "https://www.deadwoodhistory.com/plan-your-visit/hours-admission/",
+    "publisher": "Deadwood History",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official seasonal operating details"
+  },
+  {
+    "sourceId": "src-57e5ca89bd3d0609",
+    "title": "Deadwood City Tourism — October 2026 Adams House investigation",
+    "url": "https://www.deadwood.com/event/paranormal-investigations-of-the-adams-house-5/",
+    "publisher": "Deadwood City Tourism",
+    "author": null,
+    "publicationDate": "2026-10-24",
+    "accessedOn": "2026-10-08",
+    "sourceType": "official public event and access"
+  },
+  {
+    "sourceId": "src-a960fd45e5e9c286",
+    "title": "Adams House Museum — mapped building",
+    "url": "https://mapcarta.com/W817620084",
+    "publisher": "Adams House Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "OpenStreetMap public museum mapped footprint"
+  },
+  {
+    "sourceId": "src-c94c58c433a9d689",
+    "title": "National Women’s History Museum — Lizzie Borden Trial",
+    "url": "https://www.womenshistory.org/articles/lizzie-borden-trial-1892",
+    "publisher": "National Women’s History Museum",
+    "author": null,
+    "publicationDate": "2013-10-31",
+    "accessedOn": "2026-10-08",
+    "sourceType": "national historical interpretive article"
+  },
+  {
+    "sourceId": "src-082acd7a9b939cf7",
+    "title": "Lizzie Borden House — The History",
+    "url": "https://lizzie-borden.com/history/",
+    "publisher": "Lizzie Borden House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official site house history"
+  },
+  {
+    "sourceId": "src-91430ec34df17045",
+    "title": "Lizzie Borden House — Real Hauntings Experienced at the House",
+    "url": "https://lizzie-borden.com/blog/real-lizzie-borden-house-hauntings/",
+    "publisher": "Lizzie Borden House",
+    "author": null,
+    "publicationDate": "2026-08-23",
+    "accessedOn": "2026-10-08",
+    "sourceType": "official operator republished guest accounts"
+  },
+  {
+    "sourceId": "src-62f618158636825f",
+    "title": "New England Legends — Halloween at the Lizzie Borden House",
+    "url": "https://ournewenglandlegends.com/podcast-167-halloween-at-the-lizzie-borden-house/",
+    "publisher": "New England Legends",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "investigator retold account"
+  },
+  {
+    "sourceId": "src-08abdf91156733e0",
+    "title": "People — Is the Lizzie Borden Murder House Haunted?",
+    "url": "https://people.com/is-the-lizzie-borden-murder-house-haunted-8736942",
+    "publisher": "People",
+    "author": null,
+    "publicationDate": "2024-10-25",
+    "accessedOn": "2026-10-08",
+    "sourceType": "journalist overnight paranormal account"
+  },
+  {
+    "sourceId": "src-8355f6ca3323d59b",
+    "title": "Lizzie Borden House — Official Tours",
+    "url": "https://lizzie-borden.com/tours/",
+    "publisher": "Lizzie Borden House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "current operator visitor access"
+  },
+  {
+    "sourceId": "src-98048a25e0182e04",
+    "title": "Lizzie Borden House — Welcome and access rules",
+    "url": "https://lizzie-borden.com/hello/",
+    "publisher": "Lizzie Borden House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "current official property guidance"
+  },
+  {
+    "sourceId": "src-ee0440db9e986e1d",
+    "title": "Lizzie Borden House — House Reservations",
+    "url": "https://lizzie-borden.com/house-reservations/",
+    "publisher": "Lizzie Borden House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official private group lodging and room restrictions"
+  },
+  {
+    "sourceId": "src-71c9c76886e31909",
+    "title": "Lizzie Borden House — mapped original property",
+    "url": "https://mapcarta.com/W213035398",
+    "publisher": "Lizzie Borden House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "OSM public mapped building"
+  },
+  {
+    "sourceId": "src-16c30848c65fd76c",
+    "title": "Bird Cage Theatre — Historic building account",
+    "url": "https://www.tombstonebirdcage.com/birdcagephotos.html",
+    "publisher": "Bird Cage Theatre",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official property history"
+  },
+  {
+    "sourceId": "src-cd7db022549407e2",
+    "title": "Bird Cage Theatre — Day museum tour interpretation",
+    "url": "https://tombstonebirdcage.com/selfguidedtours.html",
+    "publisher": "Bird Cage Theatre",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official operator historical and access account"
+  },
+  {
+    "sourceId": "src-8200272ba7449f20",
+    "title": "Bird Cage Theatre — Phantoms and Ghost Tours",
+    "url": "https://tombstonebirdcage.com/ghosttours.html",
+    "publisher": "Bird Cage Theatre",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator collected visitor and employee reports"
+  },
+  {
+    "sourceId": "src-dd6721fd41ea8d2c",
+    "title": "Bird Cage Theatre — Self-guided day access",
+    "url": "https://tombstonebirdcage.com/selfguidedtours.html",
+    "publisher": "Bird Cage Theatre",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official venue admission"
+  },
+  {
+    "sourceId": "src-ab3fe06e69d8a50b",
+    "title": "Bird Cage Theatre — Evening program",
+    "url": "https://tombstonebirdcage.com/ghosttours.html",
+    "publisher": "Bird Cage Theatre",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official ticketed ghost tours"
+  },
+  {
+    "sourceId": "src-7aad79f30be5f18b",
+    "title": "Bird Cage Theatre — operator visitor site",
+    "url": "https://mapcarta.com/W470999329",
+    "publisher": "Bird Cage Theatre",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "OpenStreetMap public theater footprint"
+  },
+  {
+    "sourceId": "src-c00e9da5639c0ab8",
+    "title": "Waverly Hills Sanatorium — About Us",
+    "url": "https://thewaverlyhillssanatorium.com/about-us/",
+    "publisher": "Waverly Hills Sanatorium",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "current operator’s historic chronology"
+  },
+  {
+    "sourceId": "src-81d3ffeefb6eefc8",
+    "title": "Kentucky Historic Institutions — Waverly Hills original documents",
+    "url": "https://kyhi.org/whs-documents/",
+    "publisher": "Kentucky Historic Institutions",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "historic document preservation collection"
+  },
+  {
+    "sourceId": "src-c0f9945b85367f67",
+    "title": "Waverly Hills Sanatorium — Official paranormal and investigation descriptions",
+    "url": "https://thewaverlyhillssanatorium.com/",
+    "publisher": "Waverly Hills Sanatorium",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator reporting public ghost-hunting traditions"
+  },
+  {
+    "sourceId": "src-c278782897bd207d",
+    "title": "Waverly Hills — 2026 season, holiday attraction and booked investigation rules",
+    "url": "https://thewaverlyhillssanatorium.com/",
+    "publisher": "Waverly Hills",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operating property primary access"
+  },
+  {
+    "sourceId": "src-ea0da468b921dbb9",
+    "title": "Waverly Hills Sanatorium — mapped current building",
+    "url": "https://mapcarta.com/W337854476",
+    "publisher": "Waverly Hills Sanatorium",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "OpenStreetMap building feature"
+  },
+  {
+    "sourceId": "src-51a707299be30a15",
+    "title": "St. James Hotel — About the historic property",
+    "url": "https://www.exstjames.com/about.html",
+    "publisher": "St. James Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official hotel history and guest tradition"
+  },
+  {
+    "sourceId": "src-9af66f74a230b8db",
+    "title": "St. James Hotel — T.J. Wright and Room 18",
+    "url": "https://www.exstjames.com/about.html",
+    "publisher": "St. James Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator’s identified haunted room narrative"
+  },
+  {
+    "sourceId": "src-5f41637cb4507289",
+    "title": "St. James Hotel — current lodging reservation site",
+    "url": "https://www.exstjames.com/",
+    "publisher": "St. James Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator lodging inventory and bookings"
+  },
+  {
+    "sourceId": "src-2b48da8ca02c71c1",
+    "title": "St. James Hotel — Lambert’s restaurant and bar",
+    "url": "https://www.exstjames.com/restaurant.html",
+    "publisher": "St. James Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "current operator’s hours and services"
+  },
+  {
+    "sourceId": "src-3f48177ea24fc3c6",
+    "title": "St. James Hotel Cimarron — mapped building",
+    "url": "https://mapcarta.com/W466782159",
+    "publisher": "St. James Hotel Cimarron",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "OpenStreetMap public hotel feature"
+  },
+  {
+    "sourceId": "src-5a8217114bd178a6",
+    "title": "Prospect Place — nonprofit history and mission",
+    "url": "https://www.historicprospectplace.org/about-us/who-we-are/",
+    "publisher": "Prospect Place",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "original operator historical account"
+  },
+  {
+    "sourceId": "src-329fa7c0bd756ddf",
+    "title": "Prospect Place — June 2026 public ghost hunt description",
+    "url": "https://www.historicprospectplace.org/event/public-ghost-hunt-2026-1/",
+    "publisher": "Prospect Place",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator account of volunteered sighting reports and event rules"
+  },
+  {
+    "sourceId": "src-210dc79b1e36f689",
+    "title": "Prospect Place — current private ghost hunt booking rules",
+    "url": "https://www.historicprospectplace.org/private-ghost-hunts/",
+    "publisher": "Prospect Place",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "authorized owner-operator booking rules"
+  },
+  {
+    "sourceId": "src-7287a2b2d39cbee7",
+    "title": "Prospect Place — 2026 public events archive",
+    "url": "https://www.historicprospectplace.org/events-calendar/category/public-events/public-hunt/",
+    "publisher": "Prospect Place",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator past/current event status"
+  },
+  {
+    "sourceId": "src-d78579dd63c14001",
+    "title": "Prospect Place — owner-published coordinates",
+    "url": "https://www.historicprospectplace.org/visit/location/",
+    "publisher": "Prospect Place",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator-published exact site marker"
+  },
+  {
+    "sourceId": "src-dcadb6ee4a6d4fd2",
+    "title": "New Orleans & Company — Voodoo history and Marie Laveau",
+    "url": "https://www.neworleans.com/things-to-do/multicultural/traditions/voodoo/",
+    "publisher": "New Orleans & Company",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "city destination cultural and historical narrative"
+  },
+  {
+    "sourceId": "src-debcf647272b8246",
+    "title": "Historic New Orleans Collection — cemetery archive and map collection",
+    "url": "https://cemetery.hnoc.org/",
+    "publisher": "Historic New Orleans Collection",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "institutional tomb survey and archival work"
+  },
+  {
+    "sourceId": "src-fc4544320fa9aee4",
+    "title": "Louisiana State Museum — Louisiana Voodoo heritage",
+    "url": "https://louisianastatemuseum.org/mystery-motion-louisiana-voodoo",
+    "publisher": "Louisiana State Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "state museum interpretation"
+  },
+  {
+    "sourceId": "src-e7531e57b02b3db3",
+    "title": "Marie Laveaux — The Tomb of the Widow Paris",
+    "url": "https://www.marie-laveaux.com/widow-paris-tomb.html",
+    "publisher": "Marie Laveaux",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "historically contextualized local spiritual pilgrimage and later legend"
+  },
+  {
+    "sourceId": "src-3c32f54e97555453",
+    "title": "Clarion Herald — Conservation and Laveau wish-making legends",
+    "url": "https://clarionherald.org/news/vandals-pink-paint-damage-removed-at-laveau-tomb",
+    "publisher": "Clarion Herald",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "Catholic local journalism and folklore"
+  },
+  {
+    "sourceId": "src-090ce3f7ac88c399",
+    "title": "New Orleans Catholic Cemeteries — St. Louis No. 1 authorized tours",
+    "url": "https://www.nolacatholiccemeteries.org/st-louis-cemetery-1",
+    "publisher": "New Orleans Catholic Cemeteries",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official church cemetery visitor policy"
+  },
+  {
+    "sourceId": "src-fb6784d4215e02f6",
+    "title": "New Orleans Catholic Cemeteries — access and photography FAQ",
+    "url": "https://www.nolacatholiccemeteries.org/frequently-asked-questions",
+    "publisher": "New Orleans Catholic Cemeteries",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official cemetery operator preservation/photography rules"
+  },
+  {
+    "sourceId": "src-a495a31896fdffc4",
+    "title": "St. Louis Cemetery No. 1 — mapped site complex",
+    "url": "https://mapcarta.com/35125644",
+    "publisher": "St. Louis Cemetery No. 1",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "GeoNames mapped historic burial grounds"
+  },
+  {
+    "sourceId": "src-d1c12850264d0ee3",
+    "title": "Go Stowe — Gold Brook Covered Bridge",
+    "url": "https://gostowe.com/things-to-do/covered-bridges",
+    "publisher": "Go Stowe",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official destination tourism history"
+  },
+  {
+    "sourceId": "src-ce4d75eb97f250af",
+    "title": "Vermont Historical Society — Emily’s Bridge",
+    "url": "https://vermonthistory.org/emilys-bridge",
+    "publisher": "Vermont Historical Society",
+    "author": null,
+    "publicationDate": "2020-10-30",
+    "accessedOn": "2026-10-08",
+    "sourceType": "state historical institution local folklore study"
+  },
+  {
+    "sourceId": "src-2f6d8a0c90a02a6b",
+    "title": "Vermont Public — Jill Mudgett, Emily’s Bridge",
+    "url": "https://www.vermontpublic.org/programs/2012-10-31/mudgett-emilys-bridge",
+    "publisher": "Vermont Public",
+    "author": null,
+    "publicationDate": "2012-10-31",
+    "accessedOn": "2026-10-08",
+    "sourceType": "historian’s documented folklore provenance reporting"
+  },
+  {
+    "sourceId": "src-d293d581b2738d5e",
+    "title": "Town of Stowe — Traffic and Vehicles Ordinance 2023, p. 11",
+    "url": "https://www.stowevt.gov/files/assets/town/v/2/administration/documents/ordinances/traffic-and-vehicle-ordinance-11-17-23.pdf",
+    "publisher": "Town of Stowe",
+    "author": null,
+    "publicationDate": "2023-10-25",
+    "accessedOn": "2026-10-08",
+    "sourceType": "current municipal ordinance text"
+  },
+  {
+    "sourceId": "src-626fc6e4338a38f6",
+    "title": "Gold Brook Covered Bridge — mapped road span",
+    "url": "https://mapcarta.com/22818576",
+    "publisher": "Gold Brook Covered Bridge",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "OSM highway feature and gazetteer"
+  },
+  {
+    "sourceId": "src-dcff461b344b762d",
+    "title": "Library of Congress — Walker-Ames House HAER WA-160 photo 9 item",
+    "url": "https://www.loc.gov/resource/hhh.wa0688.photos/?sp=9",
+    "publisher": "Library of Congress",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "federal historic survey item record"
+  },
+  {
+    "sourceId": "src-11ddd0dd4cc85604",
+    "title": "HistoryLink — Port Gamble Thumbnail History",
+    "url": "https://historylink.org/File/5505",
+    "publisher": "HistoryLink",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "Washington state local history reference"
+  },
+  {
+    "sourceId": "src-3cd3a170cd4d76f1",
+    "title": "Port Gamble Paranormal — The Story: collecting resident accounts",
+    "url": "https://www.portgambleparanormal.com/the-story",
+    "publisher": "Port Gamble Paranormal",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "investigation operator first-person organizational chronology"
+  },
+  {
+    "sourceId": "src-59a529fa0142c786",
+    "title": "Port Gamble Paranormal — report and tour overview",
+    "url": "https://www.portgambleparanormal.com/",
+    "publisher": "Port Gamble Paranormal",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "operator own tour and reported photo"
+  },
+  {
+    "sourceId": "src-86beabc4a3150fff",
+    "title": "Port Gamble — Seasonal events and ghost investigations",
+    "url": "https://www.portgamble.com/events-festivals/seasonal-events/",
+    "publisher": "Port Gamble",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "town tourism operator official 2026 program"
+  },
+  {
+    "sourceId": "src-ae2dd635673fd654",
+    "title": "Port Gamble — Ghost Conference 2026 official programs",
+    "url": "https://www.portgamble.com/events-festivals/seasonal-events/ghost-conference/",
+    "publisher": "Port Gamble",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official conference event and reservations"
+  },
+  {
+    "sourceId": "src-5d7745e45ed446e3",
+    "title": "Walker-Ames House — externally published public visitor mapping",
+    "url": "https://www.hauntedplaces.org/item/walker-ames-house/",
+    "publisher": "Walker-Ames House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "third-party visitor attraction map position"
+  },
+  {
+    "sourceId": "src-7cf5e081467adfc7",
+    "title": "Historic Occidental Hotel — Living History",
+    "url": "https://www.occidentalwyoming.com/history",
+    "publisher": "Historic Occidental Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official historic hotel heritage narrative"
+  },
+  {
+    "sourceId": "src-2c58c2959ecc0c99",
+    "title": "Visit Buffalo and Kaycee — The Occidental Hotel",
+    "url": "https://visitbuffalowy.com/buffalo-attraction/the-occidental-hotel/",
+    "publisher": "Visit Buffalo and Kaycee",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "regional tourism / cultural heritage"
+  },
+  {
+    "sourceId": "src-48c5e003d473e14f",
+    "title": "Historic Occidental Hotel — Is the Occidental Haunted?",
+    "url": "https://www.occidentalwyoming.com/faqs/haunted",
+    "publisher": "Historic Occidental Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "owner/operator-recounted guest and staff lore"
+  },
+  {
+    "sourceId": "src-aa5619804af36360",
+    "title": "Black Hills Paranormal — Occidental Hotel 2011 investigation",
+    "url": "https://www.bhparanormal.com/occidental-hotel-investigation/",
+    "publisher": "Black Hills Paranormal",
+    "author": null,
+    "publicationDate": "2011-02",
+    "accessedOn": "2026-10-08",
+    "sourceType": "named investigating-group first-person account"
+  },
+  {
+    "sourceId": "src-a75e8f542c642430",
+    "title": "Occidental Hotel — Can I Just Come Inside and Look Around?",
+    "url": "https://www.occidentalwyoming.com/faqs/access",
+    "publisher": "Occidental Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official public area restrictions"
+  },
+  {
+    "sourceId": "src-a2b629a3e58bceef",
+    "title": "Occidental Hotel — Book via Email",
+    "url": "https://www.occidentalwyoming.com/book-via-email",
+    "publisher": "Occidental Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "official hotel reservation/contact"
+  },
+  {
+    "sourceId": "src-00dba8314292bd66",
+    "title": "Historic Occidental Hotel — public traveler mapping",
+    "url": "https://www.hauntedplaces.org/item/historic-occidental-hotel/",
+    "publisher": "Historic Occidental Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-08",
+    "sourceType": "commercial map listing"
+  },
+  {
+    "sourceId": "PHASM-US-NJ-BURLINGTON-COUNTY-PRISON-MUSEUM-S1",
+    "title": "Burlington County: Ghostly Fun and Spooky History",
+    "url": "https://burlingtoncountynj.gov/m/newsflash/home/detail/2861",
+    "publisher": "Burlington County",
+    "author": null,
+    "publicationDate": "2026-10-07",
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-NJ-BURLINGTON-COUNTY-PRISON-MUSEUM-S2",
+    "title": "Burlington County Prison Museum official visitor guide",
+    "url": "https://www.burlingtoncountynj.gov/956/Prison-Museum",
+    "publisher": "Burlington County",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-NJ-BURLINGTON-COUNTY-PRISON-MUSEUM-S3",
+    "title": "Burlington County: investigation reservations",
+    "url": "https://www.burlingtoncountynj.gov/888/How-to-Reserve-the-Prison-Museum",
+    "publisher": "Burlington County",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-IL-REID-MEMORIAL-LIBRARY-HARRIET-HASKELL-S1",
+    "title": "The Bridge: The Ghosts of Lewis and Clark Community College",
+    "url": "https://thelcbridge.com/the-ghosts-of-lewis-and-clark/",
+    "publisher": "Lewis and Clark Community College",
+    "author": null,
+    "publicationDate": "2014-10-27",
+    "accessedOn": "2026-10-10",
+    "sourceType": "firsthand_account"
+  },
+  {
+    "sourceId": "PHASM-US-IL-REID-MEMORIAL-LIBRARY-HARRIET-HASKELL-S2",
+    "title": "American Library Association Archives: Spooky Stacks",
+    "url": "https://www.library.illinois.edu/ala/2020/10/29/spooky-stacks-viewing-haunted-libraries-of-the-midwest-through-library-postcards/",
+    "publisher": "University of Illinois",
+    "author": null,
+    "publicationDate": "2020-10-29",
+    "accessedOn": "2026-10-10",
+    "sourceType": "history"
+  },
+  {
+    "sourceId": "PHASM-US-IL-PEORIA-PUBLIC-LIBRARY-MAIN-S1",
+    "title": "American Library Association Archives: Spooky Stacks",
+    "url": "https://www.library.illinois.edu/ala/2020/10/29/spooky-stacks-viewing-haunted-libraries-of-the-midwest-through-library-postcards/",
+    "publisher": "University of Illinois",
+    "author": null,
+    "publicationDate": "2020-10-29",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-IL-PEORIA-PUBLIC-LIBRARY-MAIN-S2",
+    "title": "Peoria Public Library: Main Library",
+    "url": "https://peoriapubliclibrary.org/portfolio-items/main-library/",
+    "publisher": "Peoria Public Library",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-NJ-CLINTON-ROAD-S1",
+    "title": "Clinton Road: Fact or Fiction? — local ghost-story collection",
+    "url": "https://clintonroad.blogspot.com/2007/03/",
+    "publisher": "Clinton Road blog",
+    "author": null,
+    "publicationDate": "2007-03-01",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-NJ-CLINTON-ROAD-S2",
+    "title": "Weird NJ Clinton Road traditions (overview)",
+    "url": "https://en.wikipedia.org/wiki/Clinton_Road_(New_Jersey)",
+    "publisher": "Wikipedia overview citing Weird NJ",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-WV-WEST-VIRGINIA-PENITENTIARY-S1",
+    "title": "West Virginia Penitentiary official tours and paranormal experiences",
+    "url": "https://wvpentours.com/",
+    "publisher": "West Virginia Penitentiary",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-WV-WEST-VIRGINIA-PENITENTIARY-S2",
+    "title": "City of Moundsville: West Virginia Penitentiary",
+    "url": "https://www.cityofmoundsville.com/explore/west-virginia-penitentiary/61",
+    "publisher": "City of Moundsville",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "municipal"
+  },
+  {
+    "sourceId": "PHASM-US-MN-WABASHA-STREET-CAVES-S1",
+    "title": "Wabasha Street Caves: historic tour and gangster ghost story",
+    "url": "https://www.wabashacaves.com/tours",
+    "publisher": "Wabasha Street Caves",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-MN-WABASHA-STREET-CAVES-S2",
+    "title": "Wabasha Street Caves visitor homepage",
+    "url": "https://www.wabashacaves.com/",
+    "publisher": "Wabasha Street Caves",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-UT-MCCUNE-MANSION-S1",
+    "title": "Rachel’s SLC History: McCune Mansion’s Haunted History",
+    "url": "https://www.slchistory.org/2022/10/the-mccune-mansions-haunted-history.html",
+    "publisher": "Rachel Quist",
+    "author": null,
+    "publicationDate": "2022-10-01",
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-UT-MCCUNE-MANSION-S2",
+    "title": "KSL: Salt Lake history comes alive at stunning McCune Mansion",
+    "url": "https://www.ksl.com/article/13700954/salt-lake-history-comes-alive-at-stunning-mccune-mansion",
+    "publisher": "KSL News",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-UT-MCCUNE-MANSION-S3",
+    "title": "McCune Mansion official venue and tour arrangements",
+    "url": "https://mccunemansion.com/",
+    "publisher": "McCune Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-SC-OLD-EXCHANGE-PROVOST-DUNGEON-S1",
+    "title": "South Carolina ETV: Ghosts and Legends — Old Exchange Ghost",
+    "url": "https://www.scetv.org/stories/2019/ghosts-and-legends-old-exchange-ghost",
+    "publisher": "South Carolina ETV",
+    "author": null,
+    "publicationDate": "2019-10-28",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-SC-OLD-EXCHANGE-PROVOST-DUNGEON-S2",
+    "title": "Charleston Terrors: Old Exchange & Provost Dungeon",
+    "url": "https://charlestonterrors.com/the-old-exchange-provost-dungeon/",
+    "publisher": "Charleston Terrors",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-SC-OLD-EXCHANGE-PROVOST-DUNGEON-S3",
+    "title": "Old Exchange: Plan A Visit",
+    "url": "https://www.oldexchange.org/plan-a-visit",
+    "publisher": "Old Exchange",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-MD-POINT-LOOKOUT-STATE-PARK-S1",
+    "title": "Maryland DNR: Spirits of Point Lookout",
+    "url": "https://dnr.maryland.gov/Pages/Spirits-of-Point-Lookout.aspx",
+    "publisher": "Maryland DNR",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "paranormal"
+  },
+  {
+    "sourceId": "PHASM-US-MD-POINT-LOOKOUT-STATE-PARK-S2",
+    "title": "Maryland DNR: Point Lookout State Park",
+    "url": "https://dnr.maryland.gov/publiclands/Pages/southern/pointlookout.aspx",
+    "publisher": "Maryland DNR",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "state_parks"
+  },
+  {
+    "sourceId": "PHASM-US-ME-FORT-KNOX-STATE-HISTORIC-SITE-S1",
+    "title": "Friends of Fort Knox: Fort Knox Ghost Hunts",
+    "url": "https://www.fortknoxmaine.com/projects/fort-knox-ghost-hunts",
+    "publisher": "Friends of Fort Knox",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-ME-FORT-KNOX-STATE-HISTORIC-SITE-S2",
+    "title": "Friends of Fort Knox: 2026 events",
+    "url": "https://www.fortknoxmaine.com/event-list",
+    "publisher": "Friends of Fort Knox",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-LA-MYRTLES-PLANTATION-S1",
+    "title": "Myrtles Plantation: Chloe legend and its historical limitations",
+    "url": "https://hauntedsilence.com/haunted-hotels-inns/myrtles-plantation-chloe-story-truth-history/",
+    "publisher": "Haunted Silence",
+    "author": null,
+    "publicationDate": "2025-03-25",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-LA-MYRTLES-PLANTATION-S2",
+    "title": "The Myrtles: official tours",
+    "url": "https://themyrtles.com/pages/tours",
+    "publisher": "The Myrtles",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-LA-MYRTLES-PLANTATION-S3",
+    "title": "The Myrtles: official stays",
+    "url": "https://themyrtles.com/pages/hotel",
+    "publisher": "The Myrtles",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-CA-BODIE-GHOST-TOWN-S1",
+    "title": "KQED: This Ghost Town’s Curse Isn’t What You Think",
+    "url": "https://www.kqed.org/news/11640709/how-this-ghost-towns-curse-backfired-on-park-rangers",
+    "publisher": "KQED",
+    "author": null,
+    "publicationDate": "2018-01-12",
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-CA-BODIE-GHOST-TOWN-S2",
+    "title": "California State Parks: Bodie State Historic Park",
+    "url": "https://www.parks.ca.gov/?page_id=509",
+    "publisher": "California State Parks",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "state_parks"
+  },
+  {
+    "sourceId": "PHASM-US-OH-OHIO-STATE-REFORMATORY-S1",
+    "title": "Ohio State Reformatory Preservation Society: Paranormal",
+    "url": "https://www.mrps.org/paranormal/",
+    "publisher": "Mansfield Reformatory Preservation Society",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-OH-OHIO-STATE-REFORMATORY-S2",
+    "title": "Ohio State Reformatory Preservation Society: Tours",
+    "url": "https://www.mrps.org/tours/",
+    "publisher": "Mansfield Reformatory Preservation Society",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-MT-OLD-MONTANA-PRISON-S1",
+    "title": "Old Montana Prison Museum: Ghost and After Hours Tours",
+    "url": "https://www.pcmaf.org/tours",
+    "publisher": "Powell County Museum and Arts Foundation",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-MT-OLD-MONTANA-PRISON-S2",
+    "title": "Old Montana Prison: Events calendar",
+    "url": "https://www.pcmaf.org/event-list",
+    "publisher": "Powell County Museum and Arts Foundation",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-CT-CAPTAIN-GRANTS-1754-INN-S1",
+    "title": "Haunted Rooms America: Captain Grant’s Inn",
+    "url": "https://www.hauntedrooms.com/connecticut/haunted-places/haunted-hotels/captain-grants-1754",
+    "publisher": "Haunted Rooms America",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-CT-CAPTAIN-GRANTS-1754-INN-S2",
+    "title": "Captain Grant’s Inn: The Ghosts of Captain Grant’s Inn",
+    "url": "https://captaingrants.com/3/",
+    "publisher": "Captain Grant’s",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-CT-CAPTAIN-GRANTS-1754-INN-S3",
+    "title": "Captain Grant’s 1754 Inn official website",
+    "url": "https://captaingrants.com/",
+    "publisher": "Captain Grant’s",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-NY-ROLLING-HILLS-ASYLUM-S1",
+    "title": "Rolling Hills Asylum official ghost hunt calendar",
+    "url": "https://www.rollinghillsasylum.com/",
+    "publisher": "Rolling Hills Asylum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-NY-ROLLING-HILLS-ASYLUM-S2",
+    "title": "Rolling Hills Asylum event address and policies",
+    "url": "https://www.rollinghillsasylum.com/calendar/2026/07/04/july-4-2026-3-hr-psych-hold-self-guided-ghost-hunt-49ptax",
+    "publisher": "Rolling Hills Asylum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-VA-FERRY-PLANTATION-HOUSE-S1",
+    "title": "Ferry Plantation: Paranormal",
+    "url": "https://www.ferryplantation.org/paranormal",
+    "publisher": "Ferry Plantation House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-VA-FERRY-PLANTATION-HOUSE-S2",
+    "title": "Ferry Plantation: Tours",
+    "url": "https://www.ferryplantation.org/tours",
+    "publisher": "Ferry Plantation House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-VA-FERRY-PLANTATION-HOUSE-S3",
+    "title": "Ferry Plantation: Contact and closed paranormal bookings",
+    "url": "https://www.ferryplantation.org/contact-us",
+    "publisher": "Ferry Plantation House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-CO-HOTEL-COLORADO-S1",
+    "title": "Hotel Colorado: Ghost Stories of the Hotel Colorado",
+    "url": "https://www.hotelcolorado.com/blog/ghost-stories-of-the-hotel-colorado",
+    "publisher": "Hotel Colorado",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-CO-HOTEL-COLORADO-S2",
+    "title": "Hotel Colorado official website",
+    "url": "https://www.hotelcolorado.com/",
+    "publisher": "Hotel Colorado",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-IA-EDINBURGH-MANOR-S1",
+    "title": "Iowa PBS: Local Legends Around Iowa’s Haunted Locations",
+    "url": "https://www.iowapbs.org/article/8600/local-legends-around-iowas-haunted-locations",
+    "publisher": "Iowa PBS",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-IA-EDINBURGH-MANOR-S2",
+    "title": "Edinburgh Manor: Visit Information",
+    "url": "https://edinburghmanor.wixsite.com/edinburgh/visit-information",
+    "publisher": "Edinburgh Manor",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-NH-OMNI-MOUNT-WASHINGTON-RESORT-S1",
+    "title": "Historic Hotels of America: Top Haunted Hotels, Omni Mount Washington",
+    "url": "https://www.historichotels.org/us/press-room/press-releases/the-most-haunted-historic-hotels-for-2019-announced-by-historic-hotels-of-america",
+    "publisher": "Historic Hotels of America",
+    "author": null,
+    "publicationDate": "2019",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-NH-OMNI-MOUNT-WASHINGTON-RESORT-S2",
+    "title": "Omni Hotels: Book a Room With a Boo",
+    "url": "https://www.omnihotels.com/media-center/recent-news/2014/05/08/06/09/091007",
+    "publisher": "Omni Hotels",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-NH-OMNI-MOUNT-WASHINGTON-RESORT-S3",
+    "title": "Omni Mount Washington resort announces historic-room renovations",
+    "url": "https://www.omnihotels.com/media-center/recent-news/2026/06/01/16/48/omni-mount-washington-resort-spa-announces-a-grand-reimagination-of-historic-new-hampshire-hotel",
+    "publisher": "Omni Hotels",
+    "author": null,
+    "publicationDate": "2026-05-14",
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-WA-MANRESA-CASTLE-S1",
+    "title": "SeattlePI: Historic Port Townsend, a Haunting View to the Seaport’s Past",
+    "url": "https://www.seattlepi.com/local/seattle-history/article/Historic-Port-Townsend-Puget-Sound-haunted-ghost-10936187.php",
+    "publisher": "SeattlePI",
+    "author": null,
+    "publicationDate": "2017",
+    "accessedOn": "2026-10-10",
+    "sourceType": "firsthand_account"
+  },
+  {
+    "sourceId": "PHASM-US-WA-MANRESA-CASTLE-S2",
+    "title": "Manresa Castle Hotel official site",
+    "url": "https://www.manresacastle.com/",
+    "publisher": "Manresa Castle",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-AL-SLOSS-FURNACES-S1",
+    "title": "WVTM: The Tragic Legend of Theophilus Jowers",
+    "url": "https://www.wvtm13.com/article/halloween-sloss-furnaces-ghost-jowers/62768900",
+    "publisher": "WVTM 13",
+    "author": null,
+    "publicationDate": "2024-10-30",
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-AL-SLOSS-FURNACES-S2",
+    "title": "Sloss Furnaces: Experience Sloss and tours",
+    "url": "https://www.slossfurnaces.org/visit",
+    "publisher": "Sloss Furnaces Foundation",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-AL-SLOSS-FURNACES-S3",
+    "title": "City of Birmingham: Night Tour Is Not a Ghost Tour",
+    "url": "https://www.birminghamal.gov/news/experience-history-after-dark-sloss-furnaces-historic-night-tour",
+    "publisher": "City of Birmingham",
+    "author": null,
+    "publicationDate": "2026-07-13",
+    "accessedOn": "2026-10-10",
+    "sourceType": "municipal"
+  },
+  {
+    "sourceId": "PHASM-US-CA-HOTEL-DEL-CORONADO-S1",
+    "title": "Hotel del Coronado: Ghostly Goings-On and Kate Morgan",
+    "url": "https://www.hoteldel.com/press/haunted-hotel-del-coronado/",
+    "publisher": "Hotel del Coronado",
+    "author": null,
+    "publicationDate": "2013-12-19",
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-CA-HOTEL-DEL-CORONADO-S2",
+    "title": "Hotel del Coronado: Haunted Hotel, True Ghost Story",
+    "url": "https://www.hoteldel.com/blog/the-dels-true-ghost-story/",
+    "publisher": "Hotel del Coronado",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-CA-HOTEL-DEL-CORONADO-S3",
+    "title": "Hotel del Coronado: Resort History",
+    "url": "https://www.hoteldel.com/history/",
+    "publisher": "Hotel del Coronado",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "history"
+  },
+  {
+    "sourceId": "PHASM-US-IN-WHISPERS-ESTATE-S1",
+    "title": "Whispers Estate: House History and Hauntings",
+    "url": "https://whispersestate.com/house-history",
+    "publisher": "Whispers Estate",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-IN-WHISPERS-ESTATE-S2",
+    "title": "Whispers Estate: Venue and booking",
+    "url": "https://whispersestate.com/",
+    "publisher": "Whispers Estate",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-IL-RESURRECTION-MARY-CEMETERY-S1",
+    "title": "Chicago History Museum: Resurrection Mary, the Hitchhiking Ghost of Archer Avenue",
+    "url": "https://www.chicagohistory.org/resurrection-mary/",
+    "publisher": "Chicago History Museum",
+    "author": null,
+    "publicationDate": "2022-10-25",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-IL-RESURRECTION-MARY-CEMETERY-S2",
+    "title": "Catholic Cemeteries of Chicago: Hours of Operation",
+    "url": "https://www.catholiccemeterieschicago.org/hours-of-operation/",
+    "publisher": "Catholic Cemeteries of Chicago",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-NE-HUMMEL-PARK-S1",
+    "title": "North Omaha History: The Reality of Ghosts at Hummel Park",
+    "url": "https://northomahahistory.com/2015/10/28/the-reality-of-ghosts-at-hummel-park/",
+    "publisher": "North Omaha History",
+    "author": null,
+    "publicationDate": "2015-10-28",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-NE-HUMMEL-PARK-S2",
+    "title": "Oh My Omaha: Urban Legends and Real Haunted Places",
+    "url": "https://ohmyomaha.com/omaha-urban-legends/",
+    "publisher": "Oh My Omaha",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-NE-HUMMEL-PARK-S3",
+    "title": "Omaha Magazine: Seeking Darkness in the Woods",
+    "url": "https://www.omahamagazine.com/uncategorized/seeking-darkness-in-the-woods/",
+    "publisher": "Omaha Magazine",
+    "author": null,
+    "publicationDate": "2024-03-30",
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-TN-ORPHEUM-THEATRE-MEMPHIS-S1",
+    "title": "Orpheum Theatre Group: Theatre and Resident Spirits",
+    "url": "https://www.orpheum-memphis.com/orpheum-theatre",
+    "publisher": "Orpheum Theatre Group",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-TN-ORPHEUM-THEATRE-MEMPHIS-S2",
+    "title": "Orpheum Theatre Group: A Landmark With a Legacy",
+    "url": "https://www.orpheum-memphis.com/about-us/history",
+    "publisher": "Orpheum Theatre Group",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "history"
+  },
+  {
+    "sourceId": "PHASM-US-TN-ORPHEUM-THEATRE-MEMPHIS-S3",
+    "title": "Orpheum Theatre Group visitor and ticket information",
+    "url": "https://www.orpheum-memphis.com/orpheum-theatre",
+    "publisher": "Orpheum Theatre Group",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-TX-HAUNTED-MAGNOLIA-HOTEL-SEGUIN-S1",
+    "title": "Haunted Magnolia Hotel: House History and Resident Spirits",
+    "url": "https://hauntedmagnoliahotel.com/",
+    "publisher": "The Haunted Magnolia Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-TX-HAUNTED-MAGNOLIA-HOTEL-SEGUIN-S2",
+    "title": "Haunted Magnolia Hotel: Guided Day Tour Conditions",
+    "url": "https://hauntedmagnoliahotel.com/day-tours/",
+    "publisher": "The Haunted Magnolia Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-TX-HAUNTED-MAGNOLIA-HOTEL-SEGUIN-S3",
+    "title": "Haunted Magnolia Hotel: Public Visitor Contact",
+    "url": "https://hauntedmagnoliahotel.com/contact-us/",
+    "publisher": "The Haunted Magnolia Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-AZ-JEROME-GRAND-HOTEL-S1",
+    "title": "Jerome Grand Hotel: Hotel History and Phantom Head Nurse",
+    "url": "https://jeromegrandhotel.net/hotel-history/",
+    "publisher": "Jerome Grand Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-AZ-JEROME-GRAND-HOTEL-S2",
+    "title": "Phoenix Ghosts: The Spirits of Jerome",
+    "url": "https://phoenixghosts.com/the-spirits-of-jerome-arizona/",
+    "publisher": "Phoenix Ghosts",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-AZ-JEROME-GRAND-HOTEL-S3",
+    "title": "Jerome Grand Hotel official booking website",
+    "url": "https://jeromegrandhotel.net/",
+    "publisher": "Jerome Grand Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-WY-FORT-LARAMIE-WOMAN-IN-GREEN-S1",
+    "title": "National Park Service historical publication: The Fort Laramie Ghost",
+    "url": "https://www.npshistory.com/publications/fola/history/part3-9.htm",
+    "publisher": "NPS historical publication",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-WY-FORT-LARAMIE-WOMAN-IN-GREEN-S2",
+    "title": "National Park Service: Fort Laramie Operating Hours",
+    "url": "https://www.nps.gov/fola/planyourvisit/hours.htm",
+    "publisher": "National Park Service",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-WY-FORT-LARAMIE-WOMAN-IN-GREEN-S3",
+    "title": "National Park Service: Fort Laramie visitor information",
+    "url": "https://home.nps.gov/fola/planyourvisit/basicinfo.htm",
+    "publisher": "National Park Service",
+    "author": null,
+    "publicationDate": "2026-09-18",
+    "accessedOn": "2026-10-10",
+    "sourceType": "history"
+  },
+  {
+    "sourceId": "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S1",
+    "title": "Jason Black: Yorktown Memorial Hospital — First-Person Investigation",
+    "url": "https://national-paranormal-society.org/yorktown-memorial-hospital/",
+    "publisher": "National Paranormal Society",
+    "author": "Jason Black",
+    "publicationDate": "2014-10-01",
+    "accessedOn": "2026-10-10",
+    "sourceType": "firsthand_account"
+  },
+  {
+    "sourceId": "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S2",
+    "title": "Yorktown Memorial Hospital: About Us and Paranormal Reports",
+    "url": "https://yorktownmemorialhospital.com/about-us",
+    "publisher": "Yorktown Memorial Hospital / Curious Twins",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S3",
+    "title": "Yorktown Memorial Hospital: Haunted Tours and Ghost Hunts",
+    "url": "https://yorktownmemorialhospital.com/",
+    "publisher": "Yorktown Memorial Hospital / Curious Twins",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S4",
+    "title": "Yorktown Memorial Hospital: S.P.I.R.I.T. Access and Membership",
+    "url": "https://yorktownmemorialhospital.com/about-s-p-i-r-i-t",
+    "publisher": "Yorktown Memorial Hospital",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-NY-MORRIS-JUMEL-MANSION-S1",
+    "title": "Morris-Jumel Mansion: Paranormal Historical Investigations",
+    "url": "https://morrisjumel.org/programs/paranormal/",
+    "publisher": "Morris-Jumel Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-NY-MORRIS-JUMEL-MANSION-S2",
+    "title": "Morris-Jumel Mansion: October–November 2026 Construction Investigations",
+    "url": "https://morrisjumel.org/events/communing-during-construction-a-special-paranormal-historical-investigation-series/",
+    "publisher": "Morris-Jumel Mansion",
+    "author": null,
+    "publicationDate": "2026",
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-NY-MORRIS-JUMEL-MANSION-S3",
+    "title": "Morris-Jumel Mansion: Visit and Temporary Closure",
+    "url": "https://morrisjumel.org/visit/",
+    "publisher": "Morris-Jumel Mansion",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-WI-PFISTER-HOTEL-S1",
+    "title": "MLB.com: MLB Players on Milwaukee’s Haunted Hotel",
+    "url": "https://www.mlb.com/news/mlb-players-on-milwaukees-haunted-hotel/c-49381342",
+    "publisher": "MLB.com",
+    "author": null,
+    "publicationDate": "2013-06-02",
+    "accessedOn": "2026-10-10",
+    "sourceType": "firsthand_account"
+  },
+  {
+    "sourceId": "PHASM-US-WI-PFISTER-HOTEL-S2",
+    "title": "CBS 58: Haunted History of Pfister Still Discussed by Dodgers",
+    "url": "https://www.cbs58.com/news/dodgers-teoscar-hernandez-on-haunted-pfister-hotel",
+    "publisher": "CBS 58",
+    "author": null,
+    "publicationDate": "2025-10-14",
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-WI-PFISTER-HOTEL-S3",
+    "title": "The Pfister Hotel: History and Hotel Information",
+    "url": "https://www.thepfisterhotel.com/explore/about/",
+    "publisher": "The Pfister Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-PA-SACHS-COVERED-BRIDGE-S1",
+    "title": "Pennsylvania Rambler: The Spooks of Sachs Bridge",
+    "url": "https://thepennsylvaniarambler.wordpress.com/2020/10/25/the-spooks-of-sachs-bridge/",
+    "publisher": "The Pennsylvania Rambler",
+    "author": null,
+    "publicationDate": "2020-10-25",
+    "accessedOn": "2026-10-10",
+    "sourceType": "firsthand_account"
+  },
+  {
+    "sourceId": "PHASM-US-PA-SACHS-COVERED-BRIDGE-S2",
+    "title": "Gettysburg Civilian Network: Sachs Bridge History, Ghosts and Hanging Legend",
+    "url": "https://gettysburgciviliannetwork.com/2025/10/07/sachs-covered-bridge-history-ghosts-and-the-truth-behind-pennsylvanias-most-storied-covered-bridge/",
+    "publisher": "Gettysburg Civilian Network",
+    "author": null,
+    "publicationDate": "2025-10-07",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-PA-SACHS-COVERED-BRIDGE-S3",
+    "title": "Destination Gettysburg: Sachs Covered Bridge",
+    "url": "https://destinationgettysburg.com/listings/sachs-covered-bridge/",
+    "publisher": "Destination Gettysburg",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-IL-FORMER-FIRST-UNITARIAN-CHURCH-ALTON-S1",
+    "title": "Former congregation history: Phillip Mercer and Haunted Alton",
+    "url": "https://meuuc.org/wp-content/uploads/2024/07/A-History-of-the-Congregation-1836-2022.pdf",
+    "publisher": "Metro East Unitarian Universalist Congregation",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-IL-FORMER-FIRST-UNITARIAN-CHURCH-ALTON-S2",
+    "title": "Current congregation contact and location",
+    "url": "https://www.firstuualton.org/contact-us/",
+    "publisher": "Metro East UU Congregation",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-IL-MILTON-SCHOOLHOUSE-ALTON-S1",
+    "title": "Great Rivers & Routes: Milton School House",
+    "url": "https://www.riversandroutes.com/directory/milton-school-house/",
+    "publisher": "Great Rivers & Routes",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-IL-MILTON-SCHOOLHOUSE-ALTON-S2",
+    "title": "Alton Odyssey Tours: haunted trolley itineraries",
+    "url": "https://www.altonodysseytours.com/tour-categories/trolley-tours",
+    "publisher": "Alton Odyssey Tours",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-IL-MILTON-SCHOOLHOUSE-ALTON-S3",
+    "title": "Haunted Illinois: visiting Milton School",
+    "url": "https://m.hauntedillinois.com/realhauntedplaces/milton-school.php",
+    "publisher": "Haunted Illinois",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "paranormal"
+  },
+  {
+    "sourceId": "PHASM-US-IL-MINERAL-SPRINGS-HOTEL-ALTON-S1",
+    "title": "Illinois Public Media: Haunted Illinois, Mineral Springs Hotel",
+    "url": "https://ipm-prod.will.illinois.edu/prairiefire/story/haunted-illinois-alton-illinois-the-mineral-springs-hotel",
+    "publisher": "Illinois Public Media",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-IL-MINERAL-SPRINGS-HOTEL-ALTON-S2",
+    "title": "Ghost Research Society: Mineral Springs follow-up",
+    "url": "https://ghostresearch.org/Investigations/mineral3.html",
+    "publisher": "Ghost Research Society",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "paranormal"
+  },
+  {
+    "sourceId": "PHASM-US-IL-MINERAL-SPRINGS-HOTEL-ALTON-S3",
+    "title": "American Oddities Museum: new address",
+    "url": "https://www.americanodditiesmuseum.com/",
+    "publisher": "American Oddities Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-IL-FORMER-JACOBY-FURNITURE-BUILDING-S1",
+    "title": "HauntBound: Jacoby Arts Center and former morgue reports",
+    "url": "https://hauntbound.com/locations/il/jacoby-arts-center/",
+    "publisher": "HauntBound",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "paranormal"
+  },
+  {
+    "sourceId": "PHASM-US-IL-FORMER-JACOBY-FURNITURE-BUILDING-S2",
+    "title": "Jacoby Arts Center: history",
+    "url": "https://www.jacobyartscenter.org/history",
+    "publisher": "Jacoby Arts Center",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "history"
+  },
+  {
+    "sourceId": "PHASM-US-IL-FORMER-JACOBY-FURNITURE-BUILDING-S3",
+    "title": "Jacoby Arts Center: current site",
+    "url": "https://www.jacobyartscenter.org/",
+    "publisher": "Jacoby Arts Center",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-GA-COLONIAL-PARK-CEMETERY-S1",
+    "title": "Atlas Obscura: Guide to haunted US cemeteries",
+    "url": "https://www.atlasobscura.com/articles/america-haunted-cemeteries",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2026-10-09",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-GA-COLONIAL-PARK-CEMETERY-S2",
+    "title": "City of Savannah: Colonial Park Cemetery",
+    "url": "https://www.savannahga.gov/879/Colonial-Park-Cemetery",
+    "publisher": "City of Savannah",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "municipal"
+  },
+  {
+    "sourceId": "PHASM-US-GA-COLONIAL-PARK-CEMETERY-S3",
+    "title": "City of Savannah: cemetery gate restrictions",
+    "url": "https://www.savannahga.gov/945/General-Information",
+    "publisher": "City of Savannah",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "municipal"
+  },
+  {
+    "sourceId": "PHASM-US-MA-HARVARD-SHAKER-LOLLIPOP-CEMETERY-S1",
+    "title": "Atlas Obscura: Harvard Shaker Lollipop Graveyard haunting",
+    "url": "https://www.atlasobscura.com/articles/america-haunted-cemeteries",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2026-10-09",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-MA-HARVARD-SHAKER-LOLLIPOP-CEMETERY-S2",
+    "title": "Harvard Historical Society: Shaker Cemetery",
+    "url": "https://harvardhistory.org/shaker-cemetery/",
+    "publisher": "Harvard Historical Society",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "history"
+  },
+  {
+    "sourceId": "PHASM-US-MA-DEAN-HILL-REVOLUTIONARY-CEMETERY-S1",
+    "title": "Atlas Obscura: Dean Hill Cemetery haunting",
+    "url": "https://www.atlasobscura.com/articles/america-haunted-cemeteries",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2026-10-09",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-MA-DEAN-HILL-REVOLUTIONARY-CEMETERY-S2",
+    "title": "Dean Hill Cemetery, The Rev — Haunted Places",
+    "url": "https://www.hauntedplaces.org/item/dean-hill-revolutionary-cemetery-the-rev/",
+    "publisher": "Haunted Places",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-PA-WILDWOOD-CEMETERY-WILLIAMSPORT-S1",
+    "title": "Atlas Obscura: Wildwood Cemetery legends",
+    "url": "https://www.atlasobscura.com/articles/america-haunted-cemeteries",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2026-10-09",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-PA-WILDWOOD-CEMETERY-WILLIAMSPORT-S2",
+    "title": "Wildwood Cemetery: Directions, Maps, and Hours",
+    "url": "https://wildwoodcemeterypa.com/directions-maps-and-hours/",
+    "publisher": "Wildwood Cemetery Co.",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-FL-GEORGIANA-CEMETERY-ETHEL-ALLEN-S1",
+    "title": "Atlas Obscura: Georgiana Cemetery ghost story",
+    "url": "https://www.atlasobscura.com/articles/america-haunted-cemeteries",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2026-10-09",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-NV-OLD-TONOPAH-CEMETERY-S1",
+    "title": "Atlas Obscura: Old Tonopah Cemetery",
+    "url": "https://www.atlasobscura.com/articles/america-haunted-cemeteries",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2026-10-09",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-NV-OLD-TONOPAH-CEMETERY-S2",
+    "title": "Travel Nevada: Old Tonopah Cemetery",
+    "url": "https://travelnevada.com/historical-interests/old-tonopah-cemetery/",
+    "publisher": "Travel Nevada",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-SC-ALICE-FLAGG-GRAVE-ALL-SAINTS-S1",
+    "title": "Atlas Obscura: Alice Flagg grave and local story",
+    "url": "https://www.atlasobscura.com/articles/america-haunted-cemeteries",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2026-10-09",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-WA-GREENWOOD-CEMETERY-THOUSAND-STEPS-S1",
+    "title": "Atlas Obscura: Greenwood Cemetery and Thousand Steps",
+    "url": "https://www.atlasobscura.com/articles/america-haunted-cemeteries",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2026-10-09",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-WA-GREENWOOD-CEMETERY-THOUSAND-STEPS-S2",
+    "title": "Fairmount Memorial: Greenwood Memorial Terrace",
+    "url": "https://www.fairmountmemorial.com/greenwood",
+    "publisher": "Greenwood Memorial Terrace",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-AL-DEAD-CHILDRENS-PLAYGROUND-MAPLE-HILL-S1",
+    "title": "USC Digital Folklore Archives: Dead Children’s Playground",
+    "url": "https://folklore.usc.edu/dead-childrens-playground/",
+    "publisher": "University of Southern California",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-AL-DEAD-CHILDRENS-PLAYGROUND-MAPLE-HILL-S2",
+    "title": "Visit Huntsville: Haunted Huntsville, Dead Children’s Playground",
+    "url": "https://www.huntsville.org/blog/list/post/haunted-huntsville-the-stories-behind-the-legends/",
+    "publisher": "Huntsville Convention & Visitors Bureau",
+    "author": null,
+    "publicationDate": "2026-09-23",
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-AL-DEAD-CHILDRENS-PLAYGROUND-MAPLE-HILL-S3",
+    "title": "City of Huntsville: Cemetery Services",
+    "url": "https://www.huntsvilleal.gov/residents/cemeteries/",
+    "publisher": "City of Huntsville",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "municipal"
+  },
+  {
+    "sourceId": "PHASM-US-SC-CHARLESTON-UNITARIAN-CHURCHYARD-S1",
+    "title": "Atlas Obscura: Charleston Unitarian Cemetery apparitions",
+    "url": "https://www.atlasobscura.com/articles/america-haunted-cemeteries",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2026-10-09",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-SC-CHARLESTON-UNITARIAN-CHURCHYARD-S2",
+    "title": "Unitarian Church in Charleston: visitor contact and hours",
+    "url": "https://www.charlestonuu.org/contact/",
+    "publisher": "Unitarian Church in Charleston",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-IL-ST-OMER-CEMETERY-CAROLINE-BARNES-S1",
+    "title": "Atlas Obscura: St. Omer witch-grave folklore",
+    "url": "https://www.atlasobscura.com/articles/america-haunted-cemeteries",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2026-10-09",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-IL-ST-OMER-CEMETERY-CAROLINE-BARNES-S2",
+    "title": "Village of Ashmore: Attractions, Omer Cemetery",
+    "url": "https://www.ashmore.gov/attractions",
+    "publisher": "Village of Ashmore",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "municipal"
+  },
+  {
+    "sourceId": "PHASM-US-CA-EL-CAMPO-SANTO-CEMETERY-S1",
+    "title": "Atlas Obscura: El Campo Santo cemetery legends",
+    "url": "https://www.atlasobscura.com/articles/america-haunted-cemeteries",
+    "publisher": "Atlas Obscura",
+    "author": null,
+    "publicationDate": "2026-10-09",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-CA-EL-CAMPO-SANTO-CEMETERY-S2",
+    "title": "California State Parks: El Campo Santo landmark",
+    "url": "https://ohp.parks.ca.gov/ListedResources/Detail/68",
+    "publisher": "California State Parks",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "state_parks"
+  },
+  {
+    "sourceId": "PHASM-US-CA-EL-CAMPO-SANTO-CEMETERY-S3",
+    "title": "San Diego Tourism Authority: licensed Old Town ghost tour",
+    "url": "https://www.sandiego.org/events-festivals/the-original-old-town-haunted-ghost-tour/e29bf238b51e11f0bdd7",
+    "publisher": "San Diego Tourism Authority",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-AL-HISTORIC-LOWRY-HOUSE-S1",
+    "title": "Huntsville visitors bureau: Lowry House ghost stories",
+    "url": "https://www.huntsville.org/blog/list/post/haunted-huntsville-the-stories-behind-the-legends/",
+    "publisher": "Huntsville Convention & Visitors Bureau",
+    "author": null,
+    "publicationDate": "2026-09-23",
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-AL-HISTORIC-LOWRY-HOUSE-S2",
+    "title": "Historic Lowry House: current visitor and events information",
+    "url": "https://www.historiclowryhouse.com/",
+    "publisher": "Historic Lowry House",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-AL-HISTORIC-LOWRY-HOUSE-S3",
+    "title": "City of Huntsville: Lowry House marker",
+    "url": "https://www.huntsvilleal.gov/historicmarkers/lowry-house/",
+    "publisher": "City of Huntsville",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "municipal"
+  },
+  {
+    "sourceId": "PHASM-US-OR-WHITE-EAGLE-SALOON-HOTEL-S1",
+    "title": "McMenamins: White Eagle Saloon history and ghosts",
+    "url": "https://www.mcmenamins.com/white-eagle-saloon-hotel/white-eagle-saloon/history/history",
+    "publisher": "McMenamins",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-OR-WHITE-EAGLE-SALOON-HOTEL-S2",
+    "title": "McMenamins: White Eagle Saloon & Hotel",
+    "url": "https://www.mcmenamins.com/white-eagle-saloon-hotel/home/",
+    "publisher": "McMenamins",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-PA-FARNSWORTH-HOUSE-INN-S1",
+    "title": "Farnsworth House: ghost tours and paranormal investigations",
+    "url": "https://farnsworthhouseinn.com/play/",
+    "publisher": "Farnsworth House Inn",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-PA-FARNSWORTH-HOUSE-INN-S2",
+    "title": "Farnsworth House Inn: lodging and contact",
+    "url": "https://farnsworthhouseinn.com/",
+    "publisher": "Farnsworth House Inn",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-NC-DEVILS-TRAMPING-GROUND-S1",
+    "title": "Chatham County Historical Association: Devil’s Tramping Ground",
+    "url": "https://chathamhistory.org/Snippets-Chatham-History-Blog/13539450",
+    "publisher": "Chatham County Historical Association",
+    "author": null,
+    "publicationDate": "2025-08-31",
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-NC-DEVILS-TRAMPING-GROUND-S2",
+    "title": "Visit North Carolina: Devil’s Tramping Ground",
+    "url": "https://www.visitnc.com/devils-tramping-ground",
+    "publisher": "Visit North Carolina",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-DE-WOODBURN-GOVERNORS-RESIDENCE-S1",
+    "title": "State of Delaware: The Woodburn Ghost",
+    "url": "https://woodburn.delaware.gov/ghosts-legends/woodburn-ghost/",
+    "publisher": "Delaware Governor’s Office",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-DE-WOODBURN-GOVERNORS-RESIDENCE-S2",
+    "title": "State of Delaware: Visiting Woodburn",
+    "url": "https://woodburn.delaware.gov/visiting-woodburn/",
+    "publisher": "Delaware Governor’s Office",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-DE-WOODBURN-GOVERNORS-RESIDENCE-S3",
+    "title": "State of Delaware: Woodburn residence history",
+    "url": "https://woodburn.delaware.gov/",
+    "publisher": "Delaware Governor’s Office",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "history"
+  },
+  {
+    "sourceId": "PHASM-US-NY-IRON-ISLAND-MUSEUM-S1",
+    "title": "Iron Island Museum: haunted tours and investigations",
+    "url": "https://www.ironislandmuseum.com/",
+    "publisher": "Iron Island Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-NY-IRON-ISLAND-MUSEUM-S2",
+    "title": "Visit Buffalo: Iron Island Museum",
+    "url": "https://visitbuffalo.com/businesses/iron-island-museum/",
+    "publisher": "Visit Buffalo",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-AR-BASIN-PARK-HOTEL-S1",
+    "title": "Basin Park Hotel: Paranormal Investigations",
+    "url": "https://basinpark.com/things-to-do/paranormal-investigation/",
+    "publisher": "Basin Park Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-AR-BASIN-PARK-HOTEL-S2",
+    "title": "Basin Park Hotel official website",
+    "url": "https://basinpark.com/",
+    "publisher": "Basin Park Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-SD-HISTORIC-BULLOCK-HOTEL-S1",
+    "title": "Historic Bullock Hotel: resident Seth Bullock story",
+    "url": "https://www.historicbullock.com/",
+    "publisher": "Historic Bullock Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-SD-HISTORIC-BULLOCK-HOTEL-S2",
+    "title": "Deadwood Tourism: Bullock Hotel ghost tours",
+    "url": "https://www.deadwood.com/business/hotels-motels/bullock-hotel/",
+    "publisher": "Visit Deadwood",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-MN-PALMER-HOUSE-HOTEL-S1",
+    "title": "Palmer House Hotel: guest experiences and investigations",
+    "url": "https://www.thepalmerhousehotel.com/guest-experiences/",
+    "publisher": "Palmer House Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-MN-PALMER-HOUSE-HOTEL-S2",
+    "title": "Palmer House Hotel: 2026 event calendar",
+    "url": "https://www.thepalmerhousehotel.com/event-calendar/",
+    "publisher": "Palmer House Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-MN-PALMER-HOUSE-HOTEL-S3",
+    "title": "Palmer House Hotel: current lodging",
+    "url": "https://www.thepalmerhousehotel.com/",
+    "publisher": "Palmer House Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-CA-WHALEY-HOUSE-MUSEUM-S1",
+    "title": "Whaley House: haunting history",
+    "url": "https://www.whaleyhousesandiego.com/haunted-house-ghost-tour/",
+    "publisher": "Whaley House Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-CA-WHALEY-HOUSE-MUSEUM-S2",
+    "title": "Whaley House: official FAQ and access",
+    "url": "https://www.whaleyhousesandiego.com/faqs/",
+    "publisher": "Whaley House Museum",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-KS-ELDRIDGE-HOTEL-LAWRENCE-S1",
+    "title": "PBS PlainSpirits: Eldridge Hotel witness interviews",
+    "url": "https://www.pbs.org/video/plainspirits-1ftuel/",
+    "publisher": "PBS / KTWU",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "firsthand_account"
+  },
+  {
+    "sourceId": "PHASM-US-KS-ELDRIDGE-HOTEL-LAWRENCE-S2",
+    "title": "Legends of America: haunted Eldridge Hotel",
+    "url": "https://www.legendsofamerica.com/ks-eldridgehotel/",
+    "publisher": "Legends of America",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "PHASM-US-KS-ELDRIDGE-HOTEL-LAWRENCE-S3",
+    "title": "Eldridge Hotel current reservations",
+    "url": "https://eldridgehotel.com/",
+    "publisher": "Eldridge Hotel",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-DE-ROCKWOOD-PARK-MUSEUM-S1",
+    "title": "New Castle County: Ghost Walk and paranormal programs",
+    "url": "https://www.newcastlede.gov/Calendar.aspx?CID=61",
+    "publisher": "New Castle County",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_report"
+  },
+  {
+    "sourceId": "PHASM-US-DE-ROCKWOOD-PARK-MUSEUM-S2",
+    "title": "New Castle County: Rockwood Park & Museum",
+    "url": "https://www.newcastlede.gov/431/Rockwood-Park-Museum",
+    "publisher": "New Castle County",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "official_visit"
+  },
+  {
+    "sourceId": "PHASM-US-PA-JENNIE-WADE-HOUSE-S1",
+    "title": "Destination Gettysburg: Spirits of Jennie Wade",
+    "url": "https://destinationgettysburg.com/tour-event/details/spirits-of-jennie-wade/",
+    "publisher": "Destination Gettysburg",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "local_report"
+  },
+  {
+    "sourceId": "PHASM-US-PA-JENNIE-WADE-HOUSE-S2",
+    "title": "Jennie Wade House: historic tour rules",
+    "url": "https://www.gettysburgbattlefieldtours.com/house-tour/",
+    "publisher": "Gettysburg Battlefield Tours",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-PA-JENNIE-WADE-HOUSE-S3",
+    "title": "Jennie Wade House: visitor program",
+    "url": "https://www.gettysburgbattlefieldtours.com/jennie-wade-house/",
+    "publisher": "Gettysburg Battlefield Tours",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "operator_visit"
+  },
+  {
+    "sourceId": "PHASM-US-MI-MORROW-ROAD-WOMAN-IN-WHITE-S1",
+    "title": "Mysterious Michigan: The Legend of Morrow Road",
+    "url": "https://mysteriousmichigan.com/the-legend-of-morrow-road",
+    "publisher": "Mysterious Michigan",
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-10",
+    "sourceType": "folklore"
+  },
+  {
+    "sourceId": "geocode-phasm-us-tx-marfa-lights",
+    "title": "Visit Marfa — Mystery / Marfa Lights",
+    "url": "https://visitmarfa.com/mystery",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nd-custer-house",
+    "title": "TopoQuest — Fort Abraham Lincoln Custer House, North Dakota",
+    "url": "https://topoquest.com/place/north-dakota/building/fort-abraham-lincoln-custer-house/2749119",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ks-mcinteer-villa",
+    "title": "Wikipedia — McInteer Villa",
+    "url": "https://en.wikipedia.org/wiki/McInteer_Villa",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-tx-fort-concho",
+    "title": "Wikipedia — Fort Concho",
+    "url": "https://en.wikipedia.org/wiki/Fort_Concho",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-or-pendleton-center-for-the-arts",
+    "title": "Pendleton Center for the Arts — official directions link",
+    "url": "https://pendletonarts.org/",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-cairo-public-library",
+    "title": "Historical Marker Database — The Cairo Public Library",
+    "url": "https://www.hmdb.org/m.asp?m=194717",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-me-buck-monument",
+    "title": "Historical Marker Database — The Legend of the Buck Memorial",
+    "url": "https://www.hmdb.org/m.asp?m=145041",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ma-sk-pierce-mansion",
+    "title": "Wikipedia — Sylvester K. Pierce House",
+    "url": "https://en.wikipedia.org/wiki/Sylvester_K._Pierce_House",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ne-historic-argo-hotel",
+    "title": "Wikipedia — Argo Hotel",
+    "url": "https://en.wikipedia.org/wiki/Argo_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-al-sturdivant-hall",
+    "title": "Wikipedia — Sturdivant Hall",
+    "url": "https://en.wikipedia.org/wiki/Sturdivant_Hall",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ga-bonaventure-cemetery",
+    "title": "Wikipedia — Bonaventure Cemetery",
+    "url": "https://en.wikipedia.org/wiki/Bonaventure_Cemetery",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nj-burlington-county-prison-museum",
+    "title": "Wikipedia — Burlington County Prison",
+    "url": "https://en.wikipedia.org/wiki/Burlington_County_Prison",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-reid-memorial-library-harriet-haskell",
+    "title": "The National Map feature via HomeTownLocator — Lewis and Clark Community College Benjamin Godfrey Campus",
+    "url": "https://illinois.hometownlocator.com/maps/tnm-feature-map,n,lewis-and-clark-community-college-benjamin-godfrey-campus-3958,fcode,73006.cfm",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-peoria-public-library-main",
+    "title": "TopoQuest — Peoria Public Library, Illinois",
+    "url": "https://topoquest.com/place/illinois/building/peoria-public-library/1820874",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nj-clinton-road",
+    "title": "Wikipedia — Clinton Road (New Jersey)",
+    "url": "https://en.wikipedia.org/wiki/Clinton_Road_(New_Jersey)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-wv-west-virginia-penitentiary",
+    "title": "West Virginia Penitentiary — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/West_Virginia_Penitentiary",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-mn-wabasha-street-caves",
+    "title": "Wabasha Street Caves — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Wabasha_Street_Caves",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ut-mccune-mansion",
+    "title": "Alfred McCune Home / McCune Mansion — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/McCune_Mansion",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-sc-old-exchange-provost-dungeon",
+    "title": "Exchange and Provost — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Exchange_and_Provost",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-md-point-lookout-state-park",
+    "title": "Point Lookout State Park — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Point_Lookout_State_Park",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-me-fort-knox-state-historic-site",
+    "title": "Fort Knox (Maine) — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Fort_Knox_(Maine)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-la-myrtles-plantation",
+    "title": "Myrtles Plantation — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Myrtles_Plantation",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ca-bodie-ghost-town",
+    "title": "Bodie, California — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Bodie,_California",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-oh-ohio-state-reformatory",
+    "title": "Ohio State Reformatory — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Ohio_State_Reformatory",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-mt-old-montana-prison",
+    "title": "The Old Montana Prison Historical Marker — Historical Marker Database",
+    "url": "https://www.hmdb.org/m.asp?m=127789",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ct-captain-grants-1754-inn",
+    "title": "Captain Grant’s Inn 2 Poquetanuck CT — University of North Florida Digital Commons",
+    "url": "https://digitalcommons.unf.edu/historical_architecture_main/6361/",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ny-rolling-hills-asylum",
+    "title": "ROLLING HILLS — William G. Pomeroy Foundation",
+    "url": "https://www.wgpfoundation.org/historic-markers/rolling-hills/",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-va-ferry-plantation-house",
+    "title": "Ferry Plantation House — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Ferry_Plantation_House",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-co-hotel-colorado",
+    "title": "Hotel Colorado — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Hotel_Colorado",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ia-edinburgh-manor",
+    "title": "U.S. Census Geocoder — Edinburgh Manor published address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=13241+E23+County+Home+Rd%2C+Monticello%2C+IA&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nh-omni-mount-washington-resort",
+    "title": "Mount Washington Hotel — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Mount_Washington_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-wa-manresa-castle",
+    "title": "U.S. Census Geocoder — Manresa Castle public address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=651+Cleveland+Street%2C+Port+Townsend%2C+WA+98368&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-al-sloss-furnaces",
+    "title": "Sloss Furnaces — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Sloss_Furnaces",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ca-hotel-del-coronado",
+    "title": "Hotel del Coronado — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Hotel_del_Coronado",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-in-whispers-estate",
+    "title": "U.S. Census Geocoder — Whispers Estate public address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=714+West+Warren+Street%2C+Mitchell%2C+IN+47446&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-resurrection-mary-cemetery",
+    "title": "Resurrection Cemetery (Justice, Illinois) — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Resurrection_Cemetery_(Justice,_Illinois)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ne-hummel-park",
+    "title": "Hummel Park — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Hummel_Park",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-tn-orpheum-theatre-memphis",
+    "title": "Orpheum Theatre (Memphis) — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Orpheum_Theatre_(Memphis)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-tx-haunted-magnolia-hotel-seguin",
+    "title": "U.S. Census Geocoder — Haunted Magnolia Hotel public address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=203+South+Crockett+Street%2C+Seguin%2C+TX+78155&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-az-jerome-grand-hotel",
+    "title": "Jerome Grand Hotel — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Jerome_Grand_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-wy-fort-laramie-woman-in-green",
+    "title": "Fort Laramie National Historic Site — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Fort_Laramie_National_Historic_Site",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-tx-yorktown-memorial-hospital",
+    "title": "U.S. Census Geocoder — Yorktown Memorial Hospital public address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=728+West+Main+Street%2C+Yorktown%2C+TX+78164&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ny-morris-jumel-mansion",
+    "title": "Morris–Jumel Mansion — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Morris%E2%80%93Jumel_Mansion",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-wi-pfister-hotel",
+    "title": "The Pfister Hotel — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/The_Pfister_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-pa-sachs-covered-bridge",
+    "title": "Sachs Covered Bridge — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Sachs_Covered_Bridge",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-former-first-unitarian-church-alton",
+    "title": "First Unitarian Church, Illinois — TopoQuest geographic feature 1962702",
+    "url": "https://topoquest.com/place/illinois/church/first-unitarian-church/1962702",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-milton-schoolhouse-alton",
+    "title": "Milton School House — Great Rivers & Routes official tourism listing",
+    "url": "https://www.riversandroutes.com/directory/milton-school-house/",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-mineral-springs-hotel-alton",
+    "title": "U.S. Census Bureau Geocoder — original Mineral Springs Hotel address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=301+East+Broadway%2C+Alton%2C+IL+62002&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-former-jacoby-furniture-building",
+    "title": "U.S. Census Bureau Geocoder — former Jacoby Furniture building address",
+    "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=627+East+Broadway%2C+Alton%2C+IL+62002&benchmark=Public_AR_Current&format=json",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ga-colonial-park-cemetery",
+    "title": "Colonial Park Cemetery — Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Colonial_Park_Cemetery",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ma-harvard-shaker-lollipop-cemetery",
+    "title": "Shaker Burying Ground / Harvard Shakers Cemetery — Find a Grave cemetery 1973617",
+    "url": "https://www.findagrave.com/cemetery/1973617/shaker-burying-ground",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ma-dean-hill-revolutionary-cemetery",
+    "title": "Dean Hill Cemetery, est. 1800 — City of Fitchburg facilities map",
+    "url": "https://www.fitchburgma.gov/facilities/facility/details/Dean-Hill-Cemetery-est-1800-61",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-pa-wildwood-cemetery-williamsport",
+    "title": "Wildwood Cemetery, Pennsylvania — TopoQuest geographic feature 1191429",
+    "url": "https://topoquest.com/place/pennsylvania/cemetery/wildwood-cemetery/1191429",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-fl-georgiana-cemetery-ethel-allen",
+    "title": "Georgiana Cemetery in Merritt Island — Atlas Obscura",
+    "url": "https://www.atlasobscura.com/places/georgiana-cemetery",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nv-old-tonopah-cemetery",
+    "title": "Old Tonopah Cemetery — Find a Grave cemetery 2174134",
+    "url": "https://www.findagrave.com/cemetery/2174134",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-sc-alice-flagg-grave-all-saints",
+    "title": "All Saints Cemetery, South Carolina — TopoQuest geographic feature 1232235",
+    "url": "https://topoquest.com/place/south-carolina/cemetery/all-saints-cemetery/1232235",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-wa-greenwood-cemetery-thousand-steps",
+    "title": "Greenwood Memorial Terrace — Fairmount Memorial Association official cemetery map",
+    "url": "https://www.fairmountmemorial.com/greenwood",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-al-dead-childrens-playground-maple-hill",
+    "title": "Dead Children’s Playground — Atlas Obscura",
+    "url": "https://www.atlasobscura.com/places/dead-children-s-playground-2",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-sc-charleston-unitarian-churchyard",
+    "title": "Unitarian Church Cemetery, Charleston — Find a Grave cemetery 1969705",
+    "url": "https://www.findagrave.com/cemetery/1969705/unitarian-church-cemetery",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-il-st-omer-cemetery-caroline-barnes",
+    "title": "Saint Omer Cemetery, Illinois — TopoQuest geographic feature 417658",
+    "url": "https://topoquest.com/place/illinois/cemetery/saint-omer-cemetery/417658",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ca-el-campo-santo-cemetery",
+    "title": "HomeTownLocator — El Campo Santo Cemetery (USGS National Map data)",
+    "url": "https://california.hometownlocator.com/maps/tnm-feature-map,n,el-campo-santo-cemetery-16482,fcode,82010.cfm",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-al-historic-lowry-house",
+    "title": "Wikipedia — Lowry House (Huntsville, Alabama)",
+    "url": "https://en.wikipedia.org/wiki/Lowry_House_(Huntsville,_Alabama)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-or-white-eagle-saloon-hotel",
+    "title": "Wikipedia — Hryszko Brothers Building / White Eagle Saloon & Hotel",
+    "url": "https://en.wikipedia.org/wiki/White_Eagle_Saloon_%26_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-pa-farnsworth-house-inn",
+    "title": "Historical Marker Database — Farnsworth House, circa 1810",
+    "url": "https://www.hmdb.org/m.asp?m=258505",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-nc-devils-tramping-ground",
+    "title": "Wikipedia — Devil's Tramping Ground",
+    "url": "https://en.wikipedia.org/wiki/Devil%27s_Tramping_Ground",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-de-woodburn-governors-residence",
+    "title": "Wikipedia — Delaware Governor's Mansion (Woodburn)",
+    "url": "https://en.wikipedia.org/wiki/Delaware_Governor%27s_Mansion",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ny-iron-island-museum",
+    "title": "Roadtrippers — Iron Island Museum, Buffalo",
+    "url": "https://maps.roadtrippers.com/us/buffalo-ny/points-of-interest/iron-island-museum-buffalo-ny",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ar-basin-park-hotel",
+    "title": "Atlas Obscura — Basin Park Hotel",
+    "url": "https://www.atlasobscura.com/places/basin-park-hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-sd-historic-bullock-hotel",
+    "title": "Wikipedia — Bullock Hotel",
+    "url": "https://en.wikipedia.org/wiki/Bullock_Hotel?wprov=sfti1",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-mn-palmer-house-hotel",
+    "title": "Wikipedia — The Palmer House (Sauk Centre)",
+    "url": "https://en.wikipedia.org/wiki/The_Palmer_House_(Sauk_Centre)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ca-whaley-house-museum",
+    "title": "Wikipedia — Whaley House (San Diego, California)",
+    "url": "https://en.wikipedia.org/wiki/Whaley_House_(San_Diego,_California)",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-ks-eldridge-hotel-lawrence",
+    "title": "Wikipedia — The Eldridge Hotel",
+    "url": "https://en.wikipedia.org/wiki/The_Eldridge_Hotel",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-de-rockwood-park-museum",
+    "title": "Wikipedia — Rockwood Museum and Park",
+    "url": "https://en.wikipedia.org/wiki/Rockwood_Museum_and_Park",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-pa-jennie-wade-house",
+    "title": "Atlas Obscura — Jennie Wade House",
+    "url": "https://www.atlasobscura.com/places/jennie-wade-house",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  },
+  {
+    "sourceId": "geocode-phasm-us-mi-morrow-road-woman-in-white",
+    "title": "Ghost Map — Morrow Road",
+    "url": "https://ghostmap.org/haunted-places/morrow-road/",
+    "publisher": null,
+    "author": null,
+    "publicationDate": null,
+    "accessedOn": "2026-10-12",
+    "sourceType": "geographic_reference"
+  }
+]

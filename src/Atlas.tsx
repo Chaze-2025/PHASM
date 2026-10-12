@@ -26,6 +26,7 @@ import {
   type LocationPage,
 } from "../shared/types";
 import { LocationCard, PlaceImage, Status } from "./components";
+import { hasMapCoordinates } from "./location";
 
 // Let Vite fingerprint and publish the worker alongside this lazy-loaded bundle.
 maplibregl.setWorkerUrl(mapWorkerUrl);
@@ -106,8 +107,8 @@ function MapCanvas({
       );
       setStatus(
         data.total
-          ? `${data.total} ${data.total === 1 ? "place" : "places"} in this area`
-          : "No places in this area yet",
+          ? `${data.total} mapped ${data.total === 1 ? "place" : "places"} in this area`
+          : "No mapped places in this area",
       );
     } catch (e) {
       if ((e as Error).name !== "AbortError")
@@ -363,8 +364,10 @@ function MapCanvas({
   useEffect(() => {
     const m = map.current;
     if (!ready || !m || !locations.length || !query) return;
+    const mappedLocations = locations.filter(hasMapCoordinates);
+    if (!mappedLocations.length) return;
     const bounds = new maplibregl.LngLatBounds();
-    locations.forEach((l) => bounds.extend([l.longitude, l.latitude]));
+    mappedLocations.forEach((l) => bounds.extend([l.longitude, l.latitude]));
     m.fitBounds(bounds, {
       padding: 70,
       maxZoom: 10,
@@ -422,7 +425,9 @@ export default function Atlas() {
   const [params, setParams] = useSearchParams();
   const [text, setText] = useState(params.get("q") || "");
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [view, setView] = useState<"map" | "list">("map");
+  const [view, setView] = useState<"map" | "list">(
+    params.get("view") === "list" ? "list" : "map",
+  );
   const [selected, setSelected] = useState("");
   const filterToggle = useRef<HTMLButtonElement>(null);
   const closeFilters = () => {
@@ -443,6 +448,7 @@ export default function Atlas() {
   }, [filtersOpen, selected]);
   const query = new URLSearchParams(params);
   query.delete("page");
+  query.delete("view");
   const queryString = query.toString();
   const page = Number(params.get("page") || 1);
   const { data, error, loading } = useApi<LocationPage>(
@@ -695,7 +701,7 @@ export default function Atlas() {
             <span>
               {loading
                 ? "Searching…"
-                : `${data?.total ?? 0} places to discover`}
+                : `${data?.total ?? 0} ${(data?.total ?? 0) === 1 ? "profile" : "profiles"} to discover`}
             </span>
             <span>THE FIELD INDEX</span>
           </div>
@@ -761,8 +767,8 @@ export default function Atlas() {
             </div>
           )}
           <p className="map-editorial-note">
-            Follow the markers to haunted places, local legends, and their
-            stories.
+            Explore each place on the map. Approximate pins mark site reference
+            points; check the profile for visiting access and restrictions.
           </p>
         </section>
         <section
@@ -803,8 +809,13 @@ export default function Atlas() {
                       <h2>{preview.data.location.name}</h2>
                       <p>
                         <MapPin size={12} />
-                        {preview.data.location.city},{" "}
-                        {preview.data.location.country}
+                        {[
+                          preview.data.location.city,
+                          preview.data.location.state,
+                          preview.data.location.country,
+                        ]
+                          .filter(Boolean)
+                          .join(", ")}
                       </p>
                       <Link
                         className="button brass"
@@ -820,12 +831,12 @@ export default function Atlas() {
           )}
           <div className="map-legend">
             <span />
-            Locations & local legends
+            Places with public map pins
           </div>
         </section>
       </div>
       <div className="mobile-map-note">
-        Explore the map, or choose List for every location.
+        Explore mapped places, or choose List for every profile.
       </div>
     </main>
   );

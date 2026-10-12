@@ -195,6 +195,19 @@ em {
   background: var(--surface-translucent);
   backdrop-filter: blur(8px);
 }
+.image-illustration-label {
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  padding: 5px 9px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--surface-translucent);
+  color: var(--ivory);
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  pointer-events: none;
+}
 .save-button {
   right: 13px;
   top: 12px;
@@ -241,6 +254,12 @@ em {
   line-height: 1.7;
   margin-top: 12px;
   min-height: 3.4em;
+}
+.card-map-note {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
 }
 .card-phenomenon {
   color: var(--text-secondary);

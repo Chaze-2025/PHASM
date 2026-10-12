@@ -19,7 +19,18 @@ const original = validateImport(
   ),
 );
 const revised = () =>
-  validateImport(JSON.parse(readFileSync("content/locations.json", "utf8")));
+  validateImport(
+    JSON.parse(
+      execFileSync(
+        "git",
+        [
+          "show",
+          "0e980f203650ddbac2d843e66f47194f80735359:content/locations.json",
+        ],
+        { encoding: "utf8" },
+      ),
+    ),
+  );
 function fixture() {
   const db = new DatabaseSync(":memory:");
   for (const file of readdirSync("migrations")
@@ -93,7 +104,7 @@ test("editorial revision preserves relational identity and sources, remains sear
 
 test("editorial revision rejects broader edits and stops before writes when live copy has drifted", () => {
   const changed = structuredClone(original);
-  changed[0].latitude += 1;
+  changed[0].latitude = (changed[0].latitude ?? 0) + 1;
   assert.throws(() => editorialRevisionSql(original, changed), /Non-editorial/);
   const db = fixture();
   try {
