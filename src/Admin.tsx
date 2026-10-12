@@ -11,8 +11,8 @@ const emptyLocation = (): Location => ({
   state: "",
   country: "",
   region: "",
-  latitude: 0,
-  longitude: 0,
+  latitude: null,
+  longitude: null,
   category: "Other",
   classification: "community-discovery",
   summary: "",
@@ -30,7 +30,7 @@ const emptyLocation = (): Location => ({
   imageLicense: "PHASM",
   imageSource: "",
   status: "draft",
-  coordinatePrecision: "approximate",
+  coordinatePrecision: "withheld",
   featured: false,
   updatedAt: new Date().toISOString(),
 });
@@ -298,16 +298,54 @@ export default function Admin() {
                         step="any"
                         min={key === "latitude" ? -90 : -180}
                         max={key === "latitude" ? 90 : 180}
-                        required
-                        value={record[key]}
-                        onChange={(e) => update(key, e.target.valueAsNumber)}
+                        required={record.coordinatePrecision !== "withheld"}
+                        disabled={record.coordinatePrecision === "withheld"}
+                        value={record[key] ?? ""}
+                        onChange={(e) =>
+                          update(
+                            key,
+                            e.target.value === ""
+                              ? null
+                              : e.target.valueAsNumber,
+                          )
+                        }
                       />
                     </label>
                   ))}
-                  {selectField("coordinatePrecision", "Coordinate precision", [
-                    "exact",
-                    "approximate",
-                  ])}
+                  <label>
+                    Map pin precision
+                    <select
+                      value={record.coordinatePrecision}
+                      onChange={(e) => {
+                        const coordinatePrecision = e.target
+                          .value as Location["coordinatePrecision"];
+                        setRecord((previous) =>
+                          previous
+                            ? {
+                                ...previous,
+                                coordinatePrecision,
+                                ...(coordinatePrecision === "withheld"
+                                  ? { latitude: null, longitude: null }
+                                  : {}),
+                              }
+                            : null,
+                        );
+                      }}
+                    >
+                      <option value="exact">Exact</option>
+                      <option value="approximate">Approximate</option>
+                      <option value="withheld">
+                        Withheld — no public map pin
+                      </option>
+                    </select>
+                  </label>
+                  {record.coordinatePrecision === "withheld" && (
+                    <p className="full">
+                      This profile remains searchable by its city and state
+                      without a map pin. Choose exact or approximate precision
+                      when verified coordinates are available.
+                    </p>
+                  )}
                   <label>
                     Category
                     <input
@@ -349,7 +387,7 @@ export default function Admin() {
                         required={
                           key === "summary" ||
                           key === "accessNotes" ||
-                          record.status === "published"
+                          (key === "reports" && record.status === "published")
                         }
                         value={record[key]}
                         onChange={(e) => update(key, e.target.value)}
@@ -441,7 +479,8 @@ export default function Admin() {
                 <h2>The archive is in your hands.</h2>
                 <p>
                   Select a location to edit, or create a new draft. Published
-                  profiles need both historical and reported-activity sources.
+                  profiles need reported-activity sources and a historical
+                  source for any history included.
                 </p>
                 {error && (
                   <p role="alert" className="form-error">

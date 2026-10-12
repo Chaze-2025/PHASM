@@ -111,7 +111,7 @@ try {
       await page.getByRole("button", { name: "Find haunted places" }).click();
       await expect(page).toHaveURL(/\/map\?q=Stanley/);
       await expect(page.locator(".results-heading")).toContainText(
-        "1 places to discover",
+        "1 profile to discover",
       );
       await expect(page.locator(".atlas-card-list .card-title")).toHaveText(
         "The Stanley Hotel",
@@ -245,12 +245,12 @@ try {
     async () => {
       await page.goto(`${baseURL}/map?q=Stanley`);
       await expect(page.locator(".map-status")).toHaveText(
-        /1 place in this area/,
+        /1 mapped place in this area/,
         { timeout: 60000 },
       );
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
       await expect(page.locator(".map-status")).toHaveText(
-        /1 place in this area/,
+        /1 mapped place in this area/,
         { timeout: 30000 },
       );
       const bounds = await page.locator(".maplibregl-canvas").boundingBox();
@@ -317,7 +317,7 @@ try {
       await expect(page.locator(".maplibregl-canvas")).toBeVisible();
       await noOverflow(page);
       await expect(page.locator(".map-status")).toHaveText(
-        /places in this area|No places in this area yet/,
+        /mapped places in this area|No mapped places in this area/,
         { timeout: 60000 },
       );
       await page.screenshot({ path: `${output}/phasm-map-mobile.png` });

@@ -66,7 +66,7 @@ No client-side secrets are required. Never place privileged values in Vite varia
 
 ## Content and imports
 
-The seed contains **10 genuine locations toward a 50-profile public-release target**. Profiles distinguish historical information from attributed paranormal reports. Five use licensed location photographs; five use an explicitly labelled editorial placeholder. No reviews, ratings, eyewitness accounts, or paranormal evidence were invented.
+The catalog contains **136 locations: 130 US research profiles across all 50 states and six preserved international profiles**. The October 10 research handoff adds 126 locations and updates four existing US IDs. Seventy-five profiles have withheld coordinates: they remain searchable and readable without a map marker. Profiles distinguish historical information from attributed paranormal reports; history is optional when the research supports only a sourced story. Existing approved imagery is retained and new profiles use a clearly labelled nonphotographic placeholder. No member reviews or ratings were added. See [the USA atlas integration](docs/USA-ATLAS-130.md) for provenance, validation and deployment status.
 
 Read [content research and image licensing](docs/CONTENT.md) and [image credits](content/image-credits.json) before editing. These records are published in the local database for evaluation, but all require another editorial review before a public launch.
 

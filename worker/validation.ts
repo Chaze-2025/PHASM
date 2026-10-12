@@ -14,7 +14,7 @@ const enums = {
   access: ["public", "restricted", "private", "unknown"],
   tours: ["yes", "no", "unknown"],
   status: ["draft", "published", "archived"],
-  coordinatePrecision: ["exact", "approximate"],
+  coordinatePrecision: ["exact", "approximate", "withheld"],
 } as const;
 
 function string(
@@ -51,6 +51,7 @@ export function safeUrl(
   label: string,
   allowLocal = false,
   required = false,
+  allowHttp = false,
 ): string {
   const text = string(value, label, 2048, required);
   if (!text) return "";
@@ -62,13 +63,17 @@ export function safeUrl(
     return text;
   try {
     const url = new URL(text);
-    if (url.protocol !== "https:" || url.username || url.password)
+    if (
+      (url.protocol !== "https:" && !(allowHttp && url.protocol === "http:")) ||
+      url.username ||
+      url.password
+    )
       throw new Error();
     return url.href;
   } catch {
     throw new HttpError(
       400,
-      `${label} must be an HTTPS URL${allowLocal ? " or a local asset path" : ""}.`,
+      `${label} must be an ${allowHttp ? "HTTP or HTTPS" : "HTTPS"} URL${allowLocal ? " or a local asset path" : ""}.`,
     );
   }
 }
@@ -98,7 +103,18 @@ export function validateLocation(input: unknown): Location {
     throw new HttpError(400, "Invalid id or slug.");
   const latitude = data.latitude;
   const longitude = data.longitude;
-  if (
+  const coordinatePrecision = enumValue(
+    data.coordinatePrecision,
+    "coordinate precision",
+    enums.coordinatePrecision,
+  );
+  if (coordinatePrecision === "withheld") {
+    if (latitude !== null || longitude !== null)
+      throw new HttpError(
+        400,
+        "Withheld coordinates require both latitude and longitude to be null.",
+      );
+  } else if (
     typeof latitude !== "number" ||
     !Number.isFinite(latitude) ||
     Math.abs(latitude) > 90 ||
@@ -111,18 +127,15 @@ export function validateLocation(input: unknown): Location {
       "Coordinates must be finite numbers in geographic bounds.",
     );
   const access = enumValue(data.access, "access", enums.access);
-  const coordinatePrecision = enumValue(
-    data.coordinatePrecision,
-    "coordinate precision",
-    enums.coordinatePrecision,
-  );
-  if (access === "private" && coordinatePrecision !== "approximate")
+  if (access === "private" && coordinatePrecision === "exact")
     throw new HttpError(
       400,
-      "Private sites require privacy-safe approximate coordinates.",
+      "Private sites require withheld or privacy-safe approximate coordinates.",
     );
   if (
     access === "private" &&
+    typeof latitude === "number" &&
+    typeof longitude === "number" &&
     (Math.abs(latitude * 10 - Math.round(latitude * 10)) > 0.00001 ||
       Math.abs(longitude * 10 - Math.round(longitude * 10)) > 0.00001)
   )
@@ -143,7 +156,7 @@ export function validateLocation(input: unknown): Location {
     const source = entry as Record<string, unknown>;
     return {
       title: string(source.title, "source title", 250),
-      url: safeUrl(source.url, "source URL", false, true),
+      url: safeUrl(source.url, "source URL", false, true, true),
       kind: enumValue(source.kind, "source kind", [
         "history",
         "reports",
@@ -152,12 +165,7 @@ export function validateLocation(input: unknown): Location {
     };
   });
   const status = enumValue(data.status, "status", enums.status);
-  const history = string(
-    data.history,
-    "history",
-    30000,
-    status === "published",
-  );
+  const history = string(data.history, "history", 30000, false);
   const reports = string(
     data.reports,
     "reports",
@@ -166,12 +174,12 @@ export function validateLocation(input: unknown): Location {
   );
   if (
     status === "published" &&
-    (!sources.some((source) => source.kind === "history") ||
+    ((history && !sources.some((source) => source.kind === "history")) ||
       !sources.some((source) => source.kind === "reports"))
   )
     throw new HttpError(
       400,
-      "Published locations require historical and paranormal-report sources.",
+      "Published locations require paranormal-report sources and a history source when historical copy is provided.",
     );
   if (typeof data.featured !== "boolean")
     throw new HttpError(400, "featured must be a boolean.");
@@ -183,8 +191,8 @@ export function validateLocation(input: unknown): Location {
     state: string(data.state, "state", 150, false),
     country: string(data.country, "country", 150),
     region: string(data.region, "region", 150),
-    latitude,
-    longitude,
+    latitude: latitude as number | null,
+    longitude: longitude as number | null,
     category: string(data.category, "category", 100),
     classification: enumValue(
       data.classification,
@@ -198,7 +206,7 @@ export function validateLocation(input: unknown): Location {
     access,
     tours: enumValue(data.tours, "tour availability", enums.tours),
     accessNotes: string(data.accessNotes, "access notes", 5000),
-    officialUrl: safeUrl(data.officialUrl, "official URL"),
+    officialUrl: safeUrl(data.officialUrl, "official URL", false, false, true),
     sources,
     image: safeUrl(data.image, "image URL", true, true),
     imageAlt: string(data.imageAlt, "image alt", 500),

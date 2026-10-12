@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import type { Location } from "../shared/types";
 import { useSaved } from "./api";
+import { hasLocationPhotograph, hasMapCoordinates } from "./location";
 export function Logo() {
   return (
     <Link to="/" className="logo" aria-label="PHASM home">
@@ -230,6 +231,7 @@ export function PlaceImage({
         if (!e.currentTarget.src.endsWith(PLACEHOLDER_IMAGE)) {
           e.currentTarget.removeAttribute("srcset");
           e.currentTarget.src = PLACEHOLDER_IMAGE;
+          e.currentTarget.alt = `Generic illustration — photograph of ${location.name} unavailable.`;
         }
       }}
     />
@@ -256,18 +258,28 @@ export function LocationCard({
           <PlaceImage location={location} />
         </Link>
         <span className="image-category">{location.category}</span>
+        {!hasLocationPhotograph(location) && (
+          <span className="image-illustration-label">Illustration</span>
+        )}
         <SaveButton slug={location.slug} />
       </div>
       <div className="card-content">
         <p className="place-geography">
           <MapPin size={12} />
-          {location.city}, {location.country}
+          {[location.city, location.state, location.country]
+            .filter(Boolean)
+            .join(", ")}
         </p>
         <Link className="card-title" to={`/locations/${location.slug}`}>
           <h3>{location.name}</h3>
           <ArrowUpRight size={18} />
         </Link>
         <p className="card-summary">{location.summary}</p>
+        {!hasMapCoordinates(location) && (
+          <p className="card-map-note">
+            Map pin unavailable · Profile available
+          </p>
+        )}
         {!!location.phenomena.length && (
           <p className="card-phenomenon">
             <span>Hauntings</span>

@@ -202,7 +202,10 @@
 }
 .profile-page .dossier-navigation {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(
+    var(--dossier-section-count, 6),
+    minmax(0, 1fr)
+  );
   gap: 0;
   border-top: 1px solid var(--dossier-line);
   border-bottom: 1px solid var(--dossier-line);
@@ -353,6 +356,16 @@
   font-size: 1rem;
   line-height: 1.85;
   text-wrap: pretty;
+}
+.profile-page .dossier-report-narrative,
+.profile-page .dossier-history-narrative,
+.profile-page .visit-access-notes {
+  white-space: pre-line;
+}
+.profile-page .visit-map-note {
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
 }
 .profile-page .dossier-source-link {
   display: inline-flex;

@@ -1,5 +1,7 @@
 # Editorial seed and content expansion
 
+**Current catalog:** The USA research integration expands the ten-record baseline below to **136 profiles**, including 130 US locations across all 50 states. See [USA atlas integration](USA-ATLAS-130.md) for the current counts, sourced-story policy, withheld coordinates, provenance and deployment status. The remaining sections describe the original engineering seed and its image provenance.
+
 The engineering milestone includes **10 real location profiles**, covering the United States, United Kingdom, Romania and Australia. They are available in the local application as `published` records so the complete map/profile flow can be evaluated. This does not constitute public-launch approval or completion of the 50-profile content milestone.
 
 `content/locations.json` is the editable seed. Every record separates `history` from `reports`, includes source links and visiting guidance, and uses a shared `Location` contract. Empty phenomenon arrays are intentional: a place having ghost folklore does not justify inventing a specific sighting, sound or other reported event. `tours: "yes"` means the operator offers some form of public tour, not necessarily a paranormal investigation. Pendle guided-tour availability remains `unknown`.

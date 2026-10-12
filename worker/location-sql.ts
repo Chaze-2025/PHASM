@@ -3,7 +3,7 @@ import { identityKey } from "./validation";
 
 export interface SqlStatement {
   sql: string;
-  params: (string | number)[];
+  params: (string | number | null)[];
 }
 const columns = [
   "id",

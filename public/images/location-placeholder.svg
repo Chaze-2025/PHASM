@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title description">
+  <title id="title">Location photograph pending</title>
+  <desc id="description">An abstract PHASM atlas illustration, not a photograph of the location.</desc>
+  <rect width="1600" height="1000" fill="#101d20"/>
+  <g fill="none" stroke="#29484b" stroke-width="2">
+    <circle cx="800" cy="420" r="260"/>
+    <circle cx="800" cy="420" r="215"/>
+    <ellipse cx="800" cy="420" rx="105" ry="260"/>
+    <path d="M540 420h520M576 290h448M576 550h448M800 160v520"/>
+  </g>
+  <g fill="none" stroke="#8cafab" stroke-width="3">
+    <path d="m800 335 32 65 68 20-68 20-32 65-32-65-68-20 68-20Z"/>
+    <circle cx="800" cy="420" r="10"/>
+  </g>
+  <text x="800" y="770" text-anchor="middle" fill="#c8d8d3" font-family="Georgia,serif" font-size="42" letter-spacing="6">PHASM ATLAS</text>
+  <text x="800" y="830" text-anchor="middle" fill="#91aaa7" font-family="Arial,sans-serif" font-size="26">Location photograph pending</text>
+  <text x="800" y="879" text-anchor="middle" fill="#91aaa7" font-family="Arial,sans-serif" font-size="20">Nonphotographic illustration</text>
+</svg>

@@ -27,8 +27,10 @@ const git = (...args) =>
   execFileSync("git", args, { cwd: source, encoding: "utf8" }).trim();
 const branch = git("branch", "--show-current");
 const commit = git("rev-parse", "HEAD");
-if (branch !== "dev/phasm-editorial-voice")
-  throw new Error("Preview requires branch dev/phasm-editorial-voice.");
+if (!["dev/phasm-editorial-voice", "codex/usa-atlas-130"].includes(branch))
+  throw new Error(
+    "Preview requires the editorial or reviewed USA atlas branch.",
+  );
 git("merge-base", "--is-ancestor", preservedPhaseOne, "HEAD");
 git("merge-base", "--is-ancestor", preservedPhaseOneOne, "HEAD");
 git("merge-base", "--is-ancestor", preservedMidnightSeance, "HEAD");
@@ -36,7 +38,7 @@ git("merge-base", "--is-ancestor", preservedAtmosphericFog, "HEAD");
 const dirty = Boolean(git("status", "--porcelain", "--untracked-files=normal"));
 if (dirty && !allowDirty)
   throw new Error(
-    "Commit the reviewed editorial voice changes before preparing a deployment. --allow-dirty is available only for local dry-run checks.",
+    "Commit reviewed changes before preparing a deployment. --allow-dirty is available only for local dry-run checks.",
   );
 
 // Always rebuild so the provenance matches the application being packaged.

@@ -1,0 +1,522 @@
+{
+  "phasm-us-ct-union-cemetery": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-il-bachelors-grove-cemetery": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-oh-moonville-tunnel": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-ia-villisca-axe-murder-house": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ny-merchants-house-museum": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-de-fort-delaware": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-fl-st-augustine-lighthouse": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-mt-dumas-brothel": {
+    "access": "restricted",
+    "tours": "unknown"
+  },
+  "phasm-us-ak-red-onion-saloon": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-hi-iolani-palace": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ms-mcraven-tour-home": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-or-heceta-head-keepers-house": {
+    "access": "restricted",
+    "tours": "unknown"
+  },
+  "phasm-us-az-hotel-monte-vista": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-ks-sallie-house": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-nc-brown-mountain-lights": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-va-st-albans-sanatorium": {
+    "access": "unknown",
+    "tours": "unknown"
+  },
+  "phasm-us-co-stanley-hotel": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-pa-eastern-state-penitentiary": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-ca-winchester-mystery-house": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ca-queen-mary": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-il-mcpike-mansion": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ny-van-horn-mansion": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ia-oakland-cemetery-black-angel": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-vt-green-mount-cemetery-black-agnes": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-in-willard-library": {
+    "access": "public",
+    "tours": "no"
+  },
+  "phasm-us-tx-the-grove": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-tx-marfa-lights": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-nd-custer-house": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ri-chestnut-hill-cemetery-mercy-brown": {
+    "access": "unknown",
+    "tours": "unknown"
+  },
+  "phasm-us-pa-fort-mifflin": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-ks-mcinteer-villa": {
+    "access": "restricted",
+    "tours": "unknown"
+  },
+  "phasm-us-tx-fort-concho": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-or-pendleton-center-for-the-arts": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-il-cairo-public-library": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-me-buck-monument": {
+    "access": "restricted",
+    "tours": "unknown"
+  },
+  "phasm-us-nh-pine-hill-cemetery": {
+    "access": "unknown",
+    "tours": "unknown"
+  },
+  "phasm-us-ma-sk-pierce-mansion": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ne-historic-argo-hotel": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-sd-hotel-alex-johnson": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-nm-kimo-theatre": {
+    "access": "restricted",
+    "tours": "unknown"
+  },
+  "phasm-us-ok-stone-lion-inn": {
+    "access": "unknown",
+    "tours": "unknown"
+  },
+  "phasm-us-nv-mizpah-hotel": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-ar-crescent-hotel": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-mi-seul-choix-point-lighthouse": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-al-sturdivant-hall": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-ga-bonaventure-cemetery": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-la-old-state-capitol": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-ky-octagon-hall": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-tn-bell-witch-cave": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-wi-nelsens-hall": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-fl-bellamy-bridge": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-ak-historic-anchorage-hotel": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-id-old-idaho-penitentiary": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-al-old-cahawba": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-nv-mackay-mansion": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-mo-lemp-mansion": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-sd-historic-adams-house": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ma-lizzie-borden-house": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-az-bird-cage-theatre": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-ky-waverly-hills-sanatorium": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-nm-st-james-hotel-cimarron": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-oh-historic-prospect-place": {
+    "access": "restricted",
+    "tours": "unknown"
+  },
+  "phasm-us-la-st-louis-cemetery-no1": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-vt-emilys-bridge": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-wa-walker-ames-house": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-wy-occidental-hotel": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-nj-burlington-county-prison-museum": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-il-reid-memorial-library-harriet-haskell": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-il-peoria-public-library-main": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-nj-clinton-road": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-wv-west-virginia-penitentiary": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-mn-wabasha-street-caves": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ut-mccune-mansion": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-sc-old-exchange-provost-dungeon": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-md-point-lookout-state-park": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-me-fort-knox-state-historic-site": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-la-myrtles-plantation": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-ca-bodie-ghost-town": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-oh-ohio-state-reformatory": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-mt-old-montana-prison": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ct-captain-grants-1754-inn": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-ny-rolling-hills-asylum": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-va-ferry-plantation-house": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-co-hotel-colorado": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-ia-edinburgh-manor": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-nh-omni-mount-washington-resort": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-wa-manresa-castle": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-al-sloss-furnaces": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-ca-hotel-del-coronado": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-in-whispers-estate": {
+    "access": "restricted",
+    "tours": "unknown"
+  },
+  "phasm-us-il-resurrection-mary-cemetery": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-ne-hummel-park": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-tn-orpheum-theatre-memphis": {
+    "access": "restricted",
+    "tours": "unknown"
+  },
+  "phasm-us-tx-haunted-magnolia-hotel-seguin": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-az-jerome-grand-hotel": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-wy-fort-laramie-woman-in-green": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-tx-yorktown-memorial-hospital": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ny-morris-jumel-mansion": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-wi-pfister-hotel": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-pa-sachs-covered-bridge": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-il-former-first-unitarian-church-alton": {
+    "access": "unknown",
+    "tours": "unknown"
+  },
+  "phasm-us-il-milton-schoolhouse-alton": {
+    "access": "restricted",
+    "tours": "unknown"
+  },
+  "phasm-us-il-mineral-springs-hotel-alton": {
+    "access": "unknown",
+    "tours": "unknown"
+  },
+  "phasm-us-il-former-jacoby-furniture-building": {
+    "access": "restricted",
+    "tours": "unknown"
+  },
+  "phasm-us-ga-colonial-park-cemetery": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-ma-harvard-shaker-lollipop-cemetery": {
+    "access": "unknown",
+    "tours": "unknown"
+  },
+  "phasm-us-ma-dean-hill-revolutionary-cemetery": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-pa-wildwood-cemetery-williamsport": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-fl-georgiana-cemetery-ethel-allen": {
+    "access": "unknown",
+    "tours": "unknown"
+  },
+  "phasm-us-nv-old-tonopah-cemetery": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-sc-alice-flagg-grave-all-saints": {
+    "access": "unknown",
+    "tours": "unknown"
+  },
+  "phasm-us-wa-greenwood-cemetery-thousand-steps": {
+    "access": "restricted",
+    "tours": "unknown"
+  },
+  "phasm-us-al-dead-childrens-playground-maple-hill": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-sc-charleston-unitarian-churchyard": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-il-st-omer-cemetery-caroline-barnes": {
+    "access": "unknown",
+    "tours": "unknown"
+  },
+  "phasm-us-ca-el-campo-santo-cemetery": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-al-historic-lowry-house": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-or-white-eagle-saloon-hotel": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-pa-farnsworth-house-inn": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-nc-devils-tramping-ground": {
+    "access": "private",
+    "tours": "unknown"
+  },
+  "phasm-us-de-woodburn-governors-residence": {
+    "access": "private",
+    "tours": "no"
+  },
+  "phasm-us-ny-iron-island-museum": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-ar-basin-park-hotel": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-sd-historic-bullock-hotel": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-mn-palmer-house-hotel": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-ca-whaley-house-museum": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-ks-eldridge-hotel-lawrence": {
+    "access": "public",
+    "tours": "unknown"
+  },
+  "phasm-us-de-rockwood-park-museum": {
+    "access": "public",
+    "tours": "yes"
+  },
+  "phasm-us-pa-jennie-wade-house": {
+    "access": "restricted",
+    "tours": "yes"
+  },
+  "phasm-us-mi-morrow-road-woman-in-white": {
+    "access": "public",
+    "tours": "unknown"
+  }
+}

@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useApi } from "./api";
 import type { Location } from "../shared/types";
+import { hasLocationPhotograph, hasMapCoordinates } from "./location";
 import {
   LocationCard,
   Eyebrow,
@@ -87,11 +88,17 @@ export function Profile() {
     );
 
   const geography = [p.city, p.state, p.country].filter(Boolean).join(", ");
-  const hasPhotograph = Boolean(
-    p.image &&
-    !p.image.includes("archive-placeholder.svg") &&
-    p.imageLicense !== "PHASM original illustration",
+  const hasPhotograph = hasLocationPhotograph(p);
+  const hasHistory = Boolean(p.history.trim());
+  const hasMapPin = hasMapCoordinates(p);
+  const visibleSections = dossierSections.filter(
+    ([id]) => id !== "history" || hasHistory,
   );
+  const sectionNumber = (id: string) =>
+    String(visibleSections.findIndex(([key]) => key === id) + 1).padStart(
+      2,
+      "0",
+    );
   return (
     <main id="main" className="profile profile-page">
       <nav className="breadcrumb section" aria-label="Breadcrumb">
@@ -129,9 +136,11 @@ export function Profile() {
       <div className="profile-subnav section">
         <p className="profile-location-note">
           <MapPin size={17} aria-hidden="true" />
-          {p.coordinatePrecision === "approximate"
-            ? "Approximate location"
-            : "On the Haunted Atlas"}
+          {!hasMapPin
+            ? "Map pin unavailable"
+            : p.coordinatePrecision === "approximate"
+              ? "Approximate location"
+              : "On the Haunted Atlas"}
         </p>
         <SaveButton slug={p.slug} label />
       </div>
@@ -139,8 +148,13 @@ export function Profile() {
       <nav
         className="dossier-navigation section"
         aria-label="Location sections"
+        style={
+          {
+            "--dossier-section-count": visibleSections.length,
+          } as React.CSSProperties
+        }
       >
-        {dossierSections.map(([id, label], index) => (
+        {visibleSections.map(([id, label], index) => (
           <a href={`#${id}`} key={id}>
             <span aria-hidden="true">0{index + 1}</span>
             {label}
@@ -171,19 +185,21 @@ export function Profile() {
                 </span>
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
-              <a href="#history">
-                <BookOpen size={19} strokeWidth={1.25} aria-hidden="true" />
-                <span>
-                  <small>The people & the place</small>Documented history
-                </span>
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
+              {hasHistory && (
+                <a href="#history">
+                  <BookOpen size={19} strokeWidth={1.25} aria-hidden="true" />
+                  <span>
+                    <small>The people & the place</small>Documented history
+                  </span>
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+              )}
             </nav>
           </section>
 
           <section id="reports" className="dossier-section dossier-reports">
             <DossierHeading
-              number="01"
+              number={sectionNumber("reports")}
               label="Stories of the unexplained"
               title="The Hauntings"
             />
@@ -213,21 +229,24 @@ export function Profile() {
             )}
           </section>
 
-          <section id="history" className="dossier-section dossier-history">
-            <DossierHeading
-              number="02"
-              label="The people & the place"
-              title="The History"
-            />
-            <p>{p.history}</p>
-            <a className="dossier-source-link" href="#sources">
-              Explore the sources <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-          </section>
+          {hasHistory && (
+            <section id="history" className="dossier-section dossier-history">
+              <DossierHeading
+                number={sectionNumber("history")}
+                label="The people & the place"
+                title="The History"
+              />
+              <p className="dossier-history-narrative">{p.history}</p>
+              <a className="dossier-source-link" href="#sources">
+                Explore the sources{" "}
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            </section>
+          )}
 
           <section id="gallery" className="dossier-section dossier-gallery">
             <DossierHeading
-              number="03"
+              number={sectionNumber("gallery")}
               label="The visual record"
               title="A sense of place."
             />
@@ -235,18 +254,20 @@ export function Profile() {
               <div className="gallery-photograph-mount">
                 <PlaceImage location={p} className="profile-image" />
                 <span className="gallery-plate-label">
-                  {hasPhotograph ? "Location photograph" : "Photograph pending"}
+                  {hasPhotograph
+                    ? "Location photograph"
+                    : "Generic illustration"}
                 </span>
               </div>
               <figcaption>
                 <span className="gallery-description">
                   {p.imageAlt || `${p.name} — photograph pending`}
                 </span>
-                {hasPhotograph && (
-                  <span className="gallery-treatment">
-                    Contemporary location photography · original colors.
-                  </span>
-                )}
+                <span className="gallery-treatment">
+                  {hasPhotograph
+                    ? "Contemporary location photography · original colors."
+                    : "Illustration placeholder · location photograph pending."}
+                </span>
                 <span className="gallery-credit">
                   {p.imageCredit} ·{" "}
                   {p.imageLicense === "CC BY-SA 4.0" ? (
@@ -268,7 +289,9 @@ export function Profile() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    View original photograph{" "}
+                    {hasPhotograph
+                      ? "View original photograph"
+                      : "View illustration source"}{" "}
                     <ArrowUpRight size={15} aria-hidden="true" />
                   </a>
                 )}
@@ -281,7 +304,7 @@ export function Profile() {
             className="dossier-section dossier-experiences"
           >
             <DossierHeading
-              number="04"
+              number={sectionNumber("experiences")}
               label="A place for your story"
               title="Visitor Experiences"
             />
@@ -305,7 +328,7 @@ export function Profile() {
 
           <section id="sources" className="dossier-section dossier-sources">
             <DossierHeading
-              number="05"
+              number={sectionNumber("sources")}
               label="Trace the story"
               title="Sources & further reading."
             />
@@ -343,14 +366,14 @@ export function Profile() {
         <aside id="visit" className="visit-card" aria-labelledby="visit-title">
           <div className="visit-card-top">
             <span className="dossier-small-label">
-              <span aria-hidden="true">06 / </span>Before you go
+              <span aria-hidden="true">{sectionNumber("visit")} / </span>Before
+              you go
             </span>
             <Map size={23} strokeWidth={1.1} aria-hidden="true" />
           </div>
           <h2 id="visit-title">Plan Your Visit</h2>
           <p className="visit-card-location">
-            {p.city}
-            {p.state ? `, ${p.state}` : `, ${p.country}`}
+            {[p.city, p.state || p.country].filter(Boolean).join(", ")}
           </p>
           <dl>
             <div>
@@ -382,7 +405,13 @@ export function Profile() {
               </dd>
             </div>
           </dl>
-          <p>{p.accessNotes}</p>
+          <p className="visit-access-notes">{p.accessNotes}</p>
+          {!hasMapPin && (
+            <p className="visit-map-note">
+              Map pin unavailable. No public coordinates are provided for this
+              location.
+            </p>
+          )}
           {p.officialUrl && (
             <a
               className="button brass dossier-visitor-action"
@@ -396,21 +425,23 @@ export function Profile() {
           )}
           <Link
             className="button secondary"
-            to={`/map?q=${encodeURIComponent(p.name)}`}
+            to={`/map?q=${encodeURIComponent(p.name)}${hasMapPin ? "" : "&view=list"}`}
           >
             <Map size={17} aria-hidden="true" />
-            View on the atlas
+            {hasMapPin ? "View on the atlas" : "Find in the atlas list"}
           </Link>
-          {p.access !== "private" && p.coordinatePrecision === "exact" && (
-            <a
-              className="text-link"
-              href={`https://www.google.com/maps/dir/?api=1&destination=${p.latitude},${p.longitude}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Get directions <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-          )}
+          {hasMapPin &&
+            p.access !== "private" &&
+            p.coordinatePrecision === "exact" && (
+              <a
+                className="text-link"
+                href={`https://www.google.com/maps/dir/?api=1&destination=${p.latitude},${p.longitude}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Get directions <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            )}
           <div className="respect-note">
             <ShieldCheck size={19} aria-hidden="true" />
             <p>

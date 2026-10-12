@@ -1,0 +1,4483 @@
+{
+  "researchCheckpoint": "2026-10-10",
+  "inputSha256": {
+    "phasm_usa_locations.json": "c23ef073f3db41a34446e879d3a102c3ee27101900c8cd118b5dfedf2adcb861",
+    "phasm_sources.json": "0b703c838601362d0a5d37447f2b24b222adcd7acb5d9f8a3f56c4576d34c91c"
+  },
+  "baselineCount": 10,
+  "researchCount": 130,
+  "addedCount": 126,
+  "updatedCount": 4,
+  "preservedOtherCount": 6,
+  "catalogCount": 136,
+  "locations": [
+    {
+      "researchId": "phasm-us-ct-union-cemetery",
+      "appId": "phasm-us-ct-union-cemetery",
+      "slug": "ct-union-cemetery",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "UNION-01",
+        "UNION-02",
+        "UNION-03",
+        "UNION-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "UNION-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "UNION-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "UNION-03",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "UNION-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-il-bachelors-grove-cemetery",
+      "appId": "phasm-us-il-bachelors-grove-cemetery",
+      "slug": "il-bachelors-grove-cemetery",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "BACHELORS-01",
+        "BACHELORS-02",
+        "BACHELORS-03",
+        "BACHELORS-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "BACHELORS-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "BACHELORS-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "BACHELORS-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-oh-moonville-tunnel",
+      "appId": "phasm-us-oh-moonville-tunnel",
+      "slug": "oh-moonville-tunnel",
+      "operation": "add",
+      "physicalCategory": "Road, bridge & tunnel",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "MOONVILLE-01",
+        "MOONVILLE-02",
+        "MOONVILLE-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "MOONVILLE-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "MOONVILLE-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MOONVILLE-01",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ia-villisca-axe-murder-house",
+      "appId": "phasm-us-ia-villisca-axe-murder-house",
+      "slug": "ia-villisca-axe-murder-house",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Appointment required",
+      "sourceIds": [
+        "VILLISCA-03",
+        "VILLISCA-06",
+        "VILLISCA-02",
+        "VILLISCA-01",
+        "VILLISCA-04",
+        "VILLISCA-05",
+        "VILLISCA-07",
+        "VILLISCA-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "VILLISCA-06",
+          "kind": "history"
+        },
+        {
+          "sourceId": "VILLISCA-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "VILLISCA-03",
+          "kind": "history"
+        },
+        {
+          "sourceId": "VILLISCA-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "VILLISCA-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "VILLISCA-04",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "VILLISCA-05",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "VILLISCA-02",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "VILLISCA-03",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "VILLISCA-07",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ny-merchants-house-museum",
+      "appId": "phasm-us-ny-merchants-house-museum",
+      "slug": "ny-merchants-house-museum",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "MERCHANT-01",
+        "MERCHANT-03",
+        "MERCHANT-04",
+        "MERCHANT-02",
+        "MERCHANT-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "MERCHANT-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "MERCHANT-04",
+          "kind": "history"
+        },
+        {
+          "sourceId": "MERCHANT-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MERCHANT-03",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "MERCHANT-01",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-de-fort-delaware",
+      "appId": "phasm-us-de-fort-delaware",
+      "slug": "de-fort-delaware",
+      "operation": "add",
+      "physicalCategory": "Military site",
+      "accessDescription": "Limited/event/seasonal access",
+      "sourceIds": [
+        "FORTDE-01",
+        "FORTDE-02",
+        "FORTDE-03",
+        "FORTDE-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "FORTDE-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "FORTDE-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "FORTDE-02",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "FORTDE-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-fl-st-augustine-lighthouse",
+      "appId": "phasm-us-fl-st-augustine-lighthouse",
+      "slug": "fl-st-augustine-lighthouse",
+      "operation": "add",
+      "physicalCategory": "Lighthouse",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "STAUG-01",
+        "STAUG-03",
+        "STAUG-02",
+        "STAUG-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "STAUG-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "STAUG-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "STAUG-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "STAUG-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-mt-dumas-brothel",
+      "appId": "phasm-us-mt-dumas-brothel",
+      "slug": "mt-dumas-brothel",
+      "operation": "add",
+      "physicalCategory": "Historic business",
+      "accessDescription": "Permission by arrangement",
+      "sourceIds": [
+        "DUMAS-01",
+        "DUMAS-02",
+        "DUMAS-03",
+        "DUMAS-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "DUMAS-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "DUMAS-03",
+          "kind": "history"
+        },
+        {
+          "sourceId": "DUMAS-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "DUMAS-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "DUMAS-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ak-red-onion-saloon",
+      "appId": "phasm-us-ak-red-onion-saloon",
+      "slug": "ak-red-onion-saloon",
+      "operation": "add",
+      "physicalCategory": "Historic business",
+      "accessDescription": "Limited/event/seasonal access",
+      "sourceIds": [
+        "REDONION-01",
+        "REDONION-02",
+        "REDONION-03"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "REDONION-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "REDONION-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "REDONION-03",
+          "kind": "history"
+        },
+        {
+          "sourceId": "REDONION-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "REDONION-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "REDONION-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-hi-iolani-palace",
+      "appId": "phasm-us-hi-iolani-palace",
+      "slug": "hi-iolani-palace",
+      "operation": "add",
+      "physicalCategory": "Historic house & estate",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "IOLANI-01",
+        "IOLANI-02",
+        "IOLANI-05",
+        "IOLANI-03",
+        "IOLANI-06",
+        "IOLANI-04",
+        "IOLANI-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "IOLANI-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "IOLANI-03",
+          "kind": "history"
+        },
+        {
+          "sourceId": "IOLANI-06",
+          "kind": "history"
+        },
+        {
+          "sourceId": "IOLANI-04",
+          "kind": "history"
+        },
+        {
+          "sourceId": "IOLANI-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "IOLANI-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "IOLANI-05",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "IOLANI-06",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ms-mcraven-tour-home",
+      "appId": "phasm-us-ms-mcraven-tour-home",
+      "slug": "ms-mcraven-tour-home",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Guided tour only",
+      "sourceIds": [
+        "MCRAVEN-01",
+        "MCRAVEN-02",
+        "MCRAVEN-04",
+        "MCRAVEN-03",
+        "MCRAVEN-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "MCRAVEN-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "MCRAVEN-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MCRAVEN-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MCRAVEN-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MCRAVEN-04",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MCRAVEN-03",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "MCRAVEN-04",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-or-heceta-head-keepers-house",
+      "appId": "phasm-us-or-heceta-head-keepers-house",
+      "slug": "or-heceta-head-keepers-house",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Appointment required",
+      "sourceIds": [
+        "HECETA-01",
+        "HECETA-02",
+        "HECETA-03",
+        "HECETA-04",
+        "HECETA-05"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "HECETA-03",
+          "kind": "history"
+        },
+        {
+          "sourceId": "HECETA-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "HECETA-04",
+          "kind": "history"
+        },
+        {
+          "sourceId": "HECETA-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "HECETA-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "HECETA-02",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "HECETA-04",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "HECETA-05",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-az-hotel-monte-vista",
+      "appId": "phasm-us-az-hotel-monte-vista",
+      "slug": "az-hotel-monte-vista",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "MONTEVISTA-01",
+        "MONTEVISTA-03",
+        "MONTEVISTA-02",
+        "MONTEVISTA-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "MONTEVISTA-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "MONTEVISTA-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MONTEVISTA-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ks-sallie-house",
+      "appId": "phasm-us-ks-sallie-house",
+      "slug": "ks-sallie-house",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Appointment required",
+      "sourceIds": [
+        "SALLIE-01",
+        "SALLIE-03",
+        "SALLIE-02",
+        "SALLIE-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "SALLIE-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "SALLIE-03",
+          "kind": "history"
+        },
+        {
+          "sourceId": "SALLIE-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "SALLIE-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "SALLIE-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-nc-brown-mountain-lights",
+      "appId": "phasm-us-nc-brown-mountain-lights",
+      "slug": "nc-brown-mountain-lights",
+      "operation": "add",
+      "physicalCategory": "Natural landmark",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "BROWNMOUNTAIN-01",
+        "BROWNMOUNTAIN-02",
+        "BROWNMOUNTAIN-03",
+        "BROWNMOUNTAIN-05",
+        "BROWNMOUNTAIN-04",
+        "BROWNMOUNTAIN-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "BROWNMOUNTAIN-03",
+          "kind": "history"
+        },
+        {
+          "sourceId": "BROWNMOUNTAIN-05",
+          "kind": "history"
+        },
+        {
+          "sourceId": "BROWNMOUNTAIN-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "BROWNMOUNTAIN-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "BROWNMOUNTAIN-03",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "BROWNMOUNTAIN-04",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-va-st-albans-sanatorium",
+      "appId": "phasm-us-va-st-albans-sanatorium",
+      "slug": "va-st-albans-sanatorium",
+      "operation": "add",
+      "physicalCategory": "Hospital & institution",
+      "accessDescription": "Access unknown",
+      "sourceIds": [
+        "STALBANS-01",
+        "STALBANS-03",
+        "STALBANS-04",
+        "STALBANS-02",
+        "STALBANS-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "STALBANS-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "STALBANS-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "STALBANS-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "STALBANS-04",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-co-stanley-hotel",
+      "appId": "stanley-hotel",
+      "slug": "stanley-hotel",
+      "operation": "update",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "STANLEY-02",
+        "STANLEY-04",
+        "STANLEY-01",
+        "STANLEY-03",
+        "STANLEY-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "STANLEY-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "STANLEY-04",
+          "kind": "history"
+        },
+        {
+          "sourceId": "STANLEY-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "STANLEY-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "STANLEY-04",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "STANLEY-02",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "STANLEY-04",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-pa-eastern-state-penitentiary",
+      "appId": "eastern-state-penitentiary",
+      "slug": "eastern-state-penitentiary",
+      "operation": "update",
+      "physicalCategory": "Prison",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "EASTERNSTATE-02",
+        "EASTERNSTATE-03",
+        "EASTERNSTATE-01",
+        "EASTERNSTATE-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "EASTERNSTATE-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "EASTERNSTATE-03",
+          "kind": "history"
+        },
+        {
+          "sourceId": "EASTERNSTATE-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "EASTERNSTATE-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "EASTERNSTATE-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ca-winchester-mystery-house",
+      "appId": "winchester-mystery-house",
+      "slug": "winchester-mystery-house",
+      "operation": "update",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Guided tour only",
+      "sourceIds": [
+        "WINCHESTER-01",
+        "WINCHESTER-03",
+        "WINCHESTER-04",
+        "WINCHESTER-02",
+        "WINCHESTER-06",
+        "WINCHESTER-05",
+        "WINCHESTER-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "WINCHESTER-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "WINCHESTER-06",
+          "kind": "history"
+        },
+        {
+          "sourceId": "WINCHESTER-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "WINCHESTER-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "WINCHESTER-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "WINCHESTER-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "WINCHESTER-04",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "WINCHESTER-05",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "WINCHESTER-04",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ca-queen-mary",
+      "appId": "queen-mary",
+      "slug": "queen-mary",
+      "operation": "update",
+      "physicalCategory": "Historic ship",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "QUEENMARY-02",
+        "QUEENMARY-03",
+        "QUEENMARY-04",
+        "QUEENMARY-05",
+        "QUEENMARY-01",
+        "QUEENMARY-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "QUEENMARY-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "QUEENMARY-05",
+          "kind": "history"
+        },
+        {
+          "sourceId": "QUEENMARY-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "QUEENMARY-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "QUEENMARY-04",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "QUEENMARY-02",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "QUEENMARY-04",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-il-mcpike-mansion",
+      "appId": "phasm-us-il-mcpike-mansion",
+      "slug": "il-mcpike-mansion",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Limited/event/seasonal access",
+      "sourceIds": [
+        "MCPIKE-03",
+        "MCPIKE-02",
+        "MCPIKE-GEO",
+        "MCPIKE-01"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "MCPIKE-GEO",
+          "kind": "history"
+        },
+        {
+          "sourceId": "MCPIKE-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "MCPIKE-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MCPIKE-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MCPIKE-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MCPIKE-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ny-van-horn-mansion",
+      "appId": "phasm-us-ny-van-horn-mansion",
+      "slug": "ny-van-horn-mansion",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Appointment required",
+      "sourceIds": [
+        "VANHORN-01",
+        "VANHORN-02",
+        "VANHORN-03",
+        "VANHORN-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "VANHORN-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "VANHORN-03",
+          "kind": "history"
+        },
+        {
+          "sourceId": "VANHORN-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "VANHORN-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "VANHORN-01",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "VANHORN-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ia-oakland-cemetery-black-angel",
+      "appId": "phasm-us-ia-oakland-cemetery-black-angel",
+      "slug": "ia-oakland-cemetery-black-angel",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "OAKLAND-01",
+        "OAKLAND-02",
+        "OAKLAND-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "OAKLAND-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "OAKLAND-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "OAKLAND-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "OAKLAND-01",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-vt-green-mount-cemetery-black-agnes",
+      "appId": "phasm-us-vt-green-mount-cemetery-black-agnes",
+      "slug": "vt-green-mount-cemetery-black-agnes",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "GREENMOUNT-03",
+        "GREENMOUNT-ART",
+        "GREENMOUNT-01",
+        "GREENMOUNT-02",
+        "GREENMOUNT-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "GREENMOUNT-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "GREENMOUNT-ART",
+          "kind": "history"
+        },
+        {
+          "sourceId": "GREENMOUNT-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "GREENMOUNT-ART",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "GREENMOUNT-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-in-willard-library",
+      "appId": "phasm-us-in-willard-library",
+      "slug": "in-willard-library",
+      "operation": "add",
+      "physicalCategory": "Library",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "WILLARD-02",
+        "WILLARD-05",
+        "WILLARD-03",
+        "WILLARD-01",
+        "WILLARD-04",
+        "WILLARD-06",
+        "WILLARD-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "WILLARD-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "WILLARD-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "WILLARD-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "WILLARD-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "WILLARD-04",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "WILLARD-04",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "WILLARD-05",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "WILLARD-06",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-tx-the-grove",
+      "appId": "phasm-us-tx-the-grove",
+      "slug": "tx-the-grove",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Appointment required",
+      "sourceIds": [
+        "GROVE-01",
+        "GROVE-02",
+        "GROVE-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "GROVE-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "GROVE-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "GROVE-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "GROVE-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "GROVE-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-tx-marfa-lights",
+      "appId": "phasm-us-tx-marfa-lights",
+      "slug": "tx-marfa-lights",
+      "operation": "add",
+      "physicalCategory": "Natural landmark",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "MARFA-01",
+        "MARFA-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "MARFA-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MARFA-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MARFA-01",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "MARFA-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-nd-custer-house",
+      "appId": "phasm-us-nd-custer-house",
+      "slug": "nd-custer-house",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Limited/event/seasonal access",
+      "sourceIds": [
+        "CUSTER-01",
+        "CUSTER-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "CUSTER-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "CUSTER-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "CUSTER-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ri-chestnut-hill-cemetery-mercy-brown",
+      "appId": "phasm-us-ri-chestnut-hill-cemetery-mercy-brown",
+      "slug": "ri-chestnut-hill-cemetery-mercy-brown",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Access unknown",
+      "sourceIds": [
+        "MERCY-01",
+        "MERCY-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "MERCY-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "MERCY-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "MERCY-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MERCY-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-pa-fort-mifflin",
+      "appId": "phasm-us-pa-fort-mifflin",
+      "slug": "pa-fort-mifflin",
+      "operation": "add",
+      "physicalCategory": "Military site",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "MIFFLIN-01",
+        "MIFFLIN-02",
+        "MIFFLIN-03",
+        "MIFFLIN-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "MIFFLIN-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "MIFFLIN-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MIFFLIN-02",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "MIFFLIN-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ks-mcinteer-villa",
+      "appId": "phasm-us-ks-mcinteer-villa",
+      "slug": "ks-mcinteer-villa",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Appointment required",
+      "sourceIds": [
+        "SALLIE-01",
+        "MCINTEER-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "SALLIE-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "SALLIE-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MCINTEER-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-tx-fort-concho",
+      "appId": "phasm-us-tx-fort-concho",
+      "slug": "tx-fort-concho",
+      "operation": "add",
+      "physicalCategory": "Military site",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "WILLARD-03",
+        "CONCHO-01"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "CONCHO-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "WILLARD-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "CONCHO-01",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-or-pendleton-center-for-the-arts",
+      "appId": "phasm-us-or-pendleton-center-for-the-arts",
+      "slug": "or-pendleton-center-for-the-arts",
+      "operation": "add",
+      "physicalCategory": "Arts venue",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "WILLARD-03",
+        "PENDLETON-01"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "WILLARD-03",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PENDLETON-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "WILLARD-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PENDLETON-01",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-il-cairo-public-library",
+      "appId": "phasm-us-il-cairo-public-library",
+      "slug": "il-cairo-public-library",
+      "operation": "add",
+      "physicalCategory": "Library",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "CAIRO-01",
+        "CAIRO-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "CAIRO-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "CAIRO-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "CAIRO-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-me-buck-monument",
+      "appId": "phasm-us-me-buck-monument",
+      "slug": "me-buck-monument",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Exterior viewing only",
+      "sourceIds": [
+        "BUCK-01",
+        "BUCK-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "BUCK-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "BUCK-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "BUCK-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "BUCK-01",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-nh-pine-hill-cemetery",
+      "appId": "phasm-us-nh-pine-hill-cemetery",
+      "slug": "nh-pine-hill-cemetery",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Access unknown",
+      "sourceIds": [
+        "PINEHILL-01",
+        "PINEHILL-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PINEHILL-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PINEHILL-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PINEHILL-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ma-sk-pierce-mansion",
+      "appId": "phasm-us-ma-sk-pierce-mansion",
+      "slug": "ma-sk-pierce-mansion",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Appointment required",
+      "sourceIds": [
+        "SKPIERCE-01",
+        "SKPIERCE-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "SKPIERCE-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "SKPIERCE-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "SKPIERCE-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "SKPIERCE-01",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ne-historic-argo-hotel",
+      "appId": "phasm-us-ne-historic-argo-hotel",
+      "slug": "ne-historic-argo-hotel",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "ARGO-02",
+        "ARGO-01"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "ARGO-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "ARGO-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "ARGO-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "ARGO-01",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-sd-hotel-alex-johnson",
+      "appId": "phasm-us-sd-hotel-alex-johnson",
+      "slug": "sd-hotel-alex-johnson",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "ALEXJOHNSON-01",
+        "ALEXJOHNSON-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "ALEXJOHNSON-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "ALEXJOHNSON-01",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-nm-kimo-theatre",
+      "appId": "phasm-us-nm-kimo-theatre",
+      "slug": "nm-kimo-theatre",
+      "operation": "add",
+      "physicalCategory": "Theater",
+      "accessDescription": "Limited/event/seasonal access",
+      "sourceIds": [
+        "KIMO-01",
+        "KIMO-02",
+        "KIMO-03"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "KIMO-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "KIMO-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "KIMO-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "KIMO-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ok-stone-lion-inn",
+      "appId": "phasm-us-ok-stone-lion-inn",
+      "slug": "ok-stone-lion-inn",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Access unknown",
+      "sourceIds": [
+        "STONELION-01",
+        "STONELION-02",
+        "STONELION-03",
+        "STONELION-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "STONELION-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "STONELION-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "STONELION-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "STONELION-02",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "STONELION-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-nv-mizpah-hotel",
+      "appId": "phasm-us-nv-mizpah-hotel",
+      "slug": "nv-mizpah-hotel",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "MIZPAH-01",
+        "MIZPAH-03",
+        "MIZPAH-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "MIZPAH-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "MIZPAH-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MIZPAH-03",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "MIZPAH-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ar-crescent-hotel",
+      "appId": "phasm-us-ar-crescent-hotel",
+      "slug": "ar-crescent-hotel",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "CRESCENT-01",
+        "CRESCENT-02",
+        "CRESCENT-03"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "CRESCENT-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "CRESCENT-03",
+          "kind": "history"
+        },
+        {
+          "sourceId": "CRESCENT-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "CRESCENT-02",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "CRESCENT-02",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "CRESCENT-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-mi-seul-choix-point-lighthouse",
+      "appId": "phasm-us-mi-seul-choix-point-lighthouse",
+      "slug": "mi-seul-choix-point-lighthouse",
+      "operation": "add",
+      "physicalCategory": "Lighthouse",
+      "accessDescription": "Limited/event/seasonal access",
+      "sourceIds": [
+        "SEULCHOIX-01",
+        "SEULCHOIX-02",
+        "SEULCHOIX-03"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "SEULCHOIX-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "SEULCHOIX-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "SEULCHOIX-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "SEULCHOIX-01",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "SEULCHOIX-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-al-sturdivant-hall",
+      "appId": "phasm-us-al-sturdivant-hall",
+      "slug": "al-sturdivant-hall",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "STURDIVANT-01",
+        "STURDIVANT-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "STURDIVANT-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "STURDIVANT-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "STURDIVANT-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ga-bonaventure-cemetery",
+      "appId": "phasm-us-ga-bonaventure-cemetery",
+      "slug": "ga-bonaventure-cemetery",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "BONAVENTURE-01",
+        "BONAVENTURE-02",
+        "BONAVENTURE-03"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "BONAVENTURE-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "BONAVENTURE-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "BONAVENTURE-02",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "BONAVENTURE-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-la-old-state-capitol",
+      "appId": "phasm-us-la-old-state-capitol",
+      "slug": "la-old-state-capitol",
+      "operation": "add",
+      "physicalCategory": "Historic civic building",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "OLDLACAPITOL-01",
+        "OLDLACAPITOL-02",
+        "OLDLACAPITOL-03"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "OLDLACAPITOL-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "OLDLACAPITOL-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "OLDLACAPITOL-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ky-octagon-hall",
+      "appId": "phasm-us-ky-octagon-hall",
+      "slug": "ky-octagon-hall",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "OCTAGON-01",
+        "OCTAGON-02",
+        "OCTAGON-03",
+        "OCTAGON-GEO"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "OCTAGON-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "OCTAGON-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "OCTAGON-02",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "OCTAGON-03",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-tn-bell-witch-cave",
+      "appId": "phasm-us-tn-bell-witch-cave",
+      "slug": "tn-bell-witch-cave",
+      "operation": "add",
+      "physicalCategory": "Cave",
+      "accessDescription": "Guided tour only",
+      "sourceIds": [
+        "BELLWITCH-01",
+        "BELLWITCH-02",
+        "BELLWITCH-03",
+        "BELLWITCH-04"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "BELLWITCH-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "BELLWITCH-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "BELLWITCH-02",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "BELLWITCH-03",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "BELLWITCH-04",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-wi-nelsens-hall",
+      "appId": "phasm-us-wi-nelsens-hall",
+      "slug": "wi-nelsens-hall",
+      "operation": "add",
+      "physicalCategory": "Historic business",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "NELSEN-01",
+        "NELSEN-02"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "NELSEN-01",
+          "kind": "history"
+        },
+        {
+          "sourceId": "NELSEN-02",
+          "kind": "history"
+        },
+        {
+          "sourceId": "NELSEN-01",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "NELSEN-02",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-fl-bellamy-bridge",
+      "appId": "phasm-us-fl-bellamy-bridge",
+      "slug": "fl-bellamy-bridge",
+      "operation": "add",
+      "physicalCategory": "Road, bridge & tunnel",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "src-cd6b49bbf413dd70",
+        "src-7f88f85e401ccbfd",
+        "src-b8368b9e6f646494",
+        "src-4d53303c35fb5193"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-cd6b49bbf413dd70",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-b8368b9e6f646494",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-7f88f85e401ccbfd",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-b8368b9e6f646494",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-cd6b49bbf413dd70",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-7f88f85e401ccbfd",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ak-historic-anchorage-hotel",
+      "appId": "phasm-us-ak-historic-anchorage-hotel",
+      "slug": "ak-historic-anchorage-hotel",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "src-6af3d4a586dc9f8e",
+        "src-63b8a3e3d7824b73",
+        "src-87c012ed00739df0",
+        "src-96754d879b9d571a",
+        "src-907338abbff18496"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-6af3d4a586dc9f8e",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-87c012ed00739df0",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-6af3d4a586dc9f8e",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-63b8a3e3d7824b73",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-6af3d4a586dc9f8e",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-907338abbff18496",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-id-old-idaho-penitentiary",
+      "appId": "phasm-us-id-old-idaho-penitentiary",
+      "slug": "id-old-idaho-penitentiary",
+      "operation": "add",
+      "physicalCategory": "Prison",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "src-457f6d79ce50496d",
+        "src-ef4826a3fc8f4175",
+        "src-92c5e1ec1181205c"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-457f6d79ce50496d",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-457f6d79ce50496d",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-ef4826a3fc8f4175",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-457f6d79ce50496d",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-al-old-cahawba",
+      "appId": "phasm-us-al-old-cahawba",
+      "slug": "al-old-cahawba",
+      "operation": "add",
+      "physicalCategory": "Ghost town",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "src-2e9738d1cdd153fc",
+        "src-226b3bbb8c6b9989",
+        "src-8cfd72bd29360069",
+        "src-6a66f642438c6490",
+        "src-abc6b2a4e0bcef73"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-2e9738d1cdd153fc",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-226b3bbb8c6b9989",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-226b3bbb8c6b9989",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-8cfd72bd29360069",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-6a66f642438c6490",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-abc6b2a4e0bcef73",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-nv-mackay-mansion",
+      "appId": "phasm-us-nv-mackay-mansion",
+      "slug": "nv-mackay-mansion",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "src-8291b28cf75099b3",
+        "src-32d1a725326e3033",
+        "src-e1acf7bf172931f1",
+        "src-0d431c64857cd598",
+        "src-0de804c6cec54012",
+        "src-70dd948a63eaf56f"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-8291b28cf75099b3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-32d1a725326e3033",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-32d1a725326e3033",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-e1acf7bf172931f1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-0d431c64857cd598",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-0de804c6cec54012",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-70dd948a63eaf56f",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-mo-lemp-mansion",
+      "appId": "phasm-us-mo-lemp-mansion",
+      "slug": "mo-lemp-mansion",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "src-9c4276e845a266f2",
+        "src-0684ea556100fac5",
+        "src-e02d98e4d48208b2",
+        "src-0fa600125b5b41f3",
+        "src-cc1bb1c180d0e1df",
+        "src-c1d46bccdcdbc76f",
+        "src-016efb921f59d2a0"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-9c4276e845a266f2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-0684ea556100fac5",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-e02d98e4d48208b2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-0fa600125b5b41f3",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-cc1bb1c180d0e1df",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-0fa600125b5b41f3",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-cc1bb1c180d0e1df",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-c1d46bccdcdbc76f",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-sd-historic-adams-house",
+      "appId": "phasm-us-sd-historic-adams-house",
+      "slug": "sd-historic-adams-house",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Seasonal/event-only access",
+      "sourceIds": [
+        "src-443fb12d057c8f74",
+        "src-204154d45d707b55",
+        "src-06b1e06a9de12ae2",
+        "src-a22bb3f2612dcece",
+        "src-24b406519ef79a8b",
+        "src-57e5ca89bd3d0609",
+        "src-a960fd45e5e9c286"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-443fb12d057c8f74",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-204154d45d707b55",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-204154d45d707b55",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-06b1e06a9de12ae2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-a22bb3f2612dcece",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-443fb12d057c8f74",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-24b406519ef79a8b",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-57e5ca89bd3d0609",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ma-lizzie-borden-house",
+      "appId": "phasm-us-ma-lizzie-borden-house",
+      "slug": "ma-lizzie-borden-house",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Guided/ticketed access",
+      "sourceIds": [
+        "src-c94c58c433a9d689",
+        "src-082acd7a9b939cf7",
+        "src-91430ec34df17045",
+        "src-62f618158636825f",
+        "src-08abdf91156733e0",
+        "src-8355f6ca3323d59b",
+        "src-98048a25e0182e04",
+        "src-ee0440db9e986e1d",
+        "src-71c9c76886e31909"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-c94c58c433a9d689",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-082acd7a9b939cf7",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-91430ec34df17045",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-62f618158636825f",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-08abdf91156733e0",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-8355f6ca3323d59b",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-98048a25e0182e04",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-ee0440db9e986e1d",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-az-bird-cage-theatre",
+      "appId": "phasm-us-az-bird-cage-theatre",
+      "slug": "az-bird-cage-theatre",
+      "operation": "add",
+      "physicalCategory": "Theater",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "src-16c30848c65fd76c",
+        "src-cd7db022549407e2",
+        "src-8200272ba7449f20",
+        "src-dd6721fd41ea8d2c",
+        "src-ab3fe06e69d8a50b",
+        "src-7aad79f30be5f18b"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-16c30848c65fd76c",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-cd7db022549407e2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-cd7db022549407e2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-8200272ba7449f20",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-cd7db022549407e2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-8200272ba7449f20",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-dd6721fd41ea8d2c",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-ab3fe06e69d8a50b",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-ky-waverly-hills-sanatorium",
+      "appId": "phasm-us-ky-waverly-hills-sanatorium",
+      "slug": "ky-waverly-hills-sanatorium",
+      "operation": "add",
+      "physicalCategory": "Hospital & institution",
+      "accessDescription": "Seasonal/event-only access",
+      "sourceIds": [
+        "src-c00e9da5639c0ab8",
+        "src-81d3ffeefb6eefc8",
+        "src-c0f9945b85367f67",
+        "src-c278782897bd207d",
+        "src-ea0da468b921dbb9"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-c00e9da5639c0ab8",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-81d3ffeefb6eefc8",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-c0f9945b85367f67",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-c0f9945b85367f67",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-c278782897bd207d",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-nm-st-james-hotel-cimarron",
+      "appId": "phasm-us-nm-st-james-hotel-cimarron",
+      "slug": "nm-st-james-hotel-cimarron",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "src-51a707299be30a15",
+        "src-9af66f74a230b8db",
+        "src-5f41637cb4507289",
+        "src-2b48da8ca02c71c1",
+        "src-3f48177ea24fc3c6"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-51a707299be30a15",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-51a707299be30a15",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-9af66f74a230b8db",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-5f41637cb4507289",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-2b48da8ca02c71c1",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-oh-historic-prospect-place",
+      "appId": "phasm-us-oh-historic-prospect-place",
+      "slug": "oh-historic-prospect-place",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Appointment required",
+      "sourceIds": [
+        "src-5a8217114bd178a6",
+        "src-329fa7c0bd756ddf",
+        "src-210dc79b1e36f689",
+        "src-7287a2b2d39cbee7",
+        "src-d78579dd63c14001"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-5a8217114bd178a6",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-329fa7c0bd756ddf",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-329fa7c0bd756ddf",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-210dc79b1e36f689",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-7287a2b2d39cbee7",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-la-st-louis-cemetery-no1",
+      "appId": "phasm-us-la-st-louis-cemetery-no1",
+      "slug": "la-st-louis-cemetery-no1",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Guided/ticketed access",
+      "sourceIds": [
+        "src-dcadb6ee4a6d4fd2",
+        "src-debcf647272b8246",
+        "src-fc4544320fa9aee4",
+        "src-e7531e57b02b3db3",
+        "src-3c32f54e97555453",
+        "src-090ce3f7ac88c399",
+        "src-fb6784d4215e02f6",
+        "src-a495a31896fdffc4"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-dcadb6ee4a6d4fd2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-debcf647272b8246",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-fc4544320fa9aee4",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-e7531e57b02b3db3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-3c32f54e97555453",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-e7531e57b02b3db3",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-3c32f54e97555453",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-090ce3f7ac88c399",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-fb6784d4215e02f6",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-vt-emilys-bridge",
+      "appId": "phasm-us-vt-emilys-bridge",
+      "slug": "vt-emilys-bridge",
+      "operation": "add",
+      "physicalCategory": "Road, bridge & tunnel",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "src-d1c12850264d0ee3",
+        "src-ce4d75eb97f250af",
+        "src-2f6d8a0c90a02a6b",
+        "src-d293d581b2738d5e",
+        "src-626fc6e4338a38f6"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-d1c12850264d0ee3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-ce4d75eb97f250af",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-2f6d8a0c90a02a6b",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-d1c12850264d0ee3",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-ce4d75eb97f250af",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-2f6d8a0c90a02a6b",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-d1c12850264d0ee3",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-d293d581b2738d5e",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-wa-walker-ames-house",
+      "appId": "phasm-us-wa-walker-ames-house",
+      "slug": "wa-walker-ames-house",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Appointment required",
+      "sourceIds": [
+        "src-dcff461b344b762d",
+        "src-11ddd0dd4cc85604",
+        "src-3cd3a170cd4d76f1",
+        "src-59a529fa0142c786",
+        "src-86beabc4a3150fff",
+        "src-ae2dd635673fd654",
+        "src-5d7745e45ed446e3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-dcff461b344b762d",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-11ddd0dd4cc85604",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-3cd3a170cd4d76f1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-59a529fa0142c786",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-59a529fa0142c786",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-86beabc4a3150fff",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-ae2dd635673fd654",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-wy-occidental-hotel",
+      "appId": "phasm-us-wy-occidental-hotel",
+      "slug": "wy-occidental-hotel",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "src-7cf5e081467adfc7",
+        "src-2c58c2959ecc0c99",
+        "src-48c5e003d473e14f",
+        "src-aa5619804af36360",
+        "src-a75e8f542c642430",
+        "src-a2b629a3e58bceef",
+        "src-00dba8314292bd66"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "src-7cf5e081467adfc7",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-2c58c2959ecc0c99",
+          "kind": "history"
+        },
+        {
+          "sourceId": "src-48c5e003d473e14f",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-aa5619804af36360",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "src-2c58c2959ecc0c99",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-a75e8f542c642430",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "src-a2b629a3e58bceef",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-08"
+    },
+    {
+      "researchId": "phasm-us-nj-burlington-county-prison-museum",
+      "appId": "phasm-us-nj-burlington-county-prison-museum",
+      "slug": "nj-burlington-county-prison-museum",
+      "operation": "add",
+      "physicalCategory": "Prison",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "PHASM-US-NJ-BURLINGTON-COUNTY-PRISON-MUSEUM-S1",
+        "PHASM-US-NJ-BURLINGTON-COUNTY-PRISON-MUSEUM-S2",
+        "PHASM-US-NJ-BURLINGTON-COUNTY-PRISON-MUSEUM-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-NJ-BURLINGTON-COUNTY-PRISON-MUSEUM-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NJ-BURLINGTON-COUNTY-PRISON-MUSEUM-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NJ-BURLINGTON-COUNTY-PRISON-MUSEUM-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NJ-BURLINGTON-COUNTY-PRISON-MUSEUM-S2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-NJ-BURLINGTON-COUNTY-PRISON-MUSEUM-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-il-reid-memorial-library-harriet-haskell",
+      "appId": "phasm-us-il-reid-memorial-library-harriet-haskell",
+      "slug": "il-reid-memorial-library-harriet-haskell",
+      "operation": "add",
+      "physicalCategory": "Library",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "PHASM-US-IL-REID-MEMORIAL-LIBRARY-HARRIET-HASKELL-S1",
+        "PHASM-US-IL-REID-MEMORIAL-LIBRARY-HARRIET-HASKELL-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-IL-REID-MEMORIAL-LIBRARY-HARRIET-HASKELL-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-IL-REID-MEMORIAL-LIBRARY-HARRIET-HASKELL-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IL-REID-MEMORIAL-LIBRARY-HARRIET-HASKELL-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-il-peoria-public-library-main",
+      "appId": "phasm-us-il-peoria-public-library-main",
+      "slug": "il-peoria-public-library-main",
+      "operation": "add",
+      "physicalCategory": "Library",
+      "accessDescription": "Public access",
+      "sourceIds": [
+        "PHASM-US-IL-PEORIA-PUBLIC-LIBRARY-MAIN-S1",
+        "PHASM-US-IL-PEORIA-PUBLIC-LIBRARY-MAIN-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-IL-PEORIA-PUBLIC-LIBRARY-MAIN-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-IL-PEORIA-PUBLIC-LIBRARY-MAIN-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IL-PEORIA-PUBLIC-LIBRARY-MAIN-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-nj-clinton-road",
+      "appId": "phasm-us-nj-clinton-road",
+      "slug": "nj-clinton-road",
+      "operation": "add",
+      "physicalCategory": "Road, bridge & tunnel",
+      "accessDescription": "Public road; no special ghost access",
+      "sourceIds": [
+        "PHASM-US-NJ-CLINTON-ROAD-S1",
+        "PHASM-US-NJ-CLINTON-ROAD-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-NJ-CLINTON-ROAD-S1",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NJ-CLINTON-ROAD-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NJ-CLINTON-ROAD-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NJ-CLINTON-ROAD-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NJ-CLINTON-ROAD-S1",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-NJ-CLINTON-ROAD-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-wv-west-virginia-penitentiary",
+      "appId": "phasm-us-wv-west-virginia-penitentiary",
+      "slug": "wv-west-virginia-penitentiary",
+      "operation": "add",
+      "physicalCategory": "Prison",
+      "accessDescription": "Guided/ticketed access",
+      "sourceIds": [
+        "PHASM-US-WV-WEST-VIRGINIA-PENITENTIARY-S1",
+        "PHASM-US-WV-WEST-VIRGINIA-PENITENTIARY-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-WV-WEST-VIRGINIA-PENITENTIARY-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-WV-WEST-VIRGINIA-PENITENTIARY-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-WV-WEST-VIRGINIA-PENITENTIARY-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-mn-wabasha-street-caves",
+      "appId": "phasm-us-mn-wabasha-street-caves",
+      "slug": "mn-wabasha-street-caves",
+      "operation": "add",
+      "physicalCategory": "Cave & tunnel",
+      "accessDescription": "Guided/ticketed access",
+      "sourceIds": [
+        "PHASM-US-MN-WABASHA-STREET-CAVES-S1",
+        "PHASM-US-MN-WABASHA-STREET-CAVES-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-MN-WABASHA-STREET-CAVES-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-MN-WABASHA-STREET-CAVES-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-MN-WABASHA-STREET-CAVES-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ut-mccune-mansion",
+      "appId": "phasm-us-ut-mccune-mansion",
+      "slug": "ut-mccune-mansion",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Appointment required",
+      "sourceIds": [
+        "PHASM-US-UT-MCCUNE-MANSION-S1",
+        "PHASM-US-UT-MCCUNE-MANSION-S2",
+        "PHASM-US-UT-MCCUNE-MANSION-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-UT-MCCUNE-MANSION-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-UT-MCCUNE-MANSION-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-UT-MCCUNE-MANSION-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-UT-MCCUNE-MANSION-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-sc-old-exchange-provost-dungeon",
+      "appId": "phasm-us-sc-old-exchange-provost-dungeon",
+      "slug": "sc-old-exchange-provost-dungeon",
+      "operation": "add",
+      "physicalCategory": "Historic building",
+      "accessDescription": "Guided/ticketed access",
+      "sourceIds": [
+        "PHASM-US-SC-OLD-EXCHANGE-PROVOST-DUNGEON-S1",
+        "PHASM-US-SC-OLD-EXCHANGE-PROVOST-DUNGEON-S2",
+        "PHASM-US-SC-OLD-EXCHANGE-PROVOST-DUNGEON-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-SC-OLD-EXCHANGE-PROVOST-DUNGEON-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-SC-OLD-EXCHANGE-PROVOST-DUNGEON-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-SC-OLD-EXCHANGE-PROVOST-DUNGEON-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-SC-OLD-EXCHANGE-PROVOST-DUNGEON-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-md-point-lookout-state-park",
+      "appId": "phasm-us-md-point-lookout-state-park",
+      "slug": "md-point-lookout-state-park",
+      "operation": "add",
+      "physicalCategory": "Park & outdoor site",
+      "accessDescription": "Public access; daylight hours",
+      "sourceIds": [
+        "PHASM-US-MD-POINT-LOOKOUT-STATE-PARK-S1",
+        "PHASM-US-MD-POINT-LOOKOUT-STATE-PARK-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-MD-POINT-LOOKOUT-STATE-PARK-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-MD-POINT-LOOKOUT-STATE-PARK-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-MD-POINT-LOOKOUT-STATE-PARK-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-me-fort-knox-state-historic-site",
+      "appId": "phasm-us-me-fort-knox-state-historic-site",
+      "slug": "me-fort-knox-state-historic-site",
+      "operation": "add",
+      "physicalCategory": "Military site",
+      "accessDescription": "Public access; special after-hours events",
+      "sourceIds": [
+        "PHASM-US-ME-FORT-KNOX-STATE-HISTORIC-SITE-S1",
+        "PHASM-US-ME-FORT-KNOX-STATE-HISTORIC-SITE-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-ME-FORT-KNOX-STATE-HISTORIC-SITE-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-ME-FORT-KNOX-STATE-HISTORIC-SITE-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-ME-FORT-KNOX-STATE-HISTORIC-SITE-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-la-myrtles-plantation",
+      "appId": "phasm-us-la-myrtles-plantation",
+      "slug": "la-myrtles-plantation",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Public access; ticketed house and overnight stays",
+      "sourceIds": [
+        "PHASM-US-LA-MYRTLES-PLANTATION-S1",
+        "PHASM-US-LA-MYRTLES-PLANTATION-S2",
+        "PHASM-US-LA-MYRTLES-PLANTATION-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-LA-MYRTLES-PLANTATION-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-LA-MYRTLES-PLANTATION-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-LA-MYRTLES-PLANTATION-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-LA-MYRTLES-PLANTATION-S2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-LA-MYRTLES-PLANTATION-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ca-bodie-ghost-town",
+      "appId": "phasm-us-ca-bodie-ghost-town",
+      "slug": "ca-bodie-ghost-town",
+      "operation": "add",
+      "physicalCategory": "Ghost town",
+      "accessDescription": "Public access; seasonal road conditions",
+      "sourceIds": [
+        "PHASM-US-CA-BODIE-GHOST-TOWN-S1",
+        "PHASM-US-CA-BODIE-GHOST-TOWN-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-CA-BODIE-GHOST-TOWN-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-CA-BODIE-GHOST-TOWN-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-CA-BODIE-GHOST-TOWN-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-oh-ohio-state-reformatory",
+      "appId": "phasm-us-oh-ohio-state-reformatory",
+      "slug": "oh-ohio-state-reformatory",
+      "operation": "add",
+      "physicalCategory": "Prison",
+      "accessDescription": "Public access; separately ticketed investigations",
+      "sourceIds": [
+        "PHASM-US-OH-OHIO-STATE-REFORMATORY-S1",
+        "PHASM-US-OH-OHIO-STATE-REFORMATORY-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-OH-OHIO-STATE-REFORMATORY-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-OH-OHIO-STATE-REFORMATORY-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-OH-OHIO-STATE-REFORMATORY-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-mt-old-montana-prison",
+      "appId": "phasm-us-mt-old-montana-prison",
+      "slug": "mt-old-montana-prison",
+      "operation": "add",
+      "physicalCategory": "Prison",
+      "accessDescription": "Guided/ticketed access",
+      "sourceIds": [
+        "PHASM-US-MT-OLD-MONTANA-PRISON-S1",
+        "PHASM-US-MT-OLD-MONTANA-PRISON-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-MT-OLD-MONTANA-PRISON-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-MT-OLD-MONTANA-PRISON-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-MT-OLD-MONTANA-PRISON-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ct-captain-grants-1754-inn",
+      "appId": "phasm-us-ct-captain-grants-1754-inn",
+      "slug": "ct-captain-grants-1754-inn",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Overnight lodging and occasional special events",
+      "sourceIds": [
+        "PHASM-US-CT-CAPTAIN-GRANTS-1754-INN-S1",
+        "PHASM-US-CT-CAPTAIN-GRANTS-1754-INN-S2",
+        "PHASM-US-CT-CAPTAIN-GRANTS-1754-INN-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-CT-CAPTAIN-GRANTS-1754-INN-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-CT-CAPTAIN-GRANTS-1754-INN-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-CT-CAPTAIN-GRANTS-1754-INN-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-CT-CAPTAIN-GRANTS-1754-INN-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ny-rolling-hills-asylum",
+      "appId": "phasm-us-ny-rolling-hills-asylum",
+      "slug": "ny-rolling-hills-asylum",
+      "operation": "add",
+      "physicalCategory": "Hospital & institution",
+      "accessDescription": "Guided/ticketed access",
+      "sourceIds": [
+        "PHASM-US-NY-ROLLING-HILLS-ASYLUM-S1",
+        "PHASM-US-NY-ROLLING-HILLS-ASYLUM-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-NY-ROLLING-HILLS-ASYLUM-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NY-ROLLING-HILLS-ASYLUM-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NY-ROLLING-HILLS-ASYLUM-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-va-ferry-plantation-house",
+      "appId": "phasm-us-va-ferry-plantation-house",
+      "slug": "va-ferry-plantation-house",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Guided tours by advance booking; 2026 paranormal bookings closed",
+      "sourceIds": [
+        "PHASM-US-VA-FERRY-PLANTATION-HOUSE-S1",
+        "PHASM-US-VA-FERRY-PLANTATION-HOUSE-S2",
+        "PHASM-US-VA-FERRY-PLANTATION-HOUSE-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-VA-FERRY-PLANTATION-HOUSE-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-VA-FERRY-PLANTATION-HOUSE-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-VA-FERRY-PLANTATION-HOUSE-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-VA-FERRY-PLANTATION-HOUSE-S2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-VA-FERRY-PLANTATION-HOUSE-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-co-hotel-colorado",
+      "appId": "phasm-us-co-hotel-colorado",
+      "slug": "co-hotel-colorado",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Overnight lodging and public hotel areas",
+      "sourceIds": [
+        "PHASM-US-CO-HOTEL-COLORADO-S1",
+        "PHASM-US-CO-HOTEL-COLORADO-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-CO-HOTEL-COLORADO-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-CO-HOTEL-COLORADO-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-CO-HOTEL-COLORADO-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ia-edinburgh-manor",
+      "appId": "phasm-us-ia-edinburgh-manor",
+      "slug": "ia-edinburgh-manor",
+      "operation": "add",
+      "physicalCategory": "Hospital & institution",
+      "accessDescription": "Appointment required; private paranormal attraction",
+      "sourceIds": [
+        "PHASM-US-IA-EDINBURGH-MANOR-S1",
+        "PHASM-US-IA-EDINBURGH-MANOR-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-IA-EDINBURGH-MANOR-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-IA-EDINBURGH-MANOR-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IA-EDINBURGH-MANOR-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-nh-omni-mount-washington-resort",
+      "appId": "phasm-us-nh-omni-mount-washington-resort",
+      "slug": "nh-omni-mount-washington-resort",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Operating resort; lodging by reservation",
+      "sourceIds": [
+        "PHASM-US-NH-OMNI-MOUNT-WASHINGTON-RESORT-S1",
+        "PHASM-US-NH-OMNI-MOUNT-WASHINGTON-RESORT-S2",
+        "PHASM-US-NH-OMNI-MOUNT-WASHINGTON-RESORT-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-NH-OMNI-MOUNT-WASHINGTON-RESORT-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NH-OMNI-MOUNT-WASHINGTON-RESORT-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NH-OMNI-MOUNT-WASHINGTON-RESORT-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NH-OMNI-MOUNT-WASHINGTON-RESORT-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-wa-manresa-castle",
+      "appId": "phasm-us-wa-manresa-castle",
+      "slug": "wa-manresa-castle",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Overnight lodging; guest rooms restricted",
+      "sourceIds": [
+        "PHASM-US-WA-MANRESA-CASTLE-S1",
+        "PHASM-US-WA-MANRESA-CASTLE-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-WA-MANRESA-CASTLE-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-WA-MANRESA-CASTLE-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-WA-MANRESA-CASTLE-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-al-sloss-furnaces",
+      "appId": "phasm-us-al-sloss-furnaces",
+      "slug": "al-sloss-furnaces",
+      "operation": "add",
+      "physicalCategory": "Historic industrial site",
+      "accessDescription": "Public heritage attraction; optional guided tours",
+      "sourceIds": [
+        "PHASM-US-AL-SLOSS-FURNACES-S1",
+        "PHASM-US-AL-SLOSS-FURNACES-S2",
+        "PHASM-US-AL-SLOSS-FURNACES-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-AL-SLOSS-FURNACES-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-AL-SLOSS-FURNACES-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-AL-SLOSS-FURNACES-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-AL-SLOSS-FURNACES-S2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-AL-SLOSS-FURNACES-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ca-hotel-del-coronado",
+      "appId": "phasm-us-ca-hotel-del-coronado",
+      "slug": "ca-hotel-del-coronado",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Operating hotel and official haunted-history tours",
+      "sourceIds": [
+        "PHASM-US-CA-HOTEL-DEL-CORONADO-S1",
+        "PHASM-US-CA-HOTEL-DEL-CORONADO-S2",
+        "PHASM-US-CA-HOTEL-DEL-CORONADO-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-CA-HOTEL-DEL-CORONADO-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-CA-HOTEL-DEL-CORONADO-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-CA-HOTEL-DEL-CORONADO-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-CA-HOTEL-DEL-CORONADO-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-in-whispers-estate",
+      "appId": "phasm-us-in-whispers-estate",
+      "slug": "in-whispers-estate",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Private site; advance booking through operator",
+      "sourceIds": [
+        "PHASM-US-IN-WHISPERS-ESTATE-S1",
+        "PHASM-US-IN-WHISPERS-ESTATE-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-IN-WHISPERS-ESTATE-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-IN-WHISPERS-ESTATE-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IN-WHISPERS-ESTATE-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-il-resurrection-mary-cemetery",
+      "appId": "phasm-us-il-resurrection-mary-cemetery",
+      "slug": "il-resurrection-mary-cemetery",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Public cemetery during posted hours only",
+      "sourceIds": [
+        "PHASM-US-IL-RESURRECTION-MARY-CEMETERY-S1",
+        "PHASM-US-IL-RESURRECTION-MARY-CEMETERY-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-IL-RESURRECTION-MARY-CEMETERY-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-IL-RESURRECTION-MARY-CEMETERY-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IL-RESURRECTION-MARY-CEMETERY-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ne-hummel-park",
+      "appId": "phasm-us-ne-hummel-park",
+      "slug": "ne-hummel-park",
+      "operation": "add",
+      "physicalCategory": "Park & outdoor site",
+      "accessDescription": "Public city park; no sanctioned after-hours ghost access",
+      "sourceIds": [
+        "PHASM-US-NE-HUMMEL-PARK-S1",
+        "PHASM-US-NE-HUMMEL-PARK-S2",
+        "PHASM-US-NE-HUMMEL-PARK-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-NE-HUMMEL-PARK-S1",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NE-HUMMEL-PARK-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NE-HUMMEL-PARK-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NE-HUMMEL-PARK-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NE-HUMMEL-PARK-S1",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-NE-HUMMEL-PARK-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-tn-orpheum-theatre-memphis",
+      "appId": "phasm-us-tn-orpheum-theatre-memphis",
+      "slug": "tn-orpheum-theatre-memphis",
+      "operation": "add",
+      "physicalCategory": "Theater",
+      "accessDescription": "Ticketed performances and scheduled tours only",
+      "sourceIds": [
+        "PHASM-US-TN-ORPHEUM-THEATRE-MEMPHIS-S1",
+        "PHASM-US-TN-ORPHEUM-THEATRE-MEMPHIS-S2",
+        "PHASM-US-TN-ORPHEUM-THEATRE-MEMPHIS-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-TN-ORPHEUM-THEATRE-MEMPHIS-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-TN-ORPHEUM-THEATRE-MEMPHIS-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-TN-ORPHEUM-THEATRE-MEMPHIS-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-TN-ORPHEUM-THEATRE-MEMPHIS-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-tx-haunted-magnolia-hotel-seguin",
+      "appId": "phasm-us-tx-haunted-magnolia-hotel-seguin",
+      "slug": "tx-haunted-magnolia-hotel-seguin",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Advance appointment tours and lodging; owner-defined restricted areas",
+      "sourceIds": [
+        "PHASM-US-TX-HAUNTED-MAGNOLIA-HOTEL-SEGUIN-S1",
+        "PHASM-US-TX-HAUNTED-MAGNOLIA-HOTEL-SEGUIN-S2",
+        "PHASM-US-TX-HAUNTED-MAGNOLIA-HOTEL-SEGUIN-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-TX-HAUNTED-MAGNOLIA-HOTEL-SEGUIN-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-TX-HAUNTED-MAGNOLIA-HOTEL-SEGUIN-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-TX-HAUNTED-MAGNOLIA-HOTEL-SEGUIN-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-TX-HAUNTED-MAGNOLIA-HOTEL-SEGUIN-S2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-TX-HAUNTED-MAGNOLIA-HOTEL-SEGUIN-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-az-jerome-grand-hotel",
+      "appId": "phasm-us-az-jerome-grand-hotel",
+      "slug": "az-jerome-grand-hotel",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Operating hotel; registered guests and permitted visitor areas",
+      "sourceIds": [
+        "PHASM-US-AZ-JEROME-GRAND-HOTEL-S1",
+        "PHASM-US-AZ-JEROME-GRAND-HOTEL-S2",
+        "PHASM-US-AZ-JEROME-GRAND-HOTEL-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-AZ-JEROME-GRAND-HOTEL-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-AZ-JEROME-GRAND-HOTEL-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-AZ-JEROME-GRAND-HOTEL-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-AZ-JEROME-GRAND-HOTEL-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-wy-fort-laramie-woman-in-green",
+      "appId": "phasm-us-wy-fort-laramie-woman-in-green",
+      "slug": "wy-fort-laramie-woman-in-green",
+      "operation": "add",
+      "physicalCategory": "Military site",
+      "accessDescription": "Daylight public historic site; no nighttime access",
+      "sourceIds": [
+        "PHASM-US-WY-FORT-LARAMIE-WOMAN-IN-GREEN-S1",
+        "PHASM-US-WY-FORT-LARAMIE-WOMAN-IN-GREEN-S2",
+        "PHASM-US-WY-FORT-LARAMIE-WOMAN-IN-GREEN-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-WY-FORT-LARAMIE-WOMAN-IN-GREEN-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-WY-FORT-LARAMIE-WOMAN-IN-GREEN-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-WY-FORT-LARAMIE-WOMAN-IN-GREEN-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-WY-FORT-LARAMIE-WOMAN-IN-GREEN-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-tx-yorktown-memorial-hospital",
+      "appId": "phasm-us-tx-yorktown-memorial-hospital",
+      "slug": "tx-yorktown-memorial-hospital",
+      "operation": "add",
+      "physicalCategory": "Hospital & institution",
+      "accessDescription": "Members-only by reserved operator program; waiver required",
+      "sourceIds": [
+        "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S1",
+        "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S2",
+        "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S3",
+        "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S4"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S4",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-TX-YORKTOWN-MEMORIAL-HOSPITAL-S4",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ny-morris-jumel-mansion",
+      "appId": "phasm-us-ny-morris-jumel-mansion",
+      "slug": "ny-morris-jumel-mansion",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Temporary interior-tour closure; scheduled official paranormal events",
+      "sourceIds": [
+        "PHASM-US-NY-MORRIS-JUMEL-MANSION-S1",
+        "PHASM-US-NY-MORRIS-JUMEL-MANSION-S2",
+        "PHASM-US-NY-MORRIS-JUMEL-MANSION-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-NY-MORRIS-JUMEL-MANSION-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NY-MORRIS-JUMEL-MANSION-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NY-MORRIS-JUMEL-MANSION-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NY-MORRIS-JUMEL-MANSION-S2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-NY-MORRIS-JUMEL-MANSION-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-wi-pfister-hotel",
+      "appId": "phasm-us-wi-pfister-hotel",
+      "slug": "wi-pfister-hotel",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Operating hotel; booking required for rooms",
+      "sourceIds": [
+        "PHASM-US-WI-PFISTER-HOTEL-S1",
+        "PHASM-US-WI-PFISTER-HOTEL-S2",
+        "PHASM-US-WI-PFISTER-HOTEL-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-WI-PFISTER-HOTEL-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-WI-PFISTER-HOTEL-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-WI-PFISTER-HOTEL-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-WI-PFISTER-HOTEL-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-pa-sachs-covered-bridge",
+      "appId": "phasm-us-pa-sachs-covered-bridge",
+      "slug": "pa-sachs-covered-bridge",
+      "operation": "add",
+      "physicalCategory": "Road, bridge & tunnel",
+      "accessDescription": "Public pedestrian historic bridge; observe posted access",
+      "sourceIds": [
+        "PHASM-US-PA-SACHS-COVERED-BRIDGE-S1",
+        "PHASM-US-PA-SACHS-COVERED-BRIDGE-S2",
+        "PHASM-US-PA-SACHS-COVERED-BRIDGE-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-PA-SACHS-COVERED-BRIDGE-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-PA-SACHS-COVERED-BRIDGE-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-PA-SACHS-COVERED-BRIDGE-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-PA-SACHS-COVERED-BRIDGE-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-il-former-first-unitarian-church-alton",
+      "appId": "phasm-us-il-former-first-unitarian-church-alton",
+      "slug": "il-former-first-unitarian-church-alton",
+      "operation": "add",
+      "physicalCategory": "Church & historic building",
+      "accessDescription": "No confirmed visitor access",
+      "sourceIds": [
+        "PHASM-US-IL-FORMER-FIRST-UNITARIAN-CHURCH-ALTON-S1",
+        "PHASM-US-IL-FORMER-FIRST-UNITARIAN-CHURCH-ALTON-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-IL-FORMER-FIRST-UNITARIAN-CHURCH-ALTON-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-IL-FORMER-FIRST-UNITARIAN-CHURCH-ALTON-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IL-FORMER-FIRST-UNITARIAN-CHURCH-ALTON-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-il-milton-schoolhouse-alton",
+      "appId": "phasm-us-il-milton-schoolhouse-alton",
+      "slug": "il-milton-schoolhouse-alton",
+      "operation": "add",
+      "physicalCategory": "School & historic building",
+      "accessDescription": "Commercial access only; operator tours may be scheduled",
+      "sourceIds": [
+        "PHASM-US-IL-MILTON-SCHOOLHOUSE-ALTON-S1",
+        "PHASM-US-IL-MILTON-SCHOOLHOUSE-ALTON-S2",
+        "PHASM-US-IL-MILTON-SCHOOLHOUSE-ALTON-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-IL-MILTON-SCHOOLHOUSE-ALTON-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-IL-MILTON-SCHOOLHOUSE-ALTON-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IL-MILTON-SCHOOLHOUSE-ALTON-S3",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IL-MILTON-SCHOOLHOUSE-ALTON-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-il-mineral-springs-hotel-alton",
+      "appId": "phasm-us-il-mineral-springs-hotel-alton",
+      "slug": "il-mineral-springs-hotel-alton",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Interior visitor access unknown; exterior public viewing",
+      "sourceIds": [
+        "PHASM-US-IL-MINERAL-SPRINGS-HOTEL-ALTON-S1",
+        "PHASM-US-IL-MINERAL-SPRINGS-HOTEL-ALTON-S2",
+        "PHASM-US-IL-MINERAL-SPRINGS-HOTEL-ALTON-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-IL-MINERAL-SPRINGS-HOTEL-ALTON-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-IL-MINERAL-SPRINGS-HOTEL-ALTON-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IL-MINERAL-SPRINGS-HOTEL-ALTON-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IL-MINERAL-SPRINGS-HOTEL-ALTON-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-il-former-jacoby-furniture-building",
+      "appId": "phasm-us-il-former-jacoby-furniture-building",
+      "slug": "il-former-jacoby-furniture-building",
+      "operation": "add",
+      "physicalCategory": "Historic business",
+      "accessDescription": "Exterior viewing only; historic building no longer arts-center venue",
+      "sourceIds": [
+        "PHASM-US-IL-FORMER-JACOBY-FURNITURE-BUILDING-S1",
+        "PHASM-US-IL-FORMER-JACOBY-FURNITURE-BUILDING-S2",
+        "PHASM-US-IL-FORMER-JACOBY-FURNITURE-BUILDING-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-IL-FORMER-JACOBY-FURNITURE-BUILDING-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-IL-FORMER-JACOBY-FURNITURE-BUILDING-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-IL-FORMER-JACOBY-FURNITURE-BUILDING-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IL-FORMER-JACOBY-FURNITURE-BUILDING-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ga-colonial-park-cemetery",
+      "appId": "phasm-us-ga-colonial-park-cemetery",
+      "slug": "ga-colonial-park-cemetery",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Public cemetery during posted hours only",
+      "sourceIds": [
+        "PHASM-US-GA-COLONIAL-PARK-CEMETERY-S1",
+        "PHASM-US-GA-COLONIAL-PARK-CEMETERY-S2",
+        "PHASM-US-GA-COLONIAL-PARK-CEMETERY-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-GA-COLONIAL-PARK-CEMETERY-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-GA-COLONIAL-PARK-CEMETERY-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-GA-COLONIAL-PARK-CEMETERY-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-GA-COLONIAL-PARK-CEMETERY-S2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-GA-COLONIAL-PARK-CEMETERY-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ma-harvard-shaker-lollipop-cemetery",
+      "appId": "phasm-us-ma-harvard-shaker-lollipop-cemetery",
+      "slug": "ma-harvard-shaker-lollipop-cemetery",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Cemetery access hours unknown",
+      "sourceIds": [
+        "PHASM-US-MA-HARVARD-SHAKER-LOLLIPOP-CEMETERY-S1",
+        "PHASM-US-MA-HARVARD-SHAKER-LOLLIPOP-CEMETERY-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-MA-HARVARD-SHAKER-LOLLIPOP-CEMETERY-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-MA-HARVARD-SHAKER-LOLLIPOP-CEMETERY-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-MA-HARVARD-SHAKER-LOLLIPOP-CEMETERY-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ma-dean-hill-revolutionary-cemetery",
+      "appId": "phasm-us-ma-dean-hill-revolutionary-cemetery",
+      "slug": "ma-dean-hill-revolutionary-cemetery",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Historic municipal burial ground; daylight access only where posted",
+      "sourceIds": [
+        "PHASM-US-MA-DEAN-HILL-REVOLUTIONARY-CEMETERY-S1",
+        "PHASM-US-MA-DEAN-HILL-REVOLUTIONARY-CEMETERY-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-MA-DEAN-HILL-REVOLUTIONARY-CEMETERY-S1",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-MA-DEAN-HILL-REVOLUTIONARY-CEMETERY-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-MA-DEAN-HILL-REVOLUTIONARY-CEMETERY-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-MA-DEAN-HILL-REVOLUTIONARY-CEMETERY-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-MA-DEAN-HILL-REVOLUTIONARY-CEMETERY-S1",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-MA-DEAN-HILL-REVOLUTIONARY-CEMETERY-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-pa-wildwood-cemetery-williamsport",
+      "appId": "phasm-us-pa-wildwood-cemetery-williamsport",
+      "slug": "pa-wildwood-cemetery-williamsport",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Public cemetery during posted gate hours",
+      "sourceIds": [
+        "PHASM-US-PA-WILDWOOD-CEMETERY-WILLIAMSPORT-S1",
+        "PHASM-US-PA-WILDWOOD-CEMETERY-WILLIAMSPORT-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-PA-WILDWOOD-CEMETERY-WILLIAMSPORT-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-PA-WILDWOOD-CEMETERY-WILLIAMSPORT-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-PA-WILDWOOD-CEMETERY-WILLIAMSPORT-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-fl-georgiana-cemetery-ethel-allen",
+      "appId": "phasm-us-fl-georgiana-cemetery-ethel-allen",
+      "slug": "fl-georgiana-cemetery-ethel-allen",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Cemetery access unknown",
+      "sourceIds": [
+        "PHASM-US-FL-GEORGIANA-CEMETERY-ETHEL-ALLEN-S1"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-FL-GEORGIANA-CEMETERY-ETHEL-ALLEN-S1",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-FL-GEORGIANA-CEMETERY-ETHEL-ALLEN-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-FL-GEORGIANA-CEMETERY-ETHEL-ALLEN-S1",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-nv-old-tonopah-cemetery",
+      "appId": "phasm-us-nv-old-tonopah-cemetery",
+      "slug": "nv-old-tonopah-cemetery",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Public historic cemetery",
+      "sourceIds": [
+        "PHASM-US-NV-OLD-TONOPAH-CEMETERY-S1",
+        "PHASM-US-NV-OLD-TONOPAH-CEMETERY-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-NV-OLD-TONOPAH-CEMETERY-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NV-OLD-TONOPAH-CEMETERY-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NV-OLD-TONOPAH-CEMETERY-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-sc-alice-flagg-grave-all-saints",
+      "appId": "phasm-us-sc-alice-flagg-grave-all-saints",
+      "slug": "sc-alice-flagg-grave-all-saints",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Churchyard access hours unknown",
+      "sourceIds": [
+        "PHASM-US-SC-ALICE-FLAGG-GRAVE-ALL-SAINTS-S1"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-SC-ALICE-FLAGG-GRAVE-ALL-SAINTS-S1",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-SC-ALICE-FLAGG-GRAVE-ALL-SAINTS-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-SC-ALICE-FLAGG-GRAVE-ALL-SAINTS-S1",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-wa-greenwood-cemetery-thousand-steps",
+      "appId": "phasm-us-wa-greenwood-cemetery-thousand-steps",
+      "slug": "wa-greenwood-cemetery-thousand-steps",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Public cemetery; haunted staircase off-limits",
+      "sourceIds": [
+        "PHASM-US-WA-GREENWOOD-CEMETERY-THOUSAND-STEPS-S1",
+        "PHASM-US-WA-GREENWOOD-CEMETERY-THOUSAND-STEPS-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-WA-GREENWOOD-CEMETERY-THOUSAND-STEPS-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-WA-GREENWOOD-CEMETERY-THOUSAND-STEPS-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-WA-GREENWOOD-CEMETERY-THOUSAND-STEPS-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-al-dead-childrens-playground-maple-hill",
+      "appId": "phasm-us-al-dead-childrens-playground-maple-hill",
+      "slug": "al-dead-childrens-playground-maple-hill",
+      "operation": "add",
+      "physicalCategory": "Park & outdoor site",
+      "accessDescription": "Public park; cemetery rules and posted hours apply",
+      "sourceIds": [
+        "PHASM-US-AL-DEAD-CHILDRENS-PLAYGROUND-MAPLE-HILL-S1",
+        "PHASM-US-AL-DEAD-CHILDRENS-PLAYGROUND-MAPLE-HILL-S2",
+        "PHASM-US-AL-DEAD-CHILDRENS-PLAYGROUND-MAPLE-HILL-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-AL-DEAD-CHILDRENS-PLAYGROUND-MAPLE-HILL-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-AL-DEAD-CHILDRENS-PLAYGROUND-MAPLE-HILL-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-AL-DEAD-CHILDRENS-PLAYGROUND-MAPLE-HILL-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-AL-DEAD-CHILDRENS-PLAYGROUND-MAPLE-HILL-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-sc-charleston-unitarian-churchyard",
+      "appId": "phasm-us-sc-charleston-unitarian-churchyard",
+      "slug": "sc-charleston-unitarian-churchyard",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Public churchyard during listed hours",
+      "sourceIds": [
+        "PHASM-US-SC-CHARLESTON-UNITARIAN-CHURCHYARD-S1",
+        "PHASM-US-SC-CHARLESTON-UNITARIAN-CHURCHYARD-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-SC-CHARLESTON-UNITARIAN-CHURCHYARD-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-SC-CHARLESTON-UNITARIAN-CHURCHYARD-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-SC-CHARLESTON-UNITARIAN-CHURCHYARD-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-il-st-omer-cemetery-caroline-barnes",
+      "appId": "phasm-us-il-st-omer-cemetery-caroline-barnes",
+      "slug": "il-st-omer-cemetery-caroline-barnes",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Rural cemetery access hours unconfirmed",
+      "sourceIds": [
+        "PHASM-US-IL-ST-OMER-CEMETERY-CAROLINE-BARNES-S1",
+        "PHASM-US-IL-ST-OMER-CEMETERY-CAROLINE-BARNES-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-IL-ST-OMER-CEMETERY-CAROLINE-BARNES-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-IL-ST-OMER-CEMETERY-CAROLINE-BARNES-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-IL-ST-OMER-CEMETERY-CAROLINE-BARNES-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ca-el-campo-santo-cemetery",
+      "appId": "phasm-us-ca-el-campo-santo-cemetery",
+      "slug": "ca-el-campo-santo-cemetery",
+      "operation": "add",
+      "physicalCategory": "Cemetery & graveyard",
+      "accessDescription": "Historic public landmark; after-hours only with authorized operator",
+      "sourceIds": [
+        "PHASM-US-CA-EL-CAMPO-SANTO-CEMETERY-S1",
+        "PHASM-US-CA-EL-CAMPO-SANTO-CEMETERY-S2",
+        "PHASM-US-CA-EL-CAMPO-SANTO-CEMETERY-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-CA-EL-CAMPO-SANTO-CEMETERY-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-CA-EL-CAMPO-SANTO-CEMETERY-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-CA-EL-CAMPO-SANTO-CEMETERY-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-CA-EL-CAMPO-SANTO-CEMETERY-S2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-CA-EL-CAMPO-SANTO-CEMETERY-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-al-historic-lowry-house",
+      "appId": "phasm-us-al-historic-lowry-house",
+      "slug": "al-historic-lowry-house",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Appointment required; special public events",
+      "sourceIds": [
+        "PHASM-US-AL-HISTORIC-LOWRY-HOUSE-S1",
+        "PHASM-US-AL-HISTORIC-LOWRY-HOUSE-S2",
+        "PHASM-US-AL-HISTORIC-LOWRY-HOUSE-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-AL-HISTORIC-LOWRY-HOUSE-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-AL-HISTORIC-LOWRY-HOUSE-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-AL-HISTORIC-LOWRY-HOUSE-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-AL-HISTORIC-LOWRY-HOUSE-S2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-AL-HISTORIC-LOWRY-HOUSE-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-or-white-eagle-saloon-hotel",
+      "appId": "phasm-us-or-white-eagle-saloon-hotel",
+      "slug": "or-white-eagle-saloon-hotel",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Operating saloon and hotel; lodging by reservation",
+      "sourceIds": [
+        "PHASM-US-OR-WHITE-EAGLE-SALOON-HOTEL-S1",
+        "PHASM-US-OR-WHITE-EAGLE-SALOON-HOTEL-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-OR-WHITE-EAGLE-SALOON-HOTEL-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-OR-WHITE-EAGLE-SALOON-HOTEL-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-OR-WHITE-EAGLE-SALOON-HOTEL-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-pa-farnsworth-house-inn",
+      "appId": "phasm-us-pa-farnsworth-house-inn",
+      "slug": "pa-farnsworth-house-inn",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Operating inn; ticketed tours and investigations",
+      "sourceIds": [
+        "PHASM-US-PA-FARNSWORTH-HOUSE-INN-S1",
+        "PHASM-US-PA-FARNSWORTH-HOUSE-INN-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-PA-FARNSWORTH-HOUSE-INN-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-PA-FARNSWORTH-HOUSE-INN-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-PA-FARNSWORTH-HOUSE-INN-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-nc-devils-tramping-ground",
+      "appId": "phasm-us-nc-devils-tramping-ground",
+      "slug": "nc-devils-tramping-ground",
+      "operation": "add",
+      "physicalCategory": "Natural landmark",
+      "accessDescription": "Private property; permission required, no approved visitor channel verified",
+      "sourceIds": [
+        "PHASM-US-NC-DEVILS-TRAMPING-GROUND-S1",
+        "PHASM-US-NC-DEVILS-TRAMPING-GROUND-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-NC-DEVILS-TRAMPING-GROUND-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NC-DEVILS-TRAMPING-GROUND-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NC-DEVILS-TRAMPING-GROUND-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-de-woodburn-governors-residence",
+      "appId": "phasm-us-de-woodburn-governors-residence",
+      "slug": "de-woodburn-governors-residence",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Occupied official residence; no regular public tours",
+      "sourceIds": [
+        "PHASM-US-DE-WOODBURN-GOVERNORS-RESIDENCE-S1",
+        "PHASM-US-DE-WOODBURN-GOVERNORS-RESIDENCE-S2",
+        "PHASM-US-DE-WOODBURN-GOVERNORS-RESIDENCE-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-DE-WOODBURN-GOVERNORS-RESIDENCE-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-DE-WOODBURN-GOVERNORS-RESIDENCE-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-DE-WOODBURN-GOVERNORS-RESIDENCE-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-DE-WOODBURN-GOVERNORS-RESIDENCE-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ny-iron-island-museum",
+      "appId": "phasm-us-ny-iron-island-museum",
+      "slug": "ny-iron-island-museum",
+      "operation": "add",
+      "physicalCategory": "Museum & historic building",
+      "accessDescription": "Scheduled museum tours; arranged paranormal events",
+      "sourceIds": [
+        "PHASM-US-NY-IRON-ISLAND-MUSEUM-S1",
+        "PHASM-US-NY-IRON-ISLAND-MUSEUM-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-NY-IRON-ISLAND-MUSEUM-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-NY-IRON-ISLAND-MUSEUM-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-NY-IRON-ISLAND-MUSEUM-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ar-basin-park-hotel",
+      "appId": "phasm-us-ar-basin-park-hotel",
+      "slug": "ar-basin-park-hotel",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Operating hotel; scheduled paranormal tours",
+      "sourceIds": [
+        "PHASM-US-AR-BASIN-PARK-HOTEL-S1",
+        "PHASM-US-AR-BASIN-PARK-HOTEL-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-AR-BASIN-PARK-HOTEL-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-AR-BASIN-PARK-HOTEL-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-AR-BASIN-PARK-HOTEL-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-sd-historic-bullock-hotel",
+      "appId": "phasm-us-sd-historic-bullock-hotel",
+      "slug": "sd-historic-bullock-hotel",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Operating hotel; guided ghost tours",
+      "sourceIds": [
+        "PHASM-US-SD-HISTORIC-BULLOCK-HOTEL-S1",
+        "PHASM-US-SD-HISTORIC-BULLOCK-HOTEL-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-SD-HISTORIC-BULLOCK-HOTEL-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-SD-HISTORIC-BULLOCK-HOTEL-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-SD-HISTORIC-BULLOCK-HOTEL-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-mn-palmer-house-hotel",
+      "appId": "phasm-us-mn-palmer-house-hotel",
+      "slug": "mn-palmer-house-hotel",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Operating inn; paranormal tours by advance ticket",
+      "sourceIds": [
+        "PHASM-US-MN-PALMER-HOUSE-HOTEL-S1",
+        "PHASM-US-MN-PALMER-HOUSE-HOTEL-S2",
+        "PHASM-US-MN-PALMER-HOUSE-HOTEL-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-MN-PALMER-HOUSE-HOTEL-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-MN-PALMER-HOUSE-HOTEL-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-MN-PALMER-HOUSE-HOTEL-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-MN-PALMER-HOUSE-HOTEL-S2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-MN-PALMER-HOUSE-HOTEL-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ca-whaley-house-museum",
+      "appId": "phasm-us-ca-whaley-house-museum",
+      "slug": "ca-whaley-house-museum",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Public museum; ticketed day and evening investigations",
+      "sourceIds": [
+        "PHASM-US-CA-WHALEY-HOUSE-MUSEUM-S1",
+        "PHASM-US-CA-WHALEY-HOUSE-MUSEUM-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-CA-WHALEY-HOUSE-MUSEUM-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-CA-WHALEY-HOUSE-MUSEUM-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-CA-WHALEY-HOUSE-MUSEUM-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-ks-eldridge-hotel-lawrence",
+      "appId": "phasm-us-ks-eldridge-hotel-lawrence",
+      "slug": "ks-eldridge-hotel-lawrence",
+      "operation": "add",
+      "physicalCategory": "Hotel & inn",
+      "accessDescription": "Operating hotel; rooms only with reservation",
+      "sourceIds": [
+        "PHASM-US-KS-ELDRIDGE-HOTEL-LAWRENCE-S1",
+        "PHASM-US-KS-ELDRIDGE-HOTEL-LAWRENCE-S2",
+        "PHASM-US-KS-ELDRIDGE-HOTEL-LAWRENCE-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-KS-ELDRIDGE-HOTEL-LAWRENCE-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-KS-ELDRIDGE-HOTEL-LAWRENCE-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-KS-ELDRIDGE-HOTEL-LAWRENCE-S2",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-KS-ELDRIDGE-HOTEL-LAWRENCE-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-de-rockwood-park-museum",
+      "appId": "phasm-us-de-rockwood-park-museum",
+      "slug": "de-rockwood-park-museum",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Public grounds; booked museum/ghost tours subject to renovations",
+      "sourceIds": [
+        "PHASM-US-DE-ROCKWOOD-PARK-MUSEUM-S1",
+        "PHASM-US-DE-ROCKWOOD-PARK-MUSEUM-S2"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-DE-ROCKWOOD-PARK-MUSEUM-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-DE-ROCKWOOD-PARK-MUSEUM-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-DE-ROCKWOOD-PARK-MUSEUM-S2",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-pa-jennie-wade-house",
+      "appId": "phasm-us-pa-jennie-wade-house",
+      "slug": "pa-jennie-wade-house",
+      "operation": "add",
+      "physicalCategory": "Haunted house",
+      "accessDescription": "Guided historic and separate evening paranormal tours",
+      "sourceIds": [
+        "PHASM-US-PA-JENNIE-WADE-HOUSE-S1",
+        "PHASM-US-PA-JENNIE-WADE-HOUSE-S2",
+        "PHASM-US-PA-JENNIE-WADE-HOUSE-S3"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-PA-JENNIE-WADE-HOUSE-S2",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-PA-JENNIE-WADE-HOUSE-S3",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-PA-JENNIE-WADE-HOUSE-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-PA-JENNIE-WADE-HOUSE-S2",
+          "kind": "visiting"
+        },
+        {
+          "sourceId": "PHASM-US-PA-JENNIE-WADE-HOUSE-S3",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    },
+    {
+      "researchId": "phasm-us-mi-morrow-road-woman-in-white",
+      "appId": "phasm-us-mi-morrow-road-woman-in-white",
+      "slug": "mi-morrow-road-woman-in-white",
+      "operation": "add",
+      "physicalCategory": "Road, bridge & tunnel",
+      "accessDescription": "Public road; no organized ghost-access program",
+      "sourceIds": [
+        "PHASM-US-MI-MORROW-ROAD-WOMAN-IN-WHITE-S1"
+      ],
+      "sourceRoles": [
+        {
+          "sourceId": "PHASM-US-MI-MORROW-ROAD-WOMAN-IN-WHITE-S1",
+          "kind": "history"
+        },
+        {
+          "sourceId": "PHASM-US-MI-MORROW-ROAD-WOMAN-IN-WHITE-S1",
+          "kind": "reports"
+        },
+        {
+          "sourceId": "PHASM-US-MI-MORROW-ROAD-WOMAN-IN-WHITE-S1",
+          "kind": "visiting"
+        }
+      ],
+      "lastReviewedOn": "2026-10-10"
+    }
+  ]
+}

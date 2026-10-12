@@ -11,8 +11,8 @@ export interface Location {
   state: string;
   country: string;
   region: string;
-  latitude: number;
-  longitude: number;
+  latitude: number | null;
+  longitude: number | null;
   category: string;
   classification: "established" | "local-legend" | "community-discovery";
   summary: string;
@@ -30,7 +30,7 @@ export interface Location {
   imageLicense: string;
   imageSource: string;
   status: "draft" | "published" | "archived";
-  coordinatePrecision: "exact" | "approximate";
+  coordinatePrecision: "exact" | "approximate" | "withheld";
   featured: boolean;
   updatedAt: string;
 }
