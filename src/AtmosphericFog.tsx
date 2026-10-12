@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import "./atmospheric-fog.css";
 
 const vertexSource = `
@@ -9,93 +10,82 @@ void main() {
   gl_Position = vec4(aPosition, 0., 1.);
 }`;
 
-// Continuous, differently advected noise fields: no repeating bitmap or reset.
+// Three advected volumes share a seamless 3D noise texture. Low-frequency
+// domain warping forms billows; finer erosion breaks their edges into tendrils.
 const fragmentSource = `
 precision highp float;
 varying vec2 vUv;
 uniform vec2 uViewport;
 uniform float uTime;
 uniform float uReveal;
-uniform float uEdgeWidth;
+uniform float uScroll;
+uniform float uClearTop;
 uniform float uDensity;
 uniform sampler2D uProtection;
+uniform sampler2D uNoise;
 
-float hash(vec2 p) {
-  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
-}
-float noise(vec2 p) {
-  vec2 i = floor(p);
-  vec2 f = fract(p);
+float noise(vec3 p) {
+  vec3 cell = floor(p);
+  vec3 f = fract(p);
   f = f * f * (3. - 2. * f);
-  return mix(mix(hash(i), hash(i + vec2(1., 0.)), f.x),
-             mix(hash(i + vec2(0., 1.)), hash(i + vec2(1., 1.)), f.x), f.y);
+  vec2 uv = cell.xy + vec2(37., 17.) * cell.z + f.xy;
+  vec2 pair = texture2D(uNoise, (uv + .5) / 256.).rg;
+  return mix(pair.r, pair.g, f.z);
 }
-float field(vec2 p) {
-  return .57 * noise(p) + .28 * noise(p * 2.03 + 17.2)
-       + .15 * noise(p * 4.07 - 9.1);
+float field(vec3 p) {
+  float value = .5333 * noise(p);
+  p.xy = mat2(.8, -.6, .6, .8) * p.xy;
+  p = p * 2.03 + vec3(13.7, 9.2, 17.1);
+  value += .2667 * noise(p);
+  p.xy = mat2(.8, -.6, .6, .8) * p.xy;
+  p = p * 2.01 + vec3(8.3, 19.1, 3.7);
+  value += .1333 * noise(p);
+  return value + .0667 * noise(p * 2.02 + 11.3);
 }
-float wisp(vec2 p, float phase) {
-  vec2 bend = vec2(field(p * .59 + phase), field(p * .63 + 23.7));
-  p += (bend - .5) * 2.4;
-  float strands = .5 + .5 * sin(p.y * 4.3 + field(p * .9) * 7.);
-  return pow(strands, 2.5) * smoothstep(.23, .79, field(p * 1.4));
+vec2 volume(vec3 p, float seed) {
+  vec3 drift = vec3(uTime * .038, -uTime * .012, uTime * .013);
+  p += drift + vec3(seed, seed * .37, seed * .71);
+  vec3 warp = vec3(
+    noise(p * .56 + vec3(0., 0., uTime * .009)),
+    noise(p * .51 + 31.4),
+    noise(p * .48 - 17.8)
+  );
+  p += (warp - .5) * 2.6;
+  float body = field(p);
+  float erosion = noise(p * 7.1 + vec3(-uTime * .021, 4.8, 13.2));
+  float density = smoothstep(.38, .76, body) * mix(.58, 1., erosion);
+  // A broad upward light gives each bank a silver crest and shaded underside.
+  float light = clamp(.56 + (noise(p + vec3(0., .27, .1)) - noise(p)) * 1.8, .28, .84);
+  return vec2(density, light);
 }
 void main() {
-  float edge = min(vUv.x, 1. - vUv.x) * uViewport.x;
-  // Hard geographic boundary: fog cannot enter the middle of the viewport.
-  if (edge >= uEdgeWidth || vUv.y >= .63) discard;
-  float protection = texture2D(uProtection, vec2(vUv.x, 1. - vUv.y)).r;
-  if (protection < .001) discard;
-  float side = step(.5, vUv.x);
-  vec2 p = vec2(edge * .025 + side * 37.1, vUv.y * uViewport.y * .008);
-  // Negative y advection makes the strands rise; x drift is slow and unequal.
-  float a = wisp(p + vec2(uTime * .009, -uTime * .013), 3.1);
-  float b = wisp(p * vec2(.73, 1.27) + vec2(-uTime * .006, -uTime * .008) + 14.8, 9.7);
-  float c = field(p * .64 + vec2(uTime * .003, -uTime * .005) - 8.9);
-  float lateral = 1. - smoothstep(.04, 1., edge / uEdgeWidth);
-  float height = 1. - smoothstep(.13, .63, vUv.y);
-  float density = (.59 * a + .31 * b + .10 * c) * lateral * height;
-  float alpha = min(density * uDensity, .085) * protection * uReveal;
-  // Desaturated silver with a very slight green undertone; premultiplied alpha.
-  gl_FragColor = vec4(vec3(.65, .69, .66) * alpha, alpha);
+  vec2 screen = vec2(vUv.x, 1. - vUv.y);
+  float aspect = uViewport.x / uViewport.y;
+  vec2 p = vec2((screen.x - .5) * aspect, screen.y);
+  // A little depth-dependent parallax connects the atmosphere to the page while
+  // preserving continuous motion across card, photograph and section borders.
+  float scroll = uScroll / uViewport.y;
+  float ground = smoothstep(.12, .94, screen.y);
+  float edges = pow(abs(screen.x - .5) * 2., 1.5);
+  float envelope = (.16 + .69 * ground + .15 * edges)
+                 * smoothstep(uClearTop + 16., uClearTop + 180., screen.y * uViewport.y);
+  vec2 farFog = volume(vec3(p * vec2(2.6, 3.5) + vec2(0., scroll * .10), 3.2), 2.3);
+  vec2 midFog = volume(vec3(p * vec2(3.8, 4.4) + vec2(-uTime * .015, scroll * .18), 9.7), 17.1);
+  vec2 nearFog = volume(vec3(p * vec2(5.1, 5.8) + vec2(uTime * .021, scroll * .27), 15.3), 41.6);
+  // Beer-Lambert accumulation softly combines independent volumes instead of
+  // adding three flat white layers or making periodic horizontal smoke ribbons.
+  float opticalDepth = (.45 * farFog.x + .36 * midFog.x + .26 * nearFog.x) * envelope;
+  float protection = texture2D(uProtection, screen).r;
+  float alpha = (1. - exp(-opticalDepth * uDensity)) * protection * uReveal;
+  alpha = min(alpha, .18);
+  float light = (farFog.y + midFog.y + nearFog.y) / 3.;
+  vec3 silver = mix(vec3(.30, .37, .35), vec3(.76, .81, .78), light);
+  // Premultiplied alpha keeps the fringe clean on both photography and dark UI.
+  gl_FragColor = vec4(silver * alpha, alpha);
 }`;
 
-const protectedSelector = [
-  "header",
-  "footer",
-  "nav",
-  "h1",
-  "h2",
-  "h3",
-  "h4",
-  "h5",
-  "h6",
-  "p",
-  "a",
-  "button",
-  "input",
-  "select",
-  "textarea",
-  "label",
-  "summary",
-  "img",
-  "picture",
-  "figure",
-  "video",
-  "canvas:not(.atmospheric-fog-canvas)",
-  "blockquote",
-  "li",
-  "dt",
-  "dd",
-  "span",
-  "strong",
-  "em",
-  "small",
-  ".location-card",
-  ".home-search",
-  ".eyebrow",
-  "[data-fog-protect]",
-].join(",");
+const controlSelector =
+  'button,input,select,textarea,[role="button"],[data-fog-protect]';
 
 type SaverNavigator = Navigator & {
   deviceMemory?: number;
@@ -156,13 +146,14 @@ export function AtmosphericFog() {
     };
   }, []);
 
-  return (
+  return createPortal(
     <div
       className="atmospheric-fog"
       ref={hostRef}
       aria-hidden="true"
       data-status="initializing"
-    />
+    />,
+    document.body,
   );
 }
 
@@ -173,20 +164,23 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
   let frame = 0;
   let animationFrame = 0;
   let geometryFrame = 0;
-  let timer = 0;
-  let settleTimer = 0;
   let ready = false;
   let width = 1;
   let height = 1;
-  let edgeWidth = 1;
   let viewportLeft = 0;
   let viewportTop = 0;
   let elapsed = 0;
   let previousFrameTime = 0;
+  let cadenceTime = 0;
   let revealTime = 0;
   let performanceSamples = 0;
   let slowSamples = 0;
-  const frameInterval = 1000 / 18;
+  let quality = 0;
+  let frameInterval = 1000 / 30;
+  let lastMaskTime = 0;
+  let geometryDirty = true;
+  let scrollPosition = window.scrollY;
+  let clearTop = 0;
 
   let gl: WebGLRenderingContext | null = null;
   try {
@@ -212,6 +206,7 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
   let program: WebGLProgram | null = null;
   let buffer: WebGLBuffer | null = null;
   let protectionTexture: WebGLTexture | null = null;
+  let noiseTexture: WebGLTexture | null = null;
   const mask = document.createElement("canvas");
   const maskContext = mask.getContext("2d", { alpha: false });
 
@@ -220,6 +215,7 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     if (program) context.deleteProgram(program);
     if (buffer) context.deleteBuffer(buffer);
     if (protectionTexture) context.deleteTexture(protectionTexture);
+    if (noiseTexture) context.deleteTexture(noiseTexture);
   }
   function shader(type: number, source: string) {
     const result = context.createShader(type);
@@ -287,6 +283,64 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
       context.LINEAR,
     );
     context.uniform1i(context.getUniformLocation(program, "uProtection"), 0);
+    noiseTexture = context.createTexture();
+    if (!noiseTexture) throw new Error("Fog noise unavailable");
+    // Deterministic, tileable noise. Green is the next Z slice of red so the
+    // shader interpolates a continuous volume using one filtered texture fetch.
+    const size = 256;
+    const values = new Uint8Array(size * size);
+    let seed = 0x50484153;
+    for (let i = 0; i < values.length; i++) {
+      seed ^= seed << 13;
+      seed ^= seed >>> 17;
+      seed ^= seed << 5;
+      values[i] = seed >>> 24;
+    }
+    const pixels = new Uint8Array(size * size * 4);
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        const i = (y * size + x) * 4;
+        pixels[i] = values[y * size + x];
+        pixels[i + 1] = values[((y + 17) % size) * size + ((x + 37) % size)];
+        pixels[i + 2] = 0;
+        pixels[i + 3] = 255;
+      }
+    }
+    context.activeTexture(context.TEXTURE1);
+    context.bindTexture(context.TEXTURE_2D, noiseTexture);
+    context.texParameteri(
+      context.TEXTURE_2D,
+      context.TEXTURE_WRAP_S,
+      context.REPEAT,
+    );
+    context.texParameteri(
+      context.TEXTURE_2D,
+      context.TEXTURE_WRAP_T,
+      context.REPEAT,
+    );
+    context.texParameteri(
+      context.TEXTURE_2D,
+      context.TEXTURE_MIN_FILTER,
+      context.LINEAR,
+    );
+    context.texParameteri(
+      context.TEXTURE_2D,
+      context.TEXTURE_MAG_FILTER,
+      context.LINEAR,
+    );
+    context.texImage2D(
+      context.TEXTURE_2D,
+      0,
+      context.RGBA,
+      size,
+      size,
+      0,
+      context.RGBA,
+      context.UNSIGNED_BYTE,
+      pixels,
+    );
+    context.uniform1i(context.getUniformLocation(program, "uNoise"), 1);
+    context.activeTexture(context.TEXTURE0);
     context.clearColor(0, 0, 0, 0);
     context.disable(context.DEPTH_TEST);
     context.disable(context.BLEND);
@@ -301,64 +355,71 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     viewport: context.getUniformLocation(program!, "uViewport"),
     time: context.getUniformLocation(program!, "uTime"),
     reveal: context.getUniformLocation(program!, "uReveal"),
-    edgeWidth: context.getUniformLocation(program!, "uEdgeWidth"),
+    scroll: context.getUniformLocation(program!, "uScroll"),
+    clearTop: context.getUniformLocation(program!, "uClearTop"),
     density: context.getUniformLocation(program!, "uDensity"),
   };
 
   function stopScheduling() {
-    window.clearTimeout(timer);
     window.cancelAnimationFrame(animationFrame);
-    timer = animationFrame = 0;
+    animationFrame = 0;
   }
 
   function schedule() {
     if (disposed || lost || disabled || document.hidden || !ready) return;
-    // A timeout avoids waking a 60/120Hz display loop merely to skip frames.
-    timer = window.setTimeout(() => {
-      animationFrame = window.requestAnimationFrame(draw);
-    }, frameInterval);
+    animationFrame = window.requestAnimationFrame(draw);
   }
 
   function draw(now: number) {
     animationFrame = 0;
     if (disposed || lost || disabled || document.hidden || !ready) return;
-    const costStart = performance.now();
+    const cadenceGap = cadenceTime ? now - cadenceTime : frameInterval;
+    if (cadenceGap < frameInterval - 1) {
+      schedule();
+      return;
+    }
+    cadenceTime =
+      now - (cadenceGap >= frameInterval ? cadenceGap % frameInterval : 0);
     const gap = previousFrameTime ? now - previousFrameTime : frameInterval;
-    const delta = Math.min(gap, 100) / 1000;
+    const delta = Math.min(gap, 120) / 1000;
     elapsed += delta;
     revealTime += delta;
     previousFrameTime = now;
-    context.disable(context.SCISSOR_TEST);
-    context.clear(context.COLOR_BUFFER_BIT);
+    // Refresh only when page geometry changes, at most 20 times per second
+    // while scrolling. The soft mask never forces a hide/reveal cycle.
+    if (geometryDirty && now - lastMaskTime >= 50) measureAndMask();
+    scrollPosition +=
+      (window.scrollY - scrollPosition) * Math.min(1, delta * 6);
     context.uniform2f(uniforms.viewport, width, height);
     context.uniform1f(uniforms.time, elapsed);
-    context.uniform1f(uniforms.reveal, Math.min(1, revealTime / 1.8));
-    context.uniform1f(uniforms.edgeWidth, edgeWidth);
-    context.uniform1f(uniforms.density, width <= 760 ? 0.105 : 0.13);
-    context.enable(context.SCISSOR_TEST);
-    const strip = Math.ceil((edgeWidth / width) * canvas.width) + 1;
-    const rise = Math.ceil(canvas.height * 0.63);
-    context.scissor(0, 0, strip, rise);
-    context.drawArrays(context.TRIANGLES, 0, 6);
-    context.scissor(canvas.width - strip, 0, strip, rise);
+    context.uniform1f(uniforms.reveal, Math.min(1, revealTime / 2.2));
+    context.uniform1f(uniforms.scroll, scrollPosition);
+    context.uniform1f(uniforms.clearTop, clearTop);
+    context.uniform1f(uniforms.density, width <= 760 ? 0.46 : 0.54);
     context.drawArrays(context.TRIANGLES, 0, 6);
     canvas.style.visibility = "visible";
     canvas.dataset.frame = String(++frame);
     host.dataset.status = "running";
 
-    // Conservatively disable the decoration when sustained cadence is poor.
-    // Ignore startup/font loading; page responsiveness always wins over mist.
+    // Cadence includes GPU backpressure. Lower resolution first, keeping the
+    // same layers and motion; abandon the decoration only if that still fails.
     if (elapsed > 4) {
       performanceSamples++;
-      if (gap > 140 || performance.now() - costStart > 10) slowSamples++;
-      if (performanceSamples >= 72) {
-        if (slowSamples > performanceSamples * 0.5) {
-          disabled = true;
-          canvas.style.visibility = "hidden";
-          host.dataset.status = "low-performance";
-          release();
-          context.getExtension("WEBGL_lose_context")?.loseContext();
-          return;
+      if (gap > frameInterval * 1.8) slowSamples++;
+      if (performanceSamples >= 60) {
+        if (slowSamples > performanceSamples * 0.45) {
+          if (quality < 2) {
+            quality++;
+            host.dataset.quality = quality === 1 ? "balanced" : "economy";
+            geometryDirty = true;
+          } else {
+            disabled = true;
+            canvas.style.visibility = "hidden";
+            host.dataset.status = "low-performance";
+            release();
+            context.getExtension("WEBGL_lose_context")?.loseContext();
+            return;
+          }
         }
         performanceSamples = slowSamples = 0;
       }
@@ -374,16 +435,21 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     height = Math.max(1, viewport?.height || window.innerHeight);
     viewportLeft = viewport?.offsetLeft || 0;
     viewportTop = viewport?.offsetTop || 0;
-    edgeWidth =
-      width <= 760 ? Math.min(26, width * 0.065) : Math.min(112, width * 0.075);
+    clearTop = Math.max(
+      0,
+      (document.querySelector(".site-header")?.getBoundingClientRect().bottom ||
+        0) - viewportTop,
+    );
+    frameInterval = 1000 / (width <= 760 ? 24 : 30);
     host.style.width = `${width}px`;
     host.style.height = `${height}px`;
     host.style.transform = `translate(${viewportLeft}px, ${viewportTop}px)`;
-    // Physical DPR is intentionally ignored: fog has no sharp detail to retain.
-    const scale = Math.min(
-      width <= 760 ? 0.72 : 0.5,
-      768 / Math.max(width, height),
-    );
+    const scale =
+      Math.min(
+        width <= 760 ? 0.65 : 0.58,
+        1024 / Math.max(width, height),
+        Math.sqrt(500000 / (width * height)),
+      ) * [1, 0.78, 0.6][quality];
     const renderWidth = Math.max(1, Math.round(width * scale));
     const renderHeight = Math.max(1, Math.round(height * scale));
     if (canvas.width !== renderWidth || canvas.height !== renderHeight) {
@@ -397,43 +463,49 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
     ctx.globalCompositeOperation = "source-over";
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, width, height);
-    // Union the exclusions: overlapping feather shoulders may only darken,
-    // never repaint another element's fully protected area with a gray value.
     ctx.globalCompositeOperation = "darken";
-    const homepage = host.closest(".home-page");
-    const protectedNodes = [
-      ...Array.from(homepage?.querySelectorAll(protectedSelector) || []),
-      ...Array.from(document.querySelectorAll(".site-header,.site-footer")),
-    ];
-    for (const node of protectedNodes) {
-      const rect = node.getBoundingClientRect();
+    // Broad elliptical shoulders reduce density near actual text lines. They
+    // never erase entire card/photo rectangles or cut a square hole in a bank.
+    function soften(rect: DOMRect, strength: number, margin: number) {
       const left = rect.left - viewportLeft;
       const top = rect.top - viewportTop;
       if (
         !rect.width ||
         !rect.height ||
-        top > height + 16 ||
-        top + rect.height < -16
+        top > height + 60 ||
+        top + rect.height < -60
       )
-        continue;
-      if (left > edgeWidth + 16 && left + rect.width < width - edgeWidth - 16)
-        continue;
-      // The innermost 8px margin is fully clear, even with texture interpolation.
-      // Two outer shoulders feather its boundary without blurring the page.
-      for (const [margin, shade] of [
-        [16, "#999"],
-        [12, "#555"],
-        [8, "#000"],
-      ] as const) {
-        ctx.fillStyle = shade;
-        ctx.fillRect(
-          left - margin,
-          top - margin,
-          rect.width + margin * 2,
-          rect.height + margin * 2,
-        );
-      }
+        return;
+      const rx = rect.width * 0.64 + margin;
+      const ry = rect.height * 0.7 + margin;
+      ctx.save();
+      ctx.translate(left + rect.width / 2, top + rect.height / 2);
+      ctx.scale(rx, ry);
+      const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
+      const shade = Math.round(strength * 255);
+      gradient.addColorStop(0, `rgb(${shade},${shade},${shade})`);
+      gradient.addColorStop(0.45, `rgb(${shade},${shade},${shade})`);
+      gradient.addColorStop(1, "white");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(-1, -1, 2, 2);
+      ctx.restore();
     }
+    const homepage = document.querySelector(".home-page");
+    if (homepage) {
+      const walker = document.createTreeWalker(homepage, NodeFilter.SHOW_TEXT);
+      const range = document.createRange();
+      let node: Node | null;
+      while ((node = walker.nextNode())) {
+        if (!node.textContent?.trim() || host.contains(node)) continue;
+        if (node.parentElement?.closest("script,style,[aria-hidden='true']"))
+          continue;
+        range.selectNodeContents(node);
+        for (const rect of range.getClientRects()) soften(rect, 0.78, 70);
+      }
+      for (const node of homepage.querySelectorAll(controlSelector))
+        soften(node.getBoundingClientRect(), 0.72, 48);
+    }
+    context.activeTexture(context.TEXTURE0);
     context.bindTexture(context.TEXTURE_2D, protectionTexture);
     context.texImage2D(
       context.TEXTURE_2D,
@@ -443,38 +515,36 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
       context.UNSIGNED_BYTE,
       mask,
     );
+    geometryDirty = false;
+    lastMaskTime = performance.now();
     ready = true;
-    revealTime = 0;
-    previousFrameTime = 0;
-    stopScheduling();
-    schedule();
+    host.dataset.quality = ["high", "balanced", "economy"][quality];
   }
 
   function markGeometryDirty() {
     if (disposed || lost || disabled) return;
-    ready = false;
-    // Never leave the previous exclusion mask over newly scrolled content.
-    canvas.style.visibility = "hidden";
-    host.dataset.status = document.hidden ? "paused" : "settling";
-    stopScheduling();
-    window.cancelAnimationFrame(geometryFrame);
-    window.clearTimeout(settleTimer);
-    // Mist quietly withdraws during scrolling/keyboard/toolbar changes instead
-    // of jumping with a stale mask. It fades back after the viewport settles.
-    settleTimer = window.setTimeout(() => {
-      geometryFrame = window.requestAnimationFrame(measureAndMask);
-    }, 100);
+    geometryDirty = true;
+    if (!ready && !document.hidden && !geometryFrame) {
+      geometryFrame = window.requestAnimationFrame(() => {
+        measureAndMask();
+        schedule();
+      });
+    }
   }
 
   function visibilityChanged() {
     if (document.hidden) {
       stopScheduling();
-      window.clearTimeout(settleTimer);
       window.cancelAnimationFrame(geometryFrame);
+      geometryFrame = 0;
       canvas.style.visibility = "hidden";
       if (!disabled && !lost) host.dataset.status = "paused";
     } else {
-      markGeometryDirty();
+      previousFrameTime = 0;
+      cadenceTime = 0;
+      geometryDirty = true;
+      if (ready) schedule();
+      else markGeometryDirty();
     }
   }
   function contextLost(event: Event) {
@@ -499,7 +569,7 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
   void document.fonts?.ready.then(() => {
     if (!disposed) markGeometryDirty();
   });
-  const homepage = host.closest(".home-page");
+  const homepage = document.querySelector(".home-page");
   const resizeObserver = new ResizeObserver(markGeometryDirty);
   if (homepage) resizeObserver.observe(homepage);
   // Async location cards and other content changes need a new protection mask.
@@ -519,8 +589,8 @@ function createRenderer(host: HTMLDivElement, canvas: HTMLCanvasElement) {
   return () => {
     disposed = true;
     stopScheduling();
-    window.clearTimeout(settleTimer);
     window.cancelAnimationFrame(geometryFrame);
+    geometryFrame = 0;
     window.removeEventListener("resize", markGeometryDirty);
     window.removeEventListener("scroll", markGeometryDirty);
     window.visualViewport?.removeEventListener("resize", markGeometryDirty);

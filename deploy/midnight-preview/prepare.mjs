@@ -27,9 +27,15 @@ const git = (...args) =>
   execFileSync("git", args, { cwd: source, encoding: "utf8" }).trim();
 const branch = git("branch", "--show-current");
 const commit = git("rev-parse", "HEAD");
-if (!["dev/phasm-editorial-voice", "codex/usa-atlas-130"].includes(branch))
+if (
+  ![
+    "dev/phasm-editorial-voice",
+    "codex/usa-atlas-130",
+    "codex/rolling-fog",
+  ].includes(branch)
+)
   throw new Error(
-    "Preview requires the editorial or reviewed USA atlas branch.",
+    "Preview requires a reviewed editorial, atlas or rolling-fog branch.",
   );
 git("merge-base", "--is-ancestor", preservedPhaseOne, "HEAD");
 git("merge-base", "--is-ancestor", preservedPhaseOneOne, "HEAD");

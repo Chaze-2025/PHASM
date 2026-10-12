@@ -2,11 +2,11 @@
 
 A cinematic field guide to haunted places, documented history, and attributed folklore. Phase 1 delivers a working Haunted Atlas, reusable location profiles, and a private editorial API on React, TypeScript, Vite, Cloudflare Workers, and D1.
 
-Current work: **`codex/usa-atlas-130` — 136 sourced profiles with map points**, including 130 US locations across all 50 states and six preserved international profiles. The 75 newly researched points are approximate references to identified sites, parks, roads or visitor locations; the original 61 points remain unchanged. The coordinate update is deployed and verified on the existing Cloudflare preview. See [the USA atlas integration](docs/USA-ATLAS-130.md) for the deployed baseline and current release status. The green-and-brass design, neutral charcoal map, photography, homepage mist and closed community features remain intact.
+Current work: **`codex/rolling-fog` — continuous rolling fog across the homepage**, starting from the deployed, fully mapped atlas at `ede8fff`. Three moving procedural fields cross photography, cards and sections with soft attenuation around text and controls. The update is deployed; verification and deployment status are recorded in the [rolling fog QA record](docs/fog/ROLLING-FOG-QA.md). The [USA atlas integration](docs/USA-ATLAS-130.md) retains the verified deployment of all 136 mapped profiles, including 130 US locations across all 50 states and six international profiles; this visual revision changes no catalog records or community features.
 
 [Editorial refinement and voice](docs/editorial/README.md) · [Source review](docs/editorial/SOURCE-REVIEW.md) · [Screenshots and QA](docs/editorial/QA.md)
 
-[Atmospheric fog implementation](docs/fog/README.md) · [Fog screenshots, recording, and QA](docs/fog/QA.md)
+[Rolling fog implementation](docs/fog/README.md) · [Current fog verification](docs/fog/ROLLING-FOG-QA.md) · [Historical mist screenshots and QA](docs/fog/QA.md)
 
 [Phase 1.3 visual review](docs/phase-1-3/README.md) · [Design system](docs/phase-1-3/DESIGN-SYSTEM.md) · [Before/after screenshots](docs/phase-1-3/screenshots.md) · [Isolated Cloudflare preview](https://phasm-phase-1-3-preview.wj7djnw2j2.workers.dev) · [Preview deployment instructions](deploy/midnight-preview/README.md)
 

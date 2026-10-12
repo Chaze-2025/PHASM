@@ -3,7 +3,9 @@
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 2;
+  /* Keep the transparent surface above opaque header occlusion. The shader
+     leaves navigation clear and feathers the atmosphere in below it. */
+  z-index: 31;
   width: 100%;
   height: 100vh;
   height: 100dvh;
@@ -12,6 +14,7 @@
   pointer-events: none !important;
   user-select: none;
   -webkit-user-select: none;
+  transition: opacity 180ms ease;
 }
 .atmospheric-fog-canvas {
   display: block;
@@ -20,9 +23,12 @@
   visibility: hidden;
   pointer-events: none !important;
 }
-/* The shader clips to two outer strips; its cached mask makes foreground text,
-   controls, cards and images fully transparent, with an extra safety margin.
-   Header/navigation remain above this layer; no content stacking is changed. */
+/* One continuous composited surface crosses cards, imagery and section edges.
+   Text/control density reduction is softly feathered in the renderer; the
+   navigation is clear in the shader. The overlay never receives input. */
+body:has(.main-nav.is-open) .atmospheric-fog {
+  opacity: 0;
+}
 @media (prefers-reduced-motion: reduce), (forced-colors: active) {
   .atmospheric-fog {
     display: none;
