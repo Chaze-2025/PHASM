@@ -222,12 +222,12 @@ export function PlaceImage({
           ? `${location.image.replace(".webp", "-card.webp")} 720w, ${location.image} 1920w`
           : undefined
       }
-      sizes={`${priority ? "" : "auto, "}${
+      sizes={
         sizes ??
         (className === "profile-image"
           ? "100vw"
           : "(max-width: 520px) calc(100vw - 34px), (max-width: 1000px) 50vw, 33vw")
-      }`}
+      }
       loading={priority ? "eager" : "lazy"}
       fetchPriority={priority ? "high" : "auto"}
       decoding="async"
@@ -259,7 +259,10 @@ export function LocationCard({
           tabIndex={-1}
           aria-hidden="true"
         >
-          <PlaceImage location={location} />
+          <PlaceImage
+            location={location}
+            sizes={compact ? "(max-width: 1100px) 274px, 314px" : undefined}
+          />
         </Link>
         <span className="image-category">{location.category}</span>
         {!hasLocationPhotograph(location) && (
