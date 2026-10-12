@@ -13,11 +13,13 @@ import {
 } from "./validation";
 import { locationStatements } from "./location-sql";
 import { locationStructuredData } from "./seo";
+import { imageLicenseUrl } from "../shared/image-license";
 
 export interface Env {
   DB: D1Database;
   ASSETS: Fetcher;
   ADMIN_TOKEN?: string;
+  EDITORIAL_READ_ONLY?: string;
   SITE_URL?: string;
 }
 type Row = { data_json: string };
@@ -110,6 +112,12 @@ export function buildFilters(
     parts.push("l.status = ?");
     values.push(params.get("status")!);
   }
+  if (includeDrafts && params.get("state")) {
+    const state = params.get("state")!;
+    if (state.length > 150) throw new HttpError(400, "Invalid state filter.");
+    parts.push("l.state = ?");
+    values.push(state);
+  }
   return { where: parts.join(" AND "), values };
 }
 
@@ -117,6 +125,7 @@ async function listLocations(
   db: D1Database,
   params: URLSearchParams,
   admin = false,
+  compact = false,
 ): Promise<Response> {
   const page = integerParam(params.get("page"), 1, 1, 100000);
   const pageSize = integerParam(params.get("pageSize"), 24, 1, 50);
@@ -138,7 +147,7 @@ async function listLocations(
   const locations = result.results.map(fromRow);
   return (admin ? json : publicJson)({
     locations:
-      !admin && params.get("format") === "summary"
+      compact || (!admin && params.get("format") === "summary")
         ? locations.map(summary)
         : locations,
     total: count?.total ?? 0,
@@ -218,13 +227,14 @@ async function getProfile(
 async function atlas(
   db: D1Database,
   params: URLSearchParams,
+  admin = false,
 ): Promise<Response> {
   const [west, south, east, north] = parseBounds(params.get("bbox"));
   const zoomText = params.get("zoom");
   const zoom = zoomText === null ? 2 : Number(zoomText);
   if (zoomText === "" || !Number.isFinite(zoom) || zoom < 0 || zoom > 24)
     throw new HttpError(400, "zoom must be between 0 and 24.");
-  const filter = buildFilters(params);
+  const filter = buildFilters(params, admin);
   filter.where += ` AND l.coordinate_precision != 'withheld' AND l.latitude IS NOT NULL AND l.longitude IS NOT NULL AND l.latitude BETWEEN ? AND ? AND ${west > east ? "(l.longitude >= ? OR l.longitude <= ?)" : "l.longitude BETWEEN ? AND ?"}`;
   filter.values.push(south, north, west, east);
   const count = await db
@@ -233,7 +243,11 @@ async function atlas(
     .first<{ total: number }>();
   const total = count?.total ?? 0;
   if (!total)
-    return publicJson({ type: "FeatureCollection", features: [], total: 0 });
+    return (admin ? json : publicJson)({
+      type: "FeatureCollection",
+      features: [],
+      total: 0,
+    });
   let features: AtlasFeature[];
   if (zoom < 5 || total > 500) {
     // At most 25 x 17 grid cells, even across the antimeridian. Aggregation
@@ -316,7 +330,18 @@ async function atlas(
     total,
     truncated: false,
   };
-  return publicJson(result);
+  return (admin ? json : publicJson)(result);
+}
+
+async function reviewMetadata(db: D1Database): Promise<Response> {
+  const result = await db
+    .prepare(
+      `SELECT state, status, COUNT(*) AS total,
+      SUM(CASE WHEN coordinate_precision != 'withheld' AND latitude IS NOT NULL AND longitude IS NOT NULL THEN 1 ELSE 0 END) AS mapped
+     FROM locations GROUP BY state, status ORDER BY state, status`,
+    )
+    .all<{ state: string; status: string; total: number; mapped: number }>();
+  return json({ groups: result.results });
 }
 
 async function metadata(db: D1Database): Promise<Response> {
@@ -506,6 +531,10 @@ async function profileHtml(
   const canonical = `${siteUrl(env)}/locations/${location.slug}`;
   const image = new URL(location.image, siteUrl(env)).href;
   const title = `${location.name} — Hauntings, History & Visiting Guide | PHASM`;
+  const licenseUrl = imageLicenseUrl(
+    location.imageLicense,
+    location.imageSource,
+  );
   const description = location.summary.slice(0, 200);
   const structured = JSON.stringify(
     locationStructuredData(location, siteUrl(env)),
@@ -524,7 +553,7 @@ async function profileHtml(
         <h2>A sense of place.</h2>
         <figure>
           <img src="${escapeHtml(location.image)}" alt="${escapeHtml(location.imageAlt)}" width="1200" height="675">
-          <figcaption>${escapeHtml(location.imageCredit)} · ${location.imageLicense === "CC BY-SA 4.0" ? '<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener noreferrer">CC BY-SA 4.0</a>' : escapeHtml(location.imageLicense)}${location.imageSource ? ` · <a href="${escapeHtml(location.imageSource)}" rel="noopener noreferrer">Image source</a>` : ""}</figcaption>
+          <figcaption>${escapeHtml(location.imageCredit)} · ${licenseUrl ? `<a href="${escapeHtml(licenseUrl)}" rel="noopener noreferrer">${escapeHtml(location.imageLicense)}</a>` : escapeHtml(location.imageLicense)}${location.imageSource ? ` · <a href="${escapeHtml(location.imageSource)}" rel="noopener noreferrer">Image source</a>` : ""}</figcaption>
         </figure>
       </section>
       <section id="experiences">
@@ -587,6 +616,33 @@ async function route(request: Request, env: Env): Promise<Response> {
   const path = url.pathname.replace(/\/$/, "") || "/";
   if (path.startsWith("/api/admin")) {
     await requireAdmin(request, env);
+    if (
+      env.EDITORIAL_READ_ONLY === "true" &&
+      !["GET", "HEAD"].includes(request.method)
+    )
+      throw new HttpError(
+        403,
+        "This preview is read-only. Use the repeatable import workflow for changes.",
+      );
+    if (request.method === "GET") {
+      if (path === "/api/admin/review/locations")
+        return listLocations(env.DB, url.searchParams, true, true);
+      if (path === "/api/admin/review/atlas")
+        return atlas(env.DB, url.searchParams, true);
+      if (path === "/api/admin/review/meta") return reviewMetadata(env.DB);
+      const reviewSlug = path.match(
+        /^\/api\/admin\/review\/locations\/([a-z0-9-]+)$/,
+      )?.[1];
+      if (reviewSlug) {
+        const row = await env.DB.prepare(
+          "SELECT data_json FROM locations WHERE slug = ?",
+        )
+          .bind(reviewSlug)
+          .first<Row>();
+        if (!row) throw new HttpError(404, "Location not found.");
+        return json({ location: fromRow(row) });
+      }
+    }
     if (path === "/api/admin/locations" && request.method === "GET")
       return listLocations(env.DB, url.searchParams, true);
     if (path === "/api/admin/locations" && request.method === "POST")

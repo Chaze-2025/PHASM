@@ -5,6 +5,8 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(self)
 /admin
   X-Robots-Tag: noindex, nofollow
+/admin/*
+  X-Robots-Tag: noindex, nofollow
 /account
   X-Robots-Tag: noindex
 /saved

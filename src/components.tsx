@@ -14,7 +14,11 @@ import {
 } from "lucide-react";
 import type { LocationSummary } from "../shared/types";
 import { useSaved } from "./api";
-import { hasLocationPhotograph, hasMapCoordinates } from "./location";
+import {
+  hasLocationPhotograph,
+  hasMapCoordinates,
+  locationImageSources,
+} from "./location";
 export function Logo() {
   return (
     <Link to="/" className="logo" aria-label="PHASM home">
@@ -217,11 +221,7 @@ export function PlaceImage({
           : location.image
       }
       alt={location.imageAlt || `${location.name} — photograph pending`}
-      srcSet={
-        location.image?.endsWith(".webp")
-          ? `${location.image.replace(".webp", "-card.webp")} 720w, ${location.image} 1920w`
-          : undefined
-      }
+      srcSet={locationImageSources(location.image)}
       sizes={
         sizes ??
         (className === "profile-image"
@@ -231,6 +231,13 @@ export function PlaceImage({
       loading={priority ? "eager" : "lazy"}
       fetchPriority={priority ? "high" : "auto"}
       decoding="async"
+      onLoad={(event) => {
+        const image = event.currentTarget;
+        // Keep wide documentary panoramas intact in fixed card/hero frames.
+        // Cropping them to a building-sized view can change the subject context.
+        image.style.objectFit =
+          image.naturalWidth / image.naturalHeight >= 3 ? "contain" : "";
+      }}
       onError={(e) => {
         if (!e.currentTarget.src.endsWith(PLACEHOLDER_IMAGE)) {
           e.currentTarget.removeAttribute("srcset");

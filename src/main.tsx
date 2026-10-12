@@ -9,6 +9,7 @@ import "./refinement.css";
 import "./home.css";
 const Atlas = lazy(() => import("./Atlas"));
 const Admin = lazy(() => import("./Admin"));
+const Review = lazy(() => import("./Review"));
 const Profile = lazy(() =>
   import("./Profile").then(({ Profile }) => ({ default: Profile })),
 );
@@ -34,6 +35,7 @@ function ScrollAndTitle() {
       "/about": "Our approach",
       "/encyclopedia": "Phenomena index",
       "/admin": "Editorial desk",
+      "/admin/review": "Private research review",
     };
     if (titles[pathname]) document.title = `${titles[pathname]} — PHASM`;
   }, [pathname]);
@@ -87,6 +89,7 @@ function App() {
             <Route path="/account" element={<Editorial kind="account" />} />
             <Route path="/about" element={<Editorial kind="about" />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/review" element={<Review />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

@@ -525,3 +525,155 @@ test("only successful anonymous public JSON permits 30-second browser caching", 
     );
   }
 });
+
+test("private research review requires authorization, pages summaries and never exposes drafts through public surfaces", async () => {
+  const draft: Location = {
+    ...fixture,
+    id: "private-research",
+    slug: "private-research",
+    name: "Unpublished Research",
+    state: "Wyoming",
+    status: "draft",
+    category: "Draft category",
+    phenomena: ["Draft phenomenon"],
+    history: "Private research history.",
+  };
+  const unmapped: Location = {
+    ...draft,
+    id: "unmapped-research",
+    slug: "unmapped-research",
+    name: "Unmapped Research",
+    latitude: null,
+    longitude: null,
+    coordinatePrecision: "withheld",
+    access: "unknown",
+  };
+  const env = createEnv([fixture, draft, unmapped]);
+  for (const path of [
+    "/api/admin/review/locations",
+    "/api/admin/review/locations/private-research",
+    "/api/admin/review/meta",
+    "/api/admin/review/atlas",
+  ]) {
+    assert.equal((await request(path, env)).status, 401, path);
+    assert.equal(
+      (await request(path, { ...env, ADMIN_TOKEN: undefined }, auth())).status,
+      503,
+      path,
+    );
+    const authorized = await request(path, env, auth());
+    assert.equal(authorized.status, 200, path);
+    assert.equal(authorized.headers.get("Cache-Control"), "no-store", path);
+    assert.equal(
+      authorized.headers.get("X-Robots-Tag"),
+      "noindex, nofollow",
+      path,
+    );
+  }
+  const cards = (await (
+    await request(
+      "/api/admin/review/locations?status=draft&state=Wyoming&pageSize=1",
+      env,
+      auth(),
+    )
+  ).json()) as any;
+  assert.equal(cards.total, 2);
+  assert.equal(cards.locations.length, 1);
+  assert.ok(!("history" in cards.locations[0]));
+  const second = (await (
+    await request(
+      "/api/admin/review/locations?status=draft&state=Wyoming&pageSize=1&page=2",
+      env,
+      auth(),
+    )
+  ).json()) as any;
+  assert.notEqual(second.locations[0].id, cards.locations[0].id);
+  const detail = (await (
+    await request("/api/admin/review/locations/unmapped-research", env, auth())
+  ).json()) as any;
+  assert.deepEqual(detail.location, unmapped);
+  const mapped = (await (
+    await request(
+      "/api/admin/review/atlas?zoom=8&status=draft&state=Wyoming",
+      env,
+      auth(),
+    )
+  ).json()) as any;
+  assert.equal(mapped.total, 1);
+  assert.equal(mapped.features[0].properties.id, draft.id);
+  assert.ok(!JSON.stringify(mapped).includes("Private research history"));
+  const emptyMap = (await (
+    await request("/api/admin/review/atlas?zoom=1&q=Unmapped", env, auth())
+  ).json()) as any;
+  assert.equal(emptyMap.total, 0);
+  const metadata = (await (
+    await request("/api/admin/review/meta", env, auth())
+  ).json()) as any;
+  assert.deepEqual(
+    metadata.groups.find((group: any) => group.state === "Wyoming"),
+    { state: "Wyoming", status: "draft", total: 2, mapped: 1 },
+  );
+  for (const path of [
+    "/api/locations?q=Research&status=draft&includeDrafts=true",
+    "/api/locations?q=Research&format=summary",
+    "/api/atlas?zoom=8&status=draft&includeDrafts=true",
+    "/api/atlas?zoom=1",
+    "/api/meta",
+    "/sitemap.xml",
+  ]) {
+    const response = await request(path, env, auth());
+    const body = await response.text();
+    assert.equal(response.status, 200, path);
+    assert.ok(
+      !/private-research|unmapped-research|Draft category|Draft phenomenon/.test(
+        body,
+      ),
+      path,
+    );
+  }
+  for (const path of [
+    "/api/locations/private-research",
+    "/api/locations/private-research?format=summary",
+    "/locations/private-research",
+    "/locations/unmapped-research",
+  ]) {
+    const response = await request(path, env, auth());
+    assert.equal(response.status, 404, path);
+    assert.ok(!(await response.text()).includes("Private research history"));
+  }
+});
+
+test("read-only preview binding rejects authenticated writes and leaves the catalog unchanged", async () => {
+  const env = { ...createEnv(), EDITORIAL_READ_ONLY: "true" };
+  for (const [method, path, body] of [
+    [
+      "POST",
+      "/api/admin/locations",
+      {
+        ...fixture,
+        id: "new-draft",
+        slug: "new-draft",
+        name: "New draft",
+        status: "draft",
+      },
+    ],
+    [
+      "PUT",
+      `/api/admin/locations/${fixture.id}`,
+      { ...fixture, summary: "Changed" },
+    ],
+  ] as const) {
+    assert.equal(
+      (await request(path, env, { method, ...auth(body) })).status,
+      403,
+    );
+  }
+  const current = (await (
+    await request(`/api/admin/review/locations/${fixture.slug}`, env, auth())
+  ).json()) as any;
+  assert.deepEqual(current.location, fixture);
+  const records = (await (
+    await request("/api/admin/locations", env, auth())
+  ).json()) as any;
+  assert.equal(records.total, 1);
+});

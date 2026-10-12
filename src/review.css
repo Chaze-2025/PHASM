@@ -1,0 +1,129 @@
+.review-workspace {
+  max-width: 1440px;
+}
+.review-toolbar {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 0;
+}
+.review-filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 16px;
+  align-items: end;
+}
+.review-filters label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+.review-filters input,
+.review-filters select {
+  min-height: 46px;
+  width: 100%;
+  border: 1px solid var(--line, #48483f);
+  background: var(--surface, #171b18);
+  color: var(--text, #e6e4d9);
+  padding: 10px;
+}
+.review-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.review-card-title {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.review-card-title h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.review-map .map-surface {
+  height: 480px;
+}
+.review-map > p {
+  color: var(--muted, #b6b5a8);
+  font-size: 0.85rem;
+}
+.review-detail {
+  scroll-margin-top: 100px;
+  padding: 28px;
+  margin: 28px 0;
+  border: 1px solid var(--line, #48483f);
+  background: var(--surface, #171b18);
+}
+.review-detail > article {
+  max-width: 900px;
+  margin: auto;
+}
+.review-detail h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+.review-detail section {
+  margin: 32px 0;
+}
+.review-detail figure {
+  margin: 24px 0;
+}
+.review-detail figure img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+}
+.review-detail figcaption,
+.review-identity {
+  font-size: 0.8rem;
+  color: var(--muted, #b6b5a8);
+  overflow-wrap: anywhere;
+}
+.review-detail a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.review-detail li {
+  margin: 12px 0;
+}
+.review-prose {
+  white-space: pre-line;
+}
+.review-close {
+  margin-bottom: 20px;
+}
+.review-workspace button:focus-visible,
+.review-workspace a:focus-visible {
+  outline: 2px solid var(--brass, #c2ad7c);
+  outline-offset: 4px;
+}
+@media (max-width: 1000px) {
+  .review-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+  .review-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .review-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .review-filters,
+  .review-cards {
+    grid-template-columns: 1fr;
+  }
+  .review-detail {
+    padding: 18px;
+  }
+  .review-map .map-surface {
+    height: 380px;
+  }
+}

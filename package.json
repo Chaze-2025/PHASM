@@ -12,6 +12,9 @@
     "setup": "npm run db:migrate && npm run db:seed",
     "test": "tsx --test tests/*.test.ts",
     "import:validate": "tsx scripts/import-locations.ts",
+    "import:nationwide": "tsx scripts/nationwide-import.ts",
+    "import:photos": "tsx scripts/nationwide-photo-import.ts",
+    "import:check": "tsc -p tsconfig.import.json",
     "deploy:check": "npm run build && wrangler deploy --dry-run",
     "test:browser": "node tests/browser.mjs",
     "format": "prettier --write src worker shared scripts tests vite.config.ts"
@@ -34,6 +37,7 @@
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.3",
     "prettier": "^3.9.9",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.1.13",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",

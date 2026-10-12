@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useApi } from "./api";
 import type { Location } from "../shared/types";
+import { imageLicenseUrl } from "../shared/image-license";
 import { hasLocationPhotograph, hasMapCoordinates } from "./location";
 import "./profile.css";
 import {
@@ -92,6 +93,7 @@ export function Profile() {
   const hasPhotograph = hasLocationPhotograph(p);
   const hasHistory = Boolean(p.history.trim());
   const hasMapPin = hasMapCoordinates(p);
+  const licenseUrl = imageLicenseUrl(p.imageLicense, p.imageSource);
   const visibleSections = dossierSections.filter(
     ([id]) => id !== "history" || hasHistory,
   );
@@ -271,12 +273,8 @@ export function Profile() {
                 </span>
                 <span className="gallery-credit">
                   {p.imageCredit} ·{" "}
-                  {p.imageLicense === "CC BY-SA 4.0" ? (
-                    <a
-                      href="https://creativecommons.org/licenses/by-sa/4.0/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                  {licenseUrl ? (
+                    <a href={licenseUrl} target="_blank" rel="noreferrer">
                       {p.imageLicense}
                     </a>
                   ) : (

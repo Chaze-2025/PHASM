@@ -65,7 +65,8 @@ export default function Atlas() {
     phenomena: string[];
     regions: string[];
   }>("/api/meta");
-  useEffect(() => setText(params.get("q") || ""), [params]);
+  const urlSearch = params.get("q") || "";
+  useEffect(() => setText(urlSearch), [urlSearch]);
   const change = (key: string, value: string) => {
     const next = new URLSearchParams(params);
     next.delete("page");
@@ -272,6 +273,7 @@ export default function Atlas() {
               <button
                 className="text-link"
                 onClick={() => {
+                  setText("");
                   setParams({});
                   setSelected("");
                 }}

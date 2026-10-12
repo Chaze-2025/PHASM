@@ -155,6 +155,10 @@ try {
     "Region, category, tours and empty search filters work",
     async () => {
       await page.getByRole("button", { name: "Filters", exact: true }).click();
+      const draftSearch = page.getByRole("textbox", {
+        name: "Search location name, city, state or country",
+      });
+      await draftSearch.fill("Unsubmitted research query");
       await page
         .getByRole("combobox", { name: "Region", exact: true })
         .selectOption("Europe");
@@ -164,6 +168,7 @@ try {
       await expect(page.locator(".atlas-card-list")).not.toContainText(
         "The Stanley Hotel",
       );
+      await expect(draftSearch).toHaveValue("Unsubmitted research query");
       await page
         .getByRole("combobox", { name: "Category", exact: true })
         .selectOption("Castle");

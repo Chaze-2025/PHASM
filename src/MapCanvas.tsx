@@ -36,10 +36,12 @@ function MapCanvas({
   query,
   selected,
   onSelect,
+  requestFeed,
 }: {
   query: string;
   selected: string;
   onSelect: (slug: string) => void;
+  requestFeed?: (path: string, signal: AbortSignal) => Promise<AtlasGeoJSON>;
 }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MapInstance | null>(null);
@@ -47,12 +49,14 @@ function MapCanvas({
   const selectRef = useRef(onSelect);
   const selectedRef = useRef(selected);
   const feed = useRef<AtlasFeed | null>(null);
+  const requestRef = useRef(requestFeed);
   const [status, setStatus] = useState("Loading the atlas…");
   const [failed, setFailed] = useState(false);
   const [ready, setReady] = useState(false);
   queryRef.current = query;
   selectRef.current = onSelect;
   selectedRef.current = selected;
+  requestRef.current = requestFeed;
   useEffect(() => {
     if (!container.current) return;
     let m: MapInstance;
@@ -71,7 +75,10 @@ function MapCanvas({
       });
       map.current = m;
       const currentFeed = new AtlasFeed(
-        (path, signal) => api<AtlasGeoJSON>(path, { signal }),
+        (path, signal) =>
+          requestRef.current
+            ? requestRef.current(path, signal)
+            : api<AtlasGeoJSON>(path, { signal }),
         {
           viewport: () => {
             const bounds = m.getBounds();
