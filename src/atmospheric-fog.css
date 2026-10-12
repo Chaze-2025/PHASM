@@ -1,4 +1,4 @@
-/* One viewport atmosphere, mounted only on the homepage. No page/photo filters. */
+/* One overscanned atmosphere, mounted only on the homepage. */
 .atmospheric-fog {
   position: fixed;
   left: 0;
@@ -8,7 +8,9 @@
   z-index: 31;
   width: 100%;
   height: 100vh;
-  height: 100dvh;
+  height: 100lvh;
+  /* The renderer replaces this fallback with a stable, overscanned allocation.
+     Dynamic browser chrome must never expose an unpainted canvas edge. */
   overflow: hidden;
   contain: strict;
   pointer-events: none !important;

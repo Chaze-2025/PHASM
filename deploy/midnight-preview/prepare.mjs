@@ -33,6 +33,7 @@ if (
     "codex/usa-atlas-130",
     "codex/rolling-fog",
     "codex/responsive-performance",
+    "codex/volumetric-mist",
   ].includes(branch)
 )
   throw new Error(

@@ -638,6 +638,17 @@ try {
       let firstPixels, lastPixels;
       while (Date.now() - start < longRunMs) {
         const s = await state(page);
+        if (samples.length) {
+          assert.ok(
+            s.frame >= samples.at(-1).frame,
+            "Renderer restarted during stability sampling",
+          );
+          assert.equal(
+            s.contextRequests,
+            samples[0].contextRequests,
+            "Document or graphics context changed during stability sampling",
+          );
+        }
         samples.push({ elapsedMs: Date.now() - start, ...s });
         assert.ok(
           ["running", "low-performance"].includes(s.status),
@@ -656,7 +667,18 @@ try {
       lastPixels = await page.screenshot();
       const initial = samples[0],
         final = samples.at(-1);
-      const fps = (final.frame - initial.frame) / (final.elapsedMs / 1000);
+      assert.ok(
+        final.frame >= samples.at(-2).frame,
+        "Renderer restarted at final sample",
+      );
+      assert.equal(
+        final.contextRequests,
+        initial.contextRequests,
+        "Document or graphics context changed at final sample",
+      );
+      const fps =
+        (final.frame - initial.frame) /
+        ((final.elapsedMs - initial.elapsedMs) / 1000);
       metrics.push({
         stability: {
           requestedMs: longRunMs,
@@ -761,7 +783,13 @@ try {
         await noOverflow(phone);
         await running(phone);
         const s = await state(phone);
-        assert.ok(Math.abs(s.rootRect.width - height) <= 1, JSON.stringify(s));
+        assert.ok(
+          s.rootRect.left < 0 &&
+            s.rootRect.right > height &&
+            s.rootRect.top < 0 &&
+            s.rootRect.bottom > width,
+          JSON.stringify(s),
+        );
         await phone.setViewportSize({ width, height });
         await phone.waitForTimeout(650);
         await noOverflow(phone);
