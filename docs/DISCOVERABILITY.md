@@ -88,3 +88,41 @@ node scripts/generate-brand-assets.mjs
 The checked-in social image is 1200×630 and the touch icon is 180×180. No external
 images or network calls are used by this generator. Brand SVG sources and the
 React component are checked in alongside the generated images.
+
+## Verified live release — 2026-10-13
+
+Published at <https://phasm-phase-1-3-preview.wj7djnw2j2.workers.dev/>.
+The new state directory is `/haunted-places`.
+
+- Source commit: `f8b7e53f0973751f24db3da11bdad82e7a8d2151`.
+- Worker version: `607178ed-398c-48b5-b65d-4e852916253a`.
+- Prior Worker version: `bac4c33b-c9ae-4686-b400-c9210b81e32d`.
+- Branch: `codex/discovery-occult`.
+- Existing Worker/D1 account, database and free resources are unchanged.
+- No database writes or migrations were performed in this release.
+- The verified package retains all 33 research photos at their existing URLs.
+
+Validation: all 203 tests pass, along with import type-check, clean production
+build, deployment dry run and formatting. The local production browser suite
+passed 15/15; eight dedicated discovery checks verified all 2,859 profiles are
+reachable through ordinary HTML links, directory behavior at 320/390/820/1440px,
+metadata, no-JavaScript pages, accessibility and error handling. The initial and
+React homepage geometry matches for the header, hero, image, heading, search and
+hero footer. Observed cold-load layout shift was 0.0183 desktop and 0.00062 mobile;
+these are local browser observations, not field Core Web Vitals measurements.
+
+Six focused live checks passed after deployment. Public pages allow indexing;
+robots advertises the live sitemap; admin and unknown pages remain 404. The
+sitemap contains 3,018 URLs: all 2,859 published profiles, 154 state directory
+pages including pagination, and five core pages. All 50 states display live
+counts; state pagination, filtered map links and visible state chips work.
+Desktop and mobile show the new lunar identity and existing mist. Placeholder
+profiles use the branded social PNG and photographed profiles retain their
+photos. All 2,859 map point IDs and coordinates match the prior published catalog
+exactly. No uncaught application errors occurred.
+
+Private operational evidence is in `/workspace/phasm-discovery-review/`:
+`deployment-source.json`, `deploy.log`, `final-unit-tests.log`,
+`final-directory-results.json`, `initial-layout-results.json`,
+`sitemap-coverage.json`, and `live/results.json`. The retained previous Worker
+version supports application rollback; no catalog rollback is needed.
