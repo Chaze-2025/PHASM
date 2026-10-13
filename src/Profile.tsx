@@ -13,6 +13,7 @@ import {
   AudioLines,
 } from "lucide-react";
 import { useApi } from "./api";
+import { updateMetadata } from "./seo";
 import type { Location } from "../shared/types";
 import { imageLicenseUrl } from "../shared/image-license";
 import {
@@ -72,11 +73,25 @@ export function Profile() {
   const p = data?.location;
   useEffect(() => {
     if (p) {
-      document.title = `${p.name} — Hauntings, History & Visiting Guide | PHASM`;
-      const meta = document.querySelector('meta[name="description"]');
-      meta?.setAttribute("content", p.summary);
+      updateMetadata({
+        title: `${p.name} — Hauntings, History & Visiting Guide | PHASM`,
+        description: p.summary.slice(0, 200),
+        path: `/locations/${p.slug}`,
+        ...(!p.image.split("?")[0].endsWith(".svg")
+          ? { image: p.image, imageAlt: p.imageAlt }
+          : {}),
+        type: "article",
+      });
+    } else if (error) {
+      updateMetadata({
+        title: "Location unavailable — PHASM",
+        description:
+          "This location could not be opened. Explore the Haunted Atlas to discover another place.",
+        path: `/locations/${slug || ""}`,
+        noindex: true,
+      });
     }
-  }, [p]);
+  }, [p, error, slug]);
   if (loading)
     return (
       <main id="main" className="page-shell">

@@ -13,8 +13,23 @@ import {
   validateLocation,
 } from "./validation";
 import { locationStatements } from "./location-sql";
-import { locationStructuredData } from "./seo";
+import {
+  breadcrumbStructuredData,
+  collectionStructuredData,
+  escapeHtml,
+  locationStructuredData,
+  renderPageHtml,
+  siteStructuredData,
+  type PageMetadata,
+} from "./seo";
+import {
+  DIRECTORY_PAGE_SIZE,
+  US_STATES,
+  findState,
+  type DiscoveryResponse,
+} from "../shared/discovery";
 import { imageLicenseUrl } from "../shared/image-license";
+import { homeHeaderHtml, homeHeroHtml } from "./home-html";
 
 export interface Env {
   DB: D1Database;
@@ -113,11 +128,18 @@ export function buildFilters(
     parts.push("l.status = ?");
     values.push(params.get("status")!);
   }
-  if (includeDrafts && params.get("state")) {
-    const state = params.get("state")!;
-    if (state.length > 150) throw new HttpError(400, "Invalid state filter.");
+  if (params.get("state")) {
+    const raw = params.get("state")!;
+    if (raw.length > 150) throw new HttpError(400, "Invalid state filter.");
+    const state = findState(raw);
+    if (!includeDrafts && !state)
+      throw new HttpError(400, "Unknown U.S. state.");
     parts.push("l.state = ?");
-    values.push(state);
+    values.push(state?.name || raw);
+    if (!includeDrafts) {
+      parts.push("l.country = ?");
+      values.push("United States");
+    }
   }
   return { where: parts.join(" AND "), values };
 }
@@ -475,15 +497,6 @@ async function saveLocation(
   return json({ location }, id ? 200 : 201);
 }
 
-function escapeHtml(value: string): string {
-  return value.replace(
-    /[&<>"']/g,
-    (char) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
-        char
-      ]!,
-  );
-}
 function siteUrl(env: Env): string {
   // Never construct canonical URLs from an untrusted Host header.
   const raw = env.SITE_URL || "http://localhost:5173";
@@ -513,7 +526,7 @@ async function profileHtml(
 ): Promise<Response> {
   // The HTML article uses only this location, not the related-card results.
   // Cloudflare's HTML asset handling redirects /index.html to /. Fetch the
-  // canonical root asset directly so the rewriter receives the HTML body.
+  // canonical root asset directly so metadata uses the complete HTML body.
   const [location, asset] = await Promise.all([
     getLocation(env.DB, slug),
     env.ASSETS.fetch(
@@ -534,17 +547,12 @@ async function profileHtml(
       },
     );
   const canonical = `${siteUrl(env)}/locations/${location.slug}`;
-  const image = new URL(location.image, siteUrl(env)).href;
   const title = `${location.name} — Hauntings, History & Visiting Guide | PHASM`;
   const licenseUrl = imageLicenseUrl(
     location.imageLicense,
     location.imageSource,
   );
   const description = location.summary.slice(0, 200);
-  const structured = JSON.stringify(
-    locationStructuredData(location, siteUrl(env)),
-  ).replace(/</g, "\\u003c");
-  const head = `<link rel="canonical" href="${escapeHtml(canonical)}"><meta name="description" content="${escapeHtml(description)}"><meta property="og:type" content="place"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${escapeHtml(canonical)}"><meta property="og:image" content="${escapeHtml(image)}"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">${structured}</script>`;
   const article = `<main class="server-profile">
     <a href="/">PHASM</a>
     <article>
@@ -579,41 +587,301 @@ async function profileHtml(
     </article>
     <a href="/map">Explore the atlas</a>
   </main>`;
-  // A dynamic profile must not reuse the static template's conditional
-  // request headers or ETag; normalize its content type before rewriting.
-  const htmlSource = new Response(await asset.text(), {
-    headers: { "Content-Type": "text/html" },
+  const origin = siteUrl(env);
+  const state =
+    location.country === "United States"
+      ? findState(location.state)
+      : undefined;
+  const breadcrumbs = [
+    { name: "PHASM", url: `${origin}/` },
+    { name: "Haunted places", url: `${origin}/haunted-places` },
+    ...(state
+      ? [{ name: state.name, url: `${origin}/haunted-places/${state.slug}` }]
+      : []),
+    { name: location.name, url: canonical },
+  ];
+  const relatedDirectory = state
+    ? `<p><a href="/haunted-places/${state.slug}">More haunted places in ${escapeHtml(state.name)}</a></p>`
+    : '<p><a href="/haunted-places">Browse haunted places by state</a></p>';
+  return htmlResponse(
+    await asset.text(),
+    {
+      title,
+      description,
+      canonical,
+      type: "article",
+      ...(!location.image.split("?")[0].endsWith(".svg")
+        ? { image: location.image, imageAlt: location.imageAlt }
+        : {}),
+      structuredData: [
+        ...siteStructuredData(origin),
+        locationStructuredData(location, origin),
+        breadcrumbStructuredData(breadcrumbs),
+      ],
+    },
+    article.replace("</article>", `${relatedDirectory}</article>`),
+  );
+}
+
+function htmlResponse(
+  template: string,
+  metadata: PageMetadata,
+  content: string,
+  status = 200,
+) {
+  return new Response(renderPageHtml(template, metadata, content), {
+    status,
+    headers: {
+      ...publicHeaders,
+      "Cache-Control": "public, max-age=60",
+      "Content-Type": "text/html; charset=utf-8",
+      ...(metadata.noindex ? { "X-Robots-Tag": "noindex, nofollow" } : {}),
+    },
   });
-  const transformed = new HTMLRewriter()
-    .on("title", {
-      element(element) {
-        element.setInnerContent(escapeHtml(title), { html: true });
-      },
-    })
-    .on(
-      'meta[name="description"],meta[property^="og:"],meta[name="twitter:card"],link[rel="canonical"]',
-      {
-        element(element) {
-          element.remove();
-        },
-      },
+}
+
+async function htmlTemplate(request: Request, env: Env) {
+  const asset = await env.ASSETS.fetch(
+    new Request(new URL("/", request.url), {
+      headers: { Accept: "text/html" },
+    }),
+  );
+  if (!asset.ok)
+    throw new HttpError(503, "The page template is temporarily unavailable.");
+  return asset.text();
+}
+
+async function discovery(db: D1Database): Promise<DiscoveryResponse> {
+  const rows = await db
+    .prepare(
+      "SELECT state, COUNT(*) AS count FROM locations WHERE status='published' AND country='United States' GROUP BY state",
     )
-    .on("head", {
-      element(element) {
-        element.append(head, { html: true });
-      },
-    })
-    .on("#root", {
-      element(element) {
-        element.setInnerContent(article, { html: true });
-      },
-    })
-    .transform(htmlSource);
-  const headers = new Headers(transformed.headers);
-  for (const [name, value] of Object.entries(publicHeaders))
-    headers.set(name, value);
-  headers.set("Content-Type", "text/html; charset=utf-8");
-  return new Response(transformed.body, { status: 200, headers });
+    .all<{ state: string; count: number }>();
+  const counts = new Map(rows.results.map((row) => [row.state, row.count]));
+  const states = US_STATES.map((state) => ({
+    ...state,
+    count: counts.get(state.name) || 0,
+  }));
+  return {
+    states,
+    total: states.reduce((total, state) => total + state.count, 0),
+  };
+}
+
+function serverNavigation() {
+  return '<nav aria-label="Main navigation"><a href="/">PHASM</a> · <a href="/map">Haunted Atlas</a> · <a href="/haunted-places">Haunted places by state</a> · <a href="/about">Our approach</a></nav>';
+}
+
+function locationList(locations: Location[]) {
+  return `<ul>${locations.map((location) => `<li><article><h2><a href="/locations/${escapeHtml(location.slug)}">${escapeHtml(location.name)}</a></h2><p>${escapeHtml([location.city, location.state].filter(Boolean).join(", "))} · ${escapeHtml(location.category)}</p><p>${escapeHtml(location.summary)}</p></article></li>`).join("")}</ul>`;
+}
+
+async function directoryHtml(
+  request: Request,
+  env: Env,
+  stateSlug?: string,
+): Promise<Response> {
+  const url = new URL(request.url);
+  const origin = siteUrl(env);
+  const state = stateSlug ? findState(stateSlug) : undefined;
+  if (stateSlug && (!state || state.slug !== stateSlug))
+    return notFoundHtml(request, env);
+  const rawPage = state ? url.searchParams.get("page") : null;
+  if (
+    rawPage !== null &&
+    (!/^[1-9]\d*$/.test(rawPage) || Number(rawPage) > 100000)
+  )
+    return notFoundHtml(request, env);
+  const page = Number(rawPage || 1);
+  const [template, overview] = await Promise.all([
+    htmlTemplate(request, env),
+    discovery(env.DB),
+  ]);
+  const path = `/haunted-places${state ? `/${state.slug}` : ""}`;
+  const canonical = `${origin}${path}${page > 1 ? `?page=${page}` : ""}`;
+  const title = state
+    ? `Haunted Places in ${state.name}${page > 1 ? ` — Page ${page}` : ""} | PHASM`
+    : "Haunted Places by State | PHASM";
+  const count = state
+    ? overview.states.find((entry) => entry.code === state.code)!.count
+    : overview.total;
+  const pages = Math.max(1, Math.ceil(count / DIRECTORY_PAGE_SIZE));
+  if (page > pages) return notFoundHtml(request, env);
+  const description = state
+    ? `Explore ${count.toLocaleString("en-US")} haunted places in ${state.name}. Read ghost stories, local history, source notes, and visiting information in the PHASM Haunted Atlas.`
+    : "Explore haunted places in all 50 U.S. states. Find historic hotels, ghost towns, cemeteries, and local legends with stories, sources, and map pins.";
+  let entries: { name: string; url: string }[];
+  let content: string;
+  if (state) {
+    const result = await env.DB.prepare(
+      "SELECT data_json FROM locations WHERE status='published' AND country='United States' AND state = ? ORDER BY featured DESC, name COLLATE NOCASE, id LIMIT ? OFFSET ?",
+    )
+      .bind(state.name, DIRECTORY_PAGE_SIZE, (page - 1) * DIRECTORY_PAGE_SIZE)
+      .all<Row>();
+    const locations = result.results.map(fromRow);
+    entries = locations.map((location) => ({
+      name: location.name,
+      url: `${origin}/locations/${location.slug}`,
+    }));
+    const pageLink = (number: number) =>
+      `${path}${number > 1 ? `?page=${number}` : ""}`;
+    content = `<p><a href="/haunted-places">All states</a> / ${escapeHtml(state.name)}</p><h1>Haunted places in ${escapeHtml(state.name)}</h1><p>${escapeHtml(description)}</p><p><a href="/map?state=${state.code}">Explore ${escapeHtml(state.name)} on the map</a></p>${locationList(locations)}<nav aria-label="Directory pages">${page > 1 ? `<a rel="prev" href="${pageLink(page - 1)}">Previous page</a> · ` : ""}<span>Page ${page} of ${pages}</span>${page < pages ? ` · <a rel="next" href="${pageLink(page + 1)}">Next page</a>` : ""}</nav>`;
+  } else {
+    entries = overview.states.map((entry) => ({
+      name: `Haunted places in ${entry.name}`,
+      url: `${origin}/haunted-places/${entry.slug}`,
+    }));
+    content = `<h1>Haunted places by state</h1><p>${escapeHtml(description)}</p><p>${count.toLocaleString("en-US")} places across 50 states. Every place has a story. Some never rest.</p><ul>${overview.states.map((entry) => `<li><a href="/haunted-places/${entry.slug}">${escapeHtml(entry.name)}</a> — ${entry.count.toLocaleString("en-US")} places</li>`).join("")}</ul><p><a href="/map">Explore the Haunted Atlas</a></p>`;
+  }
+  return htmlResponse(
+    template,
+    {
+      title,
+      description,
+      canonical,
+      structuredData: [
+        ...siteStructuredData(origin),
+        collectionStructuredData(
+          title,
+          description,
+          canonical,
+          entries,
+          (page - 1) * DIRECTORY_PAGE_SIZE,
+        ),
+        breadcrumbStructuredData([
+          { name: "PHASM", url: `${origin}/` },
+          { name: "Haunted places", url: `${origin}/haunted-places` },
+          ...(state ? [{ name: state.name, url: `${origin}${path}` }] : []),
+        ]),
+      ],
+    },
+    `<main id="main" class="page-shell server-directory">${serverNavigation()}${content}</main>`,
+  );
+}
+
+async function publicPageHtml(
+  request: Request,
+  env: Env,
+  path: string,
+): Promise<Response> {
+  const origin = siteUrl(env);
+  const template = await htmlTemplate(request, env);
+  let title: string;
+  let description: string;
+  let content: string;
+  let extraStructured: unknown[] = [];
+  if (path === "/" || path === "/map") {
+    const [overview, result, international] = await Promise.all([
+      discovery(env.DB),
+      env.DB.prepare(
+        "SELECT data_json FROM locations WHERE status='published' ORDER BY featured DESC, name COLLATE NOCASE, id LIMIT 10",
+      ).all<Row>(),
+      path === "/map"
+        ? env.DB.prepare(
+            "SELECT data_json FROM locations WHERE status='published' AND country != 'United States' ORDER BY name COLLATE NOCASE, id LIMIT 50",
+          ).all<Row>()
+        : Promise.resolve({ results: [] as Row[] }),
+    ]);
+    const locations = result.results.map(fromRow);
+    const internationalLocations = international.results.map(fromRow);
+    title =
+      path === "/"
+        ? "PHASM — Haunted Places, Ghost Stories & the Haunted Atlas"
+        : "Haunted Places Map — The Haunted Atlas | PHASM";
+    description =
+      "Discover haunted places, ghost stories, and the history behind them. Explore the PHASM Haunted Atlas and browse researched places across all 50 U.S. states.";
+    const directoryLinks = `<h2>Every state has its shadows.</h2><p>Find haunted hotels, forgotten landmarks, and local ghost stories across the United States.</p><p>${overview.total.toLocaleString("en-US")} places across 50 U.S. states.</p><p><a href="/haunted-places">Browse all 50 states</a></p><ul>${overview.states.map((state) => `<li><a href="/haunted-places/${state.slug}">Haunted places in ${state.name}</a></li>`).join("")}</ul>`;
+    content =
+      path === "/"
+        ? `${homeHeroHtml()}<section class="section home-featured"><div class="home-section-heading"><div><div class="eyebrow"><span></span>Places that stay with you</div><h2>Step into the story.</h2></div><div class="home-section-intro"><p>Spirited hotels. Silent cellblocks. Ancient strongholds.<br class="desktop-break"> Find your next encounter with the unexplained.</p><a href="/map" class="text-link">Explore all places</a></div></div>${locationList(locations)}</section><section class="section home-state-gateway">${directoryLinks}</section>`
+        : `<h1>The Haunted Atlas</h1><p>Explore haunted landmarks and local legends on an interactive map. Search by place, city, or region, and follow each pin to its history, ghost stories, and visiting information.</p><form action="/map" method="get"><label for="archive-search">Search a place, city or region</label><input id="archive-search" name="q" type="search"><button type="submit">Find haunted places</button></form><p><a href="/haunted-places">Browse haunted places by state</a></p><h2>Places that stay with you</h2>${locationList(locations)}${directoryLinks}${internationalLocations.length ? `<section><h2>Beyond the United States</h2><p>Follow the stories to haunted places around the world.</p>${locationList(internationalLocations)}</section>` : ""}`;
+    if (path === "/map")
+      extraStructured = [
+        collectionStructuredData(
+          title,
+          description,
+          `${origin}/map`,
+          locations.map((location) => ({
+            name: location.name,
+            url: `${origin}/locations/${location.slug}`,
+          })),
+        ),
+      ];
+  } else if (path === "/about") {
+    title = "About PHASM — Haunted Places, History & Our Approach";
+    description =
+      "How PHASM brings together haunted places, documented history, and local ghost lore, with sources, credited photographs, and respectful visiting information.";
+    content =
+      '<h1>There is more to the story.</h1><p>PHASM is for everyone drawn to haunted places, local legends, and the feeling that a place holds something more.</p><h2>Follow a haunting to its roots.</h2><p>Behind every haunted place are people, memories, and stories passed from one visitor to the next. We bring its history and ghost lore together, name the storytellers where we can, and link to the sources so you can follow your curiosity further.</p><h2>Three ways a place joins the atlas.</h2><h3>Established location</h3><p>A recognized haunted destination whose location and identity are documented in independent sources.</p><h3>Local legend</h3><p>A place kept alive in regional folklore or oral tradition, from a quiet country road to a familiar building with a story few outsiders know.</p><h3>Community discovery</h3><p>A place brought to PHASM by a visitor and reviewed by our editors before joining the atlas. Public suggestions are not open yet.</p><h2>Visit with respect.</h2><p>Never enter private property or restricted areas without permission. Follow the official visitor information, respect memorials and sensitive histories, and leave every place as you found it. Some map pins are approximate area references; check each profile before planning a visit.</p><p><a href="/haunted-places">Discover haunted places by state</a></p>';
+  } else if (path === "/encyclopedia") {
+    title = "Ghosts & Paranormal Phenomena — The PHASM Index";
+    description =
+      "Explore the language of ghost stories: apparitions, unexplained sounds, moving objects, unusual sensations, and mysterious lights and shadows.";
+    const definitions = [
+      [
+        "Apparitions",
+        "A figure in an empty doorway. A familiar face glimpsed for a moment. Apparition stories describe spirits taking visible form, from fleeting outlines to figures that seem as solid as anyone else in the room.",
+      ],
+      [
+        "Unexplained sounds",
+        "Footsteps along a deserted passage, a voice from an empty room, music heard after everyone has gone. Unexplained sounds are among the most enduring threads in haunted-place lore.",
+      ],
+      [
+        "Objects moving",
+        "Doors opening on their own, belongings found somewhere unexpected, or an object shifting in plain sight. Stories of restless objects are often woven into poltergeist lore and tales of mischievous spirits.",
+      ],
+      [
+        "Unusual sensations",
+        "The feeling of being watched. A sudden chill. The sense that someone has just entered an empty room. Some encounters are remembered for what a visitor felt, even when nothing was seen or heard.",
+      ],
+      [
+        "Lights and shadows",
+        "A light drifting across a dark landscape or a shadow passing at the edge of sight. Such glimpses run through ghost stories, from wandering lights outdoors to shadowy figures in quiet interiors.",
+      ],
+    ];
+    content = `<h1>A language for the unexplained.</h1><p>Meet the apparitions, strange sounds, and fleeting sensations that weave their way through ghost stories. Follow a thread to the places where it lingers.</p>${definitions.map(([name, copy]) => `<section><h2>${name}</h2><p>${copy}</p><a href="/map?phenomenon=${encodeURIComponent(name)}">Explore related places</a></section>`).join("")}`;
+  } else {
+    const label =
+      path === "/saved"
+        ? "Your saved places"
+        : path === "/account"
+          ? "Your PHASM account"
+          : "Case Files";
+    title = `${label} — PHASM`;
+    description =
+      path === "/saved"
+        ? "Your saved haunted places, stored privately in this browser."
+        : "A future chapter of the PHASM Haunted Atlas.";
+    content = `<h1>${label}</h1><p>${description}</p><p><a href="/map">Explore the Haunted Atlas</a></p>`;
+  }
+  return htmlResponse(
+    template,
+    {
+      title,
+      description,
+      canonical: `${origin}${path}`,
+      noindex: ["/saved", "/account", "/cases"].includes(path),
+      structuredData: [...siteStructuredData(origin), ...extraStructured],
+    },
+    path === "/"
+      ? `${homeHeaderHtml()}<main id="main" class="home-page">${content}</main>`
+      : `<main id="main" class="page-shell server-page">${serverNavigation()}${content}</main>`,
+  );
+}
+
+async function notFoundHtml(request: Request, env: Env): Promise<Response> {
+  return htmlResponse(
+    await htmlTemplate(request, env),
+    {
+      title: "Page not found — PHASM",
+      description:
+        "This page is not in the PHASM archive. Explore the Haunted Atlas to find a place with a story.",
+      canonical: `${siteUrl(env)}${new URL(request.url).pathname}`,
+      noindex: true,
+    },
+    '<main id="main" class="page-shell"><h1>This path has gone quiet.</h1><p>The page you’re looking for isn’t in the archive.</p><a href="/haunted-places">Browse haunted places</a></main>',
+    404,
+  );
 }
 
 async function route(request: Request, env: Env): Promise<Response> {
@@ -668,6 +936,7 @@ async function route(request: Request, env: Env): Promise<Response> {
   if (path === "/api/locations") return listLocations(env.DB, url.searchParams);
   if (path === "/api/atlas") return atlas(env.DB, url.searchParams);
   if (path === "/api/meta") return metadata(env.DB);
+  if (path === "/api/discover") return publicJson(await discovery(env.DB));
   const slug = path.match(/^\/api\/locations\/([a-z0-9-]+)$/)?.[1];
   if (slug) {
     if (url.searchParams.get("format") === "summary") {
@@ -687,7 +956,16 @@ async function route(request: Request, env: Env): Promise<Response> {
       "SELECT slug, updated_at FROM locations WHERE status='published' ORDER BY slug LIMIT 45000",
     ).all<{ slug: string; updated_at: string }>();
     const origin = siteUrl(env);
-    const pages = ["/", "/map", "/about", "/encyclopedia"];
+    const overview = await discovery(env.DB);
+    const pages = ["/", "/map", "/haunted-places", "/about", "/encyclopedia"];
+    for (const state of overview.states) {
+      if (!state.count) continue;
+      const totalPages = Math.ceil(state.count / DIRECTORY_PAGE_SIZE);
+      for (let page = 1; page <= totalPages; page++)
+        pages.push(
+          `/haunted-places/${state.slug}${page > 1 ? `?page=${page}` : ""}`,
+        );
+    }
     const body = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map((page) => `<url><loc>${escapeHtml(origin + page)}</loc></url>`).join("")}${rows.results.map((row) => `<url><loc>${escapeHtml(`${origin}/locations/${row.slug}`)}</loc><lastmod>${escapeHtml(row.updated_at)}</lastmod></url>`).join("")}</urlset>`;
     return new Response(body, {
       headers: {
@@ -706,9 +984,44 @@ async function route(request: Request, env: Env): Promise<Response> {
         },
       },
     );
+  const publicPage = [
+    "/",
+    "/map",
+    "/haunted-places",
+    "/about",
+    "/encyclopedia",
+    "/saved",
+    "/account",
+    "/cases",
+  ].includes(path);
+  const stateSlug = path.match(/^\/haunted-places\/([a-z-]+)$/)?.[1];
   const profileSlug = path.match(/^\/locations\/([a-z0-9-]+)$/)?.[1];
+  if ((publicPage || stateSlug || profileSlug) && url.pathname !== path) {
+    const canonical = new URL(`${siteUrl(env)}${path}`);
+    canonical.search = url.search;
+    return Response.redirect(canonical.href, 308);
+  }
   if (profileSlug) return profileHtml(request, env, profileSlug);
-  return env.ASSETS.fetch(request);
+  if (path === "/haunted-places" || stateSlug)
+    return directoryHtml(request, env, stateSlug);
+  if (publicPage) return publicPageHtml(request, env, path);
+  if (path === "/index.html") return Response.redirect(`${siteUrl(env)}/`, 308);
+  // Known static assets and the private local editorial app still use ASSETS.
+  // Unknown HTML routes must return 404 instead of an indexable SPA soft-404.
+  if (
+    /^\/(?:assets|images)\//.test(path) ||
+    /\.[a-z0-9]+$/i.test(path) ||
+    /^\/admin(?:\/|$)/.test(path)
+  ) {
+    const asset = await env.ASSETS.fetch(request);
+    if (
+      !/^\/admin(?:\/|$)/.test(path) &&
+      asset.headers.get("Content-Type")?.includes("text/html")
+    )
+      return notFoundHtml(request, env);
+    return asset;
+  }
+  return notFoundHtml(request, env);
 }
 
 export default {
@@ -744,7 +1057,12 @@ export default {
       (request.headers.has("Authorization") || request.headers.has("Cookie"))
     )
       secured.headers.set("Cache-Control", "no-store");
-    if (/^\/(?:api\/)?admin(?:\/|$)/.test(new URL(request.url).pathname))
+    if (
+      secured.status >= 400 ||
+      /^\/(?:api|admin|account|saved|cases)(?:\/|$)/.test(
+        new URL(request.url).pathname,
+      )
+    )
       secured.headers.set("X-Robots-Tag", "noindex, nofollow");
     return secured;
   },

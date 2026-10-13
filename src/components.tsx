@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import type { LocationSummary } from "../shared/types";
 import { useSaved } from "./api";
+import { BrandMark } from "./BrandMark";
 import {
   hasLocationPhotograph,
   hasMapCoordinates,
@@ -22,21 +23,7 @@ import {
 export function Logo() {
   return (
     <Link to="/" className="logo" aria-label="PHASM home">
-      <svg
-        className="brand-mark"
-        viewBox="0 0 40 44"
-        width="32"
-        height="36"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M7 36V18a13 13 0 0 1 26 0v18M12 36V18a8 8 0 0 1 16 0v18M4 36h32M20 2v8M20 27v15M16 31h8"
-          stroke="currentColor"
-          strokeWidth="1.2"
-        />
-        <path d="m20 14 3 5-3 5-3-5Z" fill="currentColor" />
-      </svg>
+      <BrandMark className="brand-mark" />
       <span>
         PHASM<span className="logo-dot">.</span>
       </span>
@@ -104,6 +91,7 @@ export function Header() {
             Discover
           </NavLink>
           <NavLink to="/map">Haunted Atlas</NavLink>
+          <NavLink to="/haunted-places">Haunted places</NavLink>
           <NavLink to="/cases">Case Files</NavLink>
           <NavLink to="/saved" className="mobile-saved">
             Saved places
@@ -150,6 +138,7 @@ export function Footer() {
         <p>A field guide to the unexplained.</p>
       </div>
       <div className="footer-links">
+        <Link to="/haunted-places">Haunted places by state</Link>
         <Link to="/about">Our approach</Link>
         <Link to="/encyclopedia">Phenomena index</Link>
         <Link to="/about#visit">Explore responsibly</Link>

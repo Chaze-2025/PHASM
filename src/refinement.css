@@ -100,7 +100,7 @@ em {
   padding: 14px 20px;
 }
 
-/* An architectural threshold forms the mark; no invented paranormal symbol. */
+/* Shared navigation and wordmark; the lunar sigil is refined in occult-refinement.css. */
 .site-header {
   height: var(--header-height);
   padding-top: env(safe-area-inset-top);

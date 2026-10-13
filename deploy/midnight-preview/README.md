@@ -25,7 +25,7 @@ node deploy/midnight-preview/prepare.mjs
 npx wrangler deploy --config deploy/midnight-preview/wrangler.json --dry-run
 ```
 
-Preparation requires the expected branch, a clean working tree, and the preserved Phase 1 (`9da8948`), Phase 1.1 (`cf915ba`), Midnight Séance (`d3c7a21`), and atmospheric fog (`8ffeb28`) commits as ancestors. It performs a fresh production build, copies public assets into ignored `.generated/assets`, adds preview-only indexing headers, and records the exact source commit in `.generated/source.json`. Vite packages the MapLibre browser worker through the application's asset import.
+Preparation requires the expected branch, a clean working tree, and the preserved Phase 1 (`9da8948`), Phase 1.1 (`cf915ba`), Midnight Séance (`d3c7a21`), and atmospheric fog (`8ffeb28`) commits as ancestors. It performs a fresh production build, copies public assets into ignored `.generated/assets`, preserves public indexing and route-specific security headers, and records the exact source commit in `.generated/source.json`. Vite packages the MapLibre browser worker through the application's asset import.
 
 The preparation allowlist also includes the subsequent `codex/usa-atlas-130`,
 `codex/rolling-fog`, `codex/responsive-performance`, `codex/volumetric-mist`,
@@ -120,12 +120,12 @@ npx wrangler deploy --config deploy/midnight-preview/wrangler.json
 
 Always pass this explicit configuration. Do not deploy the default `wrangler.jsonc`, update the separate Phase 1 or Phase 1.1 Workers, or add production routes/custom domains. The validator restricts the binding to the editorial database's exact name and UUID.
 
-The wrapper denies admin and development paths, rejects writes and community submissions, forwards only `DB`, `ASSETS`, and public `SITE_URL`, and sets `noindex` headers plus a disallowing `robots.txt`. No administrative credential is configured. Static assets bypass Worker execution and receive preview indexing headers. No paid service, R2 binding, or observability feature is enabled.
+The wrapper denies admin and development paths, rejects writes and community submissions, forwards only `DB`, `ASSETS`, and public `SITE_URL`, and keeps private/error responses nonindexable. The published catalog now permits public indexing, serves crawlable HTML, and advertises its sitemap in `robots.txt`. No administrative credential is configured. Static assets bypass Worker execution and retain security/cache headers. No paid service, R2 binding, or observability feature is enabled.
 
-The preview is publicly reachable for evaluation; `noindex` is not authentication. Account-wide free usage limits and external map-provider limits apply. Exceeding the free D1 daily allowance causes query errors; do not change plans to raise quotas.
+This historically named preview is the publicly published, indexable PHASM site. Indexing permission is not authentication; the wrapper still blocks administration and writes. Account-wide free usage limits and external map-provider limits apply. Exceeding the free D1 daily allowance causes query errors; do not change plans to raise quotas.
 
 ## Verify after deployment
 
 Check homepage, `/map`, `/locations/stanley-hotel`, map tiles and markers, search, filters, all location profiles, source links, images, overflow, reduced motion, and accessibility on desktop and mobile viewports. Confirm the deployed application uses the exact reviewed text, unchanged geography, and neutral charcoal map while the original preview catalog retains its former fingerprint.
 
-Verify `/robots.txt` denies indexing, admin/development paths remain unavailable, community writes return 403, and other writes return 405. Confirm the intended three bindings and an empty secrets list. Record the HTTPS URL, Worker version, source commit, and verification results in the handoff. Browser viewport simulation is not physical iPhone testing.
+Verify `/robots.txt` permits public indexing and links the sitemap, public HTML has no blocking robots header, private/error responses remain nonindexable, admin/development paths remain unavailable, community writes return 403, and other writes return 405. Confirm the intended three bindings and an empty secrets list. Record the HTTPS URL, Worker version, source commit, and verification results in the handoff. Browser viewport simulation is not physical iPhone testing.

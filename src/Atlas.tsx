@@ -21,6 +21,7 @@ import {
 } from "../shared/types";
 import { LocationCard, PlaceImage, Status } from "./components";
 import { coordinateReferenceLabel } from "./location";
+import { US_STATES, findState } from "../shared/discovery";
 
 const MapCanvas = lazy(() => import("./MapCanvas"));
 
@@ -83,6 +84,7 @@ export default function Atlas() {
     "tours",
     "region",
     "classification",
+    "state",
   ];
   const activeCount = activeKeys.filter((k) => params.has(k)).length;
   return (
@@ -239,6 +241,11 @@ export default function Atlas() {
                 ).map((v) => [v, v]),
               },
               {
+                key: "state",
+                label: "US state",
+                options: US_STATES.map((state) => [state.code, state.name]),
+              },
+              {
                 key: "classification",
                 label: "Location type",
                 options: [
@@ -251,7 +258,11 @@ export default function Atlas() {
               <label key={f.key}>
                 {f.label}
                 <select
-                  value={params.get(f.key) || ""}
+                  value={
+                    f.key === "state"
+                      ? findState(params.get("state") || "")?.code || ""
+                      : params.get(f.key) || ""
+                  }
                   onChange={(e) => change(f.key, e.target.value)}
                 >
                   <option value="">
@@ -294,8 +305,10 @@ export default function Atlas() {
               .filter((k) => params.has(k))
               .map((k) => (
                 <button key={k} onClick={() => change(k, "")}>
-                  {k === "q" ? "Search: " : ""}
-                  {params.get(k)}
+                  {k === "q" ? "Search: " : k === "state" ? "State: " : ""}
+                  {k === "state"
+                    ? findState(params.get(k) || "")?.name || params.get(k)
+                    : params.get(k)}
                   <X size={12} />
                 </button>
               ))}

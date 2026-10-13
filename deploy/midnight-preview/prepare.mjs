@@ -64,15 +64,18 @@ if (
     "codex/volumetric-mist",
     "codex/nationwide-research-2853",
     "codex/nationwide-map-pins",
+    "codex/discovery-occult",
   ].includes(branch)
 )
   throw new Error(
     "Preview requires a reviewed editorial, atlas, fog or performance branch.",
   );
 if (
-  ["codex/nationwide-research-2853", "codex/nationwide-map-pins"].includes(
-    branch,
-  ) &&
+  [
+    "codex/nationwide-research-2853",
+    "codex/nationwide-map-pins",
+    "codex/discovery-occult",
+  ].includes(branch) &&
   !photoWorkspace
 )
   throw new Error(
@@ -108,13 +111,10 @@ const headersFile = join(generated, "assets/_headers");
 const originalHeaders = readFileSync(headersFile, "utf8");
 if (!originalHeaders.startsWith("/*\n"))
   throw new Error("Expected the application's global response headers.");
-writeFileSync(
-  headersFile,
-  originalHeaders.replace(
-    "/*\n",
-    "/*\n  X-Robots-Tag: noindex, nofollow, noarchive\n",
-  ),
-);
+// Public indexing is intentional for the published catalog. Private-route
+// noindex policies remain in the application and its source _headers file.
+if (/^\/\*\n(?:(?:  [^\n]*)\n)*  X-Robots-Tag:.*noindex/m.test(originalHeaders))
+  throw new Error("The public build must not suppress indexing globally.");
 const assetLimits = validateAssetLimits(join(generated, "assets"));
 writeFileSync(
   join(generated, "source.json"),

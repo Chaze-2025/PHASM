@@ -1,8 +1,7 @@
-// Preview-only policy around the existing application build.
+// Read-only public publication policy around the existing application build.
 import application from "../../dist/phasm/index.js";
 
-const previewHeaders = {
-  "X-Robots-Tag": "noindex, nofollow, noarchive",
+const publicHeaders = {
   "X-Content-Type-Options": "nosniff",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "X-Frame-Options": "DENY",
@@ -12,7 +11,8 @@ function response(body, status = 200, extraHeaders = {}) {
   return new Response(body, {
     status,
     headers: {
-      ...previewHeaders,
+      ...publicHeaders,
+      "X-Robots-Tag": "noindex, nofollow",
       "Cache-Control": "no-store",
       ...extraHeaders,
     },
@@ -59,20 +59,13 @@ export default {
         JSON.stringify({
           error: community
             ? "Community submissions are not enabled."
-            : "This preview is read-only.",
+            : "The public site is read-only.",
         }),
         community ? 403 : 405,
         {
           "Content-Type": "application/json; charset=utf-8",
           ...(community ? {} : { Allow: "GET, HEAD" }),
         },
-      );
-    }
-    if (url.pathname === "/robots.txt") {
-      return response(
-        request.method === "HEAD" ? null : "User-agent: *\nDisallow: /\n",
-        200,
-        { "Content-Type": "text/plain; charset=utf-8" },
       );
     }
     // Never pass administrative credentials or extra bindings to the application.
@@ -85,7 +78,7 @@ export default {
       request.method === "HEAD" ? null : result.body,
       result,
     );
-    for (const [name, value] of Object.entries(previewHeaders))
+    for (const [name, value] of Object.entries(publicHeaders))
       secured.headers.set(name, value);
     return secured;
   },

@@ -868,3 +868,291 @@ test("read-only preview binding rejects authenticated writes and leaves the cata
   ).json()) as any;
   assert.equal(records.total, 1);
 });
+
+test("public discovery exposes every state with published U.S. counts and consistent state filters", async () => {
+  const env = createEnv([
+    fixture,
+    {
+      ...fixture,
+      id: "co-draft",
+      slug: "co-draft",
+      name: "Unpublished",
+      status: "draft",
+    },
+    {
+      ...fixture,
+      id: "foreign",
+      slug: "foreign",
+      name: "Foreign fixture",
+      country: "Canada",
+    },
+    {
+      ...fixture,
+      id: "pa-published",
+      slug: "pa-published",
+      name: "Pennsylvania fixture",
+      state: "Pennsylvania",
+    },
+  ]);
+  const response = await request("/api/discover", env);
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow");
+  const overview = (await response.json()) as any;
+  assert.equal(overview.total, 2);
+  assert.equal(overview.states.length, 50);
+  assert.deepEqual(
+    overview.states.find((state: any) => state.code === "CO"),
+    {
+      code: "CO",
+      name: "Colorado",
+      slug: "colorado",
+      count: 1,
+    },
+  );
+  for (const state of ["CO", "Colorado", "colorado"]) {
+    const catalog = (await (
+      await request(`/api/locations?state=${state}`, env)
+    ).json()) as any;
+    assert.equal(catalog.total, 1);
+    assert.equal(catalog.locations[0].id, fixture.id);
+    const map = (await (
+      await request(`/api/atlas?state=${state}&format=points`, env)
+    ).json()) as any;
+    assert.equal(map.total, 1);
+    assert.equal(map.features[0].properties.id, fixture.id);
+  }
+  assert.equal(
+    (await request("/api/locations?state=Atlantis", env)).status,
+    400,
+  );
+});
+
+test("public HTML is crawlable with canonical social metadata, linked states and truthful profile structured data", async () => {
+  const location = {
+    ...fixture,
+    name: 'Test <script>alert("x")</script>',
+    coordinatePrecision: "approximate" as const,
+  };
+  const env = createEnv([location]);
+  for (const path of [
+    "/",
+    "/map",
+    "/about",
+    "/encyclopedia",
+    "/haunted-places",
+    "/haunted-places/colorado",
+    "/locations/test-stanley",
+  ]) {
+    const response = await request(`${path}?utm_source=test`, env);
+    const html = await response.text();
+    assert.equal(response.status, 200, path);
+    assert.equal(response.headers.get("X-Robots-Tag"), null, path);
+    assert.match(html, /<h1[ >]/, path);
+    assert.match(
+      html,
+      /<meta name="robots" content="index, follow, max-image-preview:large">/,
+      path,
+    );
+    assert.ok(
+      html.includes(
+        `<link rel="canonical" href="https://phasm.example${path}">`,
+      ),
+      path,
+    );
+    assert.equal((html.match(/<title>/g) || []).length, 1, path);
+    assert.equal((html.match(/name="description"/g) || []).length, 1, path);
+    assert.match(
+      html,
+      /name="twitter:card" content="summary_large_image"/,
+      path,
+    );
+    assert.match(html, /property="og:site_name" content="PHASM"/, path);
+    assert.match(
+      html,
+      /https:\/\/phasm.example\/images\/phasm-social.png/,
+      path,
+    );
+    assert.ok(!html.includes('<script>alert("x")</script>'), path);
+  }
+  const home = await (await request("/", env)).text();
+  assert.match(home, /href="\/haunted-places\/new-york"/);
+  assert.match(home, /href="\/locations\/test-stanley"/);
+  const profile = await (await request("/locations/test-stanley", env)).text();
+  assert.match(profile, /href="\/haunted-places\/colorado"/);
+  assert.match(profile, /property="og:type" content="article"/);
+  const structured = [
+    ...profile.matchAll(
+      /<script type="application\/ld\+json" data-phasm-seo>(.*?)<\/script>/g,
+    ),
+  ].map((match) => JSON.parse(match[1]));
+  assert.ok(structured.some((entry) => entry["@type"] === "Place"));
+  assert.equal(
+    structured.find((entry) => entry["@type"] === "Place").geo,
+    undefined,
+  );
+  assert.equal(
+    structured.find((entry) => entry["@type"] === "Place").name,
+    location.name,
+  );
+  assert.ok(structured.some((entry) => entry["@type"] === "BreadcrumbList"));
+  const hostileHost = await worker.fetch(
+    new Request("https://untrusted.example/haunted-places"),
+    env,
+  );
+  assert.match(
+    await hostileHost.text(),
+    /rel="canonical" href="https:\/\/phasm.example\/haunted-places"/,
+  );
+});
+
+test("state directory pagination is crawlable, self-canonical and included completely in the sitemap", async () => {
+  const env = createEnv(
+    Array.from({ length: 25 }, (_, index) => ({
+      ...fixture,
+      id: `directory-${String(index).padStart(2, "0")}`,
+      slug: `directory-${String(index).padStart(2, "0")}`,
+      name: `Directory ${String(index).padStart(2, "0")}`,
+    })),
+  );
+  const first = await (
+    await request("/haunted-places/colorado?page=1&utm_source=test", env)
+  ).text();
+  assert.match(
+    first,
+    /rel="canonical" href="https:\/\/phasm.example\/haunted-places\/colorado"/,
+  );
+  assert.match(first, /rel="next" href="\/haunted-places\/colorado\?page=2"/);
+  assert.equal((first.match(/<h2><a href="\/locations\//g) || []).length, 24);
+  const second = await (
+    await request("/haunted-places/colorado?page=2&utm_source=test", env)
+  ).text();
+  assert.match(
+    second,
+    /rel="canonical" href="https:\/\/phasm.example\/haunted-places\/colorado\?page=2"/,
+  );
+  assert.match(second, /rel="prev" href="\/haunted-places\/colorado"/);
+  assert.match(second, /Directory 24/);
+  assert.equal((second.match(/<h2><a href="\/locations\//g) || []).length, 1);
+  assert.match(second, /Haunted Places in Colorado — Page 2 \| PHASM/);
+  const sitemap = await (await request("/sitemap.xml", env)).text();
+  assert.match(sitemap, /<loc>https:\/\/phasm.example\/haunted-places<\/loc>/);
+  assert.match(
+    sitemap,
+    /<loc>https:\/\/phasm.example\/haunted-places\/colorado\?page=2<\/loc>/,
+  );
+  assert.match(sitemap, /\/locations\/directory-24/);
+  assert.ok(!sitemap.includes("/saved"));
+  assert.ok(!sitemap.includes("/cases"));
+  for (const path of [
+    "/haunted-places/colorado?page=3",
+    "/haunted-places/colorado?page=0",
+    "/haunted-places/colorado?page=1x",
+    "/haunted-places/atlantis",
+    "/not-a-page",
+    "/not-real.svg",
+  ]) {
+    const response = await request(path, env);
+    assert.equal(response.status, 404, path);
+    assert.equal(
+      response.headers.get("X-Robots-Tag"),
+      "noindex, nofollow",
+      path,
+    );
+    assert.match(await response.text(), /This path has gone quiet/, path);
+  }
+  const slash = await request("/haunted-places/colorado/?page=2", env);
+  assert.equal(slash.status, 308);
+  assert.equal(
+    slash.headers.get("Location"),
+    "https://phasm.example/haunted-places/colorado?page=2",
+  );
+});
+
+test("robots allow public discovery while private and placeholder pages stay nonindexable", async () => {
+  const env = createEnv();
+  const robots = await (await request("/robots.txt", env)).text();
+  assert.match(robots, /^User-agent: \*\nAllow: \/\n/);
+  assert.ok(!robots.includes("Disallow: /\n"));
+  assert.match(robots, /Sitemap: https:\/\/phasm.example\/sitemap.xml/);
+  for (const path of ["/saved", "/account", "/cases"]) {
+    const response = await request(path, env);
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow");
+    assert.match(
+      await response.text(),
+      /name="robots" content="noindex, nofollow"/,
+    );
+  }
+});
+
+test("homepage first paint retains its real responsive hero and priority photograph before React loads", async () => {
+  const html = await (await request("/", createEnv())).text();
+  assert.match(html, /<header class="site-header"><div class="header-inner">/);
+  assert.match(
+    html,
+    /class="brand-mark" src="\/brand-mark.svg" width="42" height="42"/,
+  );
+  assert.match(
+    html,
+    /<main id="main" class="home-page"><section class="home-hero"/,
+  );
+  assert.match(
+    html,
+    /class="home-hero-image"[^>]*srcset="[^"]+720w[^"]+1080w[^"]+1280w[^"]+1920w"[^>]*fetchpriority="high"/,
+  );
+  assert.match(
+    html,
+    /<h1 id="home-title"><span>Every place<br>has a story\.<\/span><em>Some never rest\.<\/em><\/h1>/,
+  );
+  assert.match(html, /<form class="home-search" action="\/map" method="get">/);
+  assert.match(
+    html,
+    /<input name="q" aria-label="Search for haunted places or a region"/,
+  );
+  assert.match(html, /class="home-hero-footer"/);
+  assert.match(html, /Photo: Gangway Ghost/);
+  assert.ok(
+    html.indexOf('class="site-header"') < html.indexOf('class="home-hero"'),
+  );
+  assert.ok(
+    html.indexOf('class="home-hero"') <
+      html.indexOf('href="/locations/test-stanley"'),
+  );
+});
+
+test("every published international profile has a crawlable map link beyond the featured-page limit", async () => {
+  const international = Array.from({ length: 6 }, (_, index) => ({
+    ...fixture,
+    id: `international-${index}`,
+    slug: `international-${index}`,
+    name: `Z International ${index}`,
+    country: "United Kingdom",
+    state: "England",
+  }));
+  const domestic = Array.from({ length: 12 }, (_, index) => ({
+    ...fixture,
+    id: `domestic-${index}`,
+    slug: `domestic-${index}`,
+    name: `A Domestic ${index}`,
+  }));
+  const draft = {
+    ...international[0],
+    id: "hidden-international",
+    slug: "hidden-international",
+    name: "Z Hidden",
+    status: "draft" as const,
+  };
+  const html = await (
+    await request("/map", createEnv([...domestic, ...international, draft]))
+  ).text();
+  assert.match(html, /<h2>Beyond the United States<\/h2>/);
+  for (const location of international)
+    assert.ok(
+      html.includes(`href="/locations/${location.slug}"`),
+      location.slug,
+    );
+  assert.ok(!html.includes("hidden-international"));
+  const robots = await (await request("/robots.txt", createEnv())).text();
+  assert.ok(!robots.includes("Disallow: /account"));
+  assert.ok(!robots.includes("Disallow: /saved"));
+});

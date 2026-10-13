@@ -17,6 +17,7 @@ import archivalImages from "../content/archival-images.json";
 import type { LocationSummary, LocationPage } from "../shared/types";
 import { LocationCard, Eyebrow, Status, PlaceImage } from "./components";
 import { AtmosphericFog } from "./AtmosphericFog";
+import { VeilSeal, VeilDivider } from "./VeilSeal";
 
 const spiritPhotograph = archivalImages[0];
 
@@ -72,12 +73,8 @@ export function Home() {
           decoding="async"
         />
         <div className="home-hero-registration" aria-hidden="true">
-          <svg viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="35" />
-            <circle cx="50" cy="50" r="29" strokeDasharray="1 7" />
-            <path d="M50 5v23M50 72v23M5 50h23M72 50h23M39 50h22M50 39v22" />
-          </svg>
-          <span>Beyond the familiar</span>
+          <VeilSeal />
+          <span>Beyond the veil</span>
         </div>
         <div className="home-hero-inner">
           <div className="home-hero-copy">
@@ -91,8 +88,8 @@ export function Home() {
               <em>Some never rest.</em>
             </h1>
             <p>
-              Discover haunted places, uncover their histories, and explore the
-              ghost stories that linger.
+              Explore haunted places across all 50 states and beyond. Uncover
+              their histories and the ghost stories that linger.
             </p>
             <form
               className="home-search"
@@ -160,6 +157,8 @@ export function Home() {
         </div>
       </section>
 
+      <VeilDivider />
+
       <section
         className="section home-featured"
         aria-labelledby="featured-title"
@@ -191,6 +190,34 @@ export function Home() {
             ))}
           </div>
         )}
+      </section>
+
+      <section
+        className="section home-state-gateway"
+        aria-labelledby="state-gateway-title"
+      >
+        <div className="home-state-gateway-inner">
+          <div>
+            <Eyebrow>Closer than you think</Eyebrow>
+            <h2 id="state-gateway-title">Every state has its shadows.</h2>
+            <p>
+              Find haunted hotels, forgotten landmarks, and local ghost stories
+              across the United States.
+            </p>
+            <div
+              className="home-state-shortcuts"
+              aria-label="Explore haunted places by state"
+            >
+              <Link to="/haunted-places/louisiana">Louisiana</Link>
+              <Link to="/haunted-places/pennsylvania">Pennsylvania</Link>
+              <Link to="/haunted-places/new-york">New York</Link>
+              <Link to="/haunted-places/california">California</Link>
+            </div>
+          </div>
+          <Link to="/haunted-places" className="button secondary">
+            Browse all 50 states <ArrowUpRight size={18} aria-hidden="true" />
+          </Link>
+        </div>
       </section>
 
       <section

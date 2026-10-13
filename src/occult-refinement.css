@@ -1,0 +1,280 @@
+/* Engraved lunar details: static geometry, warm metal and open reading space. */
+.logo .brand-mark {
+  width: 42px;
+  height: 42px;
+  flex: none;
+}
+.site-header {
+  border-bottom-color: color-mix(in srgb, var(--accent) 23%, transparent);
+}
+.main-nav {
+  gap: clamp(18px, 2.2vw, 34px);
+}
+.main-nav a.active::after {
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  width: 38px;
+  left: calc(50% - 19px);
+}
+.logo:hover .brand-mark {
+  color: var(--focus);
+}
+.eyebrow > span {
+  position: relative;
+  background: linear-gradient(90deg, transparent, var(--accent));
+}
+.eyebrow > span::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  top: -1.5px;
+  right: -1px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+.home-page .home-hero {
+  background:
+    radial-gradient(
+      ellipse at 17% 40%,
+      rgba(194, 173, 124, 0.045),
+      transparent 49%
+    ),
+    var(--bg);
+}
+.home-page .home-hero-copy {
+  position: relative;
+}
+.home-page .home-hero-copy::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 5px;
+  bottom: 2px;
+  width: 1px;
+  background: linear-gradient(
+    transparent,
+    var(--accent) 12%,
+    var(--accent) 76%,
+    transparent
+  );
+  opacity: 0.2;
+  pointer-events: none;
+}
+.home-page .home-hero-registration {
+  gap: 19px;
+  top: 32px;
+  color: var(--focus);
+  padding: 10px;
+  background: rgba(11, 16, 13, 0.66);
+  border: 1px solid rgba(194, 173, 124, 0.2);
+}
+.home-page .home-hero-registration span {
+  font-size: 0.625rem;
+  letter-spacing: 0.22em;
+}
+.veil-seal {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  flex: none;
+}
+.home-page .veil-seal .veil-seal-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  opacity: 0.75;
+}
+.home-page .veil-seal .veil-seal-mark {
+  position: absolute;
+  width: 62%;
+  height: 62%;
+  left: 19%;
+  top: 19%;
+}
+.home-page .home-search {
+  box-shadow:
+    0 10px 36px var(--shadow),
+    0 0 0 4px rgba(194, 173, 124, 0.045);
+}
+.home-page .home-search:focus-within {
+  border-color: var(--focus);
+}
+.home-page .home-hero-footer {
+  border-top-color: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.veil-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 510px;
+  margin: 38px auto -28px;
+  padding-inline: 35px;
+  color: var(--accent);
+  opacity: 0.66;
+  pointer-events: none;
+}
+.veil-divider span {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, currentColor);
+}
+.veil-divider span:last-child {
+  transform: rotate(180deg);
+}
+.veil-divider svg {
+  width: 72px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 0.9;
+}
+.home-page .home-state-gateway {
+  padding-top: 0;
+  padding-bottom: 64px;
+}
+.home-state-gateway-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  border-block: 1px solid var(--border-subtle);
+  padding: 34px 0;
+}
+.home-state-gateway-inner h2 {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  margin-top: 13px;
+  line-height: 1.1;
+}
+.home-state-gateway-inner p {
+  color: var(--text-secondary);
+  max-width: 570px;
+  margin-top: 14px;
+}
+.home-state-gateway-inner > .button {
+  flex: none;
+  gap: 14px;
+}
+.home-state-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+  margin-top: 12px;
+}
+.home-state-shortcuts a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.8125rem;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: rgba(194, 173, 124, 0.3);
+}
+.home-state-shortcuts a:hover {
+  color: var(--ivory);
+}
+.home-page .home-atlas-panel,
+.home-page .home-archive-mount {
+  outline: 1px solid rgba(194, 173, 124, 0.12);
+  outline-offset: 5px;
+}
+.home-page .home-reading-item::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: -3px;
+  left: 0;
+  border: 1px solid var(--accent);
+  background: var(--bg);
+  transform: rotate(45deg);
+}
+.site-footer {
+  position: relative;
+  border-top-color: color-mix(in srgb, var(--accent) 27%, transparent);
+  background:
+    radial-gradient(ellipse at 0 0, rgba(194, 173, 124, 0.05), transparent 60%),
+    var(--surface-deep);
+}
+.site-footer .brand-mark {
+  width: 40px;
+  height: 40px;
+}
+.site-footer .footer-links {
+  flex-wrap: wrap;
+  gap: 2px 22px;
+  max-width: 490px;
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .header-actions {
+    gap: 6px;
+  }
+  .saved-nav span {
+    display: none;
+  }
+  .header-inner {
+    gap: 16px;
+  }
+  .logo > span {
+    font-size: 25px;
+    letter-spacing: 0.16em;
+  }
+}
+@media (max-width: 850px) {
+  .home-page .home-hero-registration {
+    display: flex;
+    top: 12px;
+    right: 16px;
+    padding: 5px;
+    border-radius: 50%;
+    background: rgba(11, 16, 13, 0.72);
+    opacity: 1;
+  }
+  .home-page .home-hero-registration .veil-seal {
+    width: 60px;
+    height: 60px;
+  }
+  .home-page .home-hero-copy::before {
+    display: none;
+  }
+  .home-state-gateway-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+@media (max-width: 760px) {
+  .logo .brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+  .main-nav {
+    gap: 0;
+  }
+  .main-nav a.active::after {
+    display: none;
+  }
+  .home-page .home-state-gateway {
+    padding-bottom: 44px;
+  }
+  .veil-divider {
+    max-width: 320px;
+    margin-top: 26px;
+    margin-bottom: -14px;
+  }
+  .home-state-gateway-inner {
+    padding: 28px 0;
+  }
+  .home-state-gateway-inner > .button {
+    width: 100%;
+  }
+}
+@media (forced-colors: active) {
+  .veil-divider,
+  .home-hero-registration {
+    display: none;
+  }
+}

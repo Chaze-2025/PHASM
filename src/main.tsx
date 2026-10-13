@@ -1,13 +1,16 @@
-import React, { lazy, Suspense, useEffect } from "react";
+import React, { lazy, Suspense, useEffect, useRef } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Header, Footer, Status } from "./components";
 import { Home } from "./Home";
+import { routeMetadata, updateMetadata } from "./seo";
 import "./styles.css";
 import "./design-tokens.css";
 import "./refinement.css";
 import "./home.css";
+import "./occult-refinement.css";
 const Atlas = lazy(() => import("./Atlas"));
+const Discover = lazy(() => import("./Discover"));
 const Admin = lazy(() => import("./Admin"));
 const Review = lazy(() => import("./Review"));
 const Profile = lazy(() =>
@@ -23,22 +26,30 @@ const NotFound = lazy(() =>
   import("./pages").then(({ NotFound }) => ({ default: NotFound })),
 );
 function ScrollAndTitle() {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
+  const previousRoute = useRef(`${pathname}${search}`);
   useEffect(() => {
     window.scrollTo(0, 0);
-    const titles: Record<string, string> = {
-      "/": "A field guide to the unexplained",
-      "/map": "The Haunted Atlas",
-      "/saved": "Your saved places",
-      "/cases": "Case Files",
-      "/account": "Your PHASM account",
-      "/about": "Our approach",
-      "/encyclopedia": "Phenomena index",
-      "/admin": "Editorial desk",
-      "/admin/review": "Private research review",
-    };
-    if (titles[pathname]) document.title = `${titles[pathname]} — PHASM`;
   }, [pathname]);
+  useEffect(() => {
+    const route = `${pathname}${search}`;
+    const changed = previousRoute.current !== route;
+    if (changed) {
+      document
+        .querySelectorAll("script[data-phasm-seo]")
+        .forEach((element) => element.remove());
+    }
+    previousRoute.current = route;
+    // Profile metadata is filled from the public record once it has loaded.
+    // Keep the complete server metadata while that first request is pending.
+    if (
+      changed ||
+      !pathname.startsWith("/locations/") ||
+      !document.querySelector('meta[property="og:type"][content="article"]')
+    ) {
+      updateMetadata(routeMetadata(pathname, search));
+    }
+  }, [pathname, search]);
   return null;
 }
 class ErrorBoundary extends React.Component<
@@ -79,6 +90,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/map" element={<Atlas />} />
+            <Route path="/haunted-places" element={<Discover />} />
+            <Route path="/haunted-places/:stateSlug" element={<Discover />} />
             <Route path="/locations/:slug" element={<Profile />} />
             <Route path="/saved" element={<Saved />} />
             <Route path="/cases" element={<Editorial kind="cases" />} />
