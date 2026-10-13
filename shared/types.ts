@@ -3,6 +3,11 @@ export interface Source {
   url: string;
   kind: "history" | "reports" | "visiting";
 }
+export interface CoordinateReference {
+  scope: "site" | "locality" | "county" | "state";
+  label: string;
+  sourceUrl: string;
+}
 export interface Location {
   id: string;
   slug: string;
@@ -31,6 +36,7 @@ export interface Location {
   imageSource: string;
   status: "draft" | "published" | "archived";
   coordinatePrecision: "exact" | "approximate" | "withheld";
+  coordinateReference?: CoordinateReference;
   featured: boolean;
   updatedAt: string;
 }
@@ -70,6 +76,9 @@ export interface AtlasGeoJSON {
   total: number;
   truncated?: boolean;
 }
+// Full point feeds keep ordinary catalogs in MapLibre across camera movements.
+// Larger catalogs use the bounded server-clustered viewport feed instead.
+export const ATLAS_COMPLETE_POINT_LIMIT = 5000;
 export const categories = [
   "Hotel",
   "Historic house",

@@ -159,6 +159,102 @@ test("publication validation rejects uncredited sources, unsafe URLs and private
   );
 });
 
+test("coordinate references preserve sourced approximate points and reject misleading metadata", () => {
+  const reference = {
+    scope: "locality",
+    label: "Estes Park, Colorado",
+    sourceUrl: "https://www.census.gov/geographies/reference-files.html",
+  };
+  const location = {
+    ...fixture,
+    coordinatePrecision: "approximate",
+    coordinateReference: reference,
+  };
+  assert.deepEqual(validateLocation(location).coordinateReference, reference);
+  assert.equal(
+    Object.hasOwn(validateLocation(fixture), "coordinateReference"),
+    false,
+  );
+  for (const scope of ["site", "locality", "county", "state"]) {
+    assert.equal(
+      validateLocation({
+        ...location,
+        coordinateReference: { ...reference, scope },
+      }).coordinateReference?.scope,
+      scope,
+    );
+  }
+  for (const invalid of [
+    null,
+    [],
+    "Estes Park",
+    { ...reference, scope: "entrance" },
+    { ...reference, label: " " },
+    { ...reference, label: "x".repeat(251) },
+    { ...reference, sourceUrl: "" },
+    { ...reference, sourceUrl: "javascript:alert(1)" },
+    { ...reference, sourceUrl: "//example.com" },
+    { ...reference, sourceUrl: "https://user:password@example.com" },
+  ]) {
+    assert.throws(() =>
+      validateLocation({ ...location, coordinateReference: invalid }),
+    );
+  }
+  assert.throws(
+    () => validateLocation({ ...location, coordinatePrecision: "exact" }),
+    /reference pins require approximate/,
+  );
+  assert.throws(
+    () =>
+      validateLocation({
+        ...location,
+        latitude: null,
+        longitude: null,
+        coordinatePrecision: "withheld",
+      }),
+    /reference pins require approximate/,
+  );
+  assert.throws(
+    () => validateLocation({ ...location, latitude: null }),
+    /Coordinates/,
+  );
+});
+
+test("reference pins retain their labels in public summaries and remain mapped at the original coordinates", async () => {
+  const location = validateLocation({
+    ...fixture,
+    coordinatePrecision: "approximate",
+    coordinateReference: {
+      scope: "county",
+      label: "Larimer County, Colorado",
+      sourceUrl: "https://www.census.gov/geographies/reference-files.html",
+    },
+  });
+  const env = createEnv([location]);
+  const summary = (await (
+    await request("/api/locations/test-stanley?format=summary", env)
+  ).json()) as any;
+  assert.deepEqual(
+    summary.location.coordinateReference,
+    location.coordinateReference,
+  );
+  const list = (await (
+    await request("/api/locations?format=summary", env)
+  ).json()) as any;
+  assert.deepEqual(
+    list.locations[0].coordinateReference,
+    location.coordinateReference,
+  );
+  const atlas = (await (
+    await request("/api/atlas?zoom=10", env)
+  ).json()) as any;
+  assert.equal(atlas.total, 1);
+  assert.deepEqual(atlas.features[0].geometry.coordinates, [
+    location.longitude,
+    location.latitude,
+  ]);
+});
+
 test("import detects normalized identities and duplicate slugs before database writes", () => {
   assert.throws(
     () =>
@@ -265,6 +361,78 @@ test("atlas validates geographic bounds, crosses the antimeridian and excludes o
   );
 });
 
+test("explicit atlas point feeds return all 2,859 mapped public records without profile payloads", async () => {
+  const locations = Array.from({ length: 2859 }, (_, index) => ({
+    ...fixture,
+    id: `national-${index}`,
+    slug: `national-${index}`,
+    name: `National ${index}`,
+    longitude: -124 + (index % 120) / 3,
+    latitude: 25 + Math.floor(index / 120),
+  }));
+  const env = createEnv([
+    ...locations,
+    {
+      ...fixture,
+      id: "private-draft",
+      slug: "private-draft",
+      name: "Private draft",
+      status: "draft",
+    },
+    {
+      ...fixture,
+      id: "unmapped",
+      slug: "unmapped",
+      name: "Unmapped",
+      latitude: null,
+      longitude: null,
+      coordinatePrecision: "withheld",
+    },
+  ]);
+  const data = (await (
+    await request("/api/atlas?format=points&zoom=2", env)
+  ).json()) as any;
+  assert.equal(data.total, 2859);
+  assert.equal(data.features.length, 2859);
+  assert.equal(data.truncated, false);
+  assert.deepEqual(
+    data.features.map((feature: any) => feature.properties.id).sort(),
+    locations.map((location) => location.id).sort(),
+  );
+  for (const feature of data.features) {
+    assert.equal(feature.properties.clustered, false);
+    assert.equal(feature.properties.count, 1);
+    assert.deepEqual(Object.keys(feature.properties).sort(), [
+      "category",
+      "clustered",
+      "count",
+      "id",
+      "name",
+      "slug",
+    ]);
+  }
+  for (const path of [
+    "/api/atlas?zoom=10",
+    "/api/atlas?format=points&bbox=-180,-85,180,85&zoom=10",
+  ]) {
+    const bounded = (await (await request(path, env)).json()) as any;
+    assert.equal(bounded.total, 2859);
+    assert.ok(bounded.features.length <= 500);
+    assert.equal(
+      bounded.features.reduce(
+        (sum: number, feature: any) => sum + feature.properties.count,
+        0,
+      ),
+      2859,
+    );
+  }
+  const filtered = (await (
+    await request("/api/atlas?format=points&q=National%202858", env)
+  ).json()) as any;
+  assert.equal(filtered.total, 1);
+  assert.equal(filtered.features[0].properties.id, "national-2858");
+});
+
 test("atlas aggregates over 5,000 records in SQL into no more than 500 points", async () => {
   const locations = Array.from({ length: 5100 }, (_, index) => ({
     ...fixture,
@@ -273,6 +441,8 @@ test("atlas aggregates over 5,000 records in SQL into no more than 500 points", 
     name: `Load ${index}`,
     longitude: -179 + (index % 170) * 2.1,
     latitude: -70 + Math.floor(index / 170) * 4.5,
+    classification:
+      index < 5000 ? ("established" as const) : ("local-legend" as const),
   }));
   const env = createEnv(locations);
   const data = (await (
@@ -288,6 +458,27 @@ test("atlas aggregates over 5,000 records in SQL into no more than 500 points", 
     5100,
   );
   assert.ok(data.features.some((feature: any) => feature.properties.clustered));
+  const overflow = (await (
+    await request("/api/atlas?format=points&zoom=5", env)
+  ).json()) as any;
+  assert.equal(overflow.total, 5100);
+  assert.ok(overflow.features.length <= 500);
+  assert.equal(
+    overflow.features.reduce(
+      (sum: number, feature: any) => sum + feature.properties.count,
+      0,
+    ),
+    5100,
+  );
+  assert.equal(overflow.truncated, false);
+  const boundary = (await (
+    await request("/api/atlas?format=points&classification=established", env)
+  ).json()) as any;
+  assert.equal(boundary.total, 5000);
+  assert.equal(boundary.features.length, 5000);
+  assert.ok(
+    boundary.features.every((feature: any) => !feature.properties.clustered),
+  );
 });
 
 test("admin fails closed, enforces authorization and origin, then saves validated records", async () => {

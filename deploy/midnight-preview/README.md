@@ -29,7 +29,7 @@ Preparation requires the expected branch, a clean working tree, and the preserve
 
 The preparation allowlist also includes the subsequent `codex/usa-atlas-130`,
 `codex/rolling-fog`, `codex/responsive-performance`, `codex/volumetric-mist`,
-and `codex/nationwide-research-2853` revisions. The
+`codex/nationwide-research-2853`, and `codex/nationwide-map-pins` revisions. The
 [performance update](../../docs/PERFORMANCE.md) uses this same isolated Worker
 and database without migrations or catalog writes.
 
@@ -42,7 +42,7 @@ The public origin and exact existing Worker/D1 bindings in the table above remai
 the deployment targets. This approval does not authorize a paid plan, a new
 service, changing another preview, or opening the wrapper's administrative routes.
 
-On `codex/nationwide-research-2853`, preparation requires an explicit completed
+On `codex/nationwide-research-2853` and `codex/nationwide-map-pins`, preparation requires an explicit completed
 photo workspace. The reviewed workspace contains 33 independently cleared image
 files, totaling 24,819,976 bytes. The one missing supplied photograph and the
 three quarantined Wyoming image choices are not packaged. Existing approved

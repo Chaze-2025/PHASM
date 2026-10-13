@@ -63,12 +63,18 @@ if (
     "codex/responsive-performance",
     "codex/volumetric-mist",
     "codex/nationwide-research-2853",
+    "codex/nationwide-map-pins",
   ].includes(branch)
 )
   throw new Error(
     "Preview requires a reviewed editorial, atlas, fog or performance branch.",
   );
-if (branch === "codex/nationwide-research-2853" && !photoWorkspace)
+if (
+  ["codex/nationwide-research-2853", "codex/nationwide-map-pins"].includes(
+    branch,
+  ) &&
+  !photoWorkspace
+)
   throw new Error(
     "Nationwide preparation requires --photo-workspace so reviewed catalog images are included.",
   );

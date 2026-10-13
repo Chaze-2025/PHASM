@@ -1,4 +1,4 @@
-import type { Location, Source } from "../shared/types";
+import type { CoordinateReference, Location, Source } from "../shared/types";
 
 export class HttpError extends Error {
   constructor(
@@ -134,6 +134,37 @@ export function validateLocation(input: unknown): Location {
     );
   // Access describes visiting permission. Preserve researched landmark points
   // rather than displacing them by rounding; approximate pins are not entrances.
+  let coordinateReference: CoordinateReference | undefined;
+  if (data.coordinateReference !== undefined) {
+    if (
+      !data.coordinateReference ||
+      typeof data.coordinateReference !== "object" ||
+      Array.isArray(data.coordinateReference)
+    )
+      throw new HttpError(400, "Invalid coordinate reference.");
+    if (coordinatePrecision !== "approximate")
+      throw new HttpError(
+        400,
+        "Coordinate reference pins require approximate coordinates.",
+      );
+    const reference = data.coordinateReference as Record<string, unknown>;
+    coordinateReference = {
+      scope: enumValue(reference.scope, "coordinate reference scope", [
+        "site",
+        "locality",
+        "county",
+        "state",
+      ] as const),
+      label: string(reference.label, "coordinate reference label", 250),
+      sourceUrl: safeUrl(
+        reference.sourceUrl,
+        "coordinate reference source URL",
+        false,
+        true,
+        true,
+      ),
+    };
+  }
   if (!Array.isArray(data.phenomena) || data.phenomena.length > 20)
     throw new HttpError(400, "Provide at most 20 phenomenon tags.");
   const phenomena = [
@@ -206,6 +237,7 @@ export function validateLocation(input: unknown): Location {
     imageSource: safeUrl(data.imageSource, "image source", true),
     status,
     coordinatePrecision,
+    ...(coordinateReference ? { coordinateReference } : {}),
     featured: data.featured,
     updatedAt: string(data.updatedAt, "updatedAt", 40),
   };

@@ -33,9 +33,9 @@ function collection(
 function aggregate(): AtlasGeoJSON {
   const feature = point("grid");
   feature.properties.clustered = true;
-  feature.properties.count = 650;
+  feature.properties.count = 5100;
   feature.properties.slug = "";
-  return collection([feature], 650);
+  return collection([feature], 5100);
 }
 function deferred<T>() {
   let resolve!: (value: T) => void;
@@ -102,6 +102,7 @@ test("all 136 raw pins survive one fetch and repeated camera movements never ref
   assert.equal(requests.length, 1);
   const params = new URL(requests[0], "https://phasm.test").searchParams;
   assert.equal(params.get("zoom"), "5");
+  assert.equal(params.get("format"), "points");
   assert.equal(params.has("bbox"), false);
   assert.equal(h.delivered.length, 1);
   assert.deepEqual(
@@ -112,7 +113,46 @@ test("all 136 raw pins survive one fetch and repeated camera movements never ref
   assert.ok(h.counts.at(-1)! < 136);
 });
 
-test("larger catalogs use a bounded, deduplicated viewport fallback and retain aggregated totals", async () => {
+test("all 2,859 pins load once per filter and remain in MapLibre through continuous camera movements", async () => {
+  const data = collection(
+    Array.from({ length: 2859 }, (_, i) =>
+      point(`site-${i}`, -124 + (i % 120) / 3, 25 + Math.floor(i / 120)),
+    ),
+  );
+  const requests: string[] = [];
+  const h = harness(async (path) => {
+    requests.push(path);
+    return data;
+  });
+  await h.feed.load("");
+  for (let i = 0; i < 80; i++) {
+    h.setViewport({
+      bounds: [-125 + i / 2, 27, -115 + i / 2, 45],
+      zoom: 3 + i / 8,
+    });
+    await h.feed.move();
+  }
+  assert.equal(requests.length, 1);
+  assert.equal(
+    new URL(requests[0], "https://phasm.test").searchParams.get("format"),
+    "points",
+  );
+  assert.equal(h.delivered.length, 1, "panning never replaces the map source");
+  assert.equal(h.delivered[0].data.features.length, 2859);
+  assert.deepEqual(h.delivered[0].data.features, data.features);
+  assert.equal(
+    h.counts.at(-1),
+    countAtlasInBounds(data, [-85.5, 27, -75.5, 45]),
+  );
+  await h.feed.load("category=Hotel");
+  assert.equal(
+    requests.length,
+    2,
+    "a changed filter gets exactly one fresh complete feed",
+  );
+});
+
+test("catalogs above 5,000 points use a bounded, deduplicated viewport fallback and retain aggregated totals", async () => {
   const requests: string[] = [];
   const h = harness(async (path) => {
     requests.push(path);
@@ -123,7 +163,15 @@ test("larger catalogs use a bounded, deduplicated viewport fallback and retain a
   assert.ok(
     new URL(requests[1], "https://phasm.test").searchParams.has("bbox"),
   );
-  assert.equal(h.counts.at(-1), 650);
+  assert.equal(h.counts.at(-1), 5100);
+  assert.equal(
+    new URL(requests[0], "https://phasm.test").searchParams.get("format"),
+    "points",
+  );
+  assert.equal(
+    new URL(requests[1], "https://phasm.test").searchParams.has("format"),
+    false,
+  );
   await h.feed.move();
   assert.equal(requests.length, 2);
   h.setViewport({ bounds: [170, -20, -170, 20], zoom: 7 });
@@ -239,6 +287,12 @@ test("failed feeds can retry on camera movement without exposing stale data", as
 test("complete-feed detection, wrapped viewport counts and request scope handle boundaries", () => {
   assert.equal(completeAtlasFeed(collection([])), true);
   assert.equal(completeAtlasFeed(aggregate()), false);
+  const atLimit = Array.from({ length: 5000 }, (_, i) => point(`limit-${i}`));
+  assert.equal(completeAtlasFeed(collection(atLimit)), true);
+  assert.equal(
+    completeAtlasFeed(collection([...atLimit, point("overflow")])),
+    false,
+  );
   assert.equal(completeAtlasFeed(collection([point("partial")], 2)), false);
   assert.equal(
     completeAtlasFeed({ ...collection([point("truncated")]), truncated: true }),
@@ -256,7 +310,7 @@ test("complete-feed detection, wrapped viewport counts and request scope handle 
   ]);
   assert.equal(countAtlasInBounds(data, [170, -20, -170, 20]), 2);
   const params = new URL(
-    atlasPath("q=hotel&page=4&view=list&bbox=1,2,3,4&zoom=1"),
+    atlasPath("q=hotel&page=4&view=list&bbox=1,2,3,4&zoom=1&format=summary"),
     "https://phasm.test",
   ).searchParams;
   assert.deepEqual(
@@ -264,6 +318,7 @@ test("complete-feed detection, wrapped viewport counts and request scope handle 
     [
       ["q", "hotel"],
       ["zoom", "5"],
+      ["format", "points"],
     ],
   );
 });

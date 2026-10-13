@@ -1,0 +1,74 @@
+.map-pin-chooser {
+  position: absolute;
+  z-index: 6;
+  left: 12px;
+  right: 70px;
+  bottom: 40px;
+  max-width: 402px;
+  max-height: calc(100% - 100px);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--accent);
+  border-radius: 7px;
+  background: var(--map-panel, #1c1c1c);
+  color: var(--ivory);
+  box-shadow: 0 16px 60px #0009;
+}
+.map-pin-chooser h2 {
+  padding-right: 30px;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+.map-pin-chooser > p {
+  margin: 8px 20px 12px 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+.map-pin-chooser-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  min-width: 44px;
+  min-height: 44px;
+}
+.map-pin-chooser ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  min-height: 0;
+  overscroll-behavior: contain;
+}
+.map-pin-chooser li + li {
+  border-top: 1px solid var(--border);
+}
+.map-pin-chooser li > button {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: transparent;
+  color: var(--ivory);
+  text-align: left;
+  font-size: 0.9rem;
+}
+.map-pin-chooser li > button:hover,
+.map-pin-chooser li > button:focus-visible {
+  background: var(--map-marker-ring, #353535);
+}
+.map-pin-chooser small {
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+@media (max-width: 600px) {
+  .map-pin-chooser {
+    right: 12px;
+    max-width: none;
+    padding: 14px;
+  }
+}

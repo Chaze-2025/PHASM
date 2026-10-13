@@ -6,6 +6,7 @@ import { canonical, type Row } from "./nationwide-store";
 
 /** SQL planning only. Transport, approval, backups and checkpoints belong to the caller. */
 export const PUBLICATION_VERSION = "phasm-nationwide-publication-1";
+export const COORDINATE_VERSION = "phasm-nationwide-coordinates-1";
 export interface PublicationSnapshot {
   locations: Row[];
   sources: Row[];
@@ -51,6 +52,17 @@ const photoKeys = new Set([
   "imageLicense",
   "imageSource",
 ]);
+const coordinateKeys = new Set([
+  "latitude",
+  "longitude",
+  "coordinatePrecision",
+  "coordinateReference",
+]);
+export interface PublicationOptions {
+  inputHash: string;
+  batchSize?: number;
+  maxBatchBytes?: number;
+}
 
 function projection(location: Location): Row {
   return {
@@ -176,8 +188,29 @@ type Operation = {
 export function buildPublicationPlan(
   snapshot: PublicationSnapshot,
   afterInput: unknown,
-  options: { inputHash: string; batchSize?: number; maxBatchBytes?: number },
+  options: PublicationOptions,
 ): PublicationPlan {
+  return buildPlan(snapshot, afterInput, options, "publication");
+}
+
+/** Fill withheld coordinates only, preserving all content and existing pins. */
+export function buildCoordinatePlan(
+  snapshot: PublicationSnapshot,
+  afterInput: unknown,
+  options: PublicationOptions,
+): PublicationPlan {
+  return buildPlan(snapshot, afterInput, options, "coordinates");
+}
+
+function buildPlan(
+  snapshot: PublicationSnapshot,
+  afterInput: unknown,
+  options: PublicationOptions,
+  mode: "publication" | "coordinates",
+): PublicationPlan {
+  const version =
+    mode === "coordinates" ? COORDINATE_VERSION : PUBLICATION_VERSION;
+  const permittedKeys = mode === "coordinates" ? coordinateKeys : photoKeys;
   if (!/^[a-f0-9]{64}$/.test(options.inputHash))
     throw new Error("inputHash must be a SHA-256");
   const batchSize = options.batchSize ?? 50;
@@ -243,11 +276,37 @@ export function buildPublicationPlan(
       throw new Error(`Snapshot phenomena mismatch: ${old.id}`);
     const next = nextById.get(old.id);
     if (!next) throw new Error(`Cannot remove existing location: ${old.id}`);
-    for (const key of Object.keys(old) as (keyof Location)[])
-      if (!photoKeys.has(key) && !equal(old[key], next[key]))
-        throw new Error(`Existing non-photo field changed: ${old.id}.${key}`);
+    for (const key of new Set([
+      ...Object.keys(old),
+      ...Object.keys(next),
+    ]) as Set<keyof Location>)
+      if (!permittedKeys.has(key) && !equal(old[key], next[key]))
+        throw new Error(
+          `Existing non-${mode === "coordinates" ? "coordinate" : "photo"} field changed: ${old.id}.${key}`,
+        );
+    if (mode === "coordinates" && !equal(old, next)) {
+      if (
+        old.coordinatePrecision !== "withheld" ||
+        old.latitude !== null ||
+        old.longitude !== null
+      )
+        throw new Error(
+          `Cannot replace an existing mapped location: ${old.id}`,
+        );
+      if (
+        next.coordinatePrecision !== "approximate" ||
+        next.latitude === null ||
+        next.longitude === null ||
+        !next.coordinateReference
+      )
+        throw new Error(
+          `New coordinates require an approximate, sourced reference: ${old.id}`,
+        );
+    }
   }
   for (const next of after) {
+    if (mode === "coordinates" && !previous.has(next.id))
+      throw new Error(`Coordinate patch cannot create a location: ${next.id}`);
     if (!previous.has(next.id) && next.status !== "published")
       throw new Error(`New location must be explicitly published: ${next.id}`);
     const sourceKeys = next.sources.map((s) => `${s.kind}\n${s.url}`);
@@ -273,13 +332,13 @@ export function buildPublicationPlan(
   const afterHash = sha(canonical(sortedAfter));
   const revision = sha(
     canonical({
-      version: PUBLICATION_VERSION,
+      version,
       inputHash: options.inputHash,
       beforeHash,
       afterHash,
     }),
   );
-  const auditAction = `published:nationwide:${revision}`;
+  const auditAction = `${mode === "coordinates" ? "coordinates" : "published"}:nationwide:${revision}`;
   const operations: Operation[] = [];
   const preservationGuards: string[] = [];
   let created = 0,
@@ -300,22 +359,27 @@ export function buildPublicationPlan(
     const id = q(next.id);
     const absent = `NOT EXISTS (SELECT 1 FROM locations WHERE id = ${id})`;
     const beforeState = old ? state(old, raw) : absent;
+    const values = projection(next);
+    const changedColumns = raw
+      ? Object.keys(values).filter(
+          (column) => values[column] !== raw.location[column],
+        )
+      : [];
     const afterRaw = raw
       ? {
           ...raw,
-          location: { ...raw.location, data_json: JSON.stringify(next) },
+          location: { ...raw.location, ...values },
         }
       : undefined;
     const afterState = state(next, afterRaw);
     const ownership = auditCount(next.id, auditAction);
     const needsWrite = `(${beforeState}) AND ${ownership} = 0`;
     const alreadyApplied = `(${afterState}) AND ${ownership} = 1`;
-    const values = projection(next);
     const applyWrites = [
       // Capture ownership before changing the guarded before-image.
       `INSERT INTO editorial_audit (location_id, action) SELECT ${id}, ${q(auditAction)} WHERE ${needsWrite};`,
       old
-        ? `UPDATE locations SET data_json = ${q(JSON.stringify(next))} WHERE id = ${id} AND data_json IS ${q(String(raw!.location.data_json))};`
+        ? `UPDATE locations SET ${changedColumns.map((column) => `${column} = ${q(values[column])}`).join(", ")} WHERE id = ${id} AND data_json IS ${q(String(raw!.location.data_json))};`
         : `INSERT INTO locations (${Object.keys(values).join(", ")}) SELECT ${Object.values(values).map(q).join(", ")} WHERE ${absent};`,
     ];
     if (!old) {
@@ -353,14 +417,14 @@ export function buildPublicationPlan(
       ],
       rollbackWrites: [
         old
-          ? `UPDATE locations SET data_json = ${q(String(raw!.location.data_json))} WHERE id = ${id} AND data_json IS ${q(JSON.stringify(next))} AND ${ownership} = 1;`
+          ? `UPDATE locations SET ${changedColumns.map((column) => `${column} = ${q(raw!.location[column])}`).join(", ")} WHERE id = ${id} AND data_json IS ${q(JSON.stringify(next))} AND ${ownership} = 1;`
           : `DELETE FROM locations WHERE id = ${id} AND ${ownership} = 1;`,
         `DELETE FROM editorial_audit WHERE location_id = ${id} AND action = ${q(auditAction)};`,
       ],
     });
   }
   const header = [
-    `-- ${PUBLICATION_VERSION}; revision ${revision}`,
+    `-- ${version}; revision ${revision}`,
     "-- Generated SQL only. D1 executes each complete file atomically; no explicit BEGIN.",
     "-- Preserve batch order when applying; use reverse batch order for rollback.",
     "-- No member tables, baseline child rows, schema, or unrelated locations are changed.",
@@ -422,7 +486,7 @@ export function buildPublicationPlan(
     };
   });
   return {
-    version: PUBLICATION_VERSION,
+    version,
     revision,
     auditAction,
     inputHash: options.inputHash,

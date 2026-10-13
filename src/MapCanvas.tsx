@@ -3,11 +3,13 @@ import * as maplibregl from "maplibre-gl";
 import { type Map as MapInstance, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?url";
-import { Compass } from "lucide-react";
+import { Compass, X } from "lucide-react";
 import type { Point } from "geojson";
 import { api } from "./api";
 import type { AtlasGeoJSON } from "../shared/types";
 import { AtlasFeed, atlasBounds } from "./atlas-data";
+import { overlappingMapChoices, type MapChoice } from "./map-selection";
+import "./map-selection.css";
 
 // Let Vite fingerprint and publish the worker alongside this lazy-loaded bundle.
 maplibregl.setWorkerUrl(mapWorkerUrl);
@@ -53,10 +55,47 @@ function MapCanvas({
   const [status, setStatus] = useState("Loading the atlas…");
   const [failed, setFailed] = useState(false);
   const [ready, setReady] = useState(false);
+  const [choices, setChoices] = useState<MapChoice[]>([]);
+  const chooserClose = useRef<HTMLButtonElement>(null);
   queryRef.current = query;
   selectRef.current = onSelect;
   selectedRef.current = selected;
   requestRef.current = requestFeed;
+  const closeChooser = () => {
+    setChoices([]);
+    map.current?.getCanvas().focus();
+  };
+  const selectPlace = (choice: MapChoice) => {
+    setChoices([]);
+    selectRef.current(choice.slug);
+    const m = map.current;
+    // Keep the selected pin above the compact preview on shorter phones.
+    if (
+      m &&
+      m.getCanvas().clientWidth <= 600 &&
+      m.getCanvas().clientHeight < 480
+    ) {
+      m.easeTo({
+        center: choice.coordinates,
+        offset: [0, -75],
+        duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? 0
+          : 350,
+      });
+    }
+  };
+  useEffect(() => {
+    if (!choices.length) return;
+    chooserClose.current?.focus();
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setChoices([]);
+        map.current?.getCanvas().focus();
+      }
+    };
+    window.addEventListener("keydown", onEscape);
+    return () => window.removeEventListener("keydown", onEscape);
+  }, [choices]);
   useEffect(() => {
     if (!container.current) return;
     let m: MapInstance;
@@ -107,6 +146,7 @@ function MapCanvas({
             }
           },
           data: (data, filterChanged) => {
+            setChoices([]);
             sourceRevision++;
             (m.getSource("locations") as GeoJSONSource).setData(data);
             if (!filterChanged || !queryRef.current || !data.features.length)
@@ -319,6 +359,16 @@ function MapCanvas({
           }
         });
         m.on("click", "place-targets", (e) => {
+          const overlapping = overlappingMapChoices(e.features || []);
+          if (overlapping.length > 1) {
+            selectRef.current("");
+            setChoices(overlapping);
+            return;
+          }
+          if (overlapping.length === 1) {
+            selectPlace(overlapping[0]);
+            return;
+          }
           const f = e.features?.[0];
           if (!f) return;
           if (f.properties.clustered) {
@@ -330,22 +380,6 @@ function MapCanvas({
                 ? 0
                 : 450,
             });
-          } else {
-            selectRef.current(f.properties.slug);
-            // Keep the selected pin above the compact preview on shorter phones.
-            if (
-              m.getCanvas().clientWidth <= 600 &&
-              m.getCanvas().clientHeight < 480
-            ) {
-              m.easeTo({
-                center: (f.geometry as Point).coordinates as [number, number],
-                offset: [0, -75],
-                duration: window.matchMedia("(prefers-reduced-motion: reduce)")
-                  .matches
-                  ? 0
-                  : 350,
-              });
-            }
           }
         });
         for (const layer of ["place-targets", "clusters"]) {
@@ -372,9 +406,11 @@ function MapCanvas({
     };
   }, []);
   useEffect(() => {
+    setChoices([]);
     if (ready) void feed.current?.load(query);
   }, [query, ready]);
   useEffect(() => {
+    if (selected) setChoices([]);
     const m = map.current;
     if (!ready || !m?.getLayer("selected-place")) return;
     const colors = mapPalette();
@@ -418,6 +454,35 @@ function MapCanvas({
       >
         <Compass size={20} />
       </button>
+      {choices.length > 1 && (
+        <section
+          className="map-pin-chooser"
+          role="dialog"
+          aria-modal="false"
+          aria-label="Choose a place on the map"
+        >
+          <button
+            ref={chooserClose}
+            className="icon-button map-pin-chooser-close"
+            aria-label="Close overlapping places"
+            onClick={closeChooser}
+          >
+            <X size={18} />
+          </button>
+          <h2>{choices.length} places here</h2>
+          <p>These map markers overlap. Choose a place to explore.</p>
+          <ul>
+            {choices.map((choice) => (
+              <li key={choice.slug}>
+                <button onClick={() => selectPlace(choice)}>
+                  <span>{choice.name}</span>
+                  {choice.category && <small>{choice.category}</small>}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       {failed && !ready && (
         <div className="map-fallback">
           <Compass size={54} strokeWidth={0.7} />

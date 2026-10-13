@@ -28,3 +28,49 @@ export function hasLocationPhotograph(
     location.imageLicense !== "PHASM original illustration",
   );
 }
+
+export function coordinateReferenceLabel(
+  location: Pick<Location, "coordinateReference">,
+): string | undefined {
+  const reference = location.coordinateReference;
+  if (!reference) return;
+  const scope = {
+    site: "Site reference",
+    locality: "Town/area reference",
+    county: "County reference",
+    state: "State reference",
+  }[reference.scope];
+  return `${scope}: ${reference.label}`;
+}
+
+export function coordinateReferenceDescription(
+  location: Pick<Location, "coordinateReference">,
+): string | undefined {
+  const reference = location.coordinateReference;
+  if (!reference) return;
+  return reference.scope === "site"
+    ? "This pin marks a sourced site reference point. Check official visitor information for the entrance and permitted access."
+    : "This pin marks the recorded area, not the site's exact position. Check official visitor information before traveling.";
+}
+
+export function coordinateReferenceAttribution(
+  location: Pick<Location, "coordinateReference">,
+): { name: string; license?: { name: string; url: string } } {
+  try {
+    const host = new URL(location.coordinateReference?.sourceUrl || "")
+      .hostname;
+    if (host === "geonames.org" || host.endsWith(".geonames.org"))
+      return {
+        name: "GeoNames",
+        license: {
+          name: "CC BY 4.0",
+          url: "https://creativecommons.org/licenses/by/4.0/",
+        },
+      };
+    if (host === "census.gov" || host.endsWith(".census.gov"))
+      return { name: "U.S. Census Bureau" };
+  } catch {
+    // Profiles without reference metadata keep their existing display.
+  }
+  return { name: "Map reference source" };
+}

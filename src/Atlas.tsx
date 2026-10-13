@@ -20,6 +20,7 @@ import {
   type LocationPage,
 } from "../shared/types";
 import { LocationCard, PlaceImage, Status } from "./components";
+import { coordinateReferenceLabel } from "./location";
 
 const MapCanvas = lazy(() => import("./MapCanvas"));
 
@@ -373,8 +374,9 @@ export default function Atlas() {
             </div>
           )}
           <p className="map-editorial-note">
-            Explore each place on the map. Approximate pins mark site reference
-            points; check the profile for visiting access and restrictions.
+            Explore each place on the map. Approximate pins may mark a site or a
+            labeled town/area reference. Check the profile for pin details,
+            visiting access and restrictions.
           </p>
         </section>
         <section
@@ -426,6 +428,13 @@ export default function Atlas() {
                           .filter(Boolean)
                           .join(", ")}
                       </p>
+                      {preview.data.location.coordinateReference && (
+                        <p className="map-reference-label">
+                          {coordinateReferenceLabel(preview.data.location)}
+                          {preview.data.location.coordinateReference.scope !==
+                            "site" && " · Exact site position unverified"}
+                        </p>
+                      )}
                       <Link
                         className="button brass"
                         to={`/locations/${preview.data.location.slug}`}

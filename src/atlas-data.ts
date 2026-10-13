@@ -1,4 +1,4 @@
-import type { AtlasGeoJSON } from "../shared/types";
+import { ATLAS_COMPLETE_POINT_LIMIT, type AtlasGeoJSON } from "../shared/types";
 
 export type AtlasBounds = [number, number, number, number];
 export type AtlasViewport = { bounds: AtlasBounds; zoom: number };
@@ -29,16 +29,18 @@ export function atlasPath(query: string, viewport?: AtlasViewport) {
   params.delete("pageSize");
   params.delete("view");
   params.delete("bbox");
+  params.delete("format");
   params.set("zoom", String(viewport ? Math.round(viewport.zoom) : 5));
   if (viewport) params.set("bbox", viewport.bounds.join(","));
+  else params.set("format", "points");
   return `/api/atlas?${params}`;
 }
 
-/** The API may aggregate larger catalogs even at zoom 5. Never treat that as all pins. */
+/** Explicit point requests still aggregate above the cap. Never treat those as all pins. */
 export function completeAtlasFeed(data: AtlasGeoJSON) {
   return (
     !data.truncated &&
-    data.total <= 500 &&
+    data.total <= ATLAS_COMPLETE_POINT_LIMIT &&
     data.features.length === data.total &&
     data.features.every(
       ({ properties }) =>

@@ -15,7 +15,13 @@ import {
 import { useApi } from "./api";
 import type { Location } from "../shared/types";
 import { imageLicenseUrl } from "../shared/image-license";
-import { hasLocationPhotograph, hasMapCoordinates } from "./location";
+import {
+  coordinateReferenceAttribution,
+  coordinateReferenceDescription,
+  coordinateReferenceLabel,
+  hasLocationPhotograph,
+  hasMapCoordinates,
+} from "./location";
 import "./profile.css";
 import {
   LocationCard,
@@ -93,6 +99,8 @@ export function Profile() {
   const hasPhotograph = hasLocationPhotograph(p);
   const hasHistory = Boolean(p.history.trim());
   const hasMapPin = hasMapCoordinates(p);
+  const referenceLabel = coordinateReferenceLabel(p);
+  const referenceAttribution = coordinateReferenceAttribution(p);
   const licenseUrl = imageLicenseUrl(p.imageLicense, p.imageSource);
   const visibleSections = dossierSections.filter(
     ([id]) => id !== "history" || hasHistory,
@@ -141,9 +149,10 @@ export function Profile() {
           <MapPin size={17} aria-hidden="true" />
           {!hasMapPin
             ? "Map pin unavailable"
-            : p.coordinatePrecision === "approximate"
-              ? "Approximate location"
-              : "On the Haunted Atlas"}
+            : referenceLabel ||
+              (p.coordinatePrecision === "approximate"
+                ? "Approximate location"
+                : "On the Haunted Atlas")}
         </p>
         <SaveButton slug={p.slug} label />
       </div>
@@ -410,6 +419,34 @@ export function Profile() {
               Map pin unavailable. No public coordinates are provided for this
               location.
             </p>
+          )}
+          {hasMapPin && p.coordinateReference && (
+            <div className="visit-map-note">
+              <p>{referenceLabel}</p>
+              <p>{coordinateReferenceDescription(p)}</p>
+              <a
+                className="text-link"
+                href={p.coordinateReference.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {referenceAttribution.name}{" "}
+                <ExternalLink size={14} aria-hidden="true" />
+              </a>
+              {referenceAttribution.license && (
+                <p>
+                  Map reference data licensed under{" "}
+                  <a
+                    href={referenceAttribution.license.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {referenceAttribution.license.name}
+                  </a>
+                  .
+                </p>
+              )}
+            </div>
           )}
           {p.officialUrl && (
             <a

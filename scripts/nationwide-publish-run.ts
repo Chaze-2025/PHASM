@@ -10,7 +10,10 @@ import {
 } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { buildPublicationPlan } from "./nationwide-publish";
+import {
+  buildCoordinatePlan,
+  buildPublicationPlan,
+} from "./nationwide-publish";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = "deploy/midnight-preview/wrangler.json";
@@ -210,7 +213,7 @@ export function publicationMain(args = process.argv.slice(2)) {
     if (!value) throw new Error(`${flag} is required`);
     return resolve(value);
   };
-  if (command === "plan") {
+  if (command === "plan" || command === "plan-coordinates") {
     const snapshot = required("--snapshot-dir"),
       directory = required("--output");
     if (existsSync(directory))
@@ -222,7 +225,11 @@ export function publicationMain(args = process.argv.slice(2)) {
       throw new Error(
         "--input-hash requires the verified research fingerprint",
       );
-    const plan = buildPublicationPlan(
+    const planner =
+      command === "plan-coordinates"
+        ? buildCoordinatePlan
+        : buildPublicationPlan;
+    const plan = planner(
       {
         locations: read(join(snapshot, "locations.json")),
         sources: read(join(snapshot, "location_sources.json")),

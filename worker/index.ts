@@ -4,6 +4,7 @@ import type {
   Location,
   LocationSummary,
 } from "../shared/types";
+import { ATLAS_COMPLETE_POINT_LIMIT } from "../shared/types";
 import {
   HttpError,
   identityKey,
@@ -249,9 +250,13 @@ async function atlas(
       total: 0,
     });
   let features: AtlasFeature[];
-  if (zoom < 5 || total > 500) {
+  const completePoints =
+    params.get("format") === "points" &&
+    !params.has("bbox") &&
+    total <= ATLAS_COMPLETE_POINT_LIMIT;
+  if (!completePoints && (zoom < 5 || total > 500)) {
     // At most 25 x 17 grid cells, even across the antimeridian. Aggregation
-    // happens in SQLite; the Worker never downloads the complete catalog.
+    // happens in SQLite; larger catalogs never produce an unbounded payload.
     const width = west > east ? 360 - west + east : east - west;
     const step = Math.max(
       360 / (2 ** Math.floor(zoom) * 8),
@@ -300,7 +305,7 @@ async function atlas(
   } else {
     const rows = await db
       .prepare(
-        `SELECT l.id,l.slug,l.name,l.category,l.longitude,l.latitude FROM locations l WHERE ${filter.where} ORDER BY l.id LIMIT 500`,
+        `SELECT l.id,l.slug,l.name,l.category,l.longitude,l.latitude FROM locations l WHERE ${filter.where} ORDER BY l.id LIMIT ${completePoints ? ATLAS_COMPLETE_POINT_LIMIT : 500}`,
       )
       .bind(...filter.values)
       .all<{

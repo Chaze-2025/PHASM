@@ -367,6 +367,13 @@
   border-top: 1px solid var(--border);
   color: var(--muted);
 }
+.profile-page .visit-map-note p + p {
+  margin-top: 8px;
+}
+.profile-page .visit-map-note .text-link {
+  margin-top: 8px;
+  min-height: 44px;
+}
 .profile-page .dossier-source-link {
   display: inline-flex;
   align-items: center;
