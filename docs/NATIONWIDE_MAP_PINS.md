@@ -133,4 +133,66 @@ Frozen review: `/workspace/phasm-pin-enrichment/final-review/`.
 
 The fresh live backup and all 19 ordinary tables matched the previous publication
 exactly before this update. Source and locality collectors passed cached rerun
-checks. The deployment record below is completed only after live verification.
+checks. The live deployment and database verification are recorded below.
+
+## Live publication — 2026-10-13
+
+Published to <https://phasm-phase-1-3-preview.wj7djnw2j2.workers.dev/map>.
+
+- Application source commit: `96e32da75492118a0e0ad978ebda7901e7ab9623`.
+- Worker version: `bac4c33b-c9ae-4686-b400-c9210b81e32d`.
+- D1 database: `phasm-editorial-preview-db`,
+  `fe55176f-43e7-4b79-82c2-02884e4161a0`.
+- Coordinate revision: `35e8341fe37ecbf0b7e48e71a015ca1e8e02688ef3e0d3ae27c2315b5c4fcecf`.
+- Frozen plan: `/workspace/phasm-pin-enrichment/live-plan` (54 completed batches).
+- Plan manifest SHA256: `584f3f824af61159d7295a47154048a292944106cc718dc42edb9e561ba690cb`.
+- Migration: only `0005_fts_update_guard.sql` was pending and applied.
+
+The public point feed returns all **2,859 unique location IDs**, exact reviewed
+coordinates and `truncated: false`. Its payload is 729,313 bytes (109,713 bytes
+when gzip-compressed). The bounded default cluster feed also accounts for all
+2,859 places. A complete filtered point feed stays in the browser across camera
+moves, avoiding repeated atlas requests while panning and zooming.
+
+Fresh D1 readback matches all 2,859 reviewed native records. The 167 original
+mapped records remain byte-for-byte unchanged at the raw row level. All
+non-geographic fields, source/phenomenon rows and original row IDs/audits are
+preserved. The 2,692 new coordinate audits bring the total to 5,642. All 14
+member/editorial tables remain unchanged. Recovery checks pass database,
+foreign-key and full-text integrity using the actual live FTS bytes.
+
+All 33 cleared research photos were included with unchanged hashes and URLs.
+The deployment preserves the read-only wrapper and existing free resources.
+Repeating the completed live plan checks the exact catalog and performs **zero
+content batches and zero row writes**. Repeating the evidence merge produces
+identical catalog/report bytes and fingerprint; decision objects retain identical
+content, with object-key ordering allowed to vary between Python processes.
+
+Validation: 192 TypeScript tests, 23 Python coordinate tests and Census parser
+checks passed; import type-check, production build and deployment dry run passed.
+The actual-data rehearsal proved partial resume, unchanged reruns, preservation
+of all 19 ordinary tables and exact reverse rollback before publication.
+
+Live browser checks passed at 1440px and 390px: all 2,859 IDs were present,
+repeated pan/zoom used one atlas request, and the real overlapping Destrehan and
+Ormond Plantation pins remained individually selectable without official website
+URLs. Site/town/county labels, access text, existing photographs and external map
+tiles passed. The public regression suite passed 15/15, including automated
+accessibility scans, with no uncaught application errors. Mobile checks use browser
+viewport simulation rather than physical iPhone hardware.
+
+Private evidence and recovery files:
+
+- `preflight/baseline.sqlite`: pre-update recovery database.
+- `rehearsal/report.json`: full apply/resume/rollback verification.
+- `verification/deployment-source.json`: clean source and photo provenance.
+- `verification/public/report.json`: live point, cluster and search checks.
+- `verification/completed-rerun-proof.json`: zero-write live rerun.
+- `live-ui/results.json`: real-data desktop/mobile map and reference checks.
+- `live-regression/phasm-qa-results.json`: public browser regression and accessibility checks.
+- `postflight/report.json` and `postflight/published.sqlite`: verified live snapshot.
+
+These paths are relative to `/workspace/phasm-pin-enrichment`. The frozen plan
+retains guarded rollback SQL for every batch. A coordinate rollback restores
+only this revision's changed coordinates/metadata and removes its owned audits;
+all previously published locations remain present. Migration 0005 stays applied.
